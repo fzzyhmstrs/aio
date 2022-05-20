@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "ai_odyssey",
+  "version": "${version}",
+  "name": "Amethyst Imbuement: Odyssey",
+  "description": "A strange power is seeping into the cracks of the world. Track it down and see where it leads...",
+  "authors": [
+    "fzzyhmstrs"
+  ],
+  "contact": {
+    "homepage": "https://example.com/",
+    "issues": "https://example.com/",
+    "sources": "https://example.com/"
+  },
+  "license": "MIT License",
+  "icon": "assets/ai_odyssey/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      {
+        "adapter": "kotlin",
+        "value": "me.fzzyhmstrs.ai_odyssey.AIO"
+      }
+    ]
+  },
+  "mixins": [
+    "ai_odyssey.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.13.3",
+    "fabric": "*",
+    "fabric-language-kotlin": ">=1.7.0+kotlin.1.6.0",
+    "minecraft": ">=1.18",
+    "java": ">=17"
+  }
+}
