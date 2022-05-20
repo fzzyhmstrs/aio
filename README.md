@@ -1,3 +1,3 @@
-# Village Life
+# Amethyst Imbuement: Odyssey
 
-A mod all about enhancing villages. Adds new village structures, adds new professions, even some new village mobs.
+A strange power is seeping into the cracks of the world. Track it down and see where it leads...
