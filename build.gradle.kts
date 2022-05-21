@@ -13,11 +13,12 @@ val mavenGroup: String by project
 group = mavenGroup
 repositories {
     maven {
-        name = "Modrinth"
-        url = uri("https://api.modrinth.com/maven")
-        content {
-            includeGroup("maven.modrinth")
-        }
+        name = "TerraformersMC"
+        url = uri("https://maven.terraformersmc.com/")
+    }
+    maven {
+        name = "Ladysnake Libs"
+        url = uri("https://ladysnake.jfrog.io/artifactory/mods")
     }
     flatDir {
         dirs("F:\\Documents\\Mod Development\\ai\\build\\libs")
@@ -36,6 +37,11 @@ dependencies {
     modImplementation("net.fabricmc:fabric-language-kotlin:$fabricKotlinVersion")
 
     modImplementation(":amethyst_imbuement-1.18.2-14-scepter_upgrade")
+
+    modImplementation("dev.emi:trinkets:3.3.0"){
+        exclude("net.fabricmc.fabric-api")
+    }
+    include("dev.emi:trinkets:3.3.0")
 }
 tasks {
     val javaVersion = JavaVersion.VERSION_17

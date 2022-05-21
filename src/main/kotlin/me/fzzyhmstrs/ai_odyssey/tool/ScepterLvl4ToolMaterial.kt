@@ -28,7 +28,7 @@ object ScepterLvl4ToolMaterial: ToolMaterial, ScepterMaterialAddon {
         return 30
     }
     override fun getRepairIngredient(): Ingredient {
-        return Ingredient.ofItems(RegisterItem.MYSTIC_QUINTESSENCE)
+        return Ingredient.ofItems(RegisterItem.MYSTIC_FRAGMENT)
     }
     override fun healCooldown(): Long {
         return max(AiConfig.scepters.baseRegenRateTicks - 90L, minCooldown())
