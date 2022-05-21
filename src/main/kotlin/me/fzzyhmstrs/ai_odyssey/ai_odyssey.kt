@@ -1,8 +1,7 @@
 package me.fzzyhmstrs.ai_odyssey
 
 import me.fzzyhmstrs.ai_odyssey.config.AioConfig
-import me.fzzyhmstrs.ai_odyssey.registry.RegisterItem
-import me.fzzyhmstrs.ai_odyssey.registry.RegisterModifier
+import me.fzzyhmstrs.ai_odyssey.registry.*
 import net.fabricmc.api.ModInitializer
 
 object AIO: ModInitializer {
@@ -11,6 +10,9 @@ object AIO: ModInitializer {
     override fun onInitialize() {
         AioConfig.initConfig()
         RegisterItem.registerAll()
+        RegisterBlock.registerAll()
+        RegisterEnchantment.registerAll()
+        RegisterStatus.registerAll()
         RegisterModifier.registerAll()
     }
 }

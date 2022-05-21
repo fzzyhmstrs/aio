@@ -9,7 +9,6 @@ import me.fzzyhmstrs.amethyst_imbuement.item.CustomFlavorItem
 import me.fzzyhmstrs.amethyst_imbuement.item.ImbuedJewelryItem
 import me.fzzyhmstrs.amethyst_imbuement.item.ScepterItem
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
-import net.minecraft.item.EmptyMapItem
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroup
 import net.minecraft.util.Identifier
@@ -19,7 +18,7 @@ import net.minecraft.util.registry.Registry
 
 object RegisterItem {
 
-    var regItem: MutableMap<String, Item> = mutableMapOf()
+    private val regItem: MutableMap<String, Item> = mutableMapOf()
 
     //materials and crafting items
     val ALEXANDRITE = Item(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.UNCOMMON)).also{ regItem["alexandrite"] = it}
