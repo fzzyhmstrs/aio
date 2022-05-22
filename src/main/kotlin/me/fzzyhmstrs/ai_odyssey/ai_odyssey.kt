@@ -9,6 +9,7 @@ object AIO: ModInitializer {
 
     override fun onInitialize() {
         AioConfig.initConfig()
+        RegisterArmor.registerAll()
         RegisterItem.registerAll()
         RegisterBlock.registerAll()
         RegisterEnchantment.registerAll()

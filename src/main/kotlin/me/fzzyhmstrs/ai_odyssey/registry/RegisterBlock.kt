@@ -1,7 +1,6 @@
 package me.fzzyhmstrs.ai_odyssey.registry
 
-import me.fzzyhmstrs.ai_odyssey.block.SeaBambooBlock
-import me.fzzyhmstrs.ai_odyssey.block.SeaBambooPlantBlock
+import me.fzzyhmstrs.ai_odyssey.block.*
 import me.fzzyhmstrs.amethyst_imbuement.AI
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
@@ -19,10 +18,18 @@ object RegisterBlock {
         BlockSoundGroup.WET_GRASS))
     val SEA_BAMBOO_PLANT = SeaBambooPlantBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().ticksRandomly().breakInstantly().sounds(
         BlockSoundGroup.WET_GRASS))
+    val BULL_KELP = BullKelpBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().ticksRandomly().breakInstantly().sounds(
+        BlockSoundGroup.WET_GRASS))
+    val BULL_KELP_PLANT = BullKelpPlantBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().ticksRandomly().breakInstantly().sounds(
+        BlockSoundGroup.WET_GRASS))
+    val BULL_KELP_STREAMER = BullKelpStreamerBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().ticksRandomly().breakInstantly().sounds(
+        BlockSoundGroup.WET_GRASS))
 
     fun registerAll(){
         registerBlock("sea_bamboo", SEA_BAMBOO, ItemGroup.DECORATIONS)
         registerBlock("sea_bamboo_plant", SEA_BAMBOO_PLANT, ItemGroup.DECORATIONS)
+        registerBlock("bull_kelp", BULL_KELP, ItemGroup.DECORATIONS)
+        registerBlock("bull_kelp_plant", BULL_KELP_PLANT, ItemGroup.DECORATIONS)
     }
 
     private fun registerBlock(path: String, block: Block, itemGroup: ItemGroup){
