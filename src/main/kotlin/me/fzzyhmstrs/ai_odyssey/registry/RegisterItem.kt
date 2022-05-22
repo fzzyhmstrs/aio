@@ -30,6 +30,8 @@ object RegisterItem {
     //tools and weapons
     val RESPLENDENT_SCEPTER = ScepterItem(ScepterLvl4ToolMaterial, FabricItemSettings().group(ItemGroup.COMBAT).rarity(Rarity.EPIC)).also{ regItem["resplendent_scepter"] = it}
 
+    //flora and fauna
+
 
     //food and other practical items
 

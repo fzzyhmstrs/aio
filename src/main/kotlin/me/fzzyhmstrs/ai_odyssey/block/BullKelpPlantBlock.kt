@@ -24,7 +24,7 @@ class BullKelpPlantBlock(settings: Settings):
     }
 
     @Deprecated("Deprecated in Java", ReplaceWith("Fluids.WATER.getStill(false)", "net.minecraft.fluid.Fluids"))
-    override fun getFluidState(state: BlockState?): FluidState? {
+    override fun getFluidState(state: BlockState): FluidState {
         return Fluids.WATER.getStill(false)
     }
 
@@ -33,10 +33,10 @@ class BullKelpPlantBlock(settings: Settings):
     }
 
     override fun tryFillWithFluid(
-        world: WorldAccess?,
-        pos: BlockPos?,
-        state: BlockState?,
-        fluidState: FluidState?
+        world: WorldAccess,
+        pos: BlockPos,
+        state: BlockState,
+        fluidState: FluidState
     ): Boolean {
         return false
     }

@@ -1,6 +1,18 @@
-{
-  "parent": "minecraft:block/tinted_cross",
-  "textures": {
-    "cross": "ai_odyssey:block/bull_kelp_plant"
-  }
+{   "parent": "block/block",
+	"ambientocclusion": false,
+    "textures": {
+        "bull_kelp": "ai_odyssey:block/bull_kelp"
+    },
+    "elements": [
+        {
+            "from": [ 6, 0, 6 ],
+            "to": [ 10, 16, 10 ],
+            "faces": {
+                "north": { "uv": [ 0, 0, 4, 16 ], "texture": "#bull_kelp" },
+                "south": { "uv": [ 4, 0, 8, 16 ], "texture": "#bull_kelp" },
+                "west":  { "uv": [ 0, 0, 4, 16 ], "texture": "#bull_kelp" },
+                "east":  { "uv": [ 4, 0, 8, 16 ], "texture": "#bull_kelp" }
+            }
+        }
+    ]
 }

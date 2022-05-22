@@ -1,19 +1,13 @@
 {
   "variants": {
     "age=0": {
-      "model": "ai_odyssey:block/bull_kelp_streamer_0",
-	  "x": 90,
-      "y": 180
+      "model": "ai_odyssey:block/bull_kelp_streamer_0"
     },
 	"age=1": {
-      "model": "ai_odyssey:block/bull_kelp_streamer_1",
-	  "x": 90,
-      "y": 180
+      "model": "ai_odyssey:block/bull_kelp_streamer_1"
     },
 	"age=2": {
-      "model": "ai_odyssey:block/bull_kelp_streamer_2",
-	  "x": 90,
-      "y": 180
+      "model": "ai_odyssey:block/bull_kelp_streamer_2"
     }
   }
 }

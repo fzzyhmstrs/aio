@@ -1,6 +1,63 @@
 {
-  "parent": "minecraft:block/tinted_cross",
-  "textures": {
-    "cross": "ai_odyssey:block/bull_kelp"
-  }
+    "parent": "minecraft:block/block",
+	"ambientocclusion": false,
+    "textures": {
+	   "bulb_0": "ai_odyssey:block/bull_kelp_bulb_0",
+	   "bulb_1": "ai_odyssey:block/bull_kelp_bulb_1",
+	   "bottom": "ai_odyssey:block/bull_kelp_bulb_bottom",
+	   "top": "ai_odyssey:block/bull_kelp_bulb_top",
+	   "stem": "ai_odyssey:block/bull_kelp",
+	   "fronds_0": "ai_odyssey:block/bull_kelp_fronds_root_0",
+	   "fronds_1": "ai_odyssey:block/bull_kelp_fronds_root_1",
+	   "fronds_2": "ai_odyssey:block/bull_kelp_fronds_root_2"
+    },
+    "elements": [
+        {
+            "from": [ 3, 3, 3 ],
+            "to": [ 13, 13, 13 ],
+            "faces": {
+				"up": { "uv": [ 0, 0, 10, 10 ], "texture": "#top" },
+				"down": { "uv": [ 0, 0, 10, 10 ], "texture": "#bottom" },
+                "north": { "uv": [ 0, 0, 10, 10 ], "texture": "#bulb_0" },
+                "south": { "uv": [ 0, 0, 10, 10 ], "texture": "#bulb_1" },
+                "west":  { "uv": [ 10, 0, 0, 10 ], "texture": "#bulb_0" },
+                "east":  { "uv": [ 10, 0, 0, 10 ], "texture": "#bulb_1" }
+            }
+        },
+		{
+            "from": [ 6, 0, 6 ],
+            "to": [ 10, 2, 10 ],
+            "faces": {
+                "north": { "uv": [ 0, 14, 4, 16 ], "texture": "#stem" },
+                "south": { "uv": [ 4, 14, 8, 16 ], "texture": "#stem" },
+                "west":  { "uv": [ 0, 14, 4, 16 ], "texture": "#stem" },
+                "east":  { "uv": [ 4, 14, 8, 16 ], "texture": "#stem" }
+            }
+        },
+		{
+            "from": [ 4, 0, 0 ],
+            "to": [ 4, 16, 16 ],
+            "faces": {
+                "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#fronds_0" },
+                "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#fronds_0" }
+            }
+        },
+		{
+            "from": [ 8, 0, 0 ],
+            "to": [ 8, 16, 16 ],
+            "faces": {
+                "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#fronds_1" },
+                "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#fronds_1" }
+            }
+        },
+		{
+            "from": [ 12, 0, 0 ],
+            "to": [ 12, 16, 16 ],
+            "faces": {
+                "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#fronds_2" },
+                "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#fronds_2" }
+            }
+        }
+    ]
+  
 }
