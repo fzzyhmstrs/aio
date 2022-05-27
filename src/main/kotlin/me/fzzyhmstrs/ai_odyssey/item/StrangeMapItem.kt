@@ -22,8 +22,6 @@ import net.minecraft.world.gen.feature.ConfiguredStructureFeature
 
 class StrangeMapItem(settings: Settings): EmptyMapItem(settings) {
 
-    val destination: TagKey<ConfiguredStructureFeature<*, *>>? = null
-
     override fun appendTooltip(
         stack: ItemStack,
         world: World?,
