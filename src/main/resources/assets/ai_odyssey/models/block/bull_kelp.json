@@ -7,9 +7,9 @@
 	   "bottom": "ai_odyssey:block/bull_kelp_bulb_bottom",
 	   "top": "ai_odyssey:block/bull_kelp_bulb_top",
 	   "stem": "ai_odyssey:block/bull_kelp",
-	   "fronds_0": "ai_odyssey:block/bull_kelp_fronds_root_0",
-	   "fronds_1": "ai_odyssey:block/bull_kelp_fronds_root_1",
-	   "fronds_2": "ai_odyssey:block/bull_kelp_fronds_root_2"
+	   "fronds_0": "ai_odyssey:block/bull_kelp_streamer_root_0",
+	   "fronds_1": "ai_odyssey:block/bull_kelp_streamer_root_1",
+	   "fronds_2": "ai_odyssey:block/bull_kelp_streamer_root_2"
     },
     "elements": [
         {

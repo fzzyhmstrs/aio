@@ -9,6 +9,8 @@ import me.fzzyhmstrs.amethyst_imbuement.item.CustomFlavorItem
 import me.fzzyhmstrs.amethyst_imbuement.item.ImbuedJewelryItem
 import me.fzzyhmstrs.amethyst_imbuement.item.ScepterItem
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
+import net.minecraft.item.AliasedBlockItem
+import net.minecraft.item.FoodComponents
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroup
 import net.minecraft.util.Identifier
@@ -34,6 +36,7 @@ object RegisterItem {
 
 
     //food and other practical items
+    val SEA_APPLE = AliasedBlockItem(RegisterBlock.SEA_APPLE_BUSH,FabricItemSettings().group(ItemGroup.FOOD).food(FoodComponents.APPLE)).also{ regItem["sea_apple"] = it}
 
     //trinkets and baubles
     val DIVINE_CORONET = ImbuedJewelryItem(FabricItemSettings().group(ItemGroup.MISC).maxCount(1).rarity(Rarity.EPIC),"divine_coronet").also{ regItem["divine_coronet"] = it}
