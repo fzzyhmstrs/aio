@@ -1,5 +1,6 @@
 package me.fzzyhmstrs.ai_odyssey.block
 
+import me.fzzyhmstrs.ai_odyssey.registry.RegisterItem
 import net.minecraft.block.BlockState
 import net.minecraft.block.FluidFillable
 import net.minecraft.block.SweetBerryBushBlock
@@ -28,10 +29,10 @@ class SeaAppleBlock(settings: Settings): SweetBerryBushBlock(settings), FluidFil
 
     @Deprecated("Deprecated in Java")
     override fun onEntityCollision(state: BlockState, world: World, pos: BlockPos, entity: Entity) {
-        if (entity !is LivingEntity || entity.getType() === EntityType.FOX || entity.getType() === EntityType.BEE) {
+        if (entity !is LivingEntity) {
             return
         }
-        entity.slowMovement(state, Vec3d(0.9, 0.85, 0.9))
+        entity.slowMovement(state, Vec3d(0.8, 0.8, 0.8))
     }
 
     override fun getPickStack(world: BlockView, pos: BlockPos, state: BlockState): ItemStack {
@@ -63,7 +64,7 @@ class SeaAppleBlock(settings: Settings): SweetBerryBushBlock(settings), FluidFil
         }
         if (i > 1) {
             //val j = 1 + world.random.nextInt(9)
-            dropStack(world, pos, ItemStack (Items.EXPERIENCE_BOTTLE, if (bl) 2 else 1))
+            dropStack(world, pos, ItemStack (RegisterItem.SEA_APPLE, if (bl) 2 else 1))
             //ExperienceOrbEntity.spawn(world as ServerWorld, Vec3d.ofCenter(pos), j + if (bl) 2 else 0)
             world.playSound(
                 null,
