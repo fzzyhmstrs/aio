@@ -13,6 +13,7 @@ object RegisterModifier {
     val FURIOUS = AugmentModifier(Identifier(AIO.MOD_ID,"furious")).withXpMod(SpellType.FURY,1).withDamage(0.25F).also { regMod.add(it) }
     val WITTY = AugmentModifier(Identifier(AIO.MOD_ID,"witty")).withXpMod(SpellType.WIT,1).withRange(0.25).also { regMod.add(it) }
     val GRACEFUL = AugmentModifier(Identifier(AIO.MOD_ID,"graceful")).withXpMod(SpellType.GRACE,1).withDuration(durationPercent = 5).also { regMod.add(it) }
+    val DEMANDING = AugmentModifier(Identifier(AIO.MOD_ID,"demanding"), manaCostModifier = 0.15) .also { regMod.add(it) }
     val NECROTIC = AugmentModifier(Identifier(AIO.MOD_ID,"necrotic")).withConsumer(ModifierConsumers.NECROTIC_CONSUMER).also { regMod.add(it) }
     val HEALING = AugmentModifier(Identifier(AIO.MOD_ID,"healing")).withConsumer(ModifierConsumers.HEALING_CONSUMER).also { regMod.add(it) }
     val SMITING = AugmentModifier(Identifier(AIO.MOD_ID,"smiting")).withConsumer(ModifierConsumers.SMITING_CONSUMER).also { regMod.add(it) }
