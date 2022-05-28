@@ -62,10 +62,8 @@ class SeaAppleBlock(settings: Settings): SweetBerryBushBlock(settings), FluidFil
         if (!bl && player.getStackInHand(hand).isOf(Items.BONE_MEAL)) {
             return ActionResult.PASS
         }
-        if (i > 1) {
-            //val j = 1 + world.random.nextInt(9)
-            dropStack(world, pos, ItemStack (RegisterItem.SEA_APPLE, if (bl) 2 else 1))
-            //ExperienceOrbEntity.spawn(world as ServerWorld, Vec3d.ofCenter(pos), j + if (bl) 2 else 0)
+        if (bl) {
+            dropStack(world, pos, ItemStack(RegisterItem.SEA_APPLE, 1))
             world.playSound(
                 null,
                 pos,
