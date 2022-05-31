@@ -20,6 +20,12 @@ object RegisterModifier {
     val INSIGHTFUL = AugmentModifier(Identifier(AIO.MOD_ID,"insightful")).withConsumer(ModifierConsumers.INSIGHTFUL_CONSUMER).also { regMod.add(it) }
     val DANGEROUS = AugmentModifier(Identifier(AIO.MOD_ID,"dangerous")).withDamage(0.0F,0.0F,20.0F).also { regMod.add(it) }
 
+    val BLADE_ASPECT = AugmentModifier(Identifier(AIO.MOD_ID,"blade_aspect")).withDamage(0.0F,0.0F,20.0F).also { regMod.add(it) }
+    val FIRE_ASPECT = AugmentModifier(Identifier(AIO.MOD_ID,"fire_aspect")).withDamage(0.0F,0.0F,20.0F).also { regMod.add(it) }
+    val LIGHTNING_ASPECT = AugmentModifier(Identifier(AIO.MOD_ID,"lightning_aspect")).withDamage(0.0F,0.0F,20.0F).also { regMod.add(it) }
+    val SUMMONERS_ASPECT = AugmentModifier(Identifier(AIO.MOD_ID,"summoners_aspect")).withDamage(0.0F,0.0F,20.0F).also { regMod.add(it) }
+    val BUILDERS_ASPECT = AugmentModifier(Identifier(AIO.MOD_ID,"builders_aspect")).withDamage(0.0F,0.0F,20.0F).also { regMod.add(it) }
+
     fun registerAll(){
         regMod.forEach {
             RegisterModifier.ENTRIES.register(it)

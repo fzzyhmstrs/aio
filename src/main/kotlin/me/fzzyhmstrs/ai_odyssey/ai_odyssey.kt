@@ -13,6 +13,7 @@ object AIO: ModInitializer {
         RegisterItem.registerAll()
         RegisterBlock.registerAll()
         RegisterEnchantment.registerAll()
+        RegisterEntity.registerAll()
         RegisterStatus.registerAll()
         RegisterModifier.registerAll()
     }

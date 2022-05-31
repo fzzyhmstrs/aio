@@ -1,5 +1,6 @@
 package me.fzzyhmstrs.ai_odyssey.registry
 
+import me.fzzyhmstrs.ai_odyssey.ImbuedTouchEnchantment
 import me.fzzyhmstrs.ai_odyssey.scepter.*
 import me.fzzyhmstrs.amethyst_imbuement.AI
 import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.ScepterAugment
@@ -13,6 +14,10 @@ object RegisterEnchantment {
 
     private var regEnchant: MutableMap<String, Enchantment> = mutableMapOf()
 
+    //augments
+    val IMBUED_TOUCH = ImbuedTouchEnchantment(Enchantment.Rarity.VERY_RARE,1,EquipmentSlot.MAINHAND,EquipmentSlot.OFFHAND).also{regEnchant["imbued_touch"] = it}
+
+    //scepter spells
     val CORRUPTED_SLASH = CorruptedSlashAugment(2,2, EquipmentSlot.MAINHAND).also{regEnchant["corrupted_slash"] = it}
     val CREATE_SPONGE = CreateTNTAugment(2,1,Items.TNT,EquipmentSlot.MAINHAND).also{regEnchant["create_tnt"] = it}
     val FLAMING_SLASH = FlamingSlashAugment(1,2, EquipmentSlot.MAINHAND).also{regEnchant["flaming_slash"] = it}
