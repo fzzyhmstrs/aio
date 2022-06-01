@@ -4,8 +4,6 @@ package me.fzzyhmstrs.ai_odyssey.registry
 
 import me.fzzyhmstrs.ai_odyssey.AIO
 import me.fzzyhmstrs.ai_odyssey.block.*
-import me.fzzyhmstrs.amethyst_imbuement.AI
-import me.fzzyhmstrs.amethyst_imbuement.block.ExperienceBushBlock
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.minecraft.block.*
@@ -39,10 +37,15 @@ object RegisterBlock {
     val QUARTZITE_SAND = SandBlock(0xEDEBDE,FabricBlockSettings.of(Material.AGGREGATE, MapColor.WHITE).strength(0.5f).sounds(BlockSoundGroup.SAND))
 
     //portal facility blocks
+    val ABERRATION_SPAWN = AberrationSpawnBlock(FabricBlockSettings.of(Material.AMETHYST).strength(1.5f).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool())
     val CRYSTALLINE_LANTERN = CrystallineLanternBlock(FabricBlockSettings.of(Material.GLASS, MapColor.OFF_WHITE).strength(0.3f).sounds(BlockSoundGroup.GLASS).luminance { state: BlockState ->
         CrystallineLanternBlock.STATE_TO_LUMINANCE.applyAsInt(state)
     })
-    val CRYSTALLINE_SWITCH = CrystallineSwitchBlock(FabricBlockSettings.of(Material.AMETHYST, MapColor.PINK).requiresTool().strength(50.0f, 1200.0f))
+    val CRYSTALLINE_SWITCH = CrystallineSwitchBlock(FabricBlockSettings.of(Material.AMETHYST, MapColor.PINK).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().strength(50.0f, 1200.0f))
+    val CRYSTALLINE_ITEM_LOCK = CrystallineItemLockBlock(FabricBlockSettings.of(Material.STONE, MapColor.IRON_GRAY).requiresTool().strength(50.0f, 1200.0f))
+    val CRYSTALLINE_NUM_LOCK = CrystallineItemLockBlock(FabricBlockSettings.of(Material.STONE, MapColor.IRON_GRAY).requiresTool().strength(50.0f, 1200.0f))
+    val HARD_LIGHT_BARRIER = HardLightBarrierBlock(FabricBlockSettings.of(Material.GLASS).strength(-1.0F,3600000.0f).dropsNothing())
+    val HARD_LIGHT_BARRIER_FRAME = Block(FabricBlockSettings.of(Material.STONE).strength(-1.0F,3600000.0f).dropsNothing())
     val MYSTERIOUS_PORTAL_FRAME = Block(FabricBlockSettings.of(Material.STONE).strength(-1.0F,3600000.0f).dropsNothing())
     val PETROGLYPH = Block(FabricBlockSettings.of(Material.STONE, MapColor.OFF_WHITE).requiresTool().strength(50.0f, 1200.0f))
     val PETROGLYPH_CRACKED = PetroglyphCrackedBlock(FabricBlockSettings.of(Material.STONE, MapColor.OFF_WHITE).requiresTool().strength(50.0f, 1200.0f))
@@ -50,6 +53,8 @@ object RegisterBlock {
     val PETROGLYPH_RECIPE = PetroglyphRecipeBlock(FabricBlockSettings.of(Material.STONE, MapColor.OFF_WHITE).requiresTool().strength(50.0f, 1200.0f))
 
     //imbued deepslate
+    val IMBUED_DEEPSLATE_MESSAGE = ImbuedDeepslateMessageBlock(FabricBlockSettings.of(Material.STONE).strength(-1.0F,3600000.0f))
+    val IMBUED_DEEPSLATE_SPLATTER = ImbuedDeepslateSplatterBlock(FabricBlockSettings.of(Material.STONE).strength(-1.0F,3600000.0f))
     val IMBUED_DEEPSLATE = ImbuedDeepslateBlock(FabricBlockSettings.of(Material.STONE).strength(-1.0F,3600000.0f))
     val IMBUED_DEEPSLATE_COBBLED = ImbuedDeepslateBlock(FabricBlockSettings.of(Material.STONE).strength(-1.0F,3600000.0f))
     val IMBUED_DEEPSLATE_POLISHED = ImbuedDeepslateBlock(FabricBlockSettings.of(Material.STONE).strength(-1.0F,3600000.0f))
@@ -77,6 +82,10 @@ object RegisterBlock {
         registerBlockWithOtherItem("bull_kelp_streamer", BULL_KELP_STREAMER)
         registerBlock("calcite_sediment", CALCITE_SEDIMENT, ItemGroup.BUILDING_BLOCKS)
         registerBlock("crystalline_switch", CRYSTALLINE_SWITCH, ItemGroup.MISC)
+        registerBlock("hard_light_barrier", HARD_LIGHT_BARRIER, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("hard_light_barrier_frame", HARD_LIGHT_BARRIER_FRAME, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("imbued_deepslate_message", IMBUED_DEEPSLATE_MESSAGE, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("imbued_deepslate_splatter", IMBUED_DEEPSLATE_SPLATTER, ItemGroup.BUILDING_BLOCKS)
         registerBlock("imbued_deepslate", IMBUED_DEEPSLATE, ItemGroup.BUILDING_BLOCKS)
         registerBlock("imbued_deepslate_cobbled", IMBUED_DEEPSLATE_COBBLED, ItemGroup.BUILDING_BLOCKS)
         registerBlock("imbued_deepslate_polished", IMBUED_DEEPSLATE_POLISHED, ItemGroup.BUILDING_BLOCKS)

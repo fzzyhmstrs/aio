@@ -9,7 +9,6 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.state.StateManager
 import net.minecraft.state.property.BooleanProperty
 import net.minecraft.state.property.EnumProperty
-import net.minecraft.state.property.Properties
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
 import net.minecraft.util.StringIdentifiable
@@ -18,39 +17,39 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
 
-class ImbuedDeepslateMessageBlock(settings: Settings): Block(settings) {
+class ImbuedDeepslateSplatterBlock(settings: Settings): Block(settings) {
 
     companion object{
-        private val MESSAGE = EnumProperty.of("message",Message::class.java)
-        private val MESSAGE_VISIBLE = BooleanProperty.of("message_visible")
+        private val SPLATTER = EnumProperty.of("splatter",Message::class.java)
+        private val SPLATTER_VISIBLE = BooleanProperty.of("splatter_visible")
 
         enum class Message: StringIdentifiable{
 
-            GET_OUT_1,
-            GET_OUT_2,
-            GET_OUT_3,
-            RUN_1,
-            RUN_2,
-            WATCHES_1,
-            WATCHES_2,
-            WATCHES_3,
-            CRYSTALS_1,
-            CRYSTALS_2,
-            CRYSTALS_3,
-            CRYSTALS_4,
-            DEVOURS_1,
-            DEVOURS_2,
-            DEVOURS_3,
-            HUNT_YOU_1,
-            HUNT_YOU_2,
-            HUNT_YOU_3,
-            HUNT_YOU_4,
-            HUNT_YOU_5,
-            HUNT_YOU_6,
-            LEAVE_1,
-            LEAVE_2,
-            ESCAPE_1,
-            ESCAPE_2,
+            EYE_1,
+            EYE_2,
+            TALLY_1,
+            TALLY_2,
+            TALLY_3,
+            HAND_PRINT_1,
+            HAND_PRINT_2,
+            HAND_SMEAR_1,
+            HAND_SMEAR_2,
+            HAND_SMEAR_3,
+            HAND_SMEAR_4,
+            BLOOD_1,
+            BLOOD_2,
+            BLOOD_3,
+            BLOOD_4,
+            BLOOD_5,
+            PICTOGRAPH_1,
+            PICTOGRAPH_2,
+            PICTOGRAPH_3,
+            PICTOGRAPH_4,
+            ARROW_1,
+            ARROW_2,
+            ARROW_3,
+            ARROW_4,
+            X_1,
             NONE;
 
             override fun asString(): String {
@@ -60,11 +59,11 @@ class ImbuedDeepslateMessageBlock(settings: Settings): Block(settings) {
     }
 
     init {
-        defaultState = stateManager.defaultState.with(MESSAGE,Message.NONE).with(MESSAGE_VISIBLE,false)
+        defaultState = stateManager.defaultState.with(SPLATTER,Message.NONE).with(SPLATTER_VISIBLE,false)
     }
 
     override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
-        builder.add(MESSAGE, MESSAGE_VISIBLE)
+        builder.add(SPLATTER, SPLATTER_VISIBLE)
     }
 
     @Deprecated("Deprecated in Java")
@@ -77,7 +76,7 @@ class ImbuedDeepslateMessageBlock(settings: Settings): Block(settings) {
         hit: BlockHitResult
     ): ActionResult {
         if (player.isCreative && player.pose == EntityPose.CROUCHING){
-            world.setBlockState(pos, state.cycle(MESSAGE))
+            world.setBlockState(pos, state.cycle(SPLATTER))
         }
         return super.onUse(state, world, pos, player, hand, hit)
     }

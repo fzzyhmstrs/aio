@@ -25,5 +25,8 @@ class CrystallineLanternBlock(settings: Settings): Block(settings) {
     fun turnOn(state:BlockState, pos: BlockPos, world: World){
         world.setBlockState(pos, state.with(LIT,true))
     }
+    fun flipSwitch(state:BlockState, pos: BlockPos, world: World){
+        world.setBlockState(pos, state.cycle(LIT))
+    }
 
 }

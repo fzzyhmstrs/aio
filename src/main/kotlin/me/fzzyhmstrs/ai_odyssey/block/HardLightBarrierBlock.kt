@@ -11,11 +11,15 @@ import net.minecraft.util.shape.VoxelShape
 import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
+import java.util.function.ToIntFunction
 
 class HardLightBarrierBlock(settings: Settings): Block(settings) {
 
     companion object {
         private val LOCKED = Properties.LOCKED
+        val STATE_TO_LUMINANCE: ToIntFunction<BlockState> = ToIntFunction { state:BlockState -> if(state.get(
+                LOCKED
+            ) != false){15} else {8} }
     }
 
     init{
@@ -34,6 +38,7 @@ class HardLightBarrierBlock(settings: Settings): Block(settings) {
         return false
     }
 
+    @Deprecated("Deprecated in Java", ReplaceWith("false"))
     override fun canPathfindThrough(
         state: BlockState,
         world: BlockView,
@@ -43,6 +48,7 @@ class HardLightBarrierBlock(settings: Settings): Block(settings) {
         return false
     }
 
+    @Deprecated("Deprecated in Java")
     override fun getCollisionShape(
         state: BlockState,
         world: BlockView,

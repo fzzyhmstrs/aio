@@ -5,8 +5,10 @@ import net.minecraft.block.BlockWithEntity
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.util.math.BlockPos
 
-class CrystallineNumLockBlock(settings: Settings): BlockWithEntity(settings) {
+class AberrationSpawnBlock(settings: Settings): BlockWithEntity(settings) {
+
     override fun createBlockEntity(pos: BlockPos?, state: BlockState?): BlockEntity? {
         TODO("Not yet implemented")
     }
+
 }
