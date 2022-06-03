@@ -21,12 +21,12 @@ class CorruptedSlashAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot):
         get() = super.baseEffect.withDamage(3.5F,1.5F,0.0F)
             .withDuration(60,20).withAmplifier(0,0,0)
 
-    override fun addStatusInstance(effect: AugmentEffect, level: Int): StatusEffectInstance? {
+    override fun addStatusInstance(effect: AugmentEffect, level: Int): StatusEffectInstance {
         return StatusEffectInstance(StatusEffects.WITHER,effect.duration(level), effect.amplifier(level))
     }
 
     override fun particleType(): DefaultParticleType {
-        return ParticleTypes.FLAME
+        return ParticleTypes.SMOKE
     }
 
     override fun augmentStat(imbueLevel: Int): ScepterObject.AugmentDatapoint {

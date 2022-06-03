@@ -1,6 +1,7 @@
 package me.fzzyhmstrs.ai_odyssey.scepter
 
 import me.fzzyhmstrs.amethyst_imbuement.scepter.ScepterObject
+import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.AugmentConsumer
 import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.AugmentEffect
 import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.MinorSupportAugment
 import me.fzzyhmstrs.amethyst_imbuement.util.LoreTier
@@ -29,7 +30,9 @@ class FullHealAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): Minor
                 val currentHealth = (target as LivingEntity).health
                 val maxHealth = target.maxHealth
                 val healAmount = maxHealth - currentHealth
+                if (healAmount == 0.0F) return false
                 target.heal(healAmount)
+                effects.accept(target,AugmentConsumer.Type.BENEFICIAL)
                 world.playSound(null, target.blockPos, soundEvent(), SoundCategory.PLAYERS, 1.0F, 1.0F)
                 return true
             }
@@ -38,7 +41,9 @@ class FullHealAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): Minor
             val currentHealth = user.health
             val maxHealth = user.maxHealth
             val healAmount = maxHealth - currentHealth
+            if (healAmount == 0.0F) return false
             user.heal(healAmount)
+            effects.accept(user,AugmentConsumer.Type.BENEFICIAL)
             world.playSound(null, user.blockPos, soundEvent(), SoundCategory.PLAYERS, 1.0F, 1.0F)
             true
         } else {

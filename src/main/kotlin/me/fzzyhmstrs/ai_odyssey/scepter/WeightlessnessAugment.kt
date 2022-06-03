@@ -1,6 +1,8 @@
 package me.fzzyhmstrs.ai_odyssey.scepter
 
+import me.fzzyhmstrs.amethyst_imbuement.augment.base_augments.BaseAugment
 import me.fzzyhmstrs.amethyst_imbuement.scepter.ScepterObject
+import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.AugmentConsumer
 import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.AugmentEffect
 import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.MinorSupportAugment
 import me.fzzyhmstrs.amethyst_imbuement.util.LoreTier
@@ -33,15 +35,17 @@ class WeightlessnessAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot):
     ): Boolean {
         if(target != null) {
             if (target is PassiveEntity || target is GolemEntity || target is PlayerEntity) {
-                (target as LivingEntity).addStatusEffect(StatusEffectInstance(StatusEffects.LEVITATION, effects.duration(level)))
-                target.addStatusEffect(StatusEffectInstance(StatusEffects.SLOW_FALLING, effects.duration(level)))
+                BaseAugment.addStatusToQueue(target as LivingEntity,StatusEffects.LEVITATION, effects.duration(level),0)
+                BaseAugment.addStatusToQueue(target,StatusEffects.SLOW_FALLING, effects.duration(level + 1),0)
+                effects.accept(target,AugmentConsumer.Type.BENEFICIAL)
                 world.playSound(null, target.blockPos, soundEvent(), SoundCategory.PLAYERS, 0.6F, 1.0F)
                 return true
             }
         }
         return if (user is PlayerEntity) {
-            (target as LivingEntity).addStatusEffect(StatusEffectInstance(StatusEffects.LEVITATION, effects.duration(level)))
-            target.addStatusEffect(StatusEffectInstance(StatusEffects.SLOW_FALLING, effects.duration(level)))
+            BaseAugment.addStatusToQueue(user,StatusEffects.LEVITATION, effects.duration(level),0)
+            BaseAugment.addStatusToQueue(user,StatusEffects.SLOW_FALLING, effects.duration(level+1),0)
+            effects.accept(user,AugmentConsumer.Type.BENEFICIAL)
             world.playSound(null, user.blockPos, soundEvent(), SoundCategory.PLAYERS, 0.6F, 1.0F)
             true
         } else {

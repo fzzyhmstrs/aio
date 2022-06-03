@@ -1,6 +1,8 @@
 package me.fzzyhmstrs.ai_odyssey.scepter
 
+import me.fzzyhmstrs.amethyst_imbuement.augment.base_augments.BaseAugment
 import me.fzzyhmstrs.amethyst_imbuement.scepter.ScepterObject
+import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.AugmentConsumer
 import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.AugmentEffect
 import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.MinorSupportAugment
 import me.fzzyhmstrs.amethyst_imbuement.util.LoreTier
@@ -33,15 +35,17 @@ class GhostformAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): Mino
     ): Boolean {
         if(target != null) {
             if (target is PassiveEntity || target is GolemEntity || target is PlayerEntity) {
-                (target as LivingEntity).addStatusEffect(StatusEffectInstance(StatusEffects.INVISIBILITY, effects.duration(level)))
-                target.addStatusEffect(StatusEffectInstance(StatusEffects.SPEED, effects.duration(level), effects.amplifier(level)))
+                BaseAugment.addStatusToQueue(target as LivingEntity,StatusEffects.INVISIBILITY, effects.duration(level),0)
+                BaseAugment.addStatusToQueue(target,StatusEffects.SPEED, effects.duration(level), effects.amplifier(level))
+                effects.accept(target,AugmentConsumer.Type.BENEFICIAL)
                 world.playSound(null, target.blockPos, soundEvent(), SoundCategory.PLAYERS, 0.6F, 1.0F)
                 return true
             }
         }
         return if (user is PlayerEntity) {
-            (target as LivingEntity).addStatusEffect(StatusEffectInstance(StatusEffects.INVISIBILITY, effects.duration(level)))
-            target.addStatusEffect(StatusEffectInstance(StatusEffects.SPEED, effects.duration(level), effects.amplifier(level)))
+            BaseAugment.addStatusToQueue(user,StatusEffects.INVISIBILITY, effects.duration(level),0)
+            BaseAugment.addStatusToQueue(user,StatusEffects.SPEED, effects.duration(level), effects.amplifier(level))
+            effects.accept(user,AugmentConsumer.Type.BENEFICIAL)
             world.playSound(null, user.blockPos, soundEvent(), SoundCategory.PLAYERS, 0.6F, 1.0F)
             true
         } else {

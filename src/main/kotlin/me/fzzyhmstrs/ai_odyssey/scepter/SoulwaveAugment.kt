@@ -24,7 +24,7 @@ class SoulwaveAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): Summo
         me.setVelocity(user,user.pitch,user.yaw,0.0f,
             1.75f,
             1.25f)
-        me.damage = effects.damage(level)
+        me.passEffects(effects,level)
         return me
     }
 
