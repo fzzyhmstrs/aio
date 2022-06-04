@@ -52,6 +52,6 @@ class FullHealAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): Minor
     }
 
     override fun augmentStat(imbueLevel: Int): ScepterObject.AugmentDatapoint {
-        return ScepterObject.AugmentDatapoint(SpellType.WIT,200,50,25,imbueLevel,LoreTier.EXTREME_TIER, Items.ENCHANTED_GOLDEN_APPLE)
+        return ScepterObject.AugmentDatapoint(SpellType.GRACE,200,50,25,imbueLevel,LoreTier.EXTREME_TIER, Items.ENCHANTED_GOLDEN_APPLE)
     }
 }

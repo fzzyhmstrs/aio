@@ -18,11 +18,14 @@ object RegisterEnchantment {
     val IMBUED_TOUCH = ImbuedTouchEnchantment(Enchantment.Rarity.VERY_RARE,1,EquipmentSlot.MAINHAND,EquipmentSlot.OFFHAND).also{regEnchant["imbued_touch"] = it}
 
     //scepter spells
+    val BARRIER = FullHealAugment(2,3, EquipmentSlot.MAINHAND).also{regEnchant["barrier"] = it}
     val CORRUPTED_SLASH = CorruptedSlashAugment(2,2, EquipmentSlot.MAINHAND).also{regEnchant["corrupted_slash"] = it}
-    val CREATE_SPONGE = CreateTNTAugment(2,1,Items.TNT,EquipmentSlot.MAINHAND).also{regEnchant["create_tnt"] = it}
+    val CREATE_TNT = CreateTNTAugment(2,1,Items.TNT,EquipmentSlot.MAINHAND).also{regEnchant["create_tnt"] = it}
     val FLAMING_SLASH = FlamingSlashAugment(1,2, EquipmentSlot.MAINHAND).also{regEnchant["flaming_slash"] = it}
     val FULL_HEAL = FullHealAugment(4,1, EquipmentSlot.MAINHAND).also{regEnchant["full_heal"] = it}
     val GHOSTFORM = GhostformAugment(2,2, EquipmentSlot.MAINHAND).also{regEnchant["ghostform"] = it}
+    val GREATER_REGENERATE = GreaterRegenerateAugment(3,1, EquipmentSlot.MAINHAND).also{regEnchant["greater_regenerate"] = it}
+    val SMITING_BLOW = SmitingBlowAugment(2,3, EquipmentSlot.MAINHAND).also{regEnchant["soulwave"] = it}
     val SOULWAVE = SoulwaveAugment(3,3, EquipmentSlot.MAINHAND).also{regEnchant["soulwave"] = it}
     val VAMPIRIC_SLASH = VampiricSlashAugment(1,2, EquipmentSlot.MAINHAND).also{regEnchant["vampiric_slash"] = it}
     val WEIGHTLESSNESS = WeightlessnessAugment(1,1, EquipmentSlot.MAINHAND).also{regEnchant["weightlessness"] = it}
