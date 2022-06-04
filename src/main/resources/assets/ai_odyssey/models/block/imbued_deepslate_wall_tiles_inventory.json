@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "ai_odyssey:block/imbued_deepslate_tiles"
+  }
+}

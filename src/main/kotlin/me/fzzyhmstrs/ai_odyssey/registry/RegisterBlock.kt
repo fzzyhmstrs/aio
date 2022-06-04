@@ -77,6 +77,7 @@ object RegisterBlock {
     val IMBUED_DEEPSLATE_SLAB_TILE = ImbuedDeepslateSlabBlock(FabricBlockSettings.of(Material.STONE).strength(-1.0F,3600000.0f))
 
     fun registerAll(){
+        registerBlock("aberration_spawn", ABERRATION_SPAWN, ItemGroup.MISC)
         registerBlock("bull_kelp", BULL_KELP, ItemGroup.DECORATIONS)
         registerBlockWithOtherItem("bull_kelp_plant", BULL_KELP_PLANT)
         registerBlockWithOtherItem("bull_kelp_streamer", BULL_KELP_STREAMER)
