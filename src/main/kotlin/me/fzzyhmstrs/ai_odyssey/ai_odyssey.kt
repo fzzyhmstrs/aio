@@ -2,6 +2,7 @@ package me.fzzyhmstrs.ai_odyssey
 
 import me.fzzyhmstrs.ai_odyssey.config.AioConfig
 import me.fzzyhmstrs.ai_odyssey.registry.*
+import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.api.ModInitializer
 
 object AIO: ModInitializer {
@@ -17,4 +18,12 @@ object AIO: ModInitializer {
         RegisterStatus.registerAll()
         RegisterModifier.registerAll()
     }
+}
+
+object AIO_Client: ClientModInitializer{
+
+    override fun onInitializeClient() {
+        RegisterRenderer.registerAll()
+    }
+
 }

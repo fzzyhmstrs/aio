@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "ai_odyssey:block/imbued_message_watches_2"
+  }
+}

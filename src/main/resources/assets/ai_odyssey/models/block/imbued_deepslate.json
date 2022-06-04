@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "ai_odyssey:block/imbued_deepslate_top",
+    "side": "ai_odyssey:block/imbued_deepslate"
+  }
+}

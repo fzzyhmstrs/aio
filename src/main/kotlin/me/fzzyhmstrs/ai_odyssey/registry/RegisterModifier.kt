@@ -18,13 +18,13 @@ object RegisterModifier {
     val HEALING = AugmentModifier(Identifier(AIO.MOD_ID,"healing")).withConsumer(ModifierConsumers.HEALING_CONSUMER).also { regMod.add(it) }
     val SMITING = AugmentModifier(Identifier(AIO.MOD_ID,"smiting")).withConsumer(ModifierConsumers.SMITING_CONSUMER).also { regMod.add(it) }
     val INSIGHTFUL = AugmentModifier(Identifier(AIO.MOD_ID,"insightful")).withConsumer(ModifierConsumers.INSIGHTFUL_CONSUMER).also { regMod.add(it) }
-    val DANGEROUS = AugmentModifier(Identifier(AIO.MOD_ID,"dangerous")).withDamage(0.0F,0.0F,20.0F).also { regMod.add(it) }
+    val DANGEROUS = AugmentModifier(Identifier(AIO.MOD_ID,"dangerous")).withDamage(0.0F,0.0F,15.0F).also { regMod.add(it) }
 
-    val BLADE_ASPECT = AugmentModifier(Identifier(AIO.MOD_ID,"blade_aspect")).withDamage(0.0F,0.0F,20.0F).also { regMod.add(it) }
-    val FIRE_ASPECT = AugmentModifier(Identifier(AIO.MOD_ID,"fire_aspect")).withDamage(0.0F,0.0F,20.0F).also { regMod.add(it) }
-    val LIGHTNING_ASPECT = AugmentModifier(Identifier(AIO.MOD_ID,"lightning_aspect")).withDamage(0.0F,0.0F,20.0F).also { regMod.add(it) }
-    val SUMMONERS_ASPECT = AugmentModifier(Identifier(AIO.MOD_ID,"summoners_aspect")).withDamage(0.0F,0.0F,20.0F).also { regMod.add(it) }
-    val BUILDERS_ASPECT = AugmentModifier(Identifier(AIO.MOD_ID,"builders_aspect")).withDamage(0.0F,0.0F,20.0F).also { regMod.add(it) }
+    val BLADE_ASPECT = AugmentModifier(Identifier(AIO.MOD_ID,"blade_aspect")).also { regMod.add(it) }
+    val FIRE_ASPECT = AugmentModifier(Identifier(AIO.MOD_ID,"fire_aspect")).also { regMod.add(it) }
+    val LIGHTNING_ASPECT = AugmentModifier(Identifier(AIO.MOD_ID,"lightning_aspect")).also { regMod.add(it) }
+    val SUMMONERS_ASPECT = AugmentModifier(Identifier(AIO.MOD_ID,"summoners_aspect")).also { regMod.add(it) }
+    val BUILDERS_ASPECT = AugmentModifier(Identifier(AIO.MOD_ID,"builders_aspect")).also { regMod.add(it) }
 
     fun registerAll(){
         regMod.forEach {

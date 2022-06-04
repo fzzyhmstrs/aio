@@ -81,6 +81,7 @@ object RegisterBlock {
         registerBlockWithOtherItem("bull_kelp_plant", BULL_KELP_PLANT)
         registerBlockWithOtherItem("bull_kelp_streamer", BULL_KELP_STREAMER)
         registerBlock("calcite_sediment", CALCITE_SEDIMENT, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("crystalline_lantern", CRYSTALLINE_LANTERN, ItemGroup.DECORATIONS)
         registerBlock("crystalline_switch", CRYSTALLINE_SWITCH, ItemGroup.MISC)
         registerBlock("hard_light_barrier", HARD_LIGHT_BARRIER, ItemGroup.BUILDING_BLOCKS)
         registerBlock("hard_light_barrier_frame", HARD_LIGHT_BARRIER_FRAME, ItemGroup.BUILDING_BLOCKS)

@@ -1,14 +1,34 @@
 package me.fzzyhmstrs.ai_odyssey.registry
 
+import me.fzzyhmstrs.amethyst_imbuement.model.MissileEntityRenderer
+import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterEntity
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry
 import net.minecraft.client.render.RenderLayer
+import net.minecraft.client.render.entity.EntityRendererFactory
 
 object RegisterRenderer {
 
+
     fun registerAll(){
+
+        EntityRendererRegistry.register(
+            me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity.ENFEEBLING_BOLT_ENTITY
+        ){context: EntityRendererFactory.Context ->
+            MissileEntityRenderer(
+                context,
+                0.2f,
+                0.2f,
+                0.2f,
+                0.5F,
+                1.5F
+            )
+        }
+
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.BULL_KELP, RenderLayer.getCutout())
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.BULL_KELP_PLANT, RenderLayer.getCutout())
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.BULL_KELP_STREAMER, RenderLayer.getCutout())
+        BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.SEA_APPLE_BUSH, RenderLayer.getCutout())
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.SEA_BAMBOO, RenderLayer.getCutout())
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.SEA_BAMBOO_PLANT, RenderLayer.getCutout())
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.TURTLE_GRASS, RenderLayer.getCutout())
