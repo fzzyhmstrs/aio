@@ -1,8 +1,9 @@
 package me.fzzyhmstrs.ai_odyssey.scepter
 
-import me.fzzyhmstrs.amethyst_imbuement.scepter.ScepterObject
 import me.fzzyhmstrs.amethyst_imbuement.scepter.SpectralSlashAugment
 import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.AugmentEffect
+import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.FireAugment
+import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.ScepterObject
 import me.fzzyhmstrs.amethyst_imbuement.util.LoreTier
 import me.fzzyhmstrs.amethyst_imbuement.util.SpellType
 import net.minecraft.entity.Entity
@@ -13,7 +14,7 @@ import net.minecraft.particle.DefaultParticleType
 import net.minecraft.particle.ParticleTypes
 import net.minecraft.world.World
 
-class FlamingSlashAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): SpectralSlashAugment(tier, maxLvl, *slot) {
+class FlamingSlashAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): SpectralSlashAugment(tier, maxLvl, *slot), FireAugment {
 
     override val baseEffect: AugmentEffect
         get() = super.baseEffect.withDamage(2.5F,1.5F,0.0F)
