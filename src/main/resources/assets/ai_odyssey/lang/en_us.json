@@ -61,6 +61,7 @@
 	"scepter.modifiers.ai_odyssey.:witty": "Witty",
 	"scepter.modifiers.ai_odyssey.:graceful": "Graceful",
 	"scepter.modifiers.ai_odyssey:demanding": "Demanding",
+	"scepter.modifiers.ai_odyssey:resplendent": "Resplendent",
 	"scepter.modifiers.ai_odyssey:necrotic": "Necrotic",
 	"scepter.modifiers.ai_odyssey:healing": "Healing",
 	"scepter.modifiers.ai_odyssey:smiting": "Smiting",
@@ -83,5 +84,8 @@
 	"scepter.modifiers.ai_odyssey:oceanic": "Oceanic",
 	"scepter.modifiers.ai_odyssey:protective": "Protective",
 	"scepter.modifiers.ai_odyssey:blood_pact": "Blood Pact",
-	"scepter.modifiers.ai_odyssey:knowledge_pact": "Knowledge Pact"
+	"scepter.modifiers.ai_odyssey:knowledge_pact": "Knowledge Pact",
+	"scepter.modifiers.ai_odyssey:healers_pact": "Healers Pact",
+	"scepter.modifiers.ai_odyssey:healers_grace": "Healers Grace",
+	"scepter.modifiers.ai_odyssey:traveler": "Traveler"
 }
