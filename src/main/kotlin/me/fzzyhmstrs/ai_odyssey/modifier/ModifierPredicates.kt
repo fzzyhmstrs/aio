@@ -33,6 +33,11 @@ object ModifierPredicates {
         val augment = Registry.ENCHANTMENT.get(id)?:return false
         return augment is SoulAugment
     }
+    
+    val KNOWLEDGE_PREDICATE = Predicate {id: Identifier -> knowledgePredicate(id)}
+    private fun knowledgePredicate(id: Identifier): Boolean{
+        return ScepterObject.getAugmentType(id.toString()) != SpellType.WIT
+    }
 
     val HEALERS_PREDICATE = Predicate {id: Identifier -> healersPredicate(id)}
     private fun healersPredicate(id: Identifier): Boolean{
