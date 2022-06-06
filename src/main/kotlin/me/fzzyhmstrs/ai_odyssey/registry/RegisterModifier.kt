@@ -24,7 +24,7 @@ object RegisterModifier {
     val SMITING = AugmentModifier(Identifier(AIO.MOD_ID,"smiting")).withConsumer(ModifierConsumers.SMITING_CONSUMER).also { regMod.add(it) }
     val INSIGHTFUL = AugmentModifier(Identifier(AIO.MOD_ID,"insightful")).withConsumer(ModifierConsumers.INSIGHTFUL_CONSUMER).also { regMod.add(it) }
     val DANGEROUS = AugmentModifier(Identifier(AIO.MOD_ID,"dangerous")).withDamage(0.0F,0.0F,15.0F).also { regMod.add(it) }
-    val ECHOING = AugmentModifier(Identifier(AIO.MOD_ID,"echoing")).withConsumer(ModifierConsumers.ECHOING_CONSUMER).also { regMod.add(it) }
+    val ECHOING = AugmentModifier(Identifier(AIO.MOD_ID,"echoing"), cooldownModifier = 10.0).withConsumer(ModifierConsumers.ECHOING_CONSUMER).also { regMod.add(it) }
     val GREATER_REACH = AugmentModifier(Identifier(AI.MOD_ID,"greater_reach")).withRange(rangePercent = 18.0).also { regMod.add(it) }
     val REACH = AugmentModifier(Identifier(AI.MOD_ID,"reach")).withDescendant(GREATER_REACH).withRange(rangePercent = 12.0).also { regMod.add(it) }
     val LESSER_REACH = AugmentModifier(Identifier(AI.MOD_ID,"lesser_reach")).withDescendant(REACH).withRange(rangePercent = 6.0).also { regMod.add(it) }
@@ -42,9 +42,9 @@ object RegisterModifier {
     val PROTECTIVE = AugmentModifier(Identifier(AIO.MOD_ID,"protective")).withConsumer(ModifierConsumers.PROTECTIVE_CONSUMER).also { regMod.add(it) }
     val BLOOD_PACT = AugmentModifier(Identifier(AIO.MOD_ID,"blood_pact"), manaCostModifier = -100.0).withConsumer(ModifierConsumers.BLOOD_PACT_CONSUMER) .also { regMod.add(it) }
     val BLOOD_MAGIC = AugmentModifier(Identifier(AIO.MOD_ID,"blood_pact"), levelModifier = 1).withDamage(2.0F).withAmplifier(1).withDuration(durationPercent = 10).withSpellToAffect(ModifierPredicates.SOUL_PREDICATE) .also { regMod.add(it) }
-    val KNOWLEDGE_PACT = AugmentModifier(Identifier(AIO.MOD_ID,"knowledge_pact")) .also { regMod.add(it) }
-    val HEALERS_PACT = AugmentModifier(Identifier(AIO.MOD_ID,"healers_pact")) .also { regMod.add(it) }
-    val HEALERS_GRACE = AugmentModifier(Identifier(AIO.MOD_ID,"healers_grace")) .also { regMod.add(it) }
+    val KNOWLEDGE_PACT = AugmentModifier(Identifier(AIO.MOD_ID,"knowledge_pact"), cooldownModifier = 10.0).withConsumer(ModifierConsumers.BLOOD_PACT_CONSUMER).withSpellToAffect(ModifierPredicates.KNOWLEDGE_PREDICATE) .also { regMod.add(it) }
+    val HEALERS_PACT = AugmentModifier(Identifier(AIO.MOD_ID,"healers_pact"), cooldownModifier = 50.0, manaCostModifier = 20.0).withSpellToAffect(ModifierPredicates.HEALERS_PACT_PREDICATE) .also { regMod.add(it) }
+    val HEALERS_GRACE = AugmentModifier(Identifier(AIO.MOD_ID,"healers_grace")).withAmplifier(1).withDuration(durationPercent = 50).withSpellToAffect(ModifierPredicates.HEALERS_PREDICATE) .also { regMod.add(it) }
     val TRAVELER = AugmentModifier(Identifier(AIO.MOD_ID,"traveler")) .also { regMod.add(it) }
 
 
