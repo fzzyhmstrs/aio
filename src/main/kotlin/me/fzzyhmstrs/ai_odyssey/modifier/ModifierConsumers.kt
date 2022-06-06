@@ -15,6 +15,7 @@ import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.entity.mob.Angerable
 import net.minecraft.entity.passive.PassiveEntity
+import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.Hand
 import net.minecraft.util.Identifier
@@ -116,11 +117,22 @@ object ModifierConsumers {
         }
     }
     
-    val KNOWLEDGE_PACT_CONSUMER = AugmentConsumer({ list: List<LivingEntity> -> bloodPactConsumer(list) }, AugmentConsumer.Type.BENEFICIAL)
-    private fun bloodPactConsumer(list: List<LivingEntity>){
+    val KNOWLEDGE_PACT_CONSUMER = AugmentConsumer({ list: List<LivingEntity> -> knowledgePactConsumer(list) }, AugmentConsumer.Type.BENEFICIAL)
+    private fun knowledgePactConsumer(list: List<LivingEntity>){
         list.forEach {
-            if (it.isPlayer){
+            if (it is PlayerEntity){
                 it.applyEnchantmentCosts(it.getStackInHand(Hand.MAIN_HAND), 1)
+            }
+        }
+    }
+
+    val TRAVELER_CONSUMER = AugmentConsumer({ list: List<LivingEntity> -> travelerConsumer(list) }, AugmentConsumer.Type.BENEFICIAL)
+    private fun travelerConsumer(list: List<LivingEntity>){
+        list.forEach {
+            if (it is PlayerEntity){
+                val rnd1 = it.world.random.nextInt(8)
+                if (rnd1 == 0)
+                BaseAugment.addStatusToQueue(it,StatusEffects.SPEED,30,0)
             }
         }
     }
