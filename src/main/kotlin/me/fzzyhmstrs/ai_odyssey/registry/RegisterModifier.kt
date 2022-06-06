@@ -45,7 +45,7 @@ object RegisterModifier {
     val KNOWLEDGE_PACT = AugmentModifier(Identifier(AIO.MOD_ID,"knowledge_pact"), cooldownModifier = 10.0).withConsumer(ModifierConsumers.BLOOD_PACT_CONSUMER).withSpellToAffect(ModifierPredicates.KNOWLEDGE_PREDICATE) .also { regMod.add(it) }
     val HEALERS_PACT = AugmentModifier(Identifier(AIO.MOD_ID,"healers_pact"), cooldownModifier = 50.0, manaCostModifier = 20.0).withSpellToAffect(ModifierPredicates.HEALERS_PACT_PREDICATE) .also { regMod.add(it) }
     val HEALERS_GRACE = AugmentModifier(Identifier(AIO.MOD_ID,"healers_grace")).withAmplifier(1).withDuration(durationPercent = 50).withSpellToAffect(ModifierPredicates.HEALERS_PREDICATE) .also { regMod.add(it) }
-    val TRAVELER = AugmentModifier(Identifier(AIO.MOD_ID,"traveler")) .also { regMod.add(it) }
+    val TRAVELER = AugmentModifier(Identifier(AIO.MOD_ID,"traveler"), cooldownModifier = -90.0).withRange(rangePercent = 15.0).withSpellToAffect(ModifierPredicates.TRAVELER_PREDICATE) .also { regMod.add(it) }
 
 
     fun registerAll(){
