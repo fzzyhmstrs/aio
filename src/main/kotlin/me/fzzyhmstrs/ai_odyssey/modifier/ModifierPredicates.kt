@@ -80,5 +80,11 @@ object ModifierPredicates {
         val augment = Registry.ENCHANTMENT.get(id)?:return false
         return augment is OceanicAugment
     }
+    
+    val TRAVELER_PREDICATE = Predicate {id: Identifier -> travelerPredicate(id)}
+    private fun travelerPredicate(id: Identifier): Boolean{
+        val augment = Registry.ENCHANTMENT.get(id)?:return false
+        return augment is TravelerAugment
+    }
 
 }
