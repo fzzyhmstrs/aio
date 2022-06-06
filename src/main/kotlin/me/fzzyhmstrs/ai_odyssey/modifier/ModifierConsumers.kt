@@ -115,5 +115,14 @@ object ModifierConsumers {
             }
         }
     }
+    
+    val KNOWLEDGE_PACT_CONSUMER = AugmentConsumer({ list: List<LivingEntity> -> bloodPactConsumer(list) }, AugmentConsumer.Type.BENEFICIAL)
+    private fun bloodPactConsumer(list: List<LivingEntity>){
+        list.forEach {
+            if (it.isPlayer){
+                it.applyEnchantmentCosts(it.getStackInHand(Hand.MAIN_HAND), 1)
+            }
+        }
+    }
 
 }
