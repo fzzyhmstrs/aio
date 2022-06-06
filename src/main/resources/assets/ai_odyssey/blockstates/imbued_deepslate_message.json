@@ -1,0 +1,82 @@
+{
+  "variants": {
+    "message_visible=false": {
+      "model": "ai_odyssey:block/imbued_deepslate_tiles"
+    },
+    "message_visible=true,message=CRYSTALS_1": {
+      "model": "ai_odyssey:block/imbued_message_crystals_1"
+    },
+    "message_visible=true,message=CRYSTALS_2": {
+      "model": "ai_odyssey:block/imbued_message_crystals_2"
+    },
+    "message_visible=true,message=CRYSTALS_3": {
+      "model": "ai_odyssey:block/imbued_message_crystals_3"
+    },
+	"message_visible=true,message=CRYSTALS_4": {
+      "model": "ai_odyssey:block/imbued_message_crystals_4"
+    },
+	"message_visible=true,message=DEVOURS_1": {
+      "model": "ai_odyssey:block/imbued_message_devours_1"
+    },
+	"message_visible=true,message=DEVOURS_2": {
+      "model": "ai_odyssey:block/imbued_message_devours_2"
+    },
+	"message_visible=true,message=DEVOURS_3": {
+      "model": "ai_odyssey:block/imbued_message_devours_3"
+    },
+	"message_visible=true,message=ESCAPE_1": {
+      "model": "ai_odyssey:block/imbued_message_escape_1"
+    },
+	"message_visible=true,message=ESCAPE_2": {
+      "model": "ai_odyssey:block/imbued_message_escape_2"
+    },
+	"message_visible=true,message=GET_OUT_1": {
+      "model": "ai_odyssey:block/imbued_message_get_out_1"
+    },
+	"message_visible=true,message=GET_OUT_2": {
+      "model": "ai_odyssey:block/imbued_message_get_out_2"
+    },
+	"message_visible=true,message=GET_OUT_3": {
+      "model": "ai_odyssey:block/imbued_message_get_out_3"
+    },
+	"message_visible=true,message=HUNT_YOU_1": {
+      "model": "ai_odyssey:block/imbued_message_hunt_you_1"
+    },
+	"message_visible=true,message=HUNT_YOU_2": {
+      "model": "ai_odyssey:block/imbued_message_hunt_you_2"
+    },
+	"message_visible=true,message=HUNT_YOU_3": {
+      "model": "ai_odyssey:block/imbued_message_hunt_you_3"
+    },
+	"message_visible=true,message=HUNT_YOU_4": {
+      "model": "ai_odyssey:block/imbued_message_hunt_you_4"
+    },
+	"message_visible=true,message=HUNT_YOU_5": {
+      "model": "ai_odyssey:block/imbued_message_hunt_you_5"
+    },
+	"message_visible=true,message=HUNT_YOU_6": {
+      "model": "ai_odyssey:block/imbued_message_hunt_you_6"
+    },
+	"message_visible=true,message=LEAVE_1": {
+      "model": "ai_odyssey:block/imbued_message_leave_1"
+    },
+	"message_visible=true,message=LEAVE_2": {
+      "model": "ai_odyssey:block/imbued_message_leave_2"
+    },
+	"message_visible=true,message=RUN_1": {
+      "model": "ai_odyssey:block/imbued_message_run_1"
+    },
+	"message_visible=true,message=RUN_2": {
+      "model": "ai_odyssey:block/imbued_message_run_2"
+    },
+	"message_visible=true,message=WATCHES_1": {
+      "model": "ai_odyssey:block/imbued_message_watches_1"
+    },
+	"message_visible=true,message=WATCHES_2": {
+      "model": "ai_odyssey:block/imbued_message_watches_2"
+    },
+	"message_visible=true,message=WATCHES_3": {
+      "model": "ai_odyssey:block/imbued_message_watches_3"
+    }
+  }
+}

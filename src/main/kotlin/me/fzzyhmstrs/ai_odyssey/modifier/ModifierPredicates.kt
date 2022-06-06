@@ -28,6 +28,24 @@ object ModifierPredicates {
         return augment is SpectralSlashAugment
     }
 
+    val SOUL_PREDICATE = Predicate {id: Identifier -> soulPredicate(id)}
+    private fun soulPredicate(id: Identifier): Boolean{
+        val augment = Registry.ENCHANTMENT.get(id)?:return false
+        return augment is SoulAugment
+    }
+
+    val HEALERS_PREDICATE = Predicate {id: Identifier -> healersPredicate(id)}
+    private fun healersPredicate(id: Identifier): Boolean{
+        val augment = Registry.ENCHANTMENT.get(id)?:return false
+        return augment is HealerAugment
+    }
+
+    val HEALERS_PACT_PREDICATE = Predicate {id: Identifier -> healersPactPredicate(id)}
+    private fun healersPactPredicate(id: Identifier): Boolean{
+        val augment = Registry.ENCHANTMENT.get(id)?:return false
+        return augment !is HealerAugment
+    }
+
     val FIRE_PREDICATE = Predicate {id: Identifier -> firePredicate(id)}
     private fun firePredicate(id: Identifier): Boolean{
         val augment = Registry.ENCHANTMENT.get(id)?:return false

@@ -25,8 +25,19 @@ object ModifierConsumers {
     val NECROTIC_CONSUMER = AugmentConsumer({ list: List<LivingEntity> -> necroticConsumer(list)}, AugmentConsumer.Type.HARMFUL)
     private fun necroticConsumer(list: List<LivingEntity>){
         list.forEach {
-            it.addStatusEffect(
-                StatusEffectInstance(StatusEffects.WITHER,80))
+            if (it.hasStatusEffect(StatusEffects.WITHER)){
+                val effect = it.getStatusEffect(StatusEffects.WITHER)
+                val amp = effect?.amplifier?:0
+                val duration = effect?.duration?:0
+                if (duration > 0){
+                    val duration2 = if(duration < 80) {80} else {duration}
+                    it.addStatusEffect(StatusEffectInstance(StatusEffects.WITHER,duration2,amp + 1))
+                }
+            } else {
+                it.addStatusEffect(
+                    StatusEffectInstance(StatusEffects.WITHER, 80)
+                )
+            }
         }
     }
     val HEALING_CONSUMER = AugmentConsumer({ list: List<LivingEntity> -> healingConsumer(list)}, AugmentConsumer.Type.BENEFICIAL)
@@ -93,6 +104,15 @@ object ModifierConsumers {
     private fun protectiveConsumer(list: List<LivingEntity>){
         list.forEach {
             BaseAugment.addStatusToQueue(it,RegisterStatus.SHIELDING,20,0)
+        }
+    }
+
+    val BLOOD_PACT_CONSUMER = AugmentConsumer({ list: List<LivingEntity> -> bloodPactConsumer(list) }, AugmentConsumer.Type.BENEFICIAL)
+    private fun bloodPactConsumer(list: List<LivingEntity>){
+        list.forEach {
+            if (it.isPlayer){
+                it.damage(DamageSource.GENERIC,0.6666666F)
+            }
         }
     }
 

@@ -5,6 +5,7 @@ import me.fzzyhmstrs.ai_odyssey.modifier.ModifierConsumers
 import me.fzzyhmstrs.ai_odyssey.modifier.ModifierPredicates
 import me.fzzyhmstrs.amethyst_imbuement.AI
 import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterModifier
+import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.AugmentConsumer
 import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.AugmentModifier
 import me.fzzyhmstrs.amethyst_imbuement.util.SpellType
 import net.minecraft.util.Identifier
@@ -39,7 +40,8 @@ object RegisterModifier {
     val BUILDERS_ASPECT = AugmentModifier(Identifier(AIO.MOD_ID,"builders_aspect"), cooldownModifier = -15.0).withRange(0.0,1.0) .withSpellToAffect(ModifierPredicates.BUILDERS_PREDICATE).also { regMod.add(it) }
     val OCEANIC = AugmentModifier(Identifier(AIO.MOD_ID,"oceanic"), cooldownModifier = -10.0).withDuration(10,10).withConsumer(ModifierConsumers.OCEANIC_CONSUMER).withSpellToAffect(ModifierPredicates.OCEANIC_PREDICATE).also { regMod.add(it) }
     val PROTECTIVE = AugmentModifier(Identifier(AIO.MOD_ID,"protective")).withConsumer(ModifierConsumers.PROTECTIVE_CONSUMER).also { regMod.add(it) }
-    val BLOOD_PACT = AugmentModifier(Identifier(AIO.MOD_ID,"blood_pact")) .also { regMod.add(it) }
+    val BLOOD_PACT = AugmentModifier(Identifier(AIO.MOD_ID,"blood_pact"), manaCostModifier = -100.0).withConsumer(ModifierConsumers.BLOOD_PACT_CONSUMER) .also { regMod.add(it) }
+    val BLOOD_MAGIC = AugmentModifier(Identifier(AIO.MOD_ID,"blood_pact"), levelModifier = 1).withDamage(2.0F).withAmplifier(1).withDuration(durationPercent = 10).withSpellToAffect(ModifierPredicates.SOUL_PREDICATE) .also { regMod.add(it) }
     val KNOWLEDGE_PACT = AugmentModifier(Identifier(AIO.MOD_ID,"knowledge_pact")) .also { regMod.add(it) }
     val HEALERS_PACT = AugmentModifier(Identifier(AIO.MOD_ID,"healers_pact")) .also { regMod.add(it) }
     val HEALERS_GRACE = AugmentModifier(Identifier(AIO.MOD_ID,"healers_grace")) .also { regMod.add(it) }

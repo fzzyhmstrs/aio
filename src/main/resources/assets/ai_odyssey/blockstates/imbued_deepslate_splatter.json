@@ -1,0 +1,82 @@
+{
+  "variants": {
+    "splatter_visible=false": {
+      "model": "ai_odyssey:block/imbued_deepslate_tiles"
+    },
+    "splatter_visible=true,splatter=ARROW_1": {
+      "model": "ai_odyssey:block/imbued_splatter_arrow_1"
+    },
+	"splatter_visible=true,splatter=ARROW_2": {
+      "model": "ai_odyssey:block/imbued_splatter_arrow_2"
+    },
+	"splatter_visible=true,splatter=ARROW_3": {
+      "model": "ai_odyssey:block/imbued_splatter_arrow_3"
+    },
+	"splatter_visible=true,splatter=ARROW_4": {
+      "model": "ai_odyssey:block/imbued_splatter_arrow_4"
+    },
+	"splatter_visible=true,splatter=BLOOD_1": {
+      "model": "ai_odyssey:block/imbued_splatter_blood_1"
+    },
+	"splatter_visible=true,splatter=BLOOD_2": {
+      "model": "ai_odyssey:block/imbued_splatter_blood_2"
+    },
+	"splatter_visible=true,splatter=BLOOD_3": {
+      "model": "ai_odyssey:block/imbued_splatter_blood_3"
+    },
+	"splatter_visible=true,splatter=BLOOD_4": {
+      "model": "ai_odyssey:block/imbued_splatter_blood_4"
+    },
+	"splatter_visible=true,splatter=BLOOD_5": {
+      "model": "ai_odyssey:block/imbued_splatter_blood_5"
+    },
+	"splatter_visible=true,splatter=EYE_1": {
+      "model": "ai_odyssey:block/imbued_splatter_eye_1"
+    },
+	"splatter_visible=true,splatter=EYE_2": {
+      "model": "ai_odyssey:block/imbued_splatter_eye_2"
+    },
+	"splatter_visible=true,splatter=HAND_PRINT_1": {
+      "model": "ai_odyssey:block/imbued_splatter_hand_print_1"
+    },
+	"splatter_visible=true,splatter=HAND_PRINT_2": {
+      "model": "ai_odyssey:block/imbued_splatter_hand_print_2"
+    },
+	"splatter_visible=true,splatter=HAND_SMEAR_1": {
+      "model": "ai_odyssey:block/imbued_splatter_hand_smear_1"
+    },
+	"splatter_visible=true,splatter=HAND_SMEAR_2": {
+      "model": "ai_odyssey:block/imbued_splatter_hand_smear_2"
+    },
+	"splatter_visible=true,splatter=HAND_SMEAR_3": {
+      "model": "ai_odyssey:block/imbued_splatter_hand_smear_3"
+    },
+	"splatter_visible=true,splatter=HAND_SMEAR_4": {
+      "model": "ai_odyssey:block/imbued_splatter_hand_smear_4"
+    },
+	"splatter_visible=true,splatter=PICTOGRAPH_1": {
+      "model": "ai_odyssey:block/imbued_splatter_pictograph_1"
+    },
+	"splatter_visible=true,splatter=PICTOGRAPH_2": {
+      "model": "ai_odyssey:block/imbued_splatter_pictograph_2"
+    },
+	"splatter_visible=true,splatter=PICTOGRAPH_3": {
+      "model": "ai_odyssey:block/imbued_splatter_pictograph_3"
+    },
+	"splatter_visible=true,splatter=PICTOGRAPH_4": {
+      "model": "ai_odyssey:block/imbued_splatter_pictograph_4"
+    },
+	"splatter_visible=true,splatter=TALLY_1": {
+      "model": "ai_odyssey:block/imbued_splatter_tally_1"
+    },
+	"splatter_visible=true,splatter=TALLY_2": {
+      "model": "ai_odyssey:block/imbued_splatter_tally_2"
+    },
+	"splatter_visible=true,splatter=TALLY_3": {
+      "model": "ai_odyssey:block/imbued_splatter_tally_3"
+    },
+	"splatter_visible=true,splatter=X_1": {
+      "model": "ai_odyssey:block/imbued_splatter_x_1"
+    }
+  }
+}

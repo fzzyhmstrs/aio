@@ -78,9 +78,10 @@ object RegisterBlock {
 
     fun registerAll(){
         registerBlock("aberration_spawn", ABERRATION_SPAWN, ItemGroup.MISC)
-        registerBlock("bull_kelp", BULL_KELP, ItemGroup.DECORATIONS)
+        registerBlockWithOtherItem("bull_kelp", BULL_KELP)
         registerBlockWithOtherItem("bull_kelp_plant", BULL_KELP_PLANT)
         registerBlockWithOtherItem("bull_kelp_streamer", BULL_KELP_STREAMER)
+
         registerBlock("calcite_sediment", CALCITE_SEDIMENT, ItemGroup.BUILDING_BLOCKS)
         registerBlock("crystalline_lantern", CRYSTALLINE_LANTERN, ItemGroup.DECORATIONS)
         registerBlock("crystalline_switch", CRYSTALLINE_SWITCH, ItemGroup.MISC)

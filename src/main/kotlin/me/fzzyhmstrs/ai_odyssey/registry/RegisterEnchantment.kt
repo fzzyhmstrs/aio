@@ -25,6 +25,7 @@ object RegisterEnchantment {
     val FULL_HEAL = FullHealAugment(4,1, EquipmentSlot.MAINHAND).also{regEnchant["full_heal"] = it}
     val GHOSTFORM = GhostformAugment(2,2, EquipmentSlot.MAINHAND).also{regEnchant["ghostform"] = it}
     val GREATER_REGENERATE = GreaterRegenerateAugment(3,1, EquipmentSlot.MAINHAND).also{regEnchant["greater_regenerate"] = it}
+    val RESONATE = ResonateAugment(2,2, EquipmentSlot.MAINHAND).also{regEnchant["resonate"] = it}
     val SEARING_BLAST = SearingBlastAugment(2,2, EquipmentSlot.MAINHAND).also{regEnchant["searing_blast"] = it}
     val SMITING_BLOW = SmitingBlowAugment(2,3, EquipmentSlot.MAINHAND).also{regEnchant["smiting_blow"] = it}
     val SOULWAVE = SoulwaveAugment(3,3, EquipmentSlot.MAINHAND).also{regEnchant["soulwave"] = it}
