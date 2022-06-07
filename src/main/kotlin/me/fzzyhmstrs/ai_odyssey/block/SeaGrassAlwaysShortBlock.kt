@@ -13,7 +13,7 @@ import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.BlockView
 import net.minecraft.world.WorldAccess
 
-class SeaGrassAlwaysShortBlock(settings: Settings): PlantBlock(settings), FluidFillable {
+open class SeaGrassAlwaysShortBlock(settings: Settings): PlantBlock(settings), FluidFillable {
 
     @Deprecated("Deprecated in Java", ReplaceWith("VoxelShapes.fullCube()", "net.minecraft.util.shape.VoxelShapes"))
     override fun getOutlineShape(

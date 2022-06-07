@@ -8,6 +8,7 @@ import net.minecraft.fluid.Fluid
 import net.minecraft.item.ItemStack
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.state.StateManager
+import net.minecraft.state.property.EnumProperty
 import net.minecraft.state.property.Properties
 import net.minecraft.util.function.BooleanBiFunction
 import net.minecraft.util.math.BlockPos
@@ -18,9 +19,11 @@ import net.minecraft.world.BlockView
 import net.minecraft.world.World
 
 class MysteriousPortalBlock(settings: Settings): Block(settings) {
-    val AXIS = Properties.HORIZONTAL_AXIS
-    private val X_SHAPE = createCuboidShape(0.0, 0.0, 6.0, 16.0, 16.0, 10.0)
-    private val Z_SHAPE = createCuboidShape(6.0, 0.0, 0.0, 10.0, 16.0, 16.0)
+    companion object {
+        val AXIS: EnumProperty<Direction.Axis> = Properties.HORIZONTAL_AXIS
+        private val X_SHAPE = createCuboidShape(0.0, 0.0, 6.0, 16.0, 16.0, 10.0)
+        private val Z_SHAPE = createCuboidShape(6.0, 0.0, 0.0, 10.0, 16.0, 16.0)
+    }
 
     @Deprecated("Deprecated in Java")
     override fun getOutlineShape(state: BlockState, world: BlockView, pos: BlockPos, context: ShapeContext): VoxelShape {
