@@ -7,6 +7,7 @@ import net.minecraft.block.EntityShapeContext
 import net.minecraft.block.ShapeContext
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.ai.pathing.NavigationType
+import net.minecraft.item.ItemPlacementContext
 import net.minecraft.state.property.Properties
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.shape.VoxelShape
@@ -24,8 +25,9 @@ class HardLightBarrierBlock(settings: Settings): Block(settings),SwitchDoor {
             ) != false){15} else {8} }
     }
 
-    init{
-        defaultState = stateManager.defaultState.with(LOCKED,true)
+
+    override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {
+        return super.getPlacementState(ctx)?.with(LOCKED,true)
     }
 
     override fun isTranslucent(state: BlockState?, world: BlockView?, pos: BlockPos?): Boolean {
@@ -66,6 +68,10 @@ class HardLightBarrierBlock(settings: Settings): Block(settings),SwitchDoor {
 
     override fun openDoor(world: World, user: LivingEntity, pos: BlockPos, state: BlockState) {
         world.setBlockState(pos,state.cycle(LOCKED))
+    }
+
+    override fun getType(): SwitchDoor.DoorType {
+        return SwitchDoor.DoorType.DOOR
     }
 
 }

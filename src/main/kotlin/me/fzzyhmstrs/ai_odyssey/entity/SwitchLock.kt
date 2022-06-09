@@ -1,6 +1,6 @@
 package me.fzzyhmstrs.ai_odyssey.entity
 
-interface SwitchLockEntity {
+interface SwitchLock {
 
     fun isUnlocked(): Boolean
 

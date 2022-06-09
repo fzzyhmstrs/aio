@@ -6,6 +6,7 @@ import net.minecraft.block.BlockState
 import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.entity.EntityPose
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.item.ItemPlacementContext
 import net.minecraft.state.StateManager
 import net.minecraft.state.property.BooleanProperty
 import net.minecraft.state.property.EnumProperty
@@ -59,8 +60,8 @@ class ImbuedDeepslateMessageBlock(settings: Settings): Block(settings) {
         }
     }
 
-    init {
-        defaultState = stateManager.defaultState.with(MESSAGE,Message.NONE).with(MESSAGE_VISIBLE,false)
+    override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {
+        return super.getPlacementState(ctx)?.with(MESSAGE,Message.NONE)?.with(MESSAGE_VISIBLE,false)
     }
 
     override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {

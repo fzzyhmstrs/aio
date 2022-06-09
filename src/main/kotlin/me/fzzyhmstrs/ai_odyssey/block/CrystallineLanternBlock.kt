@@ -2,6 +2,7 @@ package me.fzzyhmstrs.ai_odyssey.block
 
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
+import net.minecraft.item.ItemPlacementContext
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.state.property.EnumProperty
 import net.minecraft.util.StringIdentifiable
@@ -41,8 +42,8 @@ class CrystallineLanternBlock(settings: Settings): Block(settings) {
         }
     }
 
-    init{
-        defaultState = stateManager.defaultState.with(LIT,LanternLit.LIT)
+    override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {
+        return super.getPlacementState(ctx)?.with(LIT,LanternLit.LIT)
     }
 
     fun turnOff(state:BlockState, pos: BlockPos, world: World){

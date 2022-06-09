@@ -1,6 +1,7 @@
 package me.fzzyhmstrs.ai_odyssey.block
 
 import me.fzzyhmstrs.ai_odyssey.entity.CrystallineSwitchBlockEntity
+import me.fzzyhmstrs.ai_odyssey.entity.SwitchDoor
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
@@ -8,23 +9,55 @@ import net.minecraft.block.BlockWithEntity
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
+import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemPlacementContext
+import net.minecraft.sound.SoundCategory
+import net.minecraft.sound.SoundEvents
 import net.minecraft.state.StateManager
 import net.minecraft.state.property.EnumProperty
 import net.minecraft.state.property.Properties
+import net.minecraft.util.ActionResult
+import net.minecraft.util.Hand
 import net.minecraft.util.StringIdentifiable
+import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import java.util.function.ToIntFunction
 
 class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
 
-    init{
-        defaultState = stateManager.defaultState.with(LIT, true).with(SWITCH_COLOR, SwitchColor.BLUE)
+    override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {
+        return super.getPlacementState(ctx)?.with(LIT, true)?.with(SWITCH_COLOR, SwitchColor.BLUE)
     }
 
     override fun createBlockEntity(pos: BlockPos, state: BlockState): BlockEntity {
         return CrystallineSwitchBlockEntity(pos, state)
+    }
+
+    override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
+        builder.add(LIT, SWITCH_COLOR)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onUse(
+        state: BlockState,
+        world: World,
+        pos: BlockPos,
+        player: PlayerEntity,
+        hand: Hand,
+        hit: BlockHitResult
+    ): ActionResult {
+        if (world.isClient) return super.onUse(state, world, pos, player, hand, hit)
+        val switchEntity = getBlockEntity(world, pos) ?: return super.onUse(state, world, pos, player, hand, hit)
+        if (switchEntity.isUnlocked()) {
+            val colorState = state.get(SWITCH_COLOR)
+            if (colorState.onUse(state, world, pos, player, hand, hit, switchEntity)) {
+                world.playSound(null, pos, SoundEvents.BLOCK_NOTE_BLOCK_CHIME,SoundCategory.BLOCKS,2.0f,1.0f)
+                return ActionResult.SUCCESS
+            }
+        }
+        world.playSound(null, pos, SoundEvents.BLOCK_NOTE_BLOCK_BASS,SoundCategory.BLOCKS,2.0f,1.0f)
+        return super.onUse(state, world, pos, player, hand, hit)
     }
 
     override fun <T : BlockEntity> getTicker(
@@ -44,9 +77,7 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
         } else null
     }
 
-    override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
-        builder.add(LIT, SWITCH_COLOR)
-    }
+
 
     companion object{
 
@@ -64,19 +95,125 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
             }
         }
 
+        fun getBlockEntity(world: World, pos: BlockPos): CrystallineSwitchBlockEntity?{
+            val chk = world.getBlockEntity(pos)
+            return if (chk != null){
+                if (chk is CrystallineSwitchBlockEntity){
+                    chk
+                } else {
+                    null
+                }
+            } else {
+                null
+            }
+        }
+
+        fun getDoorEntities(world: World,list: List<BlockPos>): List<SwitchDoor>{
+            val doorList: MutableList<SwitchDoor> = mutableListOf()
+            list.forEach {
+                val chk = world.getBlockEntity(it)
+                if (chk != null) {
+                    if (chk is SwitchDoor) {
+                        doorList.add(chk)
+                    }
+                }
+            }
+            return doorList
+        }
+
         enum class SwitchColor: StringIdentifiable {
 
-            BLUE,
-            GREEN,
-            RED,
-            PINK,
-            YELLOW;
+            BLUE {
+                //general door, gate, etc. use
+                override fun onUse(
+                    state: BlockState,
+                    world: World,
+                    pos: BlockPos,
+                    player: PlayerEntity,
+                    hand: Hand,
+                    hit: BlockHitResult,
+                    entity: CrystallineSwitchBlockEntity
+                ): Boolean {
+                    val doors = getDoorEntities(world, entity.getDoors())
+                    if (doors.isEmpty()) return false
+                    doors.forEach {
+                        if (it.getType() == SwitchDoor.DoorType.DOOR){
+                            it.openDoor(world, player, pos, state)
+                        }
+                    }
+                    return true
+                }
+            },
+            RED {
+                // locked down?
+                override fun onUse(
+                    state: BlockState,
+                    world: World,
+                    pos: BlockPos,
+                    player: PlayerEntity,
+                    hand: Hand,
+                    hit: BlockHitResult,
+                    entity: CrystallineSwitchBlockEntity
+                ): Boolean {
+                    return false
+                }
+            },
+            GREEN {
+                // portal use
+                override fun onUse(
+                    state: BlockState,
+                    world: World,
+                    pos: BlockPos,
+                    player: PlayerEntity,
+                    hand: Hand,
+                    hit: BlockHitResult,
+                    entity: CrystallineSwitchBlockEntity
+                ): Boolean {
+                    val doors = getDoorEntities(world, entity.getDoors())
+                    if (doors.isEmpty()) return false
+                    doors.forEach {
+                        if (it.getType() == SwitchDoor.DoorType.PORTAL){
+                            it.openDoor(world, player, pos, state)
+                        }
+                    }
+                    return true
+                }
+            },
+            YELLOW {
+                //teleporter use
+                override fun onUse(
+                    state: BlockState,
+                    world: World,
+                    pos: BlockPos,
+                    player: PlayerEntity,
+                    hand: Hand,
+                    hit: BlockHitResult,
+                    entity: CrystallineSwitchBlockEntity
+                ): Boolean {
+                    val doors = getDoorEntities(world, entity.getDoors())
+                    if (doors.isEmpty()) return false
+                    doors.forEach {
+                        if (it.getType() == SwitchDoor.DoorType.TELEPORTER){
+                            it.openDoor(world, player, pos, state)
+                        }
+                    }
+                    return true
+                }
+            };
+
+            abstract fun onUse(
+                state: BlockState,
+                world: World,
+                pos: BlockPos,
+                player: PlayerEntity,
+                hand: Hand,
+                hit: BlockHitResult,
+                entity: CrystallineSwitchBlockEntity): Boolean
 
             override fun asString(): String {
                 return this.name
             }
         }
-
     }
 
 }

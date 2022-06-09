@@ -9,4 +9,12 @@ interface SwitchDoor {
 
     fun openDoor(world: World, user: LivingEntity, pos: BlockPos, state: BlockState)
 
+    fun getType(): DoorType
+
+    enum class DoorType{
+        DOOR,
+        TELEPORTER,
+        PORTAL
+    }
+
 }
