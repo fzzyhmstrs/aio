@@ -1,12 +1,19 @@
 package me.fzzyhmstrs.ai_odyssey.block
 
 import me.fzzyhmstrs.ai_odyssey.entity.CrystallineItemLockBlockEntity
+import me.fzzyhmstrs.ai_odyssey.registry.RegisterItem
+import me.fzzyhmstrs.ai_odyssey.util.FacilityChimes
 import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemPlacementContext
+import net.minecraft.item.ItemStack
+import net.minecraft.sound.SoundCategory
+import net.minecraft.sound.SoundEvents
 import net.minecraft.state.property.BooleanProperty
 import net.minecraft.state.property.DirectionProperty
+import net.minecraft.text.LiteralText
+import net.minecraft.text.TranslatableText
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
 import net.minecraft.util.hit.BlockHitResult
@@ -33,7 +40,35 @@ class CrystallineItemLockBlock(settings: Settings): AbstractLockBlock(settings) 
         hand: Hand,
         hit: BlockHitResult
     ): ActionResult {
-
+        if (world.isClient) return super.onUse(state, world, pos, player, hand, hit)
+        val chkEntity = world.getBlockEntity(pos)
+        if (chkEntity != null){
+            if (chkEntity is CrystallineItemLockBlockEntity){
+                val stack = player.getStackInHand(hand)
+                if (stack.isOf(RegisterItem.FACILITY_CONFIGURATOR)){
+                    val hand2 = when (hand){
+                        Hand.MAIN_HAND->Hand.OFF_HAND
+                        Hand.OFF_HAND->Hand.MAIN_HAND
+                    }
+                    val otherHandStack = player.getStackInHand(hand2)
+                    return if (otherHandStack != ItemStack.EMPTY) {
+                        val otherHandItem = otherHandStack.item
+                        chkEntity.setKeyItem(otherHandItem)
+                        player.sendMessage(TranslatableText("message.configurator.item_lock").append(otherHandItem.name), false)
+                        FacilityChimes.CONFIG_SUCCESS.playSound(world, pos)
+                        ActionResult.SUCCESS
+                    } else {
+                        super.onUse(state, world, pos, player, hand, hit)
+                    }
+                }
+                val item = stack.item
+                if (chkEntity.trySetHeldItem(item)){
+                    FacilityChimes.HIGH_SUCCESS.playSound(world, pos)
+                    return ActionResult.SUCCESS
+                }
+            }
+        }
+        FacilityChimes.FAILURE.playSound(world, pos)
         return super.onUse(state, world, pos, player, hand, hit)
     }
 

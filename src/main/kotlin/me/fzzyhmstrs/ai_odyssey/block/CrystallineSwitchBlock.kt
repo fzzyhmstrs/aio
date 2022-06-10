@@ -3,6 +3,8 @@ package me.fzzyhmstrs.ai_odyssey.block
 import me.fzzyhmstrs.ai_odyssey.entity.CrystallineSwitchBlockEntity
 import me.fzzyhmstrs.ai_odyssey.entity.SwitchDoor
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
+import me.fzzyhmstrs.ai_odyssey.registry.RegisterItem
+import me.fzzyhmstrs.ai_odyssey.util.FacilityChimes
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.block.BlockWithEntity
@@ -48,15 +50,19 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
         hit: BlockHitResult
     ): ActionResult {
         if (world.isClient) return super.onUse(state, world, pos, player, hand, hit)
+        val stack = player.getStackInHand(hand)
+        if (stack.isOf(RegisterItem.FACILITY_CONFIGURATOR)){
+            return super.onUse(state, world, pos, player, hand, hit)
+        }
         val switchEntity = getBlockEntity(world, pos) ?: return super.onUse(state, world, pos, player, hand, hit)
         if (switchEntity.isUnlocked()) {
             val colorState = state.get(SWITCH_COLOR)
             if (colorState.onUse(state, world, pos, player, hand, hit, switchEntity)) {
-                world.playSound(null, pos, SoundEvents.BLOCK_NOTE_BLOCK_CHIME,SoundCategory.BLOCKS,2.0f,1.0f)
+                FacilityChimes.SUCCESS.playSound(world, pos)
                 return ActionResult.SUCCESS
             }
         }
-        world.playSound(null, pos, SoundEvents.BLOCK_NOTE_BLOCK_BASS,SoundCategory.BLOCKS,2.0f,1.0f)
+        FacilityChimes.FAILURE.playSound(world, pos)
         return super.onUse(state, world, pos, player, hand, hit)
     }
 
@@ -82,7 +88,7 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
     companion object{
 
         val LIT = Properties.LIT
-        private val SWITCH_COLOR = EnumProperty.of("switch_color",SwitchColor::class.java)
+        val SWITCH_COLOR = EnumProperty.of("switch_color",SwitchColor::class.java)
 
         val STATE_TO_LUMINANCE: ToIntFunction<BlockState> = ToIntFunction { state:BlockState -> if(state.get(LIT) != false){15} else {8} }
 

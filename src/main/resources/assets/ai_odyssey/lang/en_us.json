@@ -117,5 +117,10 @@
 	"scepter.modifiers.ai_odyssey:knowledge_pact": "Knowledge Pact",
 	"scepter.modifiers.ai_odyssey:healers_pact": "Healers Pact",
 	"scepter.modifiers.ai_odyssey:healers_grace": "Healers Grace",
-	"scepter.modifiers.ai_odyssey:traveler": "Traveler"
+	"scepter.modifiers.ai_odyssey:traveler": "Traveler",
+	"message.configurator.num_lock": "Number key set as ",
+	"message.configurator.item_lock": "Item key set as ",
+	"message.configurator.configurator_pairing": "Parent switch set to switch at position ",
+	"message.configurator.configurator_pairing_primed": "Parent switch primed. Use configurator again to pair.",
+	"message.configurator.configurator_pairing_primed_2": "Pairing will unpair previous Parent!"
 }

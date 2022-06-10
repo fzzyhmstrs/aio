@@ -25,20 +25,10 @@ class CrystallineItemLockBlockEntity(pos: BlockPos, state: BlockState): BlockEnt
         return if (keyItem != null && item == keyItem){
             heldItem = item
             markDirty()
-            heldItemSuccess()
             true
         } else {
-            heldItemFailure()
             false
         }
-    }
-
-    private fun heldItemSuccess(){
-        TODO()
-    }
-
-    private fun heldItemFailure(){
-        TODO()
     }
 
     override fun isUnlocked(): Boolean {

@@ -1,6 +1,8 @@
 package me.fzzyhmstrs.ai_odyssey.block
 
 import me.fzzyhmstrs.ai_odyssey.entity.CrystallineNumLockBlockEntity
+import me.fzzyhmstrs.ai_odyssey.registry.RegisterItem
+import me.fzzyhmstrs.ai_odyssey.util.FacilityChimes
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.block.BlockWithEntity
@@ -12,6 +14,8 @@ import net.minecraft.sound.SoundEvents
 import net.minecraft.state.StateManager
 import net.minecraft.state.property.IntProperty
 import net.minecraft.state.property.Properties
+import net.minecraft.text.LiteralText
+import net.minecraft.text.TranslatableText
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
 import net.minecraft.util.hit.BlockHitResult
@@ -41,8 +45,22 @@ class CrystallineNumLockBlock(settings: Settings): AbstractLockBlock(settings) {
         hand: Hand,
         hit: BlockHitResult
     ): ActionResult {
-        if (!world.isClient && world.setBlockState(pos,state.cycle(LOCK_NUM))){
-                world.playSound(null,pos,SoundEvents.BLOCK_COMPARATOR_CLICK,SoundCategory.BLOCKS,1.0F,1.2F)
+        if (world.isClient) super.onUse(state, world, pos, player, hand, hit)
+        val stack = player.getStackInHand(hand)
+        if (stack.isOf(RegisterItem.FACILITY_CONFIGURATOR)){
+            val chkEntity = world.getBlockEntity(pos)
+            if (chkEntity != null){
+                if (chkEntity is CrystallineNumLockBlockEntity){
+                    val num = state.get(LOCK_NUM)
+                    chkEntity.setKeyNumber(num)
+                    player.sendMessage(TranslatableText("message.configurator.num_lock").append(LiteralText(num.toString())), false)
+                    FacilityChimes.CONFIG_SUCCESS.playSound(world, pos)
+                    return ActionResult.SUCCESS
+                }
+            }
+        }
+        if (world.setBlockState(pos,state.cycle(LOCK_NUM))){
+                FacilityChimes.NUM_CLICK.playSound(world, pos)
         }
         return super.onUse(state, world, pos, player, hand, hit)
     }

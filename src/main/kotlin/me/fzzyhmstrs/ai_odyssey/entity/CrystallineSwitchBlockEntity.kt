@@ -25,18 +25,20 @@ class CrystallineSwitchBlockEntity(pos: BlockPos, state: BlockState):BlockEntity
         return locks
     }
 
-    fun addLock(pos: BlockPos){
+    fun addLock(pos: BlockPos): Boolean{
         locks.add(pos)
         markDirty()
+        return true
     }
 
     fun getDoors(): List<BlockPos>{
         return doors
     }
 
-    fun addDoor(pos: BlockPos){
+    fun addDoor(pos: BlockPos): Boolean{
         doors.add(pos)
         markDirty()
+        return true
     }
 
     fun isUnlocked(): Boolean{
