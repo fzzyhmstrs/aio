@@ -41,8 +41,9 @@ object RegisterModifier {
     val OCEANIC = AugmentModifier(Identifier(AIO.MOD_ID,"oceanic"), cooldownModifier = -10.0).withDuration(10,10).withConsumer(ModifierConsumers.OCEANIC_CONSUMER).withSpellToAffect(ModifierPredicates.OCEANIC_PREDICATE).also { regMod.add(it) }
     val PROTECTIVE = AugmentModifier(Identifier(AIO.MOD_ID,"protective")).withConsumer(ModifierConsumers.PROTECTIVE_CONSUMER).also { regMod.add(it) }
     val BLOOD_PACT = AugmentModifier(Identifier(AIO.MOD_ID,"blood_pact"), manaCostModifier = -100.0).withConsumer(ModifierConsumers.BLOOD_PACT_CONSUMER) .also { regMod.add(it) }
-    val BLOOD_MAGIC = AugmentModifier(Identifier(AIO.MOD_ID,"blood_pact"), levelModifier = 1).withDamage(2.0F).withAmplifier(1).withDuration(durationPercent = 10).withSpellToAffect(ModifierPredicates.SOUL_PREDICATE) .also { regMod.add(it) }
+    val BLOOD_MAGIC = AugmentModifier(Identifier(AIO.MOD_ID,"blood_magic"), levelModifier = 1).withDamage(2.0F).withAmplifier(1).withDuration(durationPercent = 10).withSpellToAffect(ModifierPredicates.SOUL_PREDICATE) .also { regMod.add(it) }
     val KNOWLEDGE_PACT = AugmentModifier(Identifier(AIO.MOD_ID,"knowledge_pact"), cooldownModifier = 10.0).withConsumer(ModifierConsumers.KNOWLEDGE_PACT_CONSUMER).withSpellToAffect(ModifierPredicates.KNOWLEDGE_PREDICATE) .also { regMod.add(it) }
+    val MIND_MAGIC = AugmentModifier(Identifier(AIO.MOD_ID,"mind_magic")) .also { regMod.add(it) }
     val HEALERS_PACT = AugmentModifier(Identifier(AIO.MOD_ID,"healers_pact"), cooldownModifier = 50.0, manaCostModifier = 20.0).withSpellToAffect(ModifierPredicates.HEALERS_PACT_PREDICATE) .also { regMod.add(it) }
     val HEALERS_GRACE = AugmentModifier(Identifier(AIO.MOD_ID,"healers_grace")).withAmplifier(1).withDuration(durationPercent = 50).withSpellToAffect(ModifierPredicates.HEALERS_PREDICATE) .also { regMod.add(it) }
     val TRAVELER = AugmentModifier(Identifier(AIO.MOD_ID,"traveler"), cooldownModifier = -90.0).withRange(rangePercent = 15.0).withConsumer(ModifierConsumers.TRAVELER_CONSUMER).withSpellToAffect(ModifierPredicates.TRAVELER_PREDICATE) .also { regMod.add(it) }

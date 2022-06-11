@@ -9,7 +9,12 @@ import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.ScepterObject
 import me.fzzyhmstrs.amethyst_imbuement.util.Nbt
 import me.fzzyhmstrs.amethyst_imbuement.util.NbtKeys
 import me.fzzyhmstrs.amethyst_imbuement.util.SpellType
+import net.minecraft.client.MinecraftClient
 import net.minecraft.client.item.TooltipContext
+import net.minecraft.client.world.ClientWorld
+import net.minecraft.entity.Entity
+import net.minecraft.entity.LivingEntity
+import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.item.ToolMaterial
 import net.minecraft.loot.function.LootFunction
@@ -38,6 +43,19 @@ open class CustomScepterItem(material: ToolMaterial, settings: Settings, flavor:
         super.appendTooltip(stack, world, tooltip, context)
     }
 
+    override fun inventoryTick(stack: ItemStack, world: World, entity: Entity, slot: Int, selected: Boolean) {
+        super.inventoryTick(stack, world, entity, slot, selected)
+        if (entity !is PlayerEntity) return
+        if (world.isClient && selected){
+            val rnd = world.random.nextInt(particleChance())
+            if (rnd < 1){
+                val client = MinecraftClient.getInstance()
+                val pos = scepterParticlePos(client, entity)
+                emitParticles(world,entity, pos)
+            }
+        }
+    }
+
     open fun startingAugments(): LootFunction.Builder{
         var builder = SetEnchantmentsLootFunction.Builder()
             if (defaultAugments.isEmpty()){
@@ -50,8 +68,12 @@ open class CustomScepterItem(material: ToolMaterial, settings: Settings, flavor:
         return builder
     }
 
-    open fun emitParticles(world: World,pos: Vec3d){
+    open fun emitParticles(world: World, entity: PlayerEntity ,pos: Vec3d) {
 
+    }
+
+    open fun particleChance(): Int {
+        return 10
     }
 
     companion object{

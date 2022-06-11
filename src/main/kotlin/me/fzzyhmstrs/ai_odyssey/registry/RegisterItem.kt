@@ -4,6 +4,7 @@ package me.fzzyhmstrs.ai_odyssey.registry
 
 import me.fzzyhmstrs.ai_odyssey.AIO
 import me.fzzyhmstrs.ai_odyssey.item.*
+import me.fzzyhmstrs.ai_odyssey.tool.BloodWitchToolMaterial
 import me.fzzyhmstrs.ai_odyssey.tool.ScepterLvl4ToolMaterial
 import me.fzzyhmstrs.ai_odyssey.tool.ScepterOfBladesToolMaterial
 import me.fzzyhmstrs.amethyst_imbuement.item.CustomFlavorItem
@@ -110,7 +111,7 @@ object RegisterItem {
     ).also{ regItem["scepter_of_insight"] = it}
     val CARTOGRAPHERS_TRANSIT = CustomScepterItem(ScepterLvl2ToolMaterial,FabricItemSettings().group(ItemGroup.COMBAT).rarity(Rarity.RARE),
         listOf(RegisterEnchantment.SUMMON_BOAT, RegisterEnchantment.SUMMON_STRIDER),
-        listOf(RegisterModifier.DEMANDING)
+        listOf(RegisterModifier.TRAVELER)
     ).also{ regItem["cartographers_transit"] = it}
     val ETERNITY = CustomScepterItem(ScepterLvl3ToolMaterial,FabricItemSettings().group(ItemGroup.COMBAT).rarity(Rarity.EPIC),
         listOf(RegisterEnchantmentAIO.UNDEATH),
@@ -128,13 +129,13 @@ object RegisterItem {
         listOf(),
         listOf(RegisterModifier.HEALERS_PACT,RegisterModifier.HEALERS_GRACE, RegisterModifierAI.GREATER_THRIFTY, RegisterModifier.GRACEFUL)
     ).also{ regItem["redemption"] = it}
-    val SPITE_OF_THE_BLOOD_WITCH = CustomScepterItem(ScepterLvl3ToolMaterial,FabricItemSettings().group(ItemGroup.COMBAT).rarity(Rarity.EPIC),
+    val SPITE_OF_THE_BLOOD_WITCH = CustomScepterItem(BloodWitchToolMaterial,FabricItemSettings().group(ItemGroup.COMBAT).rarity(Rarity.EPIC),
         listOf(),
         listOf(RegisterModifier.BLOOD_PACT,RegisterModifier.BLOOD_MAGIC, RegisterModifierAI.GREATER_ATTUNED, RegisterModifier.GREATER_ENDURING, RegisterModifier.FURIOUS)
     ).also{ regItem["spite_of_the_blood_witch"] = it}
     val WAND_OF_THE_MIND_MAGE = CustomScepterItem(ScepterLvl3ToolMaterial,FabricItemSettings().group(ItemGroup.COMBAT).rarity(Rarity.EPIC),
         listOf(),
-        listOf(RegisterModifier.KNOWLEDGE_PACT, RegisterModifierAI.GREATER_THRIFTY, RegisterModifier.GREATER_REACH, RegisterModifier.WITTY)
+        listOf(RegisterModifier.KNOWLEDGE_PACT, RegisterModifier.MIND_MAGIC, RegisterModifierAI.GREATER_THRIFTY, RegisterModifier.GREATER_REACH, RegisterModifier.WITTY)
     ).also{ regItem["wand_of_the_mind_mage"] = it}
     //flora and fauna
 
