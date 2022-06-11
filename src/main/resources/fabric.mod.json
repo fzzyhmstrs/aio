@@ -21,6 +21,12 @@
         "adapter": "kotlin",
         "value": "me.fzzyhmstrs.ai_odyssey.AIO"
       }
+    ],
+    "client": [
+      {
+        "adapter": "kotlin",
+        "value": "me.fzzyhmstrs.ai_odyssey.AIO_Client"
+      }
     ]
   },
   "mixins": [

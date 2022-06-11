@@ -1,6 +1,6 @@
 package me.fzzyhmstrs.ai_odyssey.registry
 
-import me.fzzyhmstrs.ai_odyssey.ImbuedTouchEnchantment
+import me.fzzyhmstrs.ai_odyssey.enchantment.ImbuedTouchEnchantment
 import me.fzzyhmstrs.ai_odyssey.scepter.*
 import me.fzzyhmstrs.amethyst_imbuement.AI
 import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.ScepterAugment

@@ -1,4 +1,4 @@
-package me.fzzyhmstrs.ai_odyssey
+package me.fzzyhmstrs.ai_odyssey.enchantment
 
 import me.fzzyhmstrs.amethyst_imbuement.augment.base_augments.BaseAugment
 import net.minecraft.enchantment.EnchantmentTarget

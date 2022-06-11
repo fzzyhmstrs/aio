@@ -9,6 +9,8 @@ import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.ScepterObject
 import me.fzzyhmstrs.amethyst_imbuement.util.Nbt
 import me.fzzyhmstrs.amethyst_imbuement.util.NbtKeys
 import me.fzzyhmstrs.amethyst_imbuement.util.SpellType
+import net.fabricmc.api.EnvType
+import net.fabricmc.api.Environment
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.item.TooltipContext
 import net.minecraft.client.world.ClientWorld
@@ -49,9 +51,7 @@ open class CustomScepterItem(material: ToolMaterial, settings: Settings, flavor:
         if (world.isClient && selected){
             val rnd = world.random.nextInt(particleChance())
             if (rnd < 1){
-                val client = MinecraftClient.getInstance()
-                val pos = scepterParticlePos(client, entity)
-                emitParticles(world,entity, pos)
+                emitParticles(world,entity)
             }
         }
     }
@@ -68,13 +68,16 @@ open class CustomScepterItem(material: ToolMaterial, settings: Settings, flavor:
         return builder
     }
 
-    open fun emitParticles(world: World, entity: PlayerEntity ,pos: Vec3d) {
+    @Environment(EnvType.CLIENT)
+    open fun emitParticles(world: World, entity: PlayerEntity) {
 
     }
 
+    @Environment(EnvType.CLIENT)
     open fun particleChance(): Int {
         return 10
     }
+
 
     companion object{
 

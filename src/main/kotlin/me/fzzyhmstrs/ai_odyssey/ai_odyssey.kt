@@ -17,6 +17,7 @@ object AIO: ModInitializer {
         RegisterEntity.registerAll()
         RegisterStatus.registerAll()
         RegisterModifier.registerAll()
+        RegisterParticle.registerParticleTypes()
     }
 }
 
@@ -24,6 +25,7 @@ object AIO_Client: ClientModInitializer{
 
     override fun onInitializeClient() {
         RegisterRenderer.registerAll()
+
     }
 
 }
