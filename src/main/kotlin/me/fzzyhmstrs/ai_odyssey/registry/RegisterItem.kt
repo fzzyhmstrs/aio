@@ -5,6 +5,7 @@ package me.fzzyhmstrs.ai_odyssey.registry
 import me.fzzyhmstrs.ai_odyssey.AIO
 import me.fzzyhmstrs.ai_odyssey.item.*
 import me.fzzyhmstrs.ai_odyssey.tool.ScepterLvl4ToolMaterial
+import me.fzzyhmstrs.ai_odyssey.tool.ScepterOfBladesToolMaterial
 import me.fzzyhmstrs.amethyst_imbuement.item.CustomFlavorItem
 import me.fzzyhmstrs.amethyst_imbuement.item.ImbuedJewelryItem
 import me.fzzyhmstrs.amethyst_imbuement.item.ScepterItem
@@ -55,7 +56,7 @@ object RegisterItem {
         listOf(RegisterEnchantment.LIGHTNING_BOLT),
         listOf(RegisterModifier.LIGHTNING_ASPECT, RegisterModifierAI.LESSER_THRIFTY)
     ).also{ regItem["sparking_scepter"] = it}
-    val SCEPTER_OF_BLADES = CustomScepterItem(ScepterLvl2ToolMaterial,FabricItemSettings().group(ItemGroup.COMBAT).rarity(Rarity.RARE),
+    val SCEPTER_OF_BLADES = CustomScepterItem(ScepterOfBladesToolMaterial,FabricItemSettings().group(ItemGroup.COMBAT).rarity(Rarity.RARE),
         listOf(RegisterEnchantment.SPECTRAL_SLASH),
         listOf(RegisterModifier.BLADE_ASPECT, RegisterModifierAI.LESSER_THRIFTY)
     ).also{ regItem["scepter_of_blades"] = it}
@@ -148,7 +149,7 @@ object RegisterItem {
 
     //trinkets and baubles
     val BOOK_OF_LEGEND = BookOfLegendItem(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.EPIC),"book_of_legend",true).also{ regItem["book_of_legend"] = it}
-    val DIVINE_CORONET = ImbuedJewelryItem(FabricItemSettings().group(ItemGroup.MISC).maxCount(1).rarity(Rarity.EPIC),"divine_coronet").also{ regItem["divine_coronet"] = it}
+    val DIVINE_CORONET = DivineCoronetItem(FabricItemSettings().group(ItemGroup.MISC).maxCount(1).rarity(Rarity.EPIC),"divine_coronet").also{ regItem["divine_coronet"] = it}
     val FACILITY_CONFIGURATOR = FacilityConfigurationStick(FabricItemSettings().group(ItemGroup.MISC)).also{ regItem["facility_configurator"] = it}
     val RESPLENDENT_RARITY = Item(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.EPIC)).also{ regItem["resplendent_rarity"] = it}
     val STRANGE_MAP = StrangeMapItem(FabricItemSettings().group(ItemGroup.MISC)).also{ regItem["strange_map"] = it}

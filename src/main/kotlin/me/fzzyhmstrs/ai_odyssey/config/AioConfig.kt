@@ -1,6 +1,7 @@
 package me.fzzyhmstrs.ai_odyssey.config
 
 import me.fzzyhmstrs.ai_odyssey.tool.ScepterLvl4ToolMaterial
+import me.fzzyhmstrs.ai_odyssey.tool.ScepterOfBladesToolMaterial
 import me.fzzyhmstrs.amethyst_imbuement.config.AiConfig
 
 object AioConfig {
@@ -17,6 +18,8 @@ object AioConfig {
 
     class Scepters {
         var resplendentDurability: Int = ScepterLvl4ToolMaterial.defaultDurability()
+        var bladesDurability: Int = ScepterOfBladesToolMaterial.defaultDurability()
+        var bladesDamage: Float = ScepterOfBladesToolMaterial.defaultAttackDamage()
     }
 
 }

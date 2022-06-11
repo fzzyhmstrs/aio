@@ -19,6 +19,7 @@ import net.minecraft.text.Text
 import net.minecraft.text.TranslatableText
 import net.minecraft.util.Formatting
 import net.minecraft.util.Identifier
+import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 
 open class CustomScepterItem(material: ToolMaterial, settings: Settings, flavor: String = "", startingAugments: List<ScepterAugment> = listOf(), vararg defaultModifier: Identifier): ScepterItem(material, settings, *defaultModifier) {
@@ -47,6 +48,10 @@ open class CustomScepterItem(material: ToolMaterial, settings: Settings, flavor:
                 }
             }
         return builder
+    }
+
+    open fun emitParticles(world: World,pos: Vec3d){
+
     }
 
     companion object{

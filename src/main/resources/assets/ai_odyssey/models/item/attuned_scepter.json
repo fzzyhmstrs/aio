@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "ai_odyssey:item/attuned_scepter"
+    "layer0": "ai_odyssey:item/basic_attribute_scepter"
   }
 }
