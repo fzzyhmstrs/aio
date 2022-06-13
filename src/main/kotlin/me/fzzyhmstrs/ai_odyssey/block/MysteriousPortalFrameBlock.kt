@@ -12,7 +12,7 @@ import net.minecraft.world.World
 
 class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoor {
 
-    private val maxSearchOffset = 10
+    private val maxSearchOffset = 12
     
     override fun interactWithConfigurator(
         world: World,
@@ -21,7 +21,36 @@ class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoo
         pos: BlockPos,
         state: BlockState
     ): ActionResult {
-        return ActionResult.SUCCESS
+        val entity = RegisterEntity.getBlockEntity(world, pos, RegisterEntity.MYSTERIOUS_PORTAL_FRAME_BLOCK_ENTITY)
+        if (entity == null) {
+            user?.sendMessage("message.portal_frame.entity_fail",pos.toString(), false)
+            return ActionResult.FAIL
+        }
+        val layerMap = composePortalFrame(world, pos)
+        if (layerMap != null) {
+            val frameList = layersToList(layerMap)
+            for (frame in frameList){
+                if (frame == pos) continue
+                val state = world.getBlockState(frame)
+                if (!state.isOf(RegisterBlock.MYSTERIOUS_PORTAL_FRAME){
+                    user?.sendMessage("message.portal_frame.frame_fail",frame.toString(), false)
+                    return ActionResult.FAIL
+                }
+                val chkEntity = RegisterEntity.getBlockEntity(world, frame, RegisterEntity.MYSTERIOUS_PORTAL_FRAME_BLOCK_ENTITY)
+                if (chkEntity == null) {
+                    user?.sendMessage("message.portal_frame.entity_fail",frame.toString(), false)
+                    return ActionResult.FAIL
+                } else if (chkEntity.isPortalKey){
+                    user?.sendMessage("message.portal_frame.key_set_fail",frame.toString(), false)
+                    return ActionResult.FAIL
+                }
+            }
+            entity.setAsPortalKey(frameList)
+            return ActionResult.SUCCESS
+        } else {
+            user?.sendMessage("message.portal_frame.frame_find_fail", false)
+            return ActionResult.FAIL
+        }
     }
 
     override fun openDoor(world: World, user: LivingEntity, pos: BlockPos, state: BlockState) {
@@ -31,6 +60,8 @@ class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoo
     override fun doorType(): SwitchDoor.DoorType {
         return SwitchDoor.DoorType.PORTAL
     }
+    
+    companion object{
     
     private fun composePortalFrame(world: World, pos: BlockPos): Map<Int, PortalLayer>?{
         val layerMap: MutableMap<Int, PortalLayer> = mutableMapOf()
@@ -72,7 +103,7 @@ class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoo
                     
                 }
                 offset2++
-                if (offset > maxSearchOffset){
+                if (offset2 > maxSearchOffset){
                     return null
                 }
             }
@@ -84,6 +115,9 @@ class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoo
                 break
             }
             offset++
+            if (offset > maxSearchOffset){
+                return null
+            }
         }
         val sortedLayerMap = layerMap.toSortedMap()
         var bl = true
@@ -101,7 +135,13 @@ class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoo
         }
     }
     
-    private fun layersToList
+    private fun layersToList(layerMap: Map<Int, PortalLayer>): List<BLockPos>{
+        val list: MutableList<BlockPos> = mutableListOf()
+        layerMap.forEach{
+            list.addAll(it.value.getFrameList())
+        }
+        return list
+    }
     
     
     private class PortalLayer(val axis: Direction.Axis){
@@ -166,5 +206,6 @@ class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoo
                     pos.Z
                 }
         }
+    }
     }
 }
