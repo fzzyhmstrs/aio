@@ -25,6 +25,7 @@ object AIO_Client: ClientModInitializer{
 
     override fun onInitializeClient() {
         RegisterRenderer.registerAll()
+        RegisterItemModel.registerAll()
 
     }
 
