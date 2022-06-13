@@ -112,8 +112,26 @@ class ImbuedDeepslateSplatterBlock(settings: Settings): Block(settings), Configu
         pos: BlockPos,
         state: BlockState
     ): ActionResult {
-        TODO("Not yet implemented")
+        return if (user != null) {
+            user.openHandledScreen(state.createScreenHandlerFactory(world, pos))
+            ActionResult.CONSUME
+        } else {
+            ActionResult.FAIL
+        }
     }
 
-
+    override fun createScreenHandlerFactory(
+        state: BlockState,
+        world: World,
+        pos: BlockPos
+    ): NamedScreenHandlerFactory? {
+        val text = this.name
+        return SimpleNamedScreenHandlerFactory({ syncId: Int, inventory: PlayerInventory, _: PlayerEntity ->
+            ImbuedSplatterScreenHandler(
+                syncId,
+                inventory,
+                ScreenHandlerContext.create(world, pos)
+            )
+        }, text)
+    }
 }
