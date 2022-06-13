@@ -8,7 +8,6 @@ import me.fzzyhmstrs.ai_odyssey.tool.BloodWitchToolMaterial
 import me.fzzyhmstrs.ai_odyssey.tool.ScepterLvl4ToolMaterial
 import me.fzzyhmstrs.ai_odyssey.tool.ScepterOfBladesToolMaterial
 import me.fzzyhmstrs.amethyst_imbuement.item.CustomFlavorItem
-import me.fzzyhmstrs.amethyst_imbuement.item.ImbuedJewelryItem
 import me.fzzyhmstrs.amethyst_imbuement.item.ScepterItem
 import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterEnchantment
 import me.fzzyhmstrs.amethyst_imbuement.tool.ScepterLvl1ToolMaterial
@@ -49,7 +48,7 @@ object RegisterItem {
         listOf(RegisterEnchantment.REGENERATE),
         listOf(RegisterModifier.GRACEFUL)
     ).also{ regItem["graceful_scepter"] = it}
-    val BLAZING_SCEPTER = CustomScepterItem(ScepterLvl2ToolMaterial,FabricItemSettings().group(ItemGroup.COMBAT).rarity(Rarity.RARE),
+    val BLAZING_SCEPTER = BlazingScepterItem(ScepterLvl2ToolMaterial,FabricItemSettings().group(ItemGroup.COMBAT).rarity(Rarity.RARE),
         listOf(RegisterEnchantment.FLAMEBOLT, RegisterEnchantment.FIREBALL),
         listOf(RegisterModifier.FIRE_ASPECT, RegisterModifierAI.LESSER_THRIFTY)
     ).also{ regItem["blazing_scepter"] = it}
@@ -117,7 +116,7 @@ object RegisterItem {
         listOf(RegisterEnchantmentAIO.UNDEATH),
         listOf(RegisterModifier.NECROTIC,RegisterModifier.SUMMONERS_ASPECT, RegisterModifier.DEMANDING)
     ).also{ regItem["eternity"] = it}
-    val LETHALITY = CustomScepterItem(ScepterLvl3ToolMaterial,FabricItemSettings().group(ItemGroup.COMBAT).rarity(Rarity.EPIC),
+    val LETHALITY = LethalityScepterItem(ScepterLvl3ToolMaterial,FabricItemSettings().group(ItemGroup.COMBAT).rarity(Rarity.EPIC),
         listOf(RegisterEnchantment.FANGS),
         listOf(RegisterModifier.DANGEROUS,RegisterModifier.FURIOUS, RegisterModifierAI.GREATER_THRIFTY)
     ).also{ regItem["lethality"] = it}
@@ -129,7 +128,7 @@ object RegisterItem {
         listOf(),
         listOf(RegisterModifier.HEALERS_PACT,RegisterModifier.HEALERS_GRACE, RegisterModifierAI.GREATER_THRIFTY, RegisterModifier.GRACEFUL)
     ).also{ regItem["redemption"] = it}
-    val SPITE_OF_THE_BLOOD_WITCH = CustomScepterItem(BloodWitchToolMaterial,FabricItemSettings().group(ItemGroup.COMBAT).rarity(Rarity.EPIC),
+    val SPITE_OF_THE_BLOOD_WITCH = SpiteOfTheBloodWitchScepterItem(BloodWitchToolMaterial,FabricItemSettings().group(ItemGroup.COMBAT).rarity(Rarity.EPIC),
         listOf(),
         listOf(RegisterModifier.BLOOD_PACT,RegisterModifier.BLOOD_MAGIC, RegisterModifierAI.GREATER_ATTUNED, RegisterModifier.GREATER_ENDURING, RegisterModifier.FURIOUS)
     ).also{ regItem["spite_of_the_blood_witch"] = it}
