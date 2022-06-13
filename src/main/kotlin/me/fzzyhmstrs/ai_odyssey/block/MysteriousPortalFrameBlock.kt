@@ -32,26 +32,27 @@ class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoo
         return SwitchDoor.DoorType.PORTAL
     }
     
-    private fun composePortalFrame(world: World, pos: BlockPos): Boolean{
+    private fun composePortalFrame(world: World, pos: BlockPos): Map<Int, PortalLayer>?{
         val layerMap: MutableMap<Int, PortalLayer> = mutableMapOf()
         val axis: Direction.Axis = TODO("need IDE so I can build the Axis finder")
         var bl: Boolean = true
         var offset = 0
+        var continuousCount = 0
         while (bl){
             var bl2 = false
-            var offset2 = 1
+            var offset2 = 0
             val elevation = pos.y + offset
+            val newLayer = PortalLayer(axis)
             while (bl2) {
-                val newLayer = if (layerMap.containsKey(elevation)){
-                    layermap[elevation]?:return false
-                } else {
-                    PortalLayer(axis)
-                }
                 val testPos1 = TODO("need IDE")
                 val testPos2 = TODO("need IDE")
                 if (world.getBlockState(testPos1).isOf(RegisterBlock.MYSTERIOUS_PORTAL_FRAME){
                     newLayer.addFramePos(testPos1)
+                    if (newLayer.isContinuous){
+                            continuousCount++
+                        }
                     if (!(newLayer.isContinuous || newLayer.size < 2)) {
+                        layerMap[elevation] = newLayer
                         bl2 = false
                         continue
                     }
@@ -59,18 +60,48 @@ class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoo
                 if (world.getBlockState(testPos2).isOf(RegisterBlock.MYSTERIOUS_PORTAL_FRAME){
                     newLayer.addFramePos(testPos2)
                     if (!(newLayer.isContinuous || newLayer.size < 2)) {
+                        if (newLayer.isContinuous){
+                            continuousCount++
+                        }
+                        layerMap[elevation] = newLayer
                         bl2 = false
                         continue
                     }
                 }
+                if (world.getBlockState(testPos1).isAir() && world.getBlockState(testPos2).isAir()){
+                    
+                }
                 offset2++
                 if (offset > maxSearchOffset){
-                    return false
+                    return null
                 }
+            }
+            if (continuousCount >= 2) {
+                if (offset < 3) {
+                    return null
+                }
+            } else {
+                break
             }
             offset++
         }
+        val sortedLayerMap = layerMap.toSortedMap()
+        var bl = true
+        val first = sortedLayerMap.firstKey
+        val last = sortedLayerMap.lastKey - 1
+        for (i in first..last){
+            val entry = sortedLayerMap[i]
+            val test = sortedLayerMap[i + 1]
+            bl = bl && entry.value.checkValidity(test)
+        }
+        return if(bl && sortedLayerMap[first].isContinuous){
+            layerMap
+        } else {
+            null
+        }
     }
+    
+    private fun layersToList
     
     
     private class PortalLayer(val axis: Direction.Axis){
