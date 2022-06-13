@@ -67,6 +67,16 @@ object RegisterEntity {
             )
         }, RegisterBlock.FACILITY_TELEPORTER).build(null))
 
+    val MYSTERIOUS_PORTAL_FRAME_BLOCK_ENTITY: BlockEntityType<MysteriousPortalFrameBlockEntity> = Registry.register(
+        Registry.BLOCK_ENTITY_TYPE,
+        AIO.MOD_ID + ":mysterious_portal_frame_entity",
+        FabricBlockEntityTypeBuilder.create({ pos: BlockPos, state: BlockState ->
+            MysteriousPortalFrameBlockEntity(
+                pos,
+                state
+            )
+        }, RegisterBlock.MYSTERIOUS_PORTAL_FRAME).build(null))
+
 
     val ENFEEBLING_BOLT_ENTITY: EntityType<EnfeeblingBoltEntity> = Registry.register(
         Registry.ENTITY_TYPE,

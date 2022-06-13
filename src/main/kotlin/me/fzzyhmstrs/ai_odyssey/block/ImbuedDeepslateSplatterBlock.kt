@@ -2,13 +2,18 @@ package me.fzzyhmstrs.ai_odyssey.block
 
 import me.fzzyhmstrs.ai_odyssey.configurator.ConfiguratorInteractive
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEnchantment
+import me.fzzyhmstrs.ai_odyssey.screen.ImbuedSplatterScreenHandler
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.entity.EntityPose
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.entity.player.PlayerInventory
 import net.minecraft.item.ItemPlacementContext
 import net.minecraft.item.ItemStack
+import net.minecraft.screen.NamedScreenHandlerFactory
+import net.minecraft.screen.ScreenHandlerContext
+import net.minecraft.screen.SimpleNamedScreenHandlerFactory
 import net.minecraft.state.StateManager
 import net.minecraft.state.property.BooleanProperty
 import net.minecraft.state.property.EnumProperty
@@ -120,11 +125,12 @@ class ImbuedDeepslateSplatterBlock(settings: Settings): Block(settings), Configu
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun createScreenHandlerFactory(
         state: BlockState,
         world: World,
         pos: BlockPos
-    ): NamedScreenHandlerFactory? {
+    ): NamedScreenHandlerFactory {
         val text = this.name
         return SimpleNamedScreenHandlerFactory({ syncId: Int, inventory: PlayerInventory, _: PlayerEntity ->
             ImbuedSplatterScreenHandler(
