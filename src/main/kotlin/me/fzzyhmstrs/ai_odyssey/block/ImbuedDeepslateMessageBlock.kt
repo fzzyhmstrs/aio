@@ -1,5 +1,6 @@
 package me.fzzyhmstrs.ai_odyssey.block
 
+import me.fzzyhmstrs.ai_odyssey.configurator.ConfiguratorInteractive
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEnchantment
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
@@ -7,6 +8,7 @@ import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.entity.EntityPose
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemPlacementContext
+import net.minecraft.item.ItemStack
 import net.minecraft.state.StateManager
 import net.minecraft.state.property.BooleanProperty
 import net.minecraft.state.property.EnumProperty
@@ -19,7 +21,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
 
-class ImbuedDeepslateMessageBlock(settings: Settings): Block(settings) {
+class ImbuedDeepslateMessageBlock(settings: Settings): Block(settings), ConfiguratorInteractive {
 
     companion object{
         private val MESSAGE = EnumProperty.of("message",Message::class.java)
@@ -102,6 +104,16 @@ class ImbuedDeepslateMessageBlock(settings: Settings): Block(settings) {
         }
         val i = if (player.canHarvest(state)) 30 else 100
         return player.getBlockBreakingSpeed(state) / f / i.toFloat()
+    }
+
+    override fun interactWithConfigurator(
+        world: World,
+        user: PlayerEntity?,
+        stack: ItemStack,
+        pos: BlockPos,
+        state: BlockState
+    ): ActionResult {
+        TODO("Not yet implemented")
     }
 
 

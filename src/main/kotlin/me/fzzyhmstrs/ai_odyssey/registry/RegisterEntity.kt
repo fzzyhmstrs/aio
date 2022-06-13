@@ -5,6 +5,7 @@ import me.fzzyhmstrs.ai_odyssey.entity.*
 import net.fabricmc.fabric.api.`object`.builder.v1.block.entity.FabricBlockEntityTypeBuilder
 import net.fabricmc.fabric.api.`object`.builder.v1.entity.FabricEntityTypeBuilder
 import net.minecraft.block.BlockState
+import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.entity.EntityDimensions
 import net.minecraft.entity.EntityType
@@ -83,4 +84,14 @@ object RegisterEntity {
     fun registerAll(){
 
     }
+
+    fun <T: BlockEntity> getBlockEntity(world: World, pos: BlockPos, entityType: BlockEntityType<T>): T?{
+        val chk = world.getBlockEntity(pos, entityType)
+        return if (chk.isPresent){
+            chk.get()
+        } else {
+            null
+        }
+    }
+
 }

@@ -1,6 +1,7 @@
 package me.fzzyhmstrs.ai_odyssey.entity
 
 import me.fzzyhmstrs.ai_odyssey.block.CrystallineSwitchBlock
+import me.fzzyhmstrs.ai_odyssey.configurator.SwitchLock
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
 import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterEvent
 import me.fzzyhmstrs.amethyst_imbuement.util.Nbt
@@ -26,9 +27,13 @@ class CrystallineSwitchBlockEntity(pos: BlockPos, state: BlockState):BlockEntity
     }
 
     fun addLock(pos: BlockPos): Boolean{
-        locks.add(pos)
-        markDirty()
-        return true
+        return if (!locks.contains(pos)) {
+            locks.add(pos)
+            markDirty()
+            true
+        } else {
+            false
+        }
     }
 
     fun getDoors(): List<BlockPos>{
@@ -36,9 +41,13 @@ class CrystallineSwitchBlockEntity(pos: BlockPos, state: BlockState):BlockEntity
     }
 
     fun addDoor(pos: BlockPos): Boolean{
-        doors.add(pos)
-        markDirty()
-        return true
+        return if (!doors.contains(pos)) {
+            doors.add(pos)
+            markDirty()
+            true
+        } else {
+            false
+        }
     }
 
     fun isUnlocked(): Boolean{
@@ -98,7 +107,7 @@ class CrystallineSwitchBlockEntity(pos: BlockPos, state: BlockState):BlockEntity
                 blockEntity.locks.forEach {
                     val lockEntity = world.getBlockEntity(it)
                     if (lockEntity is SwitchLock){
-                        bl = bl && lockEntity.isUnlocked()
+                        bl = bl && lockEntity.isUnlocked(world, pos)
                     }
                 }
                 blockEntity.unlocked = bl

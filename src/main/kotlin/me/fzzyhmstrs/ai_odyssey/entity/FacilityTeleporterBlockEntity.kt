@@ -4,10 +4,11 @@ import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.entity.LivingEntity
+import net.minecraft.nbt.NbtCompound
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
-class FacilityTeleporterBlockEntity(pos: BlockPos, state: BlockState):BlockEntity(RegisterEntity.FACILITY_TELEPORTER_BLOCK_ENTITY,pos, state), SwitchDoor {
+class FacilityTeleporterBlockEntity(pos: BlockPos, state: BlockState):BlockEntity(RegisterEntity.FACILITY_TELEPORTER_BLOCK_ENTITY,pos, state) {
 
     private var destination: BlockPos? = null
 
@@ -16,10 +17,12 @@ class FacilityTeleporterBlockEntity(pos: BlockPos, state: BlockState):BlockEntit
         markDirty()
     }
 
+    fun getDestination(): BlockPos?{
+        return destination
+    }
 
-
-    override fun openDoor(world: World, user: LivingEntity, pos: BlockPos, state: BlockState) {
-        TODO("Not yet implemented")
+    override fun readNbt(nbt: NbtCompound?) {
+        super.readNbt(nbt)
     }
 
 }

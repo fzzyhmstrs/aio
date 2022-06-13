@@ -1,7 +1,7 @@
 package me.fzzyhmstrs.ai_odyssey.block
 
 import me.fzzyhmstrs.ai_odyssey.entity.CrystallineSwitchBlockEntity
-import me.fzzyhmstrs.ai_odyssey.entity.SwitchDoor
+import me.fzzyhmstrs.ai_odyssey.configurator.SwitchDoor
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterItem
 import me.fzzyhmstrs.ai_odyssey.util.FacilityChimes
@@ -13,8 +13,6 @@ import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemPlacementContext
-import net.minecraft.sound.SoundCategory
-import net.minecraft.sound.SoundEvents
 import net.minecraft.state.StateManager
 import net.minecraft.state.property.EnumProperty
 import net.minecraft.state.property.Properties
@@ -54,7 +52,8 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
         if (stack.isOf(RegisterItem.FACILITY_CONFIGURATOR)){
             return super.onUse(state, world, pos, player, hand, hit)
         }
-        val switchEntity = getBlockEntity(world, pos) ?: return super.onUse(state, world, pos, player, hand, hit)
+        val switchEntity = RegisterEntity.getBlockEntity(world, pos, RegisterEntity.CRYSTALLINE_SWITCH_BLOCK_ENTITY)
+            ?: return super.onUse(state, world, pos, player, hand, hit)
         if (switchEntity.isUnlocked()) {
             val colorState = state.get(SWITCH_COLOR)
             if (colorState.onUse(state, world, pos, player, hand, hit, switchEntity)) {
@@ -101,19 +100,6 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
             }
         }
 
-        fun getBlockEntity(world: World, pos: BlockPos): CrystallineSwitchBlockEntity?{
-            val chk = world.getBlockEntity(pos)
-            return if (chk != null){
-                if (chk is CrystallineSwitchBlockEntity){
-                    chk
-                } else {
-                    null
-                }
-            } else {
-                null
-            }
-        }
-
         fun getDoorEntities(world: World,list: List<BlockPos>): List<SwitchDoor>{
             val doorList: MutableList<SwitchDoor> = mutableListOf()
             list.forEach {
@@ -143,7 +129,7 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
                     val doors = getDoorEntities(world, entity.getDoors())
                     if (doors.isEmpty()) return false
                     doors.forEach {
-                        if (it.getType() == SwitchDoor.DoorType.DOOR){
+                        if (it.doorType() == SwitchDoor.DoorType.DOOR){
                             it.openDoor(world, player, pos, state)
                         }
                     }
@@ -178,7 +164,7 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
                     val doors = getDoorEntities(world, entity.getDoors())
                     if (doors.isEmpty()) return false
                     doors.forEach {
-                        if (it.getType() == SwitchDoor.DoorType.PORTAL){
+                        if (it.doorType() == SwitchDoor.DoorType.PORTAL){
                             it.openDoor(world, player, pos, state)
                         }
                     }
@@ -199,7 +185,7 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
                     val doors = getDoorEntities(world, entity.getDoors())
                     if (doors.isEmpty()) return false
                     doors.forEach {
-                        if (it.getType() == SwitchDoor.DoorType.TELEPORTER){
+                        if (it.doorType() == SwitchDoor.DoorType.TELEPORTER){
                             it.openDoor(world, player, pos, state)
                         }
                     }

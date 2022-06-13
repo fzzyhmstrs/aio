@@ -1,31 +1,23 @@
 package me.fzzyhmstrs.ai_odyssey.block
 
 import me.fzzyhmstrs.ai_odyssey.entity.CrystallineItemLockBlockEntity
-import me.fzzyhmstrs.ai_odyssey.registry.RegisterItem
+import me.fzzyhmstrs.ai_odyssey.configurator.SwitchLock
+import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
 import me.fzzyhmstrs.ai_odyssey.util.FacilityChimes
 import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemPlacementContext
 import net.minecraft.item.ItemStack
-import net.minecraft.sound.SoundCategory
-import net.minecraft.sound.SoundEvents
 import net.minecraft.state.property.BooleanProperty
-import net.minecraft.state.property.DirectionProperty
-import net.minecraft.text.LiteralText
 import net.minecraft.text.TranslatableText
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
-import net.minecraft.util.math.Direction
-import net.minecraft.util.shape.VoxelShape
-import net.minecraft.util.shape.VoxelShapes
-import net.minecraft.world.BlockView
 import net.minecraft.world.World
-import java.util.*
 
-class CrystallineItemLockBlock(settings: Settings): AbstractLockBlock(settings) {
+class CrystallineItemLockBlock(settings: Settings): AbstractLockBlock(settings), SwitchLock {
 
     override fun createBlockEntity(pos: BlockPos, state: BlockState): BlockEntity {
         return CrystallineItemLockBlockEntity(pos, state)
@@ -45,22 +37,6 @@ class CrystallineItemLockBlock(settings: Settings): AbstractLockBlock(settings) 
         if (chkEntity != null){
             if (chkEntity is CrystallineItemLockBlockEntity){
                 val stack = player.getStackInHand(hand)
-                if (stack.isOf(RegisterItem.FACILITY_CONFIGURATOR)){
-                    val hand2 = when (hand){
-                        Hand.MAIN_HAND->Hand.OFF_HAND
-                        Hand.OFF_HAND->Hand.MAIN_HAND
-                    }
-                    val otherHandStack = player.getStackInHand(hand2)
-                    return if (otherHandStack != ItemStack.EMPTY) {
-                        val otherHandItem = otherHandStack.item
-                        chkEntity.setKeyItem(otherHandItem)
-                        player.sendMessage(TranslatableText("message.configurator.item_lock").append(otherHandItem.name), false)
-                        FacilityChimes.CONFIG_SUCCESS.playSound(world, pos)
-                        ActionResult.SUCCESS
-                    } else {
-                        super.onUse(state, world, pos, player, hand, hit)
-                    }
-                }
                 val item = stack.item
                 if (chkEntity.trySetHeldItem(item)){
                     FacilityChimes.HIGH_SUCCESS.playSound(world, pos)
@@ -75,8 +51,37 @@ class CrystallineItemLockBlock(settings: Settings): AbstractLockBlock(settings) 
     override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {
         return super.getPlacementState(ctx)?.with(HAS_ITEM,false)
     }
+
+    override fun interactWithConfigurator(
+        world: World,
+        user: PlayerEntity?,
+        stack: ItemStack,
+        pos: BlockPos,
+        state: BlockState
+    ): ActionResult {
+        val entity = RegisterEntity.getBlockEntity(world, pos, RegisterEntity.CRYSTALLINE_ITEM_LOCK_BLOCK_ENTITY)
+        return if (entity == null || user == null){
+            ActionResult.FAIL
+        } else {
+            val offHandStack = user.offHandStack
+            if (!offHandStack.isEmpty) {
+                entity.setKeyItem(offHandStack.item)
+                user.sendMessage(TranslatableText("message.item_lock.item_set", offHandStack.item.name), false)
+                FacilityChimes.CONFIG_SUCCESS.playSound(world, pos)
+                ActionResult.SUCCESS
+            } else {
+                user.sendMessage(TranslatableText("message.item_lock.item_fail"), false)
+                ActionResult.FAIL
+            }
+        }
+    }
+
+    override fun isUnlocked(world: World, pos: BlockPos): Boolean {
+        val entity = RegisterEntity.getBlockEntity(world, pos, RegisterEntity.CRYSTALLINE_ITEM_LOCK_BLOCK_ENTITY)
+        return entity?.isUnlocked() ?: false
+    }
     
     companion object {
-        val HAS_ITEM = BooleanProperty.of("has_item")
+        val HAS_ITEM: BooleanProperty = BooleanProperty.of("has_item")
     }
 }

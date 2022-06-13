@@ -119,8 +119,16 @@
 	"scepter.modifiers.ai_odyssey:healers_grace": "Healers Grace",
 	"scepter.modifiers.ai_odyssey:traveler": "Traveler",
 	"message.configurator.num_lock": "Number key set as ",
-	"message.configurator.item_lock": "Item key set as ",
-	"message.configurator.configurator_pairing": "Parent switch set to switch at position ",
-	"message.configurator.configurator_pairing_primed": "Parent switch primed. Use configurator again to pair.",
-	"message.configurator.configurator_pairing_primed_2": "Pairing will unpair previous Parent!"
+	"message.configurator.entity_fail": "Couldn't find block entity at %1$s ...",
+	"message.configurator.door_fail": "Parent switch at %1$s already has a door at %2$s ...",
+	"message.configurator.lock_fail": "Parent switch at %1$s already has a lock at %2$s ...",
+	"message.configurator.parent_fail": "Parent stored with ItemStack id %1$s is not the proper type...",
+	"message.configurator.configurator_pairing": "Parent %1$s set to block at position ",
+	"message.configurator.configurator_pairing_primed": "Parent %1$s primed. Use configurator again to pair.",
+	"message.configurator.configurator_pairing_primed_2": "Pairing will unpair previous Parent!",
+	"message.teleporter.fail_entity": "Couldn't find teleporter entity...",
+	"message.teleporter.fail_destination": "Teleporter destination not set...",
+	"message.teleporter.linked": "Teleporter at %1$s linked to teleporter at %2$s",
+	"message.item_lock.item_set": "Key item set to %1$s",
+	"message.item_lock.item_fail": "Need a key item in your off-hand."
 }
