@@ -113,9 +113,11 @@ class ImbuedDeepslateMessageBlock(settings: Settings): Block(settings), Configur
         pos: BlockPos,
         state: BlockState
     ): ActionResult {
-        if (user != null) {
+        return if (user != null) {
             user.openHandledScreen(state.createScreenHandlerFactory(world, pos))
-            return ActionResult.CONSUME
+            ActionResult.CONSUME
+        } else {
+            ActionResult.FAIL        
         }
     }
 
