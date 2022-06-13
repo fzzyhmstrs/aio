@@ -113,8 +113,25 @@ class ImbuedDeepslateMessageBlock(settings: Settings): Block(settings), Configur
         pos: BlockPos,
         state: BlockState
     ): ActionResult {
-        TODO("Not yet implemented")
+        if (user != null) {
+            user.openHandledScreen(state.createScreenHandlerFactory(world, pos))
+            return ActionResult.CONSUME
+        }
     }
 
-
+    override fun createScreenHandlerFactory(
+        state: BlockState,
+        world: World,
+        pos: BlockPos
+    ): NamedScreenHandlerFactory? {
+        val text = this.name
+        return SimpleNamedScreenHandlerFactory({ syncId: Int, inventory: PlayerInventory, _: PlayerEntity ->
+            ImbuedMessageScreenHandler(
+                syncId,
+                inventory,
+                ScreenHandlerContext.create(world, pos)
+            )
+        }, text)
+    }
+    
 }
