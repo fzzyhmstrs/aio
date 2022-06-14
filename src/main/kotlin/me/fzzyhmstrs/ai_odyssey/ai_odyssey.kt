@@ -15,6 +15,7 @@ object AIO: ModInitializer {
         RegisterBlock.registerAll()
         RegisterEnchantment.registerAll()
         RegisterEntity.registerAll()
+        RegisterHandler.registerAll()
         RegisterStatus.registerAll()
         RegisterModifier.registerAll()
         RegisterParticle.registerParticleTypes()
@@ -25,6 +26,7 @@ object AIO_Client: ClientModInitializer{
 
     override fun onInitializeClient() {
         RegisterRenderer.registerAll()
+        RegisterScreen.registerAll()
         RegisterItemModel.registerAll()
 
     }

@@ -22,4 +22,8 @@ class ImbuedSplatterScreenHandler(
     override fun canUse(player: PlayerEntity?): Boolean {
         return canUse(this.context, player, RegisterBlock.IMBUED_DEEPSLATE_SPLATTER)
     }
+
+    override fun onButtonClick(player: PlayerEntity?, id: Int): Boolean {
+        return super.onButtonClick(player, id)
+    }
 }

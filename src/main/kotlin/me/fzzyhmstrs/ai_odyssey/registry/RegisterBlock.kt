@@ -49,7 +49,7 @@ object RegisterBlock {
     val FACILITY_TELEPORTER = FacilityTeleporterBlock(FabricBlockSettings.of(Material.METAL, MapColor.IRON_GRAY).requiresTool().strength(99.0f, 1200.0f))
     val HARD_LIGHT_BARRIER = HardLightBarrierBlock(FabricBlockSettings.of(Material.GLASS).strength(-1.0F,3600000.0f).dropsNothing())
     val HARD_LIGHT_BARRIER_FRAME = Block(FabricBlockSettings.of(Material.STONE).strength(-1.0F,3600000.0f).dropsNothing())
-    val MYSTERIOUS_PORTAL_FRAME = Block(FabricBlockSettings.of(Material.STONE).strength(-1.0F,3600000.0f).dropsNothing())
+    val MYSTERIOUS_PORTAL_FRAME = MysteriousPortalFrameBlock(FabricBlockSettings.of(Material.STONE).strength(-1.0F,3600000.0f).dropsNothing())
     val PETROGLYPH = Block(FabricBlockSettings.of(Material.STONE, MapColor.OFF_WHITE).requiresTool().strength(50.0f, 1200.0f))
     val PETROGLYPH_CRACKED = PetroglyphCrackedBlock(FabricBlockSettings.of(Material.STONE, MapColor.OFF_WHITE).requiresTool().strength(50.0f, 1200.0f))
     val PETROGLYPH_CRUMBLED = PetroglyphCrackedBlock(FabricBlockSettings.of(Material.STONE, MapColor.OFF_WHITE).requiresTool().strength(50.0f, 1200.0f))
