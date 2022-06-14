@@ -3,6 +3,7 @@ package me.fzzyhmstrs.ai_odyssey.block
 import me.fzzyhmstrs.ai_odyssey.configurator.SwitchDoor
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterBlock
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
+import me.fzzyhmstrs.ai_odyssey.util.FacilityChimes
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.entity.LivingEntity
@@ -16,6 +17,8 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 import net.minecraft.world.World
 import kotlin.math.abs
+import kotlin.math.max
+import kotlin.math.min
 
 class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoor {
     
@@ -29,6 +32,11 @@ class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoo
         val entity = RegisterEntity.getBlockEntity(world, pos, RegisterEntity.MYSTERIOUS_PORTAL_FRAME_BLOCK_ENTITY)
         if (entity == null) {
             user?.sendMessage(TranslatableText("message.configurator.entity_fail",pos.toString()), false)
+            return ActionResult.FAIL
+        }
+        if (entity.isPortalKey()){
+            user?.sendMessage(TranslatableText("message.portal_frame.already_key"), false)
+            FacilityChimes.FAILURE.playSound(world, pos)
             return ActionResult.FAIL
         }
         val layerMapResult = composePortalFrame(world, pos)
@@ -48,13 +56,22 @@ class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoo
                     return ActionResult.FAIL
                 } else if (chkEntity.isPortalKey()){
                     user?.sendMessage(TranslatableText("message.portal_frame.key_set_fail",frame.toString()), false)
+                    FacilityChimes.FAILURE.playSound(world, pos)
                     return ActionResult.FAIL
                 }
             }
-            entity.setAsPortalKey(frameList)
+            val portalList = composePortal(layerMap)
+            if (portalList.isEmpty()){
+                println("the portal is somehow empty...")
+                return ActionResult.FAIL
+            }
+            entity.setAsPortalKey(frameList, portalList)
+            user?.sendMessage(TranslatableText("message.portal_frame.key_set",pos.toString()), false)
+            FacilityChimes.CONFIG_SUCCESS.playSound(world, pos)
             return ActionResult.SUCCESS
         } else {
             user?.sendMessage(layerMapResult.message, false)
+            FacilityChimes.FAILURE.playSound(world, pos)
             return ActionResult.FAIL
         }
     }
@@ -73,7 +90,7 @@ class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoo
     
         private fun composePortalFrame(world: World, pos: BlockPos): FrameResult{
             val layerMap: MutableMap<Int, PortalLayer> = mutableMapOf()
-            val axis: Direction.Axis = Direction.Axis.X
+            val axis: Direction.Axis = checkAroundKey(world, pos)?:return FrameResult(TranslatableText("message.portal_frame.no_axis", pos.toString()))
             var bl = true
             var offset = 0
             var continuousCount = 0
@@ -147,12 +164,74 @@ class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoo
             }
         }
 
+        private fun composePortal(layerMap: Map<Int, PortalLayer>): List<BlockPos>{
+            val list: MutableList<BlockPos> = mutableListOf()
+            for (layer in layerMap.values){
+                if (layer.isContinuous()){
+                    continue
+                }
+                val layerList = layer.getFrameList()
+                val pos1 = layerList[0]
+                val pos2 = layerList[layerList.size - 1]
+                val coordinate1 = valByAxis(pos1, layer.axis)
+                val coordinate2 = valByAxis(pos2, layer.axis)
+                val minCoordinate = min(coordinate1, coordinate2) + 1
+                val maxCoordinate = max(coordinate1, coordinate2) - 1
+                for (i in minCoordinate..maxCoordinate){
+                    list.add(posByAxis(pos1,i, layer.axis))
+                }
+            }
+            return list
+        }
+
         private fun layersToList(layerMap: Map<Int, PortalLayer>): List<BlockPos>{
             val list: MutableList<BlockPos> = mutableListOf()
             layerMap.forEach{
                 list.addAll(it.value.getFrameList())
             }
             return list
+        }
+
+        private fun valByAxis(pos: BlockPos, axis: Direction.Axis): Int{
+            return when(axis){
+                Direction.Axis.X-> {
+                    pos.x
+                }
+                Direction.Axis.Y-> {
+                    pos.y
+                }
+                Direction.Axis.Z-> {
+                    pos.z
+                }
+            }
+        }
+        private fun posByAxis(pos: BlockPos, newValue: Int, axis: Direction.Axis): BlockPos{
+            return if (axis == Direction.Axis.X){
+                BlockPos(newValue, pos.y, pos.z)
+            } else {
+                BlockPos(pos.x, pos.y, newValue)
+            }
+        }
+        private fun rotateAxisHorizontally(axis: Direction.Axis): Direction.Axis{
+            return if (axis == Direction.Axis.X){
+                Direction.Axis.Z
+            } else {
+                Direction.Axis.X
+            }
+        }
+        private fun checkAroundKey(world: World, pos: BlockPos): Direction.Axis?{
+            for (i in 0..1){
+                if (world.getBlockState(pos.north().add(0,i,0)).isOf(RegisterBlock.MYSTERIOUS_PORTAL_FRAME)){
+                    return Direction.Axis.Z
+                } else if (world.getBlockState(pos.south().add(0,i,0)).isOf(RegisterBlock.MYSTERIOUS_PORTAL_FRAME)){
+                    return Direction.Axis.Z
+                } else if (world.getBlockState(pos.east().add(0,i,0)).isOf(RegisterBlock.MYSTERIOUS_PORTAL_FRAME)){
+                    return Direction.Axis.X
+                } else if (world.getBlockState(pos.west().add(0,i,0)).isOf(RegisterBlock.MYSTERIOUS_PORTAL_FRAME)){
+                    return Direction.Axis.X
+                }
+            }
+            return null
         }
 
 
@@ -206,20 +285,6 @@ class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoo
                 val otherFirst = valByAxis(otherFrameList[0], axis)
                 val otherLast = valByAxis(otherFrameList[otherFrameList.size - 1], axis)
                 return (abs(otherFirst - first) <= 1 && abs(otherLast - last) <= 1)
-            }
-
-            private fun valByAxis(pos: BlockPos, axis: Direction.Axis): Int{
-                return when(axis){
-                    Direction.Axis.X-> {
-                        pos.x
-                    }
-                    Direction.Axis.Y-> {
-                        pos.y
-                    }
-                    Direction.Axis.Z-> {
-                        pos.z
-                    }
-                }
             }
         }
 
