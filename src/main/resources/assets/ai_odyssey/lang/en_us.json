@@ -130,5 +130,17 @@
 	"message.teleporter.fail_destination": "Teleporter destination not set...",
 	"message.teleporter.linked": "Teleporter at %1$s linked to teleporter at %2$s",
 	"message.item_lock.item_set": "Key item set to %1$s",
-	"message.item_lock.item_fail": "Need a key item in your off-hand."
+	"message.item_lock.item_fail": "Need a key item in your off-hand.",
+	"message.portal_frame.frame_fail": "Couldn't find portal frame expected at %1$s ...",
+	"message.portal_frame.key_set": "Portal frame at %1$s set as the key frame block.",
+	"message.portal_frame.key_set_fail": "Portal frame at %1$s is already a portal key frame.",
+	"message.portal_frame.already_key": "This frame block is already the key frame block.",
+	"message.portal_frame.frame_find_fail": "Malformed portal shape, couldn't parse portal frame.",
+	"message.portal_frame.too_wide": "Portal too wide at Y %1$s (max %2$s).",
+	"message.portal_frame.too_short": "Portal too short (min %1$s blocks high, currently %2$s).",
+	"message.portal_frame.too_tall": "Portal too tall or not complete at the top.",
+	"message.portal_frame.layer_fail": "Frame validation failed between layers %1$s and %2$s.",
+	"message.portal_frame.base_fail": "Base of portal needs to be continuous!",
+	"message.portal_frame.no_axis": "Couldn't determine the axis the portal is on from selected position %1$s"
+	
 }
