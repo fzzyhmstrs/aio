@@ -31,39 +31,54 @@ class ImbuedDeepslateMessageBlock(settings: Settings): Block(settings), Configur
     companion object{
         private val MESSAGE = EnumProperty.of("message",Message::class.java)
         private val MESSAGE_VISIBLE = BooleanProperty.of("message_visible")
+        val splatterMap: Map<Int, Message> by lazy { messagesToIndexes() }
 
-        enum class Message: StringIdentifiable{
+        enum class Message(val x: Int, val y: Int): StringIdentifiable{
 
-            GET_OUT_1,
-            GET_OUT_2,
-            GET_OUT_3,
-            RUN_1,
-            RUN_2,
-            WATCHES_1,
-            WATCHES_2,
-            WATCHES_3,
-            CRYSTALS_1,
-            CRYSTALS_2,
-            CRYSTALS_3,
-            CRYSTALS_4,
-            DEVOURS_1,
-            DEVOURS_2,
-            DEVOURS_3,
-            HUNT_YOU_1,
-            HUNT_YOU_2,
-            HUNT_YOU_3,
-            HUNT_YOU_4,
-            HUNT_YOU_5,
-            HUNT_YOU_6,
-            LEAVE_1,
-            LEAVE_2,
-            ESCAPE_1,
-            ESCAPE_2,
-            NONE;
+            GET_OUT_1(1,1),
+            GET_OUT_2(2,1),
+            GET_OUT_3(3,1),
+            RUN_1(4,1),
+            RUN_2(5,1),
+            WATCHES_1(1,2),
+            WATCHES_2(2,2),
+            WATCHES_3(3,2),
+            CRYSTALS_1(1,4),
+            CRYSTALS_2(2,4),
+            CRYSTALS_3(3,4),
+            CRYSTALS_4(4,4),
+            DEVOURS_1(1,3),
+            DEVOURS_2(2,3),
+            DEVOURS_3(3,3),
+            HUNT_YOU_1(5,4),
+            HUNT_YOU_2(1,5),
+            HUNT_YOU_3(2,5),
+            HUNT_YOU_4(3,5),
+            HUNT_YOU_5(4,5),
+            HUNT_YOU_6(5,5),
+            LEAVE_1(4,2),
+            LEAVE_2(5,2),
+            ESCAPE_1(4,3),
+            ESCAPE_2(5,3),
+            NONE(0,0);
 
             override fun asString(): String {
                 return this.name
             }
+
+            fun coordinatesToIndex(): Int{
+                return this.x + 10 * this.y
+            }
+
+        }
+
+        private fun messagesToIndexes(): Map<Int, Message>{
+            val map: MutableMap<Int, Message> = mutableMapOf()
+            Message.values().forEach {
+                val index = it.coordinatesToIndex()
+                map[index] = it
+            }
+            return map
         }
     }
 

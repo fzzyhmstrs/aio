@@ -28,46 +28,62 @@ import net.minecraft.world.World
 class ImbuedDeepslateSplatterBlock(settings: Settings): Block(settings), ConfiguratorInteractive {
 
     companion object{
-        private val SPLATTER = EnumProperty.of("splatter",Message::class.java)
+        val SPLATTER = EnumProperty.of("splatter",Splatter::class.java)
         private val SPLATTER_VISIBLE = BooleanProperty.of("splatter_visible")
+        val splatterMap: Map<Int,Splatter> by lazy { splattersToIndexes() }
 
-        enum class Message: StringIdentifiable{
-
-            EYE_1,
-            EYE_2,
-            TALLY_1,
-            TALLY_2,
-            TALLY_3,
-            HAND_PRINT_1,
-            HAND_PRINT_2,
-            HAND_SMEAR_1,
-            HAND_SMEAR_2,
-            HAND_SMEAR_3,
-            HAND_SMEAR_4,
-            BLOOD_1,
-            BLOOD_2,
-            BLOOD_3,
-            BLOOD_4,
-            BLOOD_5,
-            PICTOGRAPH_1,
-            PICTOGRAPH_2,
-            PICTOGRAPH_3,
-            PICTOGRAPH_4,
-            ARROW_1,
-            ARROW_2,
-            ARROW_3,
-            ARROW_4,
-            X_1,
-            NONE;
+        enum class Splatter(val x: Int, val y: Int): StringIdentifiable{
+            EYE_1(0,0),
+            EYE_2(1,0),
+            TALLY_1(2,0),
+            TALLY_2(3,0),
+            TALLY_3(4,0),
+            HAND_PRINT_1(0,1),
+            HAND_PRINT_2(0,2),
+            HAND_SMEAR_1(1,1),
+            HAND_SMEAR_2(1,2),
+            HAND_SMEAR_3(2,1),
+            HAND_SMEAR_4(2,2),
+            BLOOD_1(0,3),
+            BLOOD_2(1,3),
+            BLOOD_3(2,3),
+            BLOOD_4(0,4),
+            BLOOD_5(1,4),
+            PICTOGRAPH_1(3,1),
+            PICTOGRAPH_2(4,1),
+            PICTOGRAPH_3(3,2),
+            PICTOGRAPH_4(4,2),
+            ARROW_1(3,3),
+            ARROW_2(4,3),
+            ARROW_3(3,4),
+            ARROW_4(4,4),
+            X_1(2,4),
+            NONE(-1,-1);
 
             override fun asString(): String {
                 return this.name
             }
+
+            fun coordinatesToIndex(): Int{
+                return this.x + 10 * this.y
+            }
+        }
+
+        private fun splattersToIndexes(): Map<Int,Splatter>{
+            val map: MutableMap<Int, Splatter> = mutableMapOf()
+            Splatter.values().forEach {
+                val index = it.coordinatesToIndex()
+                map[index] = it
+            }
+            return map
         }
     }
 
+
+
+
     override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {
-        return super.getPlacementState(ctx)?.with(SPLATTER,Message.NONE)?.with(SPLATTER_VISIBLE,false)
+        return super.getPlacementState(ctx)?.with(SPLATTER,Splatter.NONE)?.with(SPLATTER_VISIBLE,false)
     }
 
     override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
