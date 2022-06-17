@@ -27,6 +27,10 @@ abstract class AbstractLockBlock(settings: Settings): BlockWithEntity(settings) 
         return super.getPlacementState(ctx)?.with(FACING,ctx.playerFacing.opposite)
     }
 
+    override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
+        builder.add(FACING)
+    }
+
     @Deprecated("Deprecated in Java")
     override fun getCollisionShape(
         state: BlockState,

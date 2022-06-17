@@ -52,7 +52,6 @@ object RegisterBlock {
     val MYSTERIOUS_PORTAL_FRAME = MysteriousPortalFrameBlock(FabricBlockSettings.of(Material.STONE).strength(-1.0F,3600000.0f).dropsNothing())
     val PETROGLYPH = Block(FabricBlockSettings.of(Material.STONE, MapColor.OFF_WHITE).requiresTool().strength(50.0f, 1200.0f))
     val PETROGLYPH_CRACKED = PetroglyphCrackedBlock(FabricBlockSettings.of(Material.STONE, MapColor.OFF_WHITE).requiresTool().strength(50.0f, 1200.0f))
-    val PETROGLYPH_CRUMBLED = PetroglyphCrackedBlock(FabricBlockSettings.of(Material.STONE, MapColor.OFF_WHITE).requiresTool().strength(50.0f, 1200.0f))
     val PETROGLYPH_RECIPE = PetroglyphRecipeBlock(FabricBlockSettings.of(Material.STONE, MapColor.OFF_WHITE).requiresTool().strength(50.0f, 1200.0f))
 
     //imbued deepslate
@@ -85,7 +84,9 @@ object RegisterBlock {
         registerBlockWithOtherItem("bull_kelp_plant", BULL_KELP_PLANT)
         registerBlockWithOtherItem("bull_kelp_streamer", BULL_KELP_STREAMER)
         registerBlock("calcite_sediment", CALCITE_SEDIMENT, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("crystalline_item_lock", CRYSTALLINE_ITEM_LOCK, ItemGroup.MISC)
         registerBlock("crystalline_lantern", CRYSTALLINE_LANTERN, ItemGroup.DECORATIONS)
+        registerBlock("crystalline_num_lock", CRYSTALLINE_NUM_LOCK, ItemGroup.MISC)
         registerBlock("crystalline_switch", CRYSTALLINE_SWITCH, ItemGroup.MISC)
         registerBlock("facility_teleporter", FACILITY_TELEPORTER, ItemGroup.MISC)
         registerBlock("hard_light_barrier", HARD_LIGHT_BARRIER, ItemGroup.BUILDING_BLOCKS)
@@ -115,7 +116,6 @@ object RegisterBlock {
         registerBlock("mysterious_portal_frame", MYSTERIOUS_PORTAL_FRAME, ItemGroup.BUILDING_BLOCKS)
         registerBlock("petroglyph", PETROGLYPH, ItemGroup.DECORATIONS)
         registerBlock("petroglyph_cracked", PETROGLYPH_CRACKED, ItemGroup.DECORATIONS)
-        registerBlock("petroglyph_crumbled", PETROGLYPH_CRUMBLED, ItemGroup.DECORATIONS)
         registerBlock("petroglyph_recipe", PETROGLYPH_RECIPE, ItemGroup.DECORATIONS)
         registerBlock("quartzite_sand", QUARTZITE_SAND, ItemGroup.BUILDING_BLOCKS)
         registerBlockWithOtherItem("sea_apple_bush", SEA_APPLE_BUSH)

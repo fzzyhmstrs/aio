@@ -10,6 +10,7 @@ import net.minecraft.entity.ai.pathing.NavigationType
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemPlacementContext
 import net.minecraft.item.ItemStack
+import net.minecraft.state.StateManager
 import net.minecraft.state.property.Properties
 import net.minecraft.util.ActionResult
 import net.minecraft.util.math.BlockPos
@@ -31,6 +32,10 @@ class HardLightBarrierBlock(settings: Settings): Block(settings), SwitchDoor {
 
     override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {
         return super.getPlacementState(ctx)?.with(LOCKED,true)
+    }
+
+    override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
+        builder.add(LOCKED)
     }
 
     override fun isTranslucent(state: BlockState?, world: BlockView?, pos: BlockPos?): Boolean {

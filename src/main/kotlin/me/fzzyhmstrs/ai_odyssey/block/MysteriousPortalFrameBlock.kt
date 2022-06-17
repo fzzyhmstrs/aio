@@ -8,7 +8,10 @@ import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.item.ItemPlacementContext
 import net.minecraft.item.ItemStack
+import net.minecraft.state.StateManager
+import net.minecraft.state.property.Properties
 import net.minecraft.text.LiteralText
 import net.minecraft.text.Text
 import net.minecraft.text.TranslatableText
@@ -21,7 +24,15 @@ import kotlin.math.max
 import kotlin.math.min
 
 class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoor {
-    
+
+    override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {
+        return super.getPlacementState(ctx)?.with(LIT,false)
+    }
+
+    override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
+        builder.add(LIT)
+    }
+
     override fun interactWithConfigurator(
         world: World,
         user: PlayerEntity?,
@@ -86,6 +97,7 @@ class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoo
     
     companion object{
 
+        private val LIT = Properties.LIT
         private val maxSearchOffset = 12
     
         private fun composePortalFrame(world: World, pos: BlockPos): FrameResult{
@@ -210,13 +222,6 @@ class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoo
                 BlockPos(newValue, pos.y, pos.z)
             } else {
                 BlockPos(pos.x, pos.y, newValue)
-            }
-        }
-        private fun rotateAxisHorizontally(axis: Direction.Axis): Direction.Axis{
-            return if (axis == Direction.Axis.X){
-                Direction.Axis.Z
-            } else {
-                Direction.Axis.X
             }
         }
         private fun checkAroundKey(world: World, pos: BlockPos): Direction.Axis?{

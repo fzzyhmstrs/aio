@@ -23,6 +23,10 @@ import net.minecraft.world.World
 
 class CrystallineNumLockBlock(settings: Settings): AbstractLockBlock(settings), SwitchLock {
 
+    companion object{
+        val LOCK_NUM: IntProperty = IntProperty.of("lock_num",0,9)
+    }
+
     override fun createBlockEntity(pos: BlockPos, state: BlockState): BlockEntity {
         return CrystallineNumLockBlockEntity(pos, state)
     }
@@ -92,10 +96,6 @@ class CrystallineNumLockBlock(settings: Settings): AbstractLockBlock(settings), 
     override fun isUnlocked(world: World, pos: BlockPos): Boolean {
         val entity = RegisterEntity.getBlockEntity(world, pos, RegisterEntity.CRYSTALLINE_NUM_LOCK_BLOCK_ENTITY)
         return entity?.isUnlocked() ?: false
-    }
-
-    companion object{
-        val LOCK_NUM: IntProperty = IntProperty.of("lock_num",0,9)
     }
 
 }

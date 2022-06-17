@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "ai_odyssey:block/petroglyph_cracked_front",
+    "north": "ai_odyssey:block/petroglyph_cracked_front",
+    "south": "ai_odyssey:block/petroglyph_cracked_back",
+    "east": "ai_odyssey:block/petroglyph_cracked_right",
+    "west": "ai_odyssey:block/petroglyph_cracked_left",
+    "up": "ai_odyssey:block/petroglyph",
+    "down": "ai_odyssey:block/petroglyph"
+  }
+}

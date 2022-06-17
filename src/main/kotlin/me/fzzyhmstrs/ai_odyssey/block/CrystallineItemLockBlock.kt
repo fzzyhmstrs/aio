@@ -9,6 +9,7 @@ import net.minecraft.block.entity.BlockEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemPlacementContext
 import net.minecraft.item.ItemStack
+import net.minecraft.state.StateManager
 import net.minecraft.state.property.BooleanProperty
 import net.minecraft.text.TranslatableText
 import net.minecraft.util.ActionResult
@@ -18,6 +19,10 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
 class CrystallineItemLockBlock(settings: Settings): AbstractLockBlock(settings), SwitchLock {
+
+    companion object {
+        val HAS_ITEM: BooleanProperty = BooleanProperty.of("has_item")
+    }
 
     override fun createBlockEntity(pos: BlockPos, state: BlockState): BlockEntity {
         return CrystallineItemLockBlockEntity(pos, state)
@@ -52,6 +57,10 @@ class CrystallineItemLockBlock(settings: Settings): AbstractLockBlock(settings),
         return super.getPlacementState(ctx)?.with(HAS_ITEM,false)
     }
 
+    override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
+        builder.add(HAS_ITEM)
+    }
+
     override fun interactWithConfigurator(
         world: World,
         user: PlayerEntity?,
@@ -79,9 +88,5 @@ class CrystallineItemLockBlock(settings: Settings): AbstractLockBlock(settings),
     override fun isUnlocked(world: World, pos: BlockPos): Boolean {
         val entity = RegisterEntity.getBlockEntity(world, pos, RegisterEntity.CRYSTALLINE_ITEM_LOCK_BLOCK_ENTITY)
         return entity?.isUnlocked() ?: false
-    }
-    
-    companion object {
-        val HAS_ITEM: BooleanProperty = BooleanProperty.of("has_item")
     }
 }

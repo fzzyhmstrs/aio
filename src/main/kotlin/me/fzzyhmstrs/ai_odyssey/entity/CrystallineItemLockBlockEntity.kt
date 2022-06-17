@@ -19,6 +19,7 @@ class CrystallineItemLockBlockEntity(pos: BlockPos, state: BlockState): BlockEnt
 
     private var keyItem: Item? = null
     private var heldItem: Item? = null
+    var heldItemStack: ItemStack = ItemStack.EMPTY
 
     fun setKeyItem(item: Item){
         keyItem = item
@@ -28,6 +29,7 @@ class CrystallineItemLockBlockEntity(pos: BlockPos, state: BlockState): BlockEnt
     fun trySetHeldItem(item: Item): Boolean{
         return if (keyItem != null && item == keyItem){
             heldItem = item
+            heldItemStack = ItemStack(item)
             markDirty()
             true
         } else {
@@ -56,6 +58,7 @@ class CrystallineItemLockBlockEntity(pos: BlockPos, state: BlockState): BlockEnt
         }
         if (nbt.contains(NbtKeys.HELD_ITEM.str())){
             heldItem = Registry.ITEM.get(Nbt.readIntNbt(NbtKeys.HELD_ITEM.str(),nbt))
+            heldItemStack = ItemStack(heldItem)
         }
     }
 }
