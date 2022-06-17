@@ -1,10 +1,13 @@
 package me.fzzyhmstrs.ai_odyssey.registry
 
+import me.fzzyhmstrs.ai_odyssey.model.CrystallineItemLockBlockEntityRenderer
 import me.fzzyhmstrs.amethyst_imbuement.model.MissileEntityRenderer
 import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterEntity
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry
 import net.minecraft.client.render.RenderLayer
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactory
 import net.minecraft.client.render.entity.EntityRendererFactory
 
 object RegisterRenderer {
@@ -22,6 +25,14 @@ object RegisterRenderer {
                 0.2f,
                 0.5F,
                 1.5F
+            )
+        }
+
+
+        BlockEntityRendererRegistry.register(me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity.CRYSTALLINE_ITEM_LOCK_BLOCK_ENTITY
+        ){context: BlockEntityRendererFactory.Context ->
+           CrystallineItemLockBlockEntityRenderer(
+                context
             )
         }
 
