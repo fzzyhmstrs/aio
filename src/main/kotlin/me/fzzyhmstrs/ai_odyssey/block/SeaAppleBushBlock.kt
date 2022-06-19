@@ -25,7 +25,7 @@ import net.minecraft.world.World
 import net.minecraft.world.WorldAccess
 import java.util.*
 
-class SeaAppleBlock(settings: Settings): SweetBerryBushBlock(settings), FluidFillable {
+class SeaAppleBushBlock(settings: Settings): SweetBerryBushBlock(settings), FluidFillable {
 
     @Deprecated("Deprecated in Java")
     override fun onEntityCollision(state: BlockState, world: World, pos: BlockPos, entity: Entity) {

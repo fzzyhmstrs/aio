@@ -22,7 +22,7 @@ object RegisterBlock {
         BlockSoundGroup.WET_GRASS))
     val BULL_KELP_STREAMER = BullKelpStreamerBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().ticksRandomly().breakInstantly().sounds(
         BlockSoundGroup.WET_GRASS))
-    val SEA_APPLE_BUSH = SeaAppleBlock(FabricBlockSettings.of(Material.REPLACEABLE_UNDERWATER_PLANT, MapColor.LICHEN_GREEN).ticksRandomly().noCollision().sounds(BlockSoundGroup.SWEET_BERRY_BUSH))
+    val SEA_APPLE_BUSH = SeaAppleBushBlock(FabricBlockSettings.of(Material.REPLACEABLE_UNDERWATER_PLANT, MapColor.LICHEN_GREEN).ticksRandomly().noCollision().sounds(BlockSoundGroup.SWEET_BERRY_BUSH))
     val SEA_BAMBOO = SeaBambooBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().ticksRandomly().breakInstantly().sounds(
         BlockSoundGroup.WET_GRASS))
     val SEA_BAMBOO_PLANT = SeaBambooPlantBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().ticksRandomly().breakInstantly().sounds(
@@ -41,7 +41,7 @@ object RegisterBlock {
     val CRYSTALLINE_LANTERN = CrystallineLanternBlock(FabricBlockSettings.of(Material.GLASS, MapColor.OFF_WHITE).strength(0.3f).sounds(BlockSoundGroup.GLASS).luminance { state: BlockState ->
         CrystallineLanternBlock.STATE_TO_LUMINANCE.applyAsInt(state)
     })
-    val CRYSTALLINE_SWITCH = CrystallineSwitchBlock(FabricBlockSettings.of(Material.AMETHYST, MapColor.PINK).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().strength(50.0f, 1200.0f).luminance { state: BlockState ->
+    val CRYSTALLINE_SWITCH = CrystallineSwitchBlock(FabricBlockSettings.of(Material.AMETHYST, MapColor.PINK).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().strength(99.0f, 1200.0f).luminance { state: BlockState ->
         CrystallineSwitchBlock.STATE_TO_LUMINANCE.applyAsInt(state)
     })
     val CRYSTALLINE_ITEM_LOCK = CrystallineItemLockBlock(FabricBlockSettings.of(Material.STONE, MapColor.IRON_GRAY).requiresTool().strength(99.0f, 1200.0f))
@@ -121,8 +121,8 @@ object RegisterBlock {
         registerBlockWithOtherItem("sea_apple_bush", SEA_APPLE_BUSH)
         registerBlock("sea_bamboo", SEA_BAMBOO, ItemGroup.DECORATIONS)
         registerBlockWithOtherItem("sea_bamboo_plant", SEA_BAMBOO_PLANT)
-        registerBlock("turtle_grass", WIRE_WEED, ItemGroup.DECORATIONS)
-        registerBlock("wire_weed", TURTLE_GRASS, ItemGroup.DECORATIONS)
+        registerBlock("turtle_grass", TURTLE_GRASS, ItemGroup.DECORATIONS)
+        registerBlock("wire_weed", WIRE_WEED, ItemGroup.DECORATIONS)
     }
 
     private fun registerBlock(path: String, block: Block, itemGroup: ItemGroup){
