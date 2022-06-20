@@ -34,6 +34,12 @@ object RegisterBlock {
 
     //basic world environment blocks
     val CALCITE_SEDIMENT = SandBlock(0xE2D7C5,FabricBlockSettings.of(Material.AGGREGATE, MapColor.WHITE).strength(0.5f).sounds(BlockSoundGroup.SAND))
+    val COBBLED_GABBRO = Block(FabricBlockSettings.of(Material.STONE, MapColor.GRAY).strength(1.5f, 6.0f).requiresTool())
+    val GABBRO = Block(FabricBlockSettings.of(Material.STONE, MapColor.GRAY).strength(1.5f, 6.0f).requiresTool())
+    val PRISMATIC_AMETHYST = PrismaticCrystalBlock(FabricBlockSettings.of(Material.AMETHYST, MapColor.PURPLE).strength(1.5f).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool())
+    val PRISMATIC_GABBRO = PrismaticCrystalBlock(FabricBlockSettings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).strength(1.5f, 6.0f).requiresTool())
+    val PRISMATIC_PRISMARINE = PrismaticCrystalBlock(FabricBlockSettings.of(Material.AMETHYST, MapColor.LICHEN_GREEN).strength(1.5f).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool())
+    val PRISMATIC_QUARTZ = PrismaticCrystalBlock(FabricBlockSettings.of(Material.AMETHYST, MapColor.WHITE).strength(1.5f).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool())
     val QUARTZITE_SAND = SandBlock(0xEDEBDE,FabricBlockSettings.of(Material.AGGREGATE, MapColor.WHITE).strength(0.5f).sounds(BlockSoundGroup.SAND))
 
     //portal facility blocks
@@ -84,11 +90,13 @@ object RegisterBlock {
         registerBlockWithOtherItem("bull_kelp_plant", BULL_KELP_PLANT)
         registerBlockWithOtherItem("bull_kelp_streamer", BULL_KELP_STREAMER)
         registerBlock("calcite_sediment", CALCITE_SEDIMENT, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("cobbled_gabbro", COBBLED_GABBRO, ItemGroup.BUILDING_BLOCKS)
         registerBlock("crystalline_item_lock", CRYSTALLINE_ITEM_LOCK, ItemGroup.MISC)
         registerBlock("crystalline_lantern", CRYSTALLINE_LANTERN, ItemGroup.DECORATIONS)
         registerBlock("crystalline_num_lock", CRYSTALLINE_NUM_LOCK, ItemGroup.MISC)
         registerBlock("crystalline_switch", CRYSTALLINE_SWITCH, ItemGroup.MISC)
         registerBlock("facility_teleporter", FACILITY_TELEPORTER, ItemGroup.MISC)
+        registerBlock("gabbro", GABBRO, ItemGroup.BUILDING_BLOCKS)
         registerBlock("hard_light_barrier", HARD_LIGHT_BARRIER, ItemGroup.BUILDING_BLOCKS)
         registerBlock("hard_light_barrier_frame", HARD_LIGHT_BARRIER_FRAME, ItemGroup.BUILDING_BLOCKS)
         registerBlock("imbued_deepslate_message", IMBUED_DEEPSLATE_MESSAGE, ItemGroup.BUILDING_BLOCKS)
@@ -117,6 +125,10 @@ object RegisterBlock {
         registerBlock("petroglyph", PETROGLYPH, ItemGroup.DECORATIONS)
         registerBlock("petroglyph_cracked", PETROGLYPH_CRACKED, ItemGroup.DECORATIONS)
         registerBlock("petroglyph_recipe", PETROGLYPH_RECIPE, ItemGroup.DECORATIONS)
+        registerBlock("prismatic_amethyst", PRISMATIC_AMETHYST, ItemGroup.DECORATIONS)
+        registerBlock("prismatic_gabbro", PRISMATIC_GABBRO, ItemGroup.DECORATIONS)
+        registerBlock("prismatic_prismarine", PRISMATIC_PRISMARINE, ItemGroup.DECORATIONS)
+        registerBlock("prismatic_quartz", PRISMATIC_QUARTZ, ItemGroup.DECORATIONS)
         registerBlock("quartzite_sand", QUARTZITE_SAND, ItemGroup.BUILDING_BLOCKS)
         registerBlockWithOtherItem("sea_apple_bush", SEA_APPLE_BUSH)
         registerBlock("sea_bamboo", SEA_BAMBOO, ItemGroup.DECORATIONS)
