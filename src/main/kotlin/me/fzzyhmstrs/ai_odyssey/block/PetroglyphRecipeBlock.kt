@@ -49,16 +49,31 @@ class PetroglyphRecipeBlock(settings: Settings): Block(settings), ConfiguratorIn
     companion object {
         private val FACING = HorizontalFacingBlock.FACING
         private val INGREDIENT: EnumProperty<Ingredient> = EnumProperty.of("ingredient", Ingredient::class.java)
+        val recipeMap: Map<Int, Message> by lazy { recipesToIndexes() }
 
-        enum class Ingredient: StringIdentifiable{
 
-            DIAMOND,
-            EMERALD,
-            NONE;
+        enum class Ingredient(val x: Int, val y: Int): StringIdentifiable{
+
+            DIAMOND(0,0),
+            EMERALD(1,0),
+            NONE(-1,-1);
 
             override fun asString(): String {
                 return this.name
             }
+
+            fun coordinatesToIndex(): Int{
+                return this.x + 10 * this.y
+            }
+        }
+
+        private fun recipesToIndexes(): Map<Int,Ingredient>{
+            val map: MutableMap<Int, Ingredient> = mutableMapOf()
+            Ingredient.values().forEach {
+                val index = it.coordinatesToIndex()
+                map[index] = it
+            }
+            return map
         }
     }
 
