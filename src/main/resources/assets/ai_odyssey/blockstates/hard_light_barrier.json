@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "locked=true": {
+      "model": "ai_odyssey:block/hard_light_barrier_on"
+    },
+    "locked=false": {
+      "model": "ai_odyssey:block/hard_light_barrier_off"
+    }
+  }
+}
