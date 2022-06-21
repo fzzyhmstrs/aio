@@ -1,0 +1,301 @@
+{
+  "multipart": [
+    {
+      "when": {"facing": "east"}, 
+      "apply": {
+        "model": "ai_odyssey:block/crystalline_lock",
+        "y": 90
+      }
+    },
+    {
+      "when": {"facing": "north"}, 
+      "apply": {
+        "model": "ai_odyssey:block/crystalline_lock"
+      }
+    },
+    {
+      "when": {"facing": "south"}, 
+      "apply": {
+        "model": "ai_odyssey:block/crystalline_lock",
+        "y": 180
+      }
+    },
+    {
+      "when": {"facing": "west"}, 
+      "apply": {
+        "model": "ai_odyssey:block/crystalline_lock",
+        "y": 270
+      }
+    },
+    {
+      "when": {"facing": "east", "lock_num": "0"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_0",
+        "y": 90
+      }
+    },
+    {
+      "when": {"facing": "north", "lock_num": "0"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_0"
+      }
+    },
+    {
+      "when": {"facing": "south", "lock_num": "0"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_0",
+        "y": 180
+      }
+    },
+    {
+      "when": {"facing": "west", "lock_num": "0"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_0",
+        "y": 270
+      }
+    },
+    {
+      "when": {"facing": "east", "lock_num": "1"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_1",
+        "y": 90
+      }
+    },
+    {
+      "when": {"facing": "north", "lock_num": "1"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_1"
+      }
+    },
+    {
+      "when": {"facing": "south", "lock_num": "1"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_1",
+        "y": 180
+      }
+    },
+    {
+      "when": {"facing": "west", "lock_num": "1"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_1",
+        "y": 270
+      }
+    },
+    {
+      "when": {"facing": "east", "lock_num": "2"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_2",
+        "y": 90
+      }
+    },
+    {
+      "when": {"facing": "north", "lock_num": "2"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_2"
+      }
+    },
+    {
+      "when": {"facing": "south", "lock_num": "2"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_2",
+        "y": 180
+      }
+    },
+    {
+      "when": {"facing": "west", "lock_num": "2"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_2",
+        "y": 270
+      }
+    },
+    {
+      "when": {"facing": "east", "lock_num": "3"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_3",
+        "y": 90
+      }
+    },
+    {
+      "when": {"facing": "north", "lock_num": "3"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_3"
+      }
+    },
+    {
+      "when": {"facing": "south", "lock_num": "3"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_3",
+        "y": 180
+      }
+    },
+    {
+      "when": {"facing": "west", "lock_num": "3"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_3",
+        "y": 270
+      }
+    },
+    {
+      "when": {"facing": "east", "lock_num": "4"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_4",
+        "y": 90
+      }
+    },
+    {
+      "when": {"facing": "north", "lock_num": "4"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_4"
+      }
+    },
+    {
+      "when": {"facing": "south", "lock_num": "4"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_4",
+        "y": 180
+      }
+    },
+    {
+      "when": {"facing": "west", "lock_num": "4"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_4",
+        "y": 270
+      }
+    },
+    {
+      "when": {"facing": "east", "lock_num": "5"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_5",
+        "y": 90
+      }
+    },
+    {
+      "when": {"facing": "north", "lock_num": "5"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_5"
+      }
+    },
+    {
+      "when": {"facing": "south", "lock_num": "5"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_5",
+        "y": 180
+      }
+    },
+    {
+      "when": {"facing": "west", "lock_num": "5"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_5",
+        "y": 270
+      }
+    },
+    {
+      "when": {"facing": "east", "lock_num": "6"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_6",
+        "y": 90
+      }
+    },
+    {
+      "when": {"facing": "north", "lock_num": "6"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_6"
+      }
+    },
+    {
+      "when": {"facing": "south", "lock_num": "6"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_6",
+        "y": 180
+      }
+    },
+    {
+      "when": {"facing": "west", "lock_num": "6"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_6",
+        "y": 270
+      }
+    },
+    {
+      "when": {"facing": "east", "lock_num": "7"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_7",
+        "y": 90
+      }
+    },
+    {
+      "when": {"facing": "north", "lock_num": "7"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_7"
+      }
+    },
+    {
+      "when": {"facing": "south", "lock_num": "7"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_7",
+        "y": 180
+      }
+    },
+    {
+      "when": {"facing": "west", "lock_num": "7"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_7",
+        "y": 270
+      }
+    },
+    {
+      "when": {"facing": "east", "lock_num": "8"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_8",
+        "y": 90
+      }
+    },
+    {
+      "when": {"facing": "north", "lock_num": "8"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_8"
+      }
+    },
+    {
+      "when": {"facing": "south", "lock_num": "8"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_8",
+        "y": 180
+      }
+    },
+    {
+      "when": {"facing": "west", "lock_num": "8"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_8",
+        "y": 270
+      }
+    },
+    {
+      "when": {"facing": "east", "lock_num": "9"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_9",
+        "y": 90
+      }
+    },
+    {
+      "when": {"facing": "north", "lock_num": "9"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_9"
+      }
+    },
+    {
+      "when": {"facing": "south", "lock_num": "9"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_9",
+        "y": 180
+      }
+    },
+    {
+      "when": {"facing": "west", "lock_num": "9"}, 
+      "apply": {
+        "model": "ai_odyssey:block/num_lock_9",
+        "y": 270
+      }
+    },
+  ]
+}
