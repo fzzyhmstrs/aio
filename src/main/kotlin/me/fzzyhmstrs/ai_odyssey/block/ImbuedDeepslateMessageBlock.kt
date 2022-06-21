@@ -31,7 +31,7 @@ class ImbuedDeepslateMessageBlock(settings: Settings): Block(settings), Configur
     companion object{
         private val MESSAGE = EnumProperty.of("message",Message::class.java)
         private val MESSAGE_VISIBLE = BooleanProperty.of("message_visible")
-        val splatterMap: Map<Int, Message> by lazy { messagesToIndexes() }
+        val messageMap: Map<Int, Message> by lazy { messagesToIndexes() }
 
         enum class Message(val x: Int, val y: Int): StringIdentifiable{
 
