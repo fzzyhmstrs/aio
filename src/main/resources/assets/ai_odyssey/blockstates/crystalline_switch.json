@@ -1,0 +1,28 @@
+{
+  "variants": {
+	  "switch_color=BLUE, lit=true": {
+      "model": "ai_odyssey:block/crystalline_switch_blue_lit"
+    },
+    "switch_color=BLUE, lit=false": {
+      "model": "ai_odyssey:block/crystalline_switch_blue_dark"
+    },
+    "switch_color=GREEN, lit=true": {
+      "model": "ai_odyssey:block/crystalline_switch_green_lit"
+    },
+    "switch_color=GREEN, lit=false": {
+      "model": "ai_odyssey:block/crystalline_switch_green_dark"
+    },
+    "switch_color=RED, lit=true": {
+      "model": "ai_odyssey:block/crystalline_switch_red_lit"
+    },
+    "switch_color=RED, lit=false": {
+      "model": "ai_odyssey:block/crystalline_switch_red_dark"
+    },
+    "switch_color=YELLOW, lit=true": {
+      "model": "ai_odyssey:block/crystalline_switch_yellow_lit"
+    },
+    "switch_color=YELLOW, lit=false": {
+      "model": "ai_odyssey:block/crystalline_switch_yellow_dark"
+    }
+  }
+}
