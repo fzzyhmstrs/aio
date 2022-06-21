@@ -2,74 +2,77 @@ package me.fzzyhmstrs.ai_odyssey.block
 
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
-import net.minecraft.block.FluidFillable
-import net.minecraft.block.enums.WallShape
-import net.minecraft.fluid.Fluid
+import net.minecraft.block.WallBlock
+import net.minecraft.block.Waterloggable
 import net.minecraft.fluid.FluidState
+import net.minecraft.fluid.Fluids
 import net.minecraft.item.ItemPlacementContext
 import net.minecraft.state.StateManager
 import net.minecraft.state.property.Properties
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
-import net.minecraft.world.BlockView
-import net.minecraft.world.World
 import net.minecraft.world.WorldAccess
 
-class PrismaticCrystalBlock(settings: Settings): Block(settings), FluidFillable {
+class PrismaticCrystalBlock(settings: Settings): Block(settings), Waterloggable {
 
     companion object{
-        val UP = Properties.UP
-        val EAST_SHAPE = Properties.EAST_WALL_SHAPE
-        val NORTH_SHAPE = Properties.NORTH_WALL_SHAPE
-        val SOUTH_SHAPE = Properties.SOUTH_WALL_SHAPE
-        val WEST_SHAPE = Properties.WEST_WALL_SHAPE
+        private val UP = Properties.UP
+        private val FACING = Properties.FACING
+        private val WATERLOGGED = Properties.WATERLOGGED
     }
 
     override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
-        super.appendProperties(builder)
+        builder.add(UP, FACING, WATERLOGGED)
     }
 
     override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {
         val initialState = super.getPlacementState(ctx)
         val world = ctx.world
         val pos = ctx.blockPos
-        var bl = false
-        var placementState: BlockState? = initialState
-        if (shouldConnectTo(world, pos, Direction.UP)){
-            placementState = placementState?.with(UP,true)
-            bl = true
+        val facing = ctx.side
+        val chk = world.getBlockState(pos.offset(facing)).block
+        val placementState = if(chk is PrismaticCrystalBlock){
+            initialState?.with(UP, true)?.with(FACING, facing)
+        } else {
+            initialState?.with(UP, false)?.with(FACING, facing)
         }
-        if (shouldConnectTo(world, pos, Direction.EAST)){
-            placementState = placementState?.with(EAST_SHAPE,wallShape(bl))
-        }
+
+
         return placementState
     }
 
-    private fun shouldConnectTo(world: World, pos: BlockPos, direction: Direction): Boolean{
-        val face = direction.opposite
-        val state2 = world.getBlockState(pos.offset(direction))
-        return (state2.block is PrismaticCrystalBlock) || state2.isSideSolidFullSquare(world, pos, face)
-    }
-
-    private fun wallShape(bl: Boolean): WallShape{
-        return if (bl){
-            WallShape.TALL
-        } else {
-            WallShape.LOW
+    @Deprecated("Deprecated in Java")
+    override fun getStateForNeighborUpdate(
+        state: BlockState,
+        direction: Direction,
+        neighborState: BlockState,
+        world: WorldAccess,
+        pos: BlockPos,
+        neighborPos: BlockPos
+    ): BlockState {
+        if (state.get(WATERLOGGED)) {
+            world.createAndScheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world))
         }
+        val facing = state.get(FACING)
+        if (facing == direction){
+            return if (neighborState.block is PrismaticCrystalBlock){
+                state.with(UP,true)
+            } else {
+                state.with(UP,false)
+            }
+        } else if (facing == direction.opposite){
+            if (neighborState.block !is PrismaticCrystalBlock){
+                return state.with(FACING,facing.opposite).with(UP, false)
+            }
+        }
+        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos)
     }
 
-    override fun canFillWithFluid(world: BlockView?, pos: BlockPos?, state: BlockState?, fluid: Fluid?): Boolean {
-        TODO("Not yet implemented")
-    }
-
-    override fun tryFillWithFluid(
-        world: WorldAccess?,
-        pos: BlockPos?,
-        state: BlockState?,
-        fluidState: FluidState?
-    ): Boolean {
-        TODO("Not yet implemented")
+    @Deprecated("Deprecated in Java")
+    override fun getFluidState(state: BlockState): FluidState {
+        return if (state.get(WATERLOGGED)) {
+            Fluids.WATER.getStill(false)
+        } else super.getFluidState(state)
     }
 
 

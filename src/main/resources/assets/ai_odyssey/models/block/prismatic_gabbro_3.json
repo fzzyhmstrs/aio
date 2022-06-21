@@ -1,0 +1,7 @@
+{
+  "parent": "ai_odyssey:block/prismatic_crystal_3",
+  "textures": {
+    "end": "ai_odyssey:block/prismatic_gabbro_top",
+	"side": "ai_odyssey:block/prismatic_gabbro"
+  }
+}

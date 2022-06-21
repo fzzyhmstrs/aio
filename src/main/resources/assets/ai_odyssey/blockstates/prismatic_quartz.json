@@ -1,0 +1,56 @@
+{
+  "variants": {
+    "facing=down, up=false": {
+      "model": "ai_odyssey:block/prismatic_quartz",
+      "x": 180
+    },
+    "facing=east, up=false": {
+      "model": "ai_odyssey:block/prismatic_quartz",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north, up=false": {
+      "model": "ai_odyssey:block/prismatic_quartz",
+      "x": 90
+    },
+    "facing=south, up=false": {
+      "model": "ai_odyssey:block/prismatic_quartz",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up, up=false": {
+      "model": "ai_odyssey:block/prismatic_quartz"
+    },
+    "facing=west, up=false": {
+      "model": "ai_odyssey:block/prismatic_quartz",
+      "x": 90,
+      "y": 270
+    },
+	"facing=down, up=true": {
+      "model": "ai_odyssey:block/prismatic_quartz_full",
+      "x": 180
+    },
+    "facing=east, up=true": {
+      "model": "ai_odyssey:block/prismatic_quartz_full",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north, up=true": {
+      "model": "ai_odyssey:block/prismatic_quartz_full",
+      "x": 90
+    },
+    "facing=south, up=true": {
+      "model": "ai_odyssey:block/prismatic_quartz_full",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up, up=true": {
+      "model": "ai_odyssey:block/prismatic_quartz_full"
+    },
+    "facing=west, up=true": {
+      "model": "ai_odyssey:block/prismatic_quartz_full",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

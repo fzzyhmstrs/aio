@@ -1,0 +1,7 @@
+{
+  "parent": "ai_odyssey:block/prismatic_crystal_2",
+  "textures": {
+    "end": "ai_odyssey:block/prismatic_amethyst_top",
+	"side": "ai_odyssey:block/prismatic_amethyst"
+  }
+}

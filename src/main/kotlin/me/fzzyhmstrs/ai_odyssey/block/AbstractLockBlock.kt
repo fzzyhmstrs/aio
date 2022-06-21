@@ -23,6 +23,10 @@ import net.minecraft.world.World
 
 abstract class AbstractLockBlock(settings: Settings): BlockWithEntity(settings) {
 
+    companion object {
+        val FACING: DirectionProperty = HorizontalFacingBlock.FACING
+    }
+
     override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {
         return super.getPlacementState(ctx)?.with(FACING,ctx.playerFacing.opposite)
     }
@@ -55,9 +59,5 @@ abstract class AbstractLockBlock(settings: Settings): BlockWithEntity(settings) 
             Direction.WEST -> LecternBlock.WEST_SHAPE
             else -> LecternBlock.BASE_SHAPE
         }
-    }
-
-    companion object {
-        val FACING: DirectionProperty = HorizontalFacingBlock.FACING
     }
 }
