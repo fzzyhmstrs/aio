@@ -16,13 +16,13 @@ import net.minecraft.util.math.Matrix4f
 class ImbuedSplatterScreen(handler: ImbuedSplatterScreenHandler, playerInventory: PlayerInventory, title: Text):
     HandledScreen<ImbuedSplatterScreenHandler>(handler, playerInventory, title) {
 
-    private val texture = Identifier(AIO.MOD_ID,"textures/gui/container/splatter_screen_gui.png")
+    private val texture = Identifier(AIO.MOD_ID,"textures/gui/splatter_screen_gui.png")
     private val player = playerInventory.player
+    private val xOffset = (width - backgroundWidth)/2
+    private val yOffset = (height - backgroundHeight)/2
 
     override fun mouseClicked(mouseX: Double, mouseY: Double, button: Int): Boolean {
-        val i = (width - backgroundWidth) / 2
-        val j = (height - backgroundHeight) / 2
-        val indexes = MessageScreenHelper.calcIndexes(mouseX, mouseY, i, j)
+        val indexes = MessageScreenHelper.calcIndexes(mouseX, mouseY, xOffset, yOffset)
         if (indexes != null){
             val id = MessageScreenHelper.linearIndexFromIndexes(indexes)
             return if (!handler.onButtonClick(player,id) ){
@@ -36,34 +36,13 @@ class ImbuedSplatterScreen(handler: ImbuedSplatterScreenHandler, playerInventory
     }
 
     override fun drawBackground(matrices: MatrixStack, delta: Float, mouseX: Int, mouseY: Int) {
-        DiffuseLighting.disableGuiDepthLighting()
-        RenderSystem.setShader { GameRenderer.getPositionTexShader() }
-        RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f)
-        RenderSystem.setShaderTexture(0, this.texture)
-        val i = (width - backgroundWidth) / 2
-        val j = (height - backgroundHeight) / 2
-        this.drawTexture(matrices, i, j, 0, 0, backgroundWidth, backgroundHeight)
-        val k = client?.window?.scaleFactor?.toInt()?:1
-        RenderSystem.viewport((width - 320) / 2 * k, (height - 240) / 2 * k, 320 * k, 240 * k)
-        val matrix4f = Matrix4f.translate(-0.34f, 0.23f, 0.0f)
-        matrix4f.multiply(Matrix4f.viewboxMatrix(90.0, 1.3333334f, 9.0f, 80.0f))
-        RenderSystem.backupProjectionMatrix()
-        RenderSystem.setProjectionMatrix(matrix4f)
-
-        client?.window?.framebufferWidth?.let { client?.window?.framebufferHeight?.let { it1 ->
-            RenderSystem.viewport(0, 0, it,
-                it1
-            )
-        } }
-
-        RenderSystem.restoreProjectionMatrix()
-        DiffuseLighting.enableGuiDepthLighting()
-        RenderSystem.setShader { GameRenderer.getPositionTexShader() }
-        RenderSystem.setShaderTexture(0, this.texture)
-        RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f)
-        val indexes = MessageScreenHelper.calcIndexes(mouseX.toDouble(), mouseY.toDouble(), i, j)
+        MessageScreenHelper.backgroundInitialize(this.texture)
+        this.drawTexture(matrices, xOffset, yOffset, 0, 0, backgroundWidth, backgroundHeight)
+        MessageScreenHelper.backgroundViewport(height, width, client)
+        MessageScreenHelper.backgroundReinitialize(this.texture)
+        val indexes = MessageScreenHelper.calcIndexes(mouseX.toDouble(), mouseY.toDouble(), xOffset, yOffset)
         if (indexes != null){
-            val coordinates = MessageScreenHelper.coordinatesFromIndexes(indexes, i, j)
+            val coordinates = MessageScreenHelper.coordinatesFromIndexes(indexes, xOffset, yOffset)
             this.drawTexture(matrices, coordinates.first, coordinates.second, 0,166,32,32)
         }
     }
@@ -72,9 +51,7 @@ class ImbuedSplatterScreen(handler: ImbuedSplatterScreenHandler, playerInventory
         this.renderBackground(matrices)
         super.render(matrices, mouseX, mouseY, delta)
         drawMouseoverTooltip(matrices, mouseX, mouseY)
-        val i = (width - backgroundWidth) / 2
-        val j = (height - backgroundHeight) / 2
-        val indexes = MessageScreenHelper.calcIndexes(mouseX.toDouble(), mouseY.toDouble(), i, j)
+        val indexes = MessageScreenHelper.calcIndexes(mouseX.toDouble(), mouseY.toDouble(), xOffset, yOffset)
         if (indexes != null){
             val id = MessageScreenHelper.linearIndexFromIndexes(indexes)
             if (ImbuedDeepslateSplatterBlock.splatterMap.containsKey(id)){
