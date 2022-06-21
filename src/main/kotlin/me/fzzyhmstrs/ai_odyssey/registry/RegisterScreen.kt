@@ -28,6 +28,14 @@ object RegisterScreen {
                 title
             )
         }
+        HandledScreens.register(RegisterHandler.PETROGLYPH_RECIPE_SCREEN_HANDLER) {
+                handler: PetroglyphRecipeScreenHandler, playerInventory: PlayerInventory, title: Text ->
+            PetroglyphRecipeScreen(
+                handler,
+                playerInventory,
+                title
+            )
+        }
     }
 
 }
