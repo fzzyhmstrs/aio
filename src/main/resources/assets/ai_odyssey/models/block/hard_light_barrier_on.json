@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "ai_odyssey:block/hard_light_barrier_on_end",
+    "side": "ai_odyssey:block/hard_light_barrier_on_side"
+  }
+}
