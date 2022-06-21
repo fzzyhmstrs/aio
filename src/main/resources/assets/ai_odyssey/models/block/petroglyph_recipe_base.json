@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "ai_odyssey:block/petroglyph",
+    "north": "#recipe",
+    "south": "ai_odyssey:block/petroglyph",
+    "east": "ai_odyssey:block/petroglyph",
+    "west": "ai_odyssey:block/petroglyph",
+    "up": "ai_odyssey:block/petroglyph",
+    "down": "ai_odyssey:block/petroglyph"
+  }
+}
