@@ -24,6 +24,17 @@ class ImbuedMessageScreenHandler(
     }
 
     override fun onButtonClick(player: PlayerEntity?, id: Int): Boolean {
-        return super.onButtonClick(player, id)
+        if (ImbuedDeepslateMessageBlock.messageMap.containsKey(id)){
+            val message = ImbuedDeepslateMessageBlock.messageMap[id]
+            if (message != null) {
+                context.run { world, pos ->
+                    val state = world.getBlockState(pos)
+                    world.setBlockState(pos,state.with(ImbuedDeepslateMessageBlock.MESSAGE, message))
+                    FacilityChimes.CONFIG_SUCCESS.playSound(world, pos)
+                }
+                return true
+            }
+        }
+        return false
     }
 }
