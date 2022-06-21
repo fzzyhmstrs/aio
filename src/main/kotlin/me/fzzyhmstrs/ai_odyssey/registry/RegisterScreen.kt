@@ -1,10 +1,7 @@
 package me.fzzyhmstrs.ai_odyssey.registry
 
 
-import me.fzzyhmstrs.ai_odyssey.screen.ImbuedMessageScreen
-import me.fzzyhmstrs.ai_odyssey.screen.ImbuedMessageScreenHandler
-import me.fzzyhmstrs.ai_odyssey.screen.ImbuedSplatterScreen
-import me.fzzyhmstrs.ai_odyssey.screen.ImbuedSplatterScreenHandler
+import me.fzzyhmstrs.ai_odyssey.screen.*
 import net.minecraft.client.gui.screen.ingame.HandledScreens
 import net.minecraft.entity.player.PlayerInventory
 import net.minecraft.text.Text

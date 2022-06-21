@@ -3,6 +3,8 @@ package me.fzzyhmstrs.ai_odyssey.block
 import me.fzzyhmstrs.ai_odyssey.configurator.ConfiguratorInteractive
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEnchantment
 import me.fzzyhmstrs.ai_odyssey.screen.ImbuedSplatterScreenHandler
+import me.fzzyhmstrs.ai_odyssey.screen.MessageScreenHelper.IndexedEnum
+import me.fzzyhmstrs.ai_odyssey.screen.MessageScreenHelper.enumToIndexes
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.enchantment.EnchantmentHelper
@@ -30,9 +32,9 @@ class ImbuedDeepslateSplatterBlock(settings: Settings): Block(settings), Configu
     companion object{
         val SPLATTER = EnumProperty.of("splatter",Splatter::class.java)
         private val SPLATTER_VISIBLE = BooleanProperty.of("splatter_visible")
-        val splatterMap: Map<Int,Splatter> by lazy { splattersToIndexes() }
+        val splatterMap: Map<Int,Splatter> by lazy { enumToIndexes(Splatter.values()) }
 
-        enum class Splatter(val x: Int, val y: Int): StringIdentifiable{
+        enum class Splatter(val x: Int, val y: Int): StringIdentifiable, IndexedEnum{
             EYE_1(0,0),
             EYE_2(1,0),
             TALLY_1(2,0),
@@ -64,19 +66,19 @@ class ImbuedDeepslateSplatterBlock(settings: Settings): Block(settings), Configu
                 return this.name
             }
 
-            fun coordinatesToIndex(): Int{
+            override fun coordinatesToIndex(): Int{
                 return this.x + 10 * this.y
             }
         }
 
-        private fun splattersToIndexes(): Map<Int,Splatter>{
+        /*private fun splattersToIndexes(): Map<Int,Splatter>{
             val map: MutableMap<Int, Splatter> = mutableMapOf()
             Splatter.values().forEach {
                 val index = it.coordinatesToIndex()
                 map[index] = it
             }
             return map
-        }
+        }*/
     }
 
 

@@ -2,6 +2,7 @@ package me.fzzyhmstrs.ai_odyssey.registry
 
 import me.fzzyhmstrs.ai_odyssey.screen.ImbuedMessageScreenHandler
 import me.fzzyhmstrs.ai_odyssey.screen.ImbuedSplatterScreenHandler
+import me.fzzyhmstrs.ai_odyssey.screen.PetroglyphRecipeScreenHandler
 import net.minecraft.entity.player.PlayerInventory
 import net.minecraft.screen.ScreenHandlerType
 
@@ -9,6 +10,7 @@ object RegisterHandler {
 
     var IMBUED_SPLATTER_SCREEN_HANDLER: ScreenHandlerType<ImbuedSplatterScreenHandler>? = null
     var IMBUED_MESSAGE_SCREEN_HANDLER: ScreenHandlerType<ImbuedMessageScreenHandler>? = null
+    var PETROGLYPH_RECIPE_SCREEN_HANDLER: ScreenHandlerType<PetroglyphRecipeScreenHandler>? = null
 
     fun registerAll(){
         IMBUED_SPLATTER_SCREEN_HANDLER = ScreenHandlerType { syncID: Int, playerInventory: PlayerInventory ->

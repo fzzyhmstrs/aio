@@ -1,5 +1,13 @@
 package me.fzzyhmstrs.ai_odyssey.screen
 
+import com.mojang.blaze3d.systems.RenderSystem
+import com.sun.jna.platform.win32.Wincon
+import me.fzzyhmstrs.ai_odyssey.block.ImbuedDeepslateMessageBlock
+import net.minecraft.client.MinecraftClient
+import net.minecraft.client.render.DiffuseLighting
+import net.minecraft.client.render.GameRenderer
+import net.minecraft.util.Identifier
+import net.minecraft.util.math.Matrix4f
 import kotlin.math.min
 
 object MessageScreenHelper {
@@ -43,6 +51,50 @@ object MessageScreenHelper {
 
     fun linearIndexFromIndexes(indexes: Pair<Int, Int>): Int{
         return indexes.first + indexes.second * 10
+    }
+
+    fun backgroundInitialize(texture: Identifier){
+        DiffuseLighting.disableGuiDepthLighting()
+        RenderSystem.setShader { GameRenderer.getPositionTexShader() }
+        RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f)
+        RenderSystem.setShaderTexture(0, texture)
+    }
+    fun backgroundViewport(height: Int, width: Int, client: MinecraftClient?){
+        val k = client?.window?.scaleFactor?.toInt()?:1
+        RenderSystem.viewport((width - 320) / 2 * k, (height - 240) / 2 * k, 320 * k, 240 * k)
+        backgroundSetMatrix()
+        client?.window?.framebufferWidth?.let { client.window?.framebufferHeight?.let { it1 ->
+            RenderSystem.viewport(0, 0, it,
+                it1
+            )
+        } }
+    }
+    private fun backgroundSetMatrix(){
+        val matrix4f = Matrix4f.translate(-0.34f, 0.23f, 0.0f)
+        matrix4f.multiply(Matrix4f.viewboxMatrix(90.0, 1.3333334f, 9.0f, 80.0f))
+        RenderSystem.backupProjectionMatrix()
+        RenderSystem.setProjectionMatrix(matrix4f)
+    }
+    fun backgroundReinitialize(texture: Identifier){
+        RenderSystem.restoreProjectionMatrix()
+        DiffuseLighting.enableGuiDepthLighting()
+        RenderSystem.setShader { GameRenderer.getPositionTexShader() }
+        RenderSystem.setShaderTexture(0, texture)
+        RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f)
+    }
+
+    fun <T: IndexedEnum> enumToIndexes(values: Array<T>): Map<Int, T>{
+        val map: MutableMap<Int, T> = mutableMapOf()
+
+        values.forEach {
+            val index = it.coordinatesToIndex()
+            map[index] = it
+        }
+        return map
+    }
+
+    interface IndexedEnum{
+        fun coordinatesToIndex(): Int
     }
 
 }

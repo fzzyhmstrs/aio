@@ -3,8 +3,13 @@ package me.fzzyhmstrs.ai_odyssey.block
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.block.HorizontalFacingBlock
+import net.minecraft.block.SlabBlock
+import net.minecraft.block.enums.BlockHalf
+import net.minecraft.block.enums.SlabType
+import net.minecraft.item.ItemPlacementContext
 import net.minecraft.state.StateManager
 import net.minecraft.state.property.Properties
+import net.minecraft.util.math.Direction
 
 class PetroglyphCrackedBlock(settings: Settings): Block(settings) {
 
@@ -13,7 +18,13 @@ class PetroglyphCrackedBlock(settings: Settings): Block(settings) {
     }
     
     override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {
-        return super.getPlacementState(ctx)?.with(FACING,ctx.playerFacing.opposite)
+        val direction = ctx.side
+        val blockPos = ctx.blockPos
+        val initialState = super.getPlacementState(ctx)?.with(FACING,ctx.playerFacing.opposite)
+        if (direction == Direction.DOWN || direction != Direction.UP && ctx.hitPos.y - blockPos.y.toDouble() > 0.5) {
+            return initialState?.with(HALF,BlockHalf.TOP)
+        }
+        return initialState?.with(HALF, BlockHalf.BOTTOM)
     }
 
     companion object {

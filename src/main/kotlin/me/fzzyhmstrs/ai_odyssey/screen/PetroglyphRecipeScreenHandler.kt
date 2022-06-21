@@ -1,7 +1,9 @@
 package me.fzzyhmstrs.ai_odyssey.screen
 
+import me.fzzyhmstrs.ai_odyssey.block.PetroglyphRecipeBlock
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterBlock
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterHandler
+import me.fzzyhmstrs.ai_odyssey.util.FacilityChimes
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.entity.player.PlayerInventory
 import net.minecraft.screen.ScreenHandler
@@ -24,12 +26,12 @@ class PetroglyphRecipeScreenHandler(
     }
 
     override fun onButtonClick(player: PlayerEntity?, id: Int): Boolean {
-        if (PetroglpyhRecipeBlock.recipeMap.containsKey(id)){
+        if (PetroglyphRecipeBlock.recipeMap.containsKey(id)){
             val recipe = PetroglyphRecipeBlock.recipeMap[id]
             if (recipe != null) {
                 context.run { world, pos ->
                     val state = world.getBlockState(pos)
-                    world.setBlockState(pos,state.with(PetroglpyhRecipeBlock.INGREDIENT, recipe))
+                    world.setBlockState(pos,state.with(PetroglyphRecipeBlock.INGREDIENT, recipe))
                     FacilityChimes.CONFIG_SUCCESS.playSound(world, pos)
                 }
                 return true

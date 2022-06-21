@@ -46,5 +46,6 @@ object RegisterRenderer {
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.WIRE_WEED, RenderLayer.getCutout())
         
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.HARD_LIGHT_BARRIER, RenderLayer.getTranslucent())
+        BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.CRYSTALLINE_SWITCH, RenderLayer.getTranslucent())
     }
 }

@@ -3,6 +3,8 @@ package me.fzzyhmstrs.ai_odyssey.block
 import me.fzzyhmstrs.ai_odyssey.configurator.ConfiguratorInteractive
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEnchantment
 import me.fzzyhmstrs.ai_odyssey.screen.ImbuedMessageScreenHandler
+import me.fzzyhmstrs.ai_odyssey.screen.MessageScreenHelper.IndexedEnum
+import me.fzzyhmstrs.ai_odyssey.screen.MessageScreenHelper.enumToIndexes
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.enchantment.EnchantmentHelper
@@ -29,11 +31,11 @@ import net.minecraft.world.World
 class ImbuedDeepslateMessageBlock(settings: Settings): Block(settings), ConfiguratorInteractive {
 
     companion object{
-        private val MESSAGE = EnumProperty.of("message",Message::class.java)
+        val MESSAGE: EnumProperty<Message> = EnumProperty.of("message",Message::class.java)
         private val MESSAGE_VISIBLE = BooleanProperty.of("message_visible")
-        val messageMap: Map<Int, Message> by lazy { messagesToIndexes() }
+        val messageMap: Map<Int, Message> by lazy { enumToIndexes(Message.values()) }
 
-        enum class Message(val x: Int, val y: Int): StringIdentifiable{
+        enum class Message(val x: Int, val y: Int): StringIdentifiable, IndexedEnum{
 
             GET_OUT_1(1,1),
             GET_OUT_2(2,1),
@@ -66,20 +68,20 @@ class ImbuedDeepslateMessageBlock(settings: Settings): Block(settings), Configur
                 return this.name
             }
 
-            fun coordinatesToIndex(): Int{
+            override fun coordinatesToIndex(): Int{
                 return this.x + 10 * this.y
             }
 
         }
 
-        private fun messagesToIndexes(): Map<Int, Message>{
+        /*private fun messagesToIndexes(): Map<Int, Message>{
             val map: MutableMap<Int, Message> = mutableMapOf()
             Message.values().forEach {
                 val index = it.coordinatesToIndex()
                 map[index] = it
             }
             return map
-        }
+        }*/
     }
 
     override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {
