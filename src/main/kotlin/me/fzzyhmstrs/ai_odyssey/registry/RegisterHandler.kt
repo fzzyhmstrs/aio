@@ -23,7 +23,12 @@ object RegisterHandler {
                 playerInventory
             )
         }
-
+        PETROGLYPH_RECIPE_SCREEN_HANDLER = ScreenHandlerType { syncID: Int, playerInventory: PlayerInventory ->
+            PetroglyphRecipeScreenHandler(
+                syncID,
+                playerInventory
+            )
+        }
     }
 
 }
