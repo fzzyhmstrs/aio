@@ -1,0 +1,84 @@
+{
+  "variants": {
+    "facing=down, up=false": [
+      {"model": "ai_odyssey:block/prismatic_prismarine",
+      "x": 180},
+      {"model": "ai_odyssey:block/prismatic_prismarine_2",
+      "x": 180},
+      {"model": "ai_odyssey:block/prismatic_prismarine_3",
+      "x": 180}
+    ],
+    "facing=east, up=false": [
+      {"model": "ai_odyssey:block/prismatic_prismarine",
+      "x": 90,
+      "y": 90},
+      {"model": "ai_odyssey:block/prismatic_prismarine_2",
+      "x": 90,
+      "y": 90},
+      {"model": "ai_odyssey:block/prismatic_prismarine_3",
+      "x": 90,
+      "y": 90}
+    ],
+    "facing=north, up=false": [
+      {"model": "ai_odyssey:block/prismatic_prismarine",
+      "x": 90},
+      {"model": "ai_odyssey:block/prismatic_prismarine_2",
+      "x": 90},
+      {"model": "ai_odyssey:block/prismatic_prismarine_3",
+      "x": 90}
+    ],
+    "facing=south, up=false": [
+      {"model": "ai_odyssey:block/prismatic_prismarine",
+      "x": 90,
+      "y": 180},
+      {"model": "ai_odyssey:block/prismatic_prismarine_2",
+      "x": 90,
+      "y": 180},
+      {"model": "ai_odyssey:block/prismatic_prismarine_3",
+      "x": 90,
+      "y": 180}
+    ],
+    "facing=up, up=false": [
+      {"model": "ai_odyssey:block/prismatic_prismarine"},
+      {"model": "ai_odyssey:block/prismatic_prismarine_2"},
+      {"model": "ai_odyssey:block/prismatic_prismarine_3"}
+    ],
+    "facing=west, up=false": [
+      {"model": "ai_odyssey:block/prismatic_prismarine",
+      "x": 90,
+      "y": 270},
+      {"model": "ai_odyssey:block/prismatic_prismarine_2",
+      "x": 90,
+      "y": 270},
+      {"model": "ai_odyssey:block/prismatic_prismarine_3",
+      "x": 90,
+      "y": 270}
+    ],
+	"facing=down, up=true": {
+      "model": "ai_odyssey:block/prismatic_prismarine_full",
+      "x": 180
+    },
+    "facing=east, up=true": {
+      "model": "ai_odyssey:block/prismatic_prismarine_full",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north, up=true": {
+      "model": "ai_odyssey:block/prismatic_prismarine_full",
+      "x": 90
+    },
+    "facing=south, up=true": {
+      "model": "ai_odyssey:block/prismatic_prismarine_full",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up, up=true": {
+      "model": "ai_odyssey:block/prismatic_prismarine_full"
+    },
+    "facing=west, up=true": {
+      "model": "ai_odyssey:block/prismatic_prismarine_full",
+      "x": 90,
+      "y": 270
+    }
+  }
+}
