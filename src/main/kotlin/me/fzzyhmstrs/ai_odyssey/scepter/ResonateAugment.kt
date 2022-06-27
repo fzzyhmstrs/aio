@@ -1,39 +1,32 @@
 package me.fzzyhmstrs.ai_odyssey.scepter
 
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterStatus
+import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentConsumer
+import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentEffect
+import me.fzzyhmstrs.amethyst_core.scepter_util.AugmentDatapoint
+import me.fzzyhmstrs.amethyst_core.scepter_util.LoreTier
+import me.fzzyhmstrs.amethyst_core.scepter_util.SpellType
+import me.fzzyhmstrs.amethyst_core.scepter_util.base_augments.SlashAugment
 import me.fzzyhmstrs.amethyst_imbuement.scepter.SpectralSlashAugment
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.AugmentConsumer
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.AugmentEffect
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.ScepterObject
-import me.fzzyhmstrs.amethyst_imbuement.util.LoreTier
-import me.fzzyhmstrs.amethyst_imbuement.util.RaycasterUtil
-import me.fzzyhmstrs.amethyst_imbuement.util.SpellType
-import net.minecraft.client.MinecraftClient
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EquipmentSlot
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.effect.StatusEffectInstance
-import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.entity.mob.MobEntity
-import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Items
 import net.minecraft.particle.DefaultParticleType
 import net.minecraft.particle.ParticleEffect
 import net.minecraft.particle.ParticleTypes
-import net.minecraft.server.world.ServerWorld
-import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
-import net.minecraft.util.hit.HitResult
+import net.minecraft.util.Hand
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 import java.util.*
 
-class ResonateAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): SpectralSlashAugment(tier, maxLvl, *slot) {
+class ResonateAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): SlashAugment(tier, maxLvl, *slot) {
 
-
-    private val particleSpeed = 3.0
     override val baseEffect: AugmentEffect
         get() = super.baseEffect.withDamage(4.0F,1.0F,0.0F)
             .withRange(3.0,0.25,0.0)
@@ -104,6 +97,9 @@ class ResonateAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): Spect
 
     }
 
+    override fun clientTask(world: World, user: LivingEntity, hand: Hand, level: Int) {
+    }
+
     private fun addParticles(world: World, particleEffect: ParticleEffect, pos: Vec3d, velocity: Vec3d){
         world.addParticle(particleEffect,true,pos.x,pos.y,pos.z,velocity.x,velocity.y,velocity.z)
     }
@@ -129,7 +125,11 @@ class ResonateAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): Spect
         return ParticleTypes.NOTE
     }
 
-    override fun augmentStat(imbueLevel: Int): ScepterObject.AugmentDatapoint {
-        return ScepterObject.AugmentDatapoint(SpellType.FURY,18,15,15,imbueLevel, LoreTier.NO_TIER, Items.NOTE_BLOCK)
+    override fun particleSpeed(): Double {
+        return 3.0
+    }
+
+    override fun augmentStat(imbueLevel: Int): AugmentDatapoint {
+        return AugmentDatapoint(SpellType.FURY,18,15,15,imbueLevel, LoreTier.NO_TIER, Items.NOTE_BLOCK)
     }
 }

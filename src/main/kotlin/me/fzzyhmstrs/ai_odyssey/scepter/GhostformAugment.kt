@@ -1,9 +1,13 @@
 package me.fzzyhmstrs.ai_odyssey.scepter
 
-import me.fzzyhmstrs.amethyst_imbuement.augment.base_augments.BaseAugment
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.*
-import me.fzzyhmstrs.amethyst_imbuement.util.LoreTier
-import me.fzzyhmstrs.amethyst_imbuement.util.SpellType
+import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentConsumer
+import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentEffect
+import me.fzzyhmstrs.amethyst_core.scepter_util.AugmentDatapoint
+import me.fzzyhmstrs.amethyst_core.scepter_util.LoreTier
+import me.fzzyhmstrs.amethyst_core.scepter_util.SoulAugment
+import me.fzzyhmstrs.amethyst_core.scepter_util.SpellType
+import me.fzzyhmstrs.amethyst_core.scepter_util.base_augments.MinorSupportAugment
+import me.fzzyhmstrs.amethyst_core.trinket_util.EffectQueue
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EquipmentSlot
 import net.minecraft.entity.LivingEntity
@@ -17,7 +21,8 @@ import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
 import net.minecraft.world.World
 
-class GhostformAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): MinorSupportAugment(tier,maxLvl, *slot), SoulAugment {
+class GhostformAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): MinorSupportAugment(tier,maxLvl, *slot),
+    SoulAugment {
 
     override val baseEffect: AugmentEffect
         get() = super.baseEffect.withDuration(180,60).withAmplifier(0,1,0)
@@ -31,16 +36,16 @@ class GhostformAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): Mino
     ): Boolean {
         if(target != null) {
             if (target is PassiveEntity || target is GolemEntity || target is PlayerEntity) {
-                BaseAugment.addStatusToQueue(target as LivingEntity,StatusEffects.INVISIBILITY, effects.duration(level),0)
-                BaseAugment.addStatusToQueue(target,StatusEffects.SPEED, effects.duration(level), effects.amplifier(level))
-                effects.accept(target,AugmentConsumer.Type.BENEFICIAL)
+                EffectQueue.addStatusToQueue(target as LivingEntity,StatusEffects.INVISIBILITY, effects.duration(level),0)
+                EffectQueue.addStatusToQueue(target,StatusEffects.SPEED, effects.duration(level), effects.amplifier(level))
+                effects.accept(target, AugmentConsumer.Type.BENEFICIAL)
                 world.playSound(null, target.blockPos, soundEvent(), SoundCategory.PLAYERS, 0.6F, 1.0F)
                 return true
             }
         }
         return if (user is PlayerEntity) {
-            BaseAugment.addStatusToQueue(user,StatusEffects.INVISIBILITY, effects.duration(level),0)
-            BaseAugment.addStatusToQueue(user,StatusEffects.SPEED, effects.duration(level), effects.amplifier(level))
+            EffectQueue.addStatusToQueue(user,StatusEffects.INVISIBILITY, effects.duration(level),0)
+            EffectQueue.addStatusToQueue(user,StatusEffects.SPEED, effects.duration(level), effects.amplifier(level))
             effects.accept(user,AugmentConsumer.Type.BENEFICIAL)
             world.playSound(null, user.blockPos, soundEvent(), SoundCategory.PLAYERS, 0.6F, 1.0F)
             true
@@ -53,7 +58,7 @@ class GhostformAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): Mino
         return SoundEvents.BLOCK_CONDUIT_AMBIENT_SHORT
     }
 
-    override fun augmentStat(imbueLevel: Int): ScepterObject.AugmentDatapoint {
-        return ScepterObject.AugmentDatapoint(SpellType.WIT,1200,25,1,imbueLevel, LoreTier.LOW_TIER, Items.FEATHER)
+    override fun augmentStat(imbueLevel: Int): AugmentDatapoint {
+        return AugmentDatapoint(SpellType.WIT,1200,25,1,imbueLevel, LoreTier.LOW_TIER, Items.FEATHER)
     }
 }

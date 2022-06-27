@@ -1,8 +1,12 @@
 package me.fzzyhmstrs.ai_odyssey.scepter
 
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.*
-import me.fzzyhmstrs.amethyst_imbuement.util.LoreTier
-import me.fzzyhmstrs.amethyst_imbuement.util.SpellType
+import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentConsumer
+import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentEffect
+import me.fzzyhmstrs.amethyst_core.scepter_util.AugmentDatapoint
+import me.fzzyhmstrs.amethyst_core.scepter_util.LoreTier
+import me.fzzyhmstrs.amethyst_core.scepter_util.OceanicAugment
+import me.fzzyhmstrs.amethyst_core.scepter_util.SpellType
+import me.fzzyhmstrs.amethyst_core.scepter_util.base_augments.MinorSupportAugment
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EquipmentSlot
 import net.minecraft.entity.LivingEntity
@@ -15,7 +19,8 @@ import net.minecraft.sound.SoundEvents
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 
-class SearingBlastAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): MinorSupportAugment(tier, maxLvl, *slot),OceanicAugment {
+class SearingBlastAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): MinorSupportAugment(tier, maxLvl, *slot),
+    OceanicAugment {
 
     override val baseEffect: AugmentEffect
         get() = super.baseEffect.withDamage(4.0F,1.0F).withRange(4.0,1.0).withAmplifier(2)
@@ -35,7 +40,7 @@ class SearingBlastAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): M
                     target.damage(DamageSource.MAGIC,effects.damage(level))
                 }
                 if (bl) {
-                    effects.accept(target,AugmentConsumer.Type.HARMFUL)
+                    effects.accept(target, AugmentConsumer.Type.HARMFUL)
                     effects.accept(user,AugmentConsumer.Type.BENEFICIAL)
                     generateParticles(world,target.pos)
                     world.playSound(null, target.blockPos, soundEvent(), SoundCategory.PLAYERS, 1.0F, 1.0F)
@@ -74,7 +79,7 @@ class SearingBlastAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): M
         return SoundEvents.BLOCK_BELL_USE
     }
 
-    override fun augmentStat(imbueLevel: Int): ScepterObject.AugmentDatapoint {
-        return ScepterObject.AugmentDatapoint(SpellType.FURY,20,8,10,imbueLevel,LoreTier.LOW_TIER, Items.ROTTEN_FLESH)
+    override fun augmentStat(imbueLevel: Int): AugmentDatapoint {
+        return AugmentDatapoint(SpellType.FURY,20,8,10,imbueLevel, LoreTier.LOW_TIER, Items.ROTTEN_FLESH)
     }
 }

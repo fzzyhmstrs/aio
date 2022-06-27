@@ -1,11 +1,11 @@
 package me.fzzyhmstrs.ai_odyssey.scepter
 
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.AugmentConsumer
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.AugmentEffect
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.MinorSupportAugment
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.ScepterObject
-import me.fzzyhmstrs.amethyst_imbuement.util.LoreTier
-import me.fzzyhmstrs.amethyst_imbuement.util.SpellType
+import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentConsumer
+import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentEffect
+import me.fzzyhmstrs.amethyst_core.scepter_util.AugmentDatapoint
+import me.fzzyhmstrs.amethyst_core.scepter_util.LoreTier
+import me.fzzyhmstrs.amethyst_core.scepter_util.SpellType
+import me.fzzyhmstrs.amethyst_core.scepter_util.base_augments.MinorSupportAugment
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EquipmentSlot
 import net.minecraft.entity.LivingEntity
@@ -39,7 +39,7 @@ class SmitingBlowAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): Mi
                 }
                 if (bl) {
                     effects.accept(target,AugmentConsumer.Type.HARMFUL)
-                    effects.accept(user,AugmentConsumer.Type.BENEFICIAL)
+                    effects.accept(user, AugmentConsumer.Type.BENEFICIAL)
                     generateParticles(world,target.pos)
                     world.playSound(null, target.blockPos, soundEvent(), SoundCategory.PLAYERS, 1.0F, 1.0F)
                 }
@@ -77,7 +77,7 @@ class SmitingBlowAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): Mi
         return SoundEvents.BLOCK_BELL_USE
     }
 
-    override fun augmentStat(imbueLevel: Int): ScepterObject.AugmentDatapoint {
-        return ScepterObject.AugmentDatapoint(SpellType.FURY,20,8,10,imbueLevel,LoreTier.LOW_TIER, Items.ROTTEN_FLESH)
+    override fun augmentStat(imbueLevel: Int): AugmentDatapoint {
+        return AugmentDatapoint(SpellType.FURY,20,8,10, imbueLevel, LoreTier.LOW_TIER, Items.ROTTEN_FLESH)
     }
 }

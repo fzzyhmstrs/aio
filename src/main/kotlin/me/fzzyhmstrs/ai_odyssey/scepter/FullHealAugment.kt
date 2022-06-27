@@ -1,8 +1,12 @@
 package me.fzzyhmstrs.ai_odyssey.scepter
 
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.*
-import me.fzzyhmstrs.amethyst_imbuement.util.LoreTier
-import me.fzzyhmstrs.amethyst_imbuement.util.SpellType
+import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentConsumer
+import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentEffect
+import me.fzzyhmstrs.amethyst_core.scepter_util.AugmentDatapoint
+import me.fzzyhmstrs.amethyst_core.scepter_util.HealerAugment
+import me.fzzyhmstrs.amethyst_core.scepter_util.LoreTier
+import me.fzzyhmstrs.amethyst_core.scepter_util.SpellType
+import me.fzzyhmstrs.amethyst_core.scepter_util.base_augments.MinorSupportAugment
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EquipmentSlot
 import net.minecraft.entity.LivingEntity
@@ -13,7 +17,8 @@ import net.minecraft.item.Items
 import net.minecraft.sound.SoundCategory
 import net.minecraft.world.World
 
-class FullHealAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): MinorSupportAugment(tier, maxLvl, *slot), HealerAugment {
+class FullHealAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): MinorSupportAugment(tier, maxLvl, *slot),
+    HealerAugment {
 
     override fun supportEffect(
         world: World,
@@ -29,7 +34,7 @@ class FullHealAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): Minor
                 val healAmount = maxHealth - currentHealth
                 if (healAmount == 0.0F) return false
                 target.heal(healAmount)
-                effects.accept(target,AugmentConsumer.Type.BENEFICIAL)
+                effects.accept(target, AugmentConsumer.Type.BENEFICIAL)
                 world.playSound(null, target.blockPos, soundEvent(), SoundCategory.PLAYERS, 1.0F, 1.0F)
                 return true
             }
@@ -48,7 +53,7 @@ class FullHealAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): Minor
         }
     }
 
-    override fun augmentStat(imbueLevel: Int): ScepterObject.AugmentDatapoint {
-        return ScepterObject.AugmentDatapoint(SpellType.GRACE,200,50,25,imbueLevel,LoreTier.EXTREME_TIER, Items.ENCHANTED_GOLDEN_APPLE)
+    override fun augmentStat(imbueLevel: Int): AugmentDatapoint {
+        return AugmentDatapoint(SpellType.GRACE,200,50,25,imbueLevel, LoreTier.EXTREME_TIER, Items.ENCHANTED_GOLDEN_APPLE)
     }
 }
