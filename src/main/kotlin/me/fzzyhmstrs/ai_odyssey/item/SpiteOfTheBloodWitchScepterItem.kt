@@ -1,9 +1,11 @@
 package me.fzzyhmstrs.ai_odyssey.item
 
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterParticle
-import me.fzzyhmstrs.amethyst_imbuement.item.ScepterItem
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.AugmentModifier
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.ScepterAugment
+import me.fzzyhmstrs.amethyst_core.coding_util.PlayerParticles.playerParticlePos
+import me.fzzyhmstrs.amethyst_core.coding_util.PlayerParticles.scepterOffset
+import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentModifier
+import me.fzzyhmstrs.amethyst_core.scepter_util.ScepterToolMaterial
+import me.fzzyhmstrs.amethyst_core.scepter_util.base_augments.ScepterAugment
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
 import net.minecraft.client.MinecraftClient
@@ -14,9 +16,9 @@ import net.minecraft.util.Identifier
 import net.minecraft.util.math.MathHelper
 import net.minecraft.world.World
 
-class SpiteOfTheBloodWitchScepterItem(material: ToolMaterial, settings: Settings, flavor: String = "", startingAugments: List<ScepterAugment> = listOf(), vararg defaultModifier: Identifier): CustomScepterItem(material, settings, flavor, startingAugments, *defaultModifier) {
+class SpiteOfTheBloodWitchScepterItem(material: ScepterToolMaterial, settings: Settings, flavor: String = "", startingAugments: List<ScepterAugment> = listOf(), vararg defaultModifier: Identifier): CustomScepterItem(material, settings, flavor, startingAugments, *defaultModifier) {
 
-    constructor(material: ToolMaterial, settings: Settings, startingAugments: List<ScepterAugment> = listOf(), defaultModifiers: List<AugmentModifier> = listOf(), flavor: String = ""):
+    constructor(material: ScepterToolMaterial, settings: Settings, startingAugments: List<ScepterAugment> = listOf(), defaultModifiers: List<AugmentModifier> = listOf(), flavor: String = ""):
             this(material,settings,flavor,startingAugments,*modsToIds(defaultModifiers))
 
     @Environment(EnvType.CLIENT)

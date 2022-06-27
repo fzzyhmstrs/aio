@@ -1,10 +1,10 @@
 package me.fzzyhmstrs.ai_odyssey.item
 
+import me.fzzyhmstrs.amethyst_core.nbt_util.Nbt
+import me.fzzyhmstrs.amethyst_core.nbt_util.NbtKeys
+import me.fzzyhmstrs.amethyst_core.scepter_util.LoreTier
+import me.fzzyhmstrs.amethyst_core.scepter_util.ScepterHelper
 import me.fzzyhmstrs.amethyst_imbuement.item.BookOfLoreItem
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.ScepterObject
-import me.fzzyhmstrs.amethyst_imbuement.util.LoreTier
-import me.fzzyhmstrs.amethyst_imbuement.util.Nbt
-import me.fzzyhmstrs.amethyst_imbuement.util.NbtKeys
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.server.world.ServerWorld
@@ -21,7 +21,7 @@ class BookOfLegendItem(settings: Settings, _ttn: String, _glint: Boolean): BookO
         if (world !is ServerWorld) return TypedActionResult.fail(stack)
         val nbt = stack.orCreateNbt
         if(!nbt.contains(NbtKeys.LORE_KEY.str())){
-            val nbtTemp = ScepterObject.bookOfLoreNbtGenerator(LoreTier.EXTREME_TIER)
+            val nbtTemp = ScepterHelper.bookOfLoreNbtGenerator(LoreTier.EXTREME_TIER)
             val enchant = Nbt.readStringNbt(NbtKeys.LORE_KEY.str(),nbtTemp)
             Nbt.writeStringNbt(NbtKeys.LORE_KEY.str(),enchant,nbt)
             world.playSound(null,user.blockPos, SoundEvents.ITEM_BOOK_PAGE_TURN, SoundCategory.NEUTRAL,0.7f,1.0f)

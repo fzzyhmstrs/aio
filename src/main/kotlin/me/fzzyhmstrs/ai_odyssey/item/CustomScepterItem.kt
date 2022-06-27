@@ -1,24 +1,17 @@
 package me.fzzyhmstrs.ai_odyssey.item
 
+import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentModifier
+import me.fzzyhmstrs.amethyst_core.scepter_util.ScepterToolMaterial
+import me.fzzyhmstrs.amethyst_core.scepter_util.base_augments.ScepterAugment
 import me.fzzyhmstrs.amethyst_imbuement.AI
 import me.fzzyhmstrs.amethyst_imbuement.item.ScepterItem
 import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterEnchantment
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.AugmentModifier
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.ScepterAugment
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.ScepterObject
-import me.fzzyhmstrs.amethyst_imbuement.util.Nbt
-import me.fzzyhmstrs.amethyst_imbuement.util.NbtKeys
-import me.fzzyhmstrs.amethyst_imbuement.util.SpellType
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
-import net.minecraft.client.MinecraftClient
 import net.minecraft.client.item.TooltipContext
-import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.Entity
-import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
-import net.minecraft.item.ToolMaterial
 import net.minecraft.loot.function.LootFunction
 import net.minecraft.loot.function.SetEnchantmentsLootFunction
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider
@@ -26,12 +19,11 @@ import net.minecraft.text.Text
 import net.minecraft.text.TranslatableText
 import net.minecraft.util.Formatting
 import net.minecraft.util.Identifier
-import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 
-open class CustomScepterItem(material: ToolMaterial, settings: Settings, flavor: String = "", startingAugments: List<ScepterAugment> = listOf(), vararg defaultModifier: Identifier): ScepterItem(material, settings, *defaultModifier) {
+open class CustomScepterItem(material: ScepterToolMaterial, settings: Settings, flavor: String = "", startingAugments: List<ScepterAugment> = listOf(), vararg defaultModifier: Identifier): ScepterItem(material, settings, *defaultModifier) {
 
-    constructor(material: ToolMaterial, settings: Settings, startingAugments: List<ScepterAugment> = listOf(), defaultModifiers: List<AugmentModifier> = listOf(), flavor: String = ""):
+    constructor(material: ScepterToolMaterial, settings: Settings, startingAugments: List<ScepterAugment> = listOf(), defaultModifiers: List<AugmentModifier> = listOf(), flavor: String = ""):
             this(material,settings,flavor,startingAugments,*modsToIds(defaultModifiers))
 
     open val defaultAugments: List<ScepterAugment> = startingAugments
