@@ -23,6 +23,9 @@ repositories {
     flatDir {
         dirs("F:\\Documents\\Mod Development\\ai\\build\\libs")
     }
+    flatDir {
+        dirs("F:\\Documents\\Mod Libraries\\ac\\build\\libs")
+    }
 }
 dependencies {
     val minecraftVersion: String by project
@@ -36,7 +39,9 @@ dependencies {
     val fabricKotlinVersion: String by project
     modImplementation("net.fabricmc:fabric-language-kotlin:$fabricKotlinVersion")
 
-    modImplementation(":amethyst_imbuement-1.18.2-18")
+    modImplementation(":amethyst_imbuement-1.18.2-19-ac_lib")
+
+    modImplementation(":amethyst_core-1.0.0+1.18.2")
 
     modImplementation("dev.emi:trinkets:3.3.0"){
         exclude("net.fabricmc.fabric-api")
