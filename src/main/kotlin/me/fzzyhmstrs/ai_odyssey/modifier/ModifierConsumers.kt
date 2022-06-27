@@ -1,13 +1,11 @@
 package me.fzzyhmstrs.ai_odyssey.modifier
 
-import me.fzzyhmstrs.amethyst_imbuement.augment.base_augments.BaseAugment
+import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentConsumer
+import me.fzzyhmstrs.amethyst_core.scepter_util.ScepterHelper
+import me.fzzyhmstrs.amethyst_core.scepter_util.base_augments.ScepterAugment
+import me.fzzyhmstrs.amethyst_core.trinket_util.EffectQueue
 import me.fzzyhmstrs.amethyst_imbuement.item.ScepterItem
 import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterStatus
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.AugmentConsumer
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.ScepterAugment
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.ScepterObject
-import me.fzzyhmstrs.amethyst_imbuement.util.Nbt
-import me.fzzyhmstrs.amethyst_imbuement.util.NbtKeys
 import net.minecraft.entity.ExperienceOrbEntity
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.damage.DamageSource
@@ -87,7 +85,7 @@ object ModifierConsumers {
         val stack = user.getStackInHand(Hand.MAIN_HAND)
         val item = stack.item
         if (item is ScepterItem){
-            val activeEnchant = ScepterObject.activeEnchantHelper(user.world,stack, Nbt.readStringNbt(NbtKeys.ACTIVE_ENCHANT.str(), stack.orCreateNbt))
+            val activeEnchant = ScepterHelper.activeEnchantHelper(stack)
             val augment = Registry.ENCHANTMENT.get(Identifier(activeEnchant))
             if (augment != null && augment is ScepterAugment){
                 augment.applyModifiableTasks(user.world,user,Hand.MAIN_HAND,1)
@@ -97,14 +95,14 @@ object ModifierConsumers {
     val OCEANIC_CONSUMER = AugmentConsumer({ list: List<LivingEntity> -> oceanicConsumer(list)}, AugmentConsumer.Type.BENEFICIAL)
     private fun oceanicConsumer(list: List<LivingEntity>){
         list.forEach {
-            BaseAugment.addStatusToQueue(it,StatusEffects.DOLPHINS_GRACE,14,0)
+            EffectQueue.addStatusToQueue(it,StatusEffects.DOLPHINS_GRACE,14,0)
         }
     }
 
     val PROTECTIVE_CONSUMER = AugmentConsumer({ list: List<LivingEntity> -> protectiveConsumer(list) }, AugmentConsumer.Type.BENEFICIAL)
     private fun protectiveConsumer(list: List<LivingEntity>){
         list.forEach {
-            BaseAugment.addStatusToQueue(it,RegisterStatus.SHIELDING,20,0)
+            EffectQueue.addStatusToQueue(it,RegisterStatus.SHIELDING,20,0)
         }
     }
 
@@ -132,7 +130,7 @@ object ModifierConsumers {
             if (it is PlayerEntity){
                 val rnd1 = it.world.random.nextInt(8)
                 if (rnd1 == 0)
-                BaseAugment.addStatusToQueue(it,StatusEffects.SPEED,30,0)
+                EffectQueue.addStatusToQueue(it,StatusEffects.SPEED,30,0)
             }
         }
     }
