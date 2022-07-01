@@ -39,6 +39,7 @@ class CrystallineNumLockBlock(settings: Settings): AbstractLockBlock(settings), 
         return super.getPlacementState(ctx)?.with(LOCK_NUM,0)
     }
 
+    @Suppress("DEPRECATION")
     @Deprecated("Deprecated in Java")
     override fun onUse(
         state: BlockState,

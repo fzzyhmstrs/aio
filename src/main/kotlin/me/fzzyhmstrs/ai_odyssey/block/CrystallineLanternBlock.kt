@@ -61,6 +61,7 @@ class CrystallineLanternBlock(settings: Settings): Block(settings) {
         world.setBlockState(pos, state.with(LANTERN_LIT,LanternLit.EMERGENCY))
     }
 
+    @Suppress("DEPRECATION")
     @Deprecated("Deprecated in Java")
     override fun onStateReplaced(
         state: BlockState,

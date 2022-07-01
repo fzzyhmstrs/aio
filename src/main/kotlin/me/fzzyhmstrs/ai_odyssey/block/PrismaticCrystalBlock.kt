@@ -2,7 +2,6 @@ package me.fzzyhmstrs.ai_odyssey.block
 
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
-import net.minecraft.block.WallBlock
 import net.minecraft.block.Waterloggable
 import net.minecraft.fluid.FluidState
 import net.minecraft.fluid.Fluids
@@ -41,6 +40,7 @@ class PrismaticCrystalBlock(settings: Settings): Block(settings), Waterloggable 
         return placementState
     }
 
+    @Suppress("DEPRECATION")
     @Deprecated("Deprecated in Java")
     override fun getStateForNeighborUpdate(
         state: BlockState,
@@ -68,6 +68,7 @@ class PrismaticCrystalBlock(settings: Settings): Block(settings), Waterloggable 
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos)
     }
 
+    @Suppress("DEPRECATION")
     @Deprecated("Deprecated in Java")
     override fun getFluidState(state: BlockState): FluidState {
         return if (state.get(WATERLOGGED)) {

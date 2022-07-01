@@ -5,7 +5,6 @@ import net.minecraft.block.BlockState
 import net.minecraft.block.FluidFillable
 import net.minecraft.block.SweetBerryBushBlock
 import net.minecraft.entity.Entity
-import net.minecraft.entity.EntityType
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.fluid.Fluid

@@ -1,7 +1,6 @@
 package me.fzzyhmstrs.ai_odyssey.block
 
 import me.fzzyhmstrs.ai_odyssey.configurator.ConfiguratorInteractive
-import me.fzzyhmstrs.ai_odyssey.screen.MessageScreenHelper
 import me.fzzyhmstrs.ai_odyssey.screen.MessageScreenHelper.IndexedEnum
 import me.fzzyhmstrs.ai_odyssey.screen.MessageScreenHelper.enumToIndexes
 import me.fzzyhmstrs.ai_odyssey.screen.PetroglyphRecipeScreenHandler

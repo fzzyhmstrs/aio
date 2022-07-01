@@ -18,6 +18,7 @@ import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
+@Suppress("DEPRECATION")
 class CrystallineItemLockBlock(settings: Settings): AbstractLockBlock(settings), SwitchLock {
 
     companion object {

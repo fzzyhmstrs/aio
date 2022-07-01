@@ -98,7 +98,7 @@ class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoo
     companion object{
 
         private val LIT = Properties.LIT
-        private val maxSearchOffset = 12
+        private const val maxSearchOffset = 12
     
         private fun composePortalFrame(world: World, pos: BlockPos): FrameResult{
             val layerMap: MutableMap<Int, PortalLayer> = mutableMapOf()

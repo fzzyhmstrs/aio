@@ -14,6 +14,7 @@ import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemPlacementContext
 import net.minecraft.state.StateManager
+import net.minecraft.state.property.BooleanProperty
 import net.minecraft.state.property.EnumProperty
 import net.minecraft.state.property.Properties
 import net.minecraft.util.ActionResult
@@ -38,6 +39,7 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
         builder.add(LIT, SWITCH_COLOR)
     }
 
+    @Suppress("DEPRECATION")
     @Deprecated("Deprecated in Java")
     override fun onUse(
         state: BlockState,
@@ -86,8 +88,8 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
 
     companion object{
 
-        val LIT = Properties.LIT
-        val SWITCH_COLOR = EnumProperty.of("switch_color",SwitchColor::class.java)
+        val LIT: BooleanProperty = Properties.LIT
+        val SWITCH_COLOR: EnumProperty<SwitchColor> = EnumProperty.of("switch_color",SwitchColor::class.java)
 
         val STATE_TO_LUMINANCE: ToIntFunction<BlockState> = ToIntFunction { state:BlockState -> if(state.get(LIT) != false){15} else {8} }
 
