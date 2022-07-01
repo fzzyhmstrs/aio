@@ -2,13 +2,12 @@ package me.fzzyhmstrs.ai_odyssey.tool
 
 import me.fzzyhmstrs.ai_odyssey.config.AioConfig
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterItem
+import me.fzzyhmstrs.amethyst_core.scepter_util.ScepterToolMaterial
 import me.fzzyhmstrs.amethyst_imbuement.config.AiConfig
-import me.fzzyhmstrs.amethyst_imbuement.tool.ScepterMaterialAddon
-import net.minecraft.item.ToolMaterial
 import net.minecraft.recipe.Ingredient
 import kotlin.math.max
 
-object ScepterLvl4ToolMaterial: ToolMaterial, ScepterMaterialAddon {
+object ScepterLvl4ToolMaterial: ScepterToolMaterial() {
     override fun getDurability(): Int {
         return AioConfig.scepters.resplendentDurability
     }
