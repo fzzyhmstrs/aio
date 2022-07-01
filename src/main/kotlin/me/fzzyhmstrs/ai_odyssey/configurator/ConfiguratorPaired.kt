@@ -1,8 +1,8 @@
 package me.fzzyhmstrs.ai_odyssey.configurator
 
 import me.fzzyhmstrs.ai_odyssey.util.FacilityChimes
+import me.fzzyhmstrs.amethyst_core.nbt_util.Nbt
 import me.fzzyhmstrs.amethyst_imbuement.AI
-import me.fzzyhmstrs.amethyst_imbuement.util.Nbt
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
