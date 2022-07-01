@@ -1,8 +1,10 @@
 package me.fzzyhmstrs.ai_odyssey.modifier
 
+import me.fzzyhmstrs.amethyst_core.item_util.AugmentScepterItem
 import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentConsumer
 import me.fzzyhmstrs.amethyst_core.scepter_util.ScepterHelper
-import me.fzzyhmstrs.amethyst_core.scepter_util.base_augments.ScepterAugment
+import me.fzzyhmstrs.amethyst_core.scepter_util.augments.AugmentHelper
+import me.fzzyhmstrs.amethyst_core.scepter_util.augments.ScepterAugment
 import me.fzzyhmstrs.amethyst_core.trinket_util.EffectQueue
 import me.fzzyhmstrs.amethyst_imbuement.item.ScepterItem
 import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterStatus
@@ -84,8 +86,8 @@ object ModifierConsumers {
         val user = list[0]
         val stack = user.getStackInHand(Hand.MAIN_HAND)
         val item = stack.item
-        if (item is ScepterItem){
-            val activeEnchant = ScepterHelper.activeEnchantHelper(stack)
+        if (item is AugmentScepterItem){
+            val activeEnchant = item.getActiveEnchant(stack)
             val augment = Registry.ENCHANTMENT.get(Identifier(activeEnchant))
             if (augment != null && augment is ScepterAugment){
                 augment.applyModifiableTasks(user.world,user,Hand.MAIN_HAND,1)

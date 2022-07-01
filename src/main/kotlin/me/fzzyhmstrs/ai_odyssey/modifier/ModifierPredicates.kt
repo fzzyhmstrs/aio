@@ -1,8 +1,7 @@
 package me.fzzyhmstrs.ai_odyssey.modifier
 
-import me.fzzyhmstrs.amethyst_core.scepter_util.*
-import me.fzzyhmstrs.amethyst_core.scepter_util.base_augments.SummonEntityAugment
-import me.fzzyhmstrs.amethyst_imbuement.scepter.SpectralSlashAugment
+import me.fzzyhmstrs.amethyst_core.scepter_util.SpellType
+import me.fzzyhmstrs.amethyst_core.scepter_util.augments.*
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 import java.util.function.Predicate
@@ -11,21 +10,21 @@ object ModifierPredicates {
 
     val FURIOUS_PREDICATE = Predicate {id: Identifier -> furiousPredicate(id)}
     private fun furiousPredicate(id: Identifier): Boolean{
-        return ScepterHelper.getAugmentType(id.toString()) == SpellType.FURY
+        return AugmentHelper.getAugmentType(id.toString()) == SpellType.FURY
     }
     val WITTY_PREDICATE = Predicate {id: Identifier -> wittyPredicate(id)}
     private fun wittyPredicate(id: Identifier): Boolean{
-        return ScepterHelper.getAugmentType(id.toString()) == SpellType.WIT
+        return AugmentHelper.getAugmentType(id.toString()) == SpellType.WIT
     }
     val GRACEFUL_PREDICATE = Predicate {id: Identifier -> gracefulPredicate(id)}
     private fun gracefulPredicate(id: Identifier): Boolean{
-        return ScepterHelper.getAugmentType(id.toString()) == SpellType.GRACE
+        return AugmentHelper.getAugmentType(id.toString()) == SpellType.GRACE
     }
 
     val BLADE_PREDICATE = Predicate {id: Identifier -> bladePredicate(id)}
     private fun bladePredicate(id: Identifier): Boolean{
         val augment = Registry.ENCHANTMENT.get(id)?:return false
-        return augment is SpectralSlashAugment
+        return augment is SlashAugment
     }
 
     val SOUL_PREDICATE = Predicate {id: Identifier -> soulPredicate(id)}
@@ -36,7 +35,7 @@ object ModifierPredicates {
     
     val KNOWLEDGE_PREDICATE = Predicate {id: Identifier -> knowledgePredicate(id)}
     private fun knowledgePredicate(id: Identifier): Boolean{
-        return ScepterHelper.getAugmentType(id.toString()) != SpellType.WIT
+        return AugmentHelper.getAugmentType(id.toString()) != SpellType.WIT
     }
 
     val HEALERS_PREDICATE = Predicate {id: Identifier -> healersPredicate(id)}
