@@ -3,34 +3,26 @@ package me.fzzyhmstrs.ai_odyssey.item
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterParticle
 import me.fzzyhmstrs.amethyst_core.coding_util.PlayerParticles.playerParticlePos
 import me.fzzyhmstrs.amethyst_core.coding_util.PlayerParticles.scepterOffset
-import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentModifier
 import me.fzzyhmstrs.amethyst_core.scepter_util.ScepterToolMaterial
-import me.fzzyhmstrs.amethyst_core.scepter_util.base_augments.ScepterAugment
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.option.Perspective
-import net.minecraft.entity.player.PlayerEntity
-import net.minecraft.item.ToolMaterial
-import net.minecraft.util.Identifier
+import net.minecraft.entity.LivingEntity
 import net.minecraft.util.math.MathHelper
 import net.minecraft.world.World
 
-class SpiteOfTheBloodWitchScepterItem(material: ScepterToolMaterial, settings: Settings, flavor: String = "", startingAugments: List<ScepterAugment> = listOf(), vararg defaultModifier: Identifier): CustomScepterItem(material, settings, flavor, startingAugments, *defaultModifier) {
-
-    constructor(material: ScepterToolMaterial, settings: Settings, startingAugments: List<ScepterAugment> = listOf(), defaultModifiers: List<AugmentModifier> = listOf(), flavor: String = ""):
-            this(material,settings,flavor,startingAugments,*modsToIds(defaultModifiers))
+class SpiteOfTheBloodWitchScepterItem(material: ScepterToolMaterial, settings: Settings): CustomScepterItem(material, settings) {
 
     @Environment(EnvType.CLIENT)
-    override fun emitParticles(world: World, entity: PlayerEntity) {
-        val client = MinecraftClient.getInstance()
-        val pos = entity.getCameraPosVec(client.tickDelta)
-        val width = entity.width
+    override fun emitParticles(world: World, client: MinecraftClient, user: LivingEntity) {
+        val pos = user.getCameraPosVec(client.tickDelta)
+        val width = user.width
         val perspective = client.options.perspective
         val yaw = if(perspective == Perspective.THIRD_PERSON_FRONT){
-            entity.bodyYaw
+            user.bodyYaw
         } else {
-            entity.getYaw(client.tickDelta)
+            user.getYaw(client.tickDelta)
         }
         val fov = MathHelper.clamp(client.options.fov,30.0,110.0)
 
@@ -41,7 +33,11 @@ class SpiteOfTheBloodWitchScepterItem(material: ScepterToolMaterial, settings: S
         val particlePos = playerParticlePos(pos, width, yaw, offset)
 
         world.addParticle(RegisterParticle.DRIPPING_BLOOD,particlePos.x, particlePos.y, particlePos.z, 0.0, 0.0, 0.0)
-        super.emitParticles(world, entity)
+        super.emitParticles(world,client, user)
+    }
+
+    override fun particleChance(): Int {
+        return 10
     }
 
 }

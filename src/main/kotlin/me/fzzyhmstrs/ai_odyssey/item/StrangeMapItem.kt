@@ -11,14 +11,12 @@ import net.minecraft.item.map.MapState
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundEvents
 import net.minecraft.stat.Stats
-import net.minecraft.tag.TagKey
 import net.minecraft.text.Text
 import net.minecraft.text.TranslatableText
 import net.minecraft.util.Formatting
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
-import net.minecraft.world.gen.feature.ConfiguredStructureFeature
 
 class StrangeMapItem(settings: Settings): EmptyMapItem(settings) {
 

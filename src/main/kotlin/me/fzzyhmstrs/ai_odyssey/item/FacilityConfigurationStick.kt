@@ -1,15 +1,15 @@
 package me.fzzyhmstrs.ai_odyssey.item
 
-import me.fzzyhmstrs.ai_odyssey.configurator.ConfiguratorPaired
 import me.fzzyhmstrs.ai_odyssey.block.CrystallineSwitchBlock
-import me.fzzyhmstrs.ai_odyssey.entity.CrystallineSwitchBlockEntity
+import me.fzzyhmstrs.ai_odyssey.configurator.ConfiguratorPaired
 import me.fzzyhmstrs.ai_odyssey.configurator.SwitchDoor
 import me.fzzyhmstrs.ai_odyssey.configurator.SwitchLock
+import me.fzzyhmstrs.ai_odyssey.entity.CrystallineSwitchBlockEntity
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterBlock
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
 import net.minecraft.item.Item
 import net.minecraft.item.ItemUsageContext
-import net.minecraft.text.*
+import net.minecraft.text.TranslatableText
 import net.minecraft.util.ActionResult
 
 class FacilityConfigurationStick(settings: Settings): Item(settings), ConfiguratorPaired {

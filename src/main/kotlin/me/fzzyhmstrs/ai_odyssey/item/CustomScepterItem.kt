@@ -1,41 +1,17 @@
 package me.fzzyhmstrs.ai_odyssey.item
 
-import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentModifier
+import me.fzzyhmstrs.amethyst_core.item_util.DefaultScepterItem
 import me.fzzyhmstrs.amethyst_core.scepter_util.ScepterToolMaterial
-import me.fzzyhmstrs.amethyst_core.scepter_util.base_augments.ScepterAugment
 import me.fzzyhmstrs.amethyst_imbuement.AI
-import me.fzzyhmstrs.amethyst_imbuement.item.ScepterItem
-import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterEnchantment
-import net.fabricmc.api.EnvType
-import net.fabricmc.api.Environment
-import net.minecraft.client.item.TooltipContext
+import net.minecraft.client.MinecraftClient
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
-import net.minecraft.loot.function.LootFunction
-import net.minecraft.loot.function.SetEnchantmentsLootFunction
-import net.minecraft.loot.provider.number.ConstantLootNumberProvider
-import net.minecraft.text.Text
-import net.minecraft.text.TranslatableText
-import net.minecraft.util.Formatting
 import net.minecraft.util.Identifier
 import net.minecraft.world.World
 
-open class CustomScepterItem(material: ScepterToolMaterial, settings: Settings, flavor: String = "", startingAugments: List<ScepterAugment> = listOf(), vararg defaultModifier: Identifier): ScepterItem(material, settings, *defaultModifier) {
-
-    constructor(material: ScepterToolMaterial, settings: Settings, startingAugments: List<ScepterAugment> = listOf(), defaultModifiers: List<AugmentModifier> = listOf(), flavor: String = ""):
-            this(material,settings,flavor,startingAugments,*modsToIds(defaultModifiers))
-
-    open val defaultAugments: List<ScepterAugment> = startingAugments
-    private val ns = AI.MOD_ID
-    private val ttn = flavor
-
-    override fun appendTooltip(stack: ItemStack, world: World?, tooltip: MutableList<Text>, context: TooltipContext?) {
-        if (ttn != ""){
-            tooltip.add(TranslatableText("item.$ns.$ttn.tooltip1").formatted(Formatting.WHITE, Formatting.ITALIC))
-        }
-        super.appendTooltip(stack, world, tooltip, context)
-    }
+open class CustomScepterItem(material: ScepterToolMaterial, settings: Settings): DefaultScepterItem(material, settings) {
+    override val fallbackId: Identifier = Identifier(AI.MOD_ID,"magic_missile")
 
     override fun inventoryTick(stack: ItemStack, world: World, entity: Entity, slot: Int, selected: Boolean) {
         super.inventoryTick(stack, world, entity, slot, selected)
@@ -43,44 +19,9 @@ open class CustomScepterItem(material: ScepterToolMaterial, settings: Settings, 
         if (world.isClient && selected){
             val rnd = world.random.nextInt(particleChance())
             if (rnd < 1){
-                emitParticles(world,entity)
+                emitParticles(world, MinecraftClient.getInstance(), entity)
             }
         }
-    }
-
-    open fun startingAugments(): LootFunction.Builder{
-        var builder = SetEnchantmentsLootFunction.Builder()
-            if (defaultAugments.isEmpty()){
-                return builder.enchantment(RegisterEnchantment.MAGIC_MISSILE,ConstantLootNumberProvider.create(1.0F))
-            } else {
-                defaultAugments.forEach {
-                    builder = builder.enchantment(it,ConstantLootNumberProvider.create(1.0F))
-                }
-            }
-        return builder
-    }
-
-    @Environment(EnvType.CLIENT)
-    open fun emitParticles(world: World, entity: PlayerEntity) {
-
-    }
-
-    @Environment(EnvType.CLIENT)
-    open fun particleChance(): Int {
-        return 10
-    }
-
-
-    companion object{
-
-        fun modsToIds(mods: List<AugmentModifier>): Array<Identifier>{
-            val list: MutableList<Identifier> = mutableListOf()
-            mods.forEach {
-                list.add(it.modifierId)
-            }
-            return list.toTypedArray()
-        }
-
     }
 
 }
