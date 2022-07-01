@@ -3,11 +3,10 @@ package me.fzzyhmstrs.ai_odyssey.registry
 import me.fzzyhmstrs.ai_odyssey.AIO
 import me.fzzyhmstrs.ai_odyssey.modifier.ModifierConsumers
 import me.fzzyhmstrs.ai_odyssey.modifier.ModifierPredicates
+import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentModifier
+import me.fzzyhmstrs.amethyst_core.registry.ModifierRegistry
+import me.fzzyhmstrs.amethyst_core.scepter_util.SpellType
 import me.fzzyhmstrs.amethyst_imbuement.AI
-import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterModifier
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.AugmentConsumer
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.AugmentModifier
-import me.fzzyhmstrs.amethyst_imbuement.util.SpellType
 import net.minecraft.util.Identifier
 
 object RegisterModifier {
@@ -51,7 +50,7 @@ object RegisterModifier {
 
     fun registerAll(){
         regMod.forEach {
-            RegisterModifier.ENTRIES.register(it)
+            ModifierRegistry.register(it)
         }
         regMod.clear()
     }

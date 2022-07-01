@@ -1,8 +1,7 @@
 package me.fzzyhmstrs.ai_odyssey.registry
 
 import me.fzzyhmstrs.ai_odyssey.model.CrystallineItemLockBlockEntityRenderer
-import me.fzzyhmstrs.amethyst_imbuement.model.MissileEntityRenderer
-import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterEntity
+import me.fzzyhmstrs.amethyst_core.entity_util.MissileEntityRenderer
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry
