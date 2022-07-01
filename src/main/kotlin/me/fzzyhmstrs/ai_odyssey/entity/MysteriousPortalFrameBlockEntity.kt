@@ -1,8 +1,8 @@
 package me.fzzyhmstrs.ai_odyssey.entity
 
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
-import me.fzzyhmstrs.amethyst_imbuement.util.Nbt
-import me.fzzyhmstrs.amethyst_imbuement.util.NbtKeys
+import me.fzzyhmstrs.amethyst_core.nbt_util.Nbt
+import me.fzzyhmstrs.amethyst_core.nbt_util.NbtKeys
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.nbt.NbtCompound

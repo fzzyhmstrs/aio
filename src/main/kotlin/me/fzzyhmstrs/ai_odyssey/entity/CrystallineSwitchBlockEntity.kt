@@ -3,9 +3,9 @@ package me.fzzyhmstrs.ai_odyssey.entity
 import me.fzzyhmstrs.ai_odyssey.block.CrystallineSwitchBlock
 import me.fzzyhmstrs.ai_odyssey.configurator.SwitchLock
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
-import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterEvent
-import me.fzzyhmstrs.amethyst_imbuement.util.Nbt
-import me.fzzyhmstrs.amethyst_imbuement.util.NbtKeys
+import me.fzzyhmstrs.amethyst_core.nbt_util.Nbt
+import me.fzzyhmstrs.amethyst_core.nbt_util.NbtKeys
+import me.fzzyhmstrs.amethyst_core.registry.EventRegistry
 import net.minecraft.block.Block.NOTIFY_LISTENERS
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
@@ -101,7 +101,7 @@ class CrystallineSwitchBlockEntity(pos: BlockPos, state: BlockState):BlockEntity
 
     companion object{
         fun tick(world: World, pos: BlockPos, state: BlockState, blockEntity: CrystallineSwitchBlockEntity) {
-            if (RegisterEvent.ticker_totem.isNotReady()) return
+            if (EventRegistry.ticker_20.isNotReady()) return
             if (blockEntity.locks.isNotEmpty()){
                 var bl = true
                 blockEntity.locks.forEach {

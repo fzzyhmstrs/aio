@@ -1,11 +1,11 @@
 package me.fzzyhmstrs.ai_odyssey.entity
 
-import me.fzzyhmstrs.amethyst_imbuement.entity.MissileEntity
+import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
+import me.fzzyhmstrs.amethyst_core.entity_util.MissileEntity
+import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentEffect
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.LivingEntity
 import net.minecraft.world.World
-import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.AugmentEffect
 
 class EnfeeblingBoltEntity(entityType: EntityType<out EnfeeblingBoltEntity?>, world: World): MissileEntity(entityType, world) {
 

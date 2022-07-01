@@ -1,19 +1,15 @@
 package me.fzzyhmstrs.ai_odyssey.entity
 
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
-import me.fzzyhmstrs.amethyst_imbuement.util.Nbt
-import me.fzzyhmstrs.amethyst_imbuement.util.NbtKeys
+import me.fzzyhmstrs.amethyst_core.nbt_util.Nbt
+import me.fzzyhmstrs.amethyst_core.nbt_util.NbtKeys
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
-import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
-import net.minecraft.item.Items
 import net.minecraft.nbt.NbtCompound
-import net.minecraft.util.ActionResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.registry.Registry
-import net.minecraft.world.World
 
 class CrystallineItemLockBlockEntity(pos: BlockPos, state: BlockState): BlockEntity(RegisterEntity.CRYSTALLINE_ITEM_LOCK_BLOCK_ENTITY,pos, state) {
 
