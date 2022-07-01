@@ -1,5 +1,6 @@
 package me.fzzyhmstrs.ai_odyssey.particle
 
+import me.fzzyhmstrs.amethyst_core.coding_util.PlayerParticles
 import me.fzzyhmstrs.amethyst_imbuement.item.ScepterItem
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
@@ -163,7 +164,7 @@ open class CustomBlockLeakParticle(world: ClientWorld, x: Double, y: Double, z: 
         }
 
         open fun getDisplayPos(player: PlayerEntity): Vec3d{
-            return ScepterItem.scepterParticlePos(MinecraftClient.getInstance(), player)
+            return PlayerParticles.scepterParticlePos(MinecraftClient.getInstance(), player)
         }
     }
 

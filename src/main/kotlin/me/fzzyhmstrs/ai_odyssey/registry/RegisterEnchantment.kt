@@ -2,8 +2,9 @@ package me.fzzyhmstrs.ai_odyssey.registry
 
 import me.fzzyhmstrs.ai_odyssey.enchantment.ImbuedTouchEnchantment
 import me.fzzyhmstrs.ai_odyssey.scepter.*
+import me.fzzyhmstrs.amethyst_core.scepter_util.augments.AugmentHelper
+import me.fzzyhmstrs.amethyst_core.scepter_util.augments.ScepterAugment
 import me.fzzyhmstrs.amethyst_imbuement.AI
-import me.fzzyhmstrs.amethyst_imbuement.scepter.base_augments.ScepterAugment
 import net.minecraft.enchantment.Enchantment
 import net.minecraft.entity.EquipmentSlot
 import net.minecraft.item.Items
@@ -39,7 +40,7 @@ object RegisterEnchantment {
             val enchant = regEnchant[k]
             Registry.register(Registry.ENCHANTMENT, Identifier(AI.MOD_ID, k), enchant)
             if (enchant is ScepterAugment){
-                enchant.registerAugmentStat()
+                AugmentHelper.registerAugmentStat(enchant)
             }
         }
 
