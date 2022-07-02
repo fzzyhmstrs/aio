@@ -23,7 +23,7 @@ object AioConfig: SyncedConfigHelper.SyncedConfig {
     }
 
     override fun initConfig(){
-        SyncedConfigRegistry.registerConfig(this)
+        SyncedConfigRegistry.registerConfig(AIO.MOD_ID,this)
         ReadmeText.writeReadMe("README.txt", AIO.MOD_ID)
     }
 
