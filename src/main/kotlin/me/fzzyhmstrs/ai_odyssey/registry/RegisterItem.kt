@@ -139,6 +139,8 @@ object RegisterItem {
     )
         .withModifiers(listOf(RegisterModifier.KNOWLEDGE_PACT,RegisterModifier.MIND_MAGIC, RegisterModifier.GREATER_REACH, RegisterModifier.WITTY, ModifierRegistry.GREATER_THRIFTY))
         .also{ regItem["wand_of_the_mind_mage"] = it}
+
+
     //flora and fauna
 
 
