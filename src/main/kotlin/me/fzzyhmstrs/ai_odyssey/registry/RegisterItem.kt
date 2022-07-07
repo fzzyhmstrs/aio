@@ -7,6 +7,7 @@ import me.fzzyhmstrs.ai_odyssey.item.*
 import me.fzzyhmstrs.ai_odyssey.tool.BloodWitchToolMaterial
 import me.fzzyhmstrs.ai_odyssey.tool.ScepterLvl4ToolMaterial
 import me.fzzyhmstrs.ai_odyssey.tool.ScepterOfBladesToolMaterial
+import me.fzzyhmstrs.amethyst_core.AC
 import me.fzzyhmstrs.amethyst_core.item_util.CustomFlavorItem
 import me.fzzyhmstrs.amethyst_core.registry.ModifierRegistry
 import me.fzzyhmstrs.amethyst_imbuement.item.ScepterItem
@@ -156,7 +157,8 @@ object RegisterItem {
     val BOOK_OF_LEGEND = BookOfLegendItem(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.EPIC)).withFlavorDefaultPath(Identifier(AIO.MOD_ID,"book_of_legend")).withGlint() .also{ regItem["book_of_legend"] = it}
     val DIVINE_CORONET = DivineCoronetItem(FabricItemSettings().group(ItemGroup.MISC).maxCount(1).rarity(Rarity.EPIC)).withFlavorDefaultPath(Identifier(AIO.MOD_ID,"divine_coronet")) .also{ regItem["divine_coronet"] = it}
     val FACILITY_CONFIGURATOR = FacilityConfigurationStick(FabricItemSettings().group(ItemGroup.MISC)).also{ regItem["facility_configurator"] = it}
-    val RESPLENDENT_RARITY = Item(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.EPIC)).also{ regItem["resplendent_rarity"] = it}
+    val RESPLENDENT_RARITY = CustomFlavorItem(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.EPIC)).withGlint().withFlavorDefaultPath(Identifier(
+        AC.MOD_ID,"resplendent_rarity")) .also{ regItem["resplendent_rarity"] = it}
     val STRANGE_MAP = StrangeMapItem(FabricItemSettings().group(ItemGroup.MISC)).also{ regItem["strange_map"] = it}
     val STRANGE_SCRAP = CustomFlavorItem(FabricItemSettings().group(ItemGroup.MISC)).withFlavorDefaultPath(Identifier(AIO.MOD_ID,"strange_scrap")) .also{ regItem["strange_scrap"] = it}
 
