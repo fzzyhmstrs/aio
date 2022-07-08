@@ -1,7 +1,8 @@
 {
   "variants": {
-    "": {
-      "model": "ai_odyssey:block/cobbled_gabbro"
-    }
+    "": [
+		{"model": "ai_odyssey:block/cobbled_gabbro"},
+		{"model": "ai_odyssey:block/cobbled_gabbro_1"}
+    ]
   }
 }
