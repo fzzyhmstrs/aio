@@ -50,6 +50,7 @@ object RegisterBlock {
     val CRYSTALLINE_SWITCH = CrystallineSwitchBlock(FabricBlockSettings.of(Material.AMETHYST, MapColor.PINK).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().strength(99.0f, 1200.0f).luminance { state: BlockState ->
         CrystallineSwitchBlock.STATE_TO_LUMINANCE.applyAsInt(state)
     })
+    val CRYSTALLINE_SWITCH_PEDESTAL = CrystallineSwitchPedestal(FabricBlockSettings.of(Material.STONE, MapColor.OFF_WHITE).requiresTool().strength(1.5f, 6.0f))
     val CRYSTALLINE_ITEM_LOCK = CrystallineItemLockBlock(FabricBlockSettings.of(Material.STONE, MapColor.IRON_GRAY).requiresTool().strength(99.0f, 1200.0f))
     val CRYSTALLINE_NUM_LOCK = CrystallineNumLockBlock(FabricBlockSettings.of(Material.STONE, MapColor.IRON_GRAY).requiresTool().strength(99.0f, 1200.0f))
     val FACILITY_TELEPORTER = FacilityTeleporterBlock(FabricBlockSettings.of(Material.METAL, MapColor.IRON_GRAY).requiresTool().strength(99.0f, 1200.0f))
@@ -95,6 +96,7 @@ object RegisterBlock {
         registerBlock("crystalline_lantern", CRYSTALLINE_LANTERN, ItemGroup.DECORATIONS)
         registerBlock("crystalline_num_lock", CRYSTALLINE_NUM_LOCK, ItemGroup.MISC)
         registerBlock("crystalline_switch", CRYSTALLINE_SWITCH, ItemGroup.MISC)
+        registerBlock("crystalline_switch_pedestal", CRYSTALLINE_SWITCH_PEDESTAL, ItemGroup.MISC)
         registerBlock("facility_teleporter", FACILITY_TELEPORTER, ItemGroup.MISC)
         registerBlock("gabbro", GABBRO, ItemGroup.BUILDING_BLOCKS)
         registerBlock("hard_light_barrier", HARD_LIGHT_BARRIER, ItemGroup.BUILDING_BLOCKS)

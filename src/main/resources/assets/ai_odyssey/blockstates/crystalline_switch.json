@@ -1,28 +1,100 @@
 {
-  "variants": {
-	  "switch_color=BLUE, lit=true": {
-      "model": "ai_odyssey:block/crystalline_switch_blue_lit"
+  "multipart": [
+	{
+      "when": {"switch_color": "BLUE", "lit": "true"}, 
+      "apply": {
+        "model": "ai_odyssey:block/crystalline_switch_blue_outer"
+      }
     },
-    "switch_color=BLUE, lit=false": {
-      "model": "ai_odyssey:block/crystalline_switch_blue_dark"
+	{
+      "when": {"switch_color": "BLUE", "lit": "true"}, 
+      "apply": {
+        "model": "ai_odyssey:block/crystalline_switch_blue_inner"
+      }
     },
-    "switch_color=GREEN, lit=true": {
-      "model": "ai_odyssey:block/crystalline_switch_green_lit"
+	{
+      "when": {"switch_color": "BLUE", "lit": "false"}, 
+      "apply": {
+        "model": "ai_odyssey:block/crystalline_switch_blue_outer_dark"
+      }
     },
-    "switch_color=GREEN, lit=false": {
-      "model": "ai_odyssey:block/crystalline_switch_green_dark"
+	{
+      "when": {"switch_color": "BLUE", "lit": "false"}, 
+      "apply": {
+        "model": "ai_odyssey:block/crystalline_switch_blue_inner_dark"
+      }
     },
-    "switch_color=RED, lit=true": {
-      "model": "ai_odyssey:block/crystalline_switch_red_lit"
+	{
+      "when": {"switch_color": "RED", "lit": "true"}, 
+      "apply": {
+        "model": "ai_odyssey:block/crystalline_switch_red_outer"
+      }
     },
-    "switch_color=RED, lit=false": {
-      "model": "ai_odyssey:block/crystalline_switch_red_dark"
+	{
+      "when": {"switch_color": "RED", "lit": "true"}, 
+      "apply": {
+        "model": "ai_odyssey:block/crystalline_switch_red_inner"
+      }
     },
-    "switch_color=YELLOW, lit=true": {
-      "model": "ai_odyssey:block/crystalline_switch_yellow_lit"
+	{
+      "when": {"switch_color": "RED", "lit": "false"}, 
+      "apply": {
+        "model": "ai_odyssey:block/crystalline_switch_red_outer_dark"
+      }
     },
-    "switch_color=YELLOW, lit=false": {
-      "model": "ai_odyssey:block/crystalline_switch_yellow_dark"
+	{
+      "when": {"switch_color": "RED", "lit": "false"}, 
+      "apply": {
+        "model": "ai_odyssey:block/crystalline_switch_red_inner_dark"
+      }
+    },
+	{
+      "when": {"switch_color": "GREEN", "lit": "true"}, 
+      "apply": {
+        "model": "ai_odyssey:block/crystalline_switch_green_outer"
+      }
+    },
+	{
+      "when": {"switch_color": "GREEN", "lit": "true"}, 
+      "apply": {
+        "model": "ai_odyssey:block/crystalline_switch_green_inner"
+      }
+    },
+	{
+      "when": {"switch_color": "GREEN", "lit": "false"}, 
+      "apply": {
+        "model": "ai_odyssey:block/crystalline_switch_green_outer_dark"
+      }
+    },
+	{
+      "when": {"switch_color": "GREEN", "lit": "false"}, 
+      "apply": {
+        "model": "ai_odyssey:block/crystalline_switch_green_inner_dark"
+      }
+    },
+	{
+      "when": {"switch_color": "YELLOW", "lit": "true"}, 
+      "apply": {
+        "model": "ai_odyssey:block/crystalline_switch_yellow_outer"
+      }
+    },
+	{
+      "when": {"switch_color": "YELLOW", "lit": "true"}, 
+      "apply": {
+        "model": "ai_odyssey:block/crystalline_switch_yellow_inner"
+      }
+    },
+	{
+      "when": {"switch_color": "YELLOW", "lit": "false"}, 
+      "apply": {
+        "model": "ai_odyssey:block/crystalline_switch_yellow_outer_dark"
+      }
+    },
+	{
+      "when": {"switch_color": "YELLOW", "lit": "false"}, 
+      "apply": {
+        "model": "ai_odyssey:block/crystalline_switch_yellow_inner_dark"
+      }
     }
-  }
+  ]
 }

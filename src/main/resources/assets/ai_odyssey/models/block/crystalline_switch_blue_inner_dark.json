@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"1": "ai_odyssey:block/crystalline_switch_inner",
-		"particle": "ai_odyssey:block/crystalline_switch_blue"
+		"1": "ai_odyssey:block/crystalline_switch_inner_dark",
+		"particle": "ai_odyssey:block/crystalline_switch_blue_dark"
 	},
 	"elements": [
 		{

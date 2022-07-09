@@ -1,7 +1,0 @@
-{
-  "parent": "ai_odyssey:block/crystalline_switch_base",
-  "textures": {
-    "end": "ai_odyssey:block/crystalline_switch_yellow_lit_top",
-    "side": "ai_odyssey:block/crystalline_switch_yellow_lit"
-  }
-}
