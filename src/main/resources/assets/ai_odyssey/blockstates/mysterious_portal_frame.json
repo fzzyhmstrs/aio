@@ -1,7 +1,35 @@
 {
   "variants": {
-    "": {
+    "lit=false": {
       "model": "ai_odyssey:block/mysterious_portal_frame"
-    }
+    },
+	"lit=true": [
+		{"model": "ai_odyssey:block/mysterious_portal_frame_a"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_b"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_c"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_d"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_e"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_f"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_g"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_h"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_i"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_j"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_k"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_l"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_m"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_n"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_o"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_p"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_q"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_r"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_s"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_t"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_u"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_v"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_w"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_x"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_y"},
+		{"model": "ai_odyssey:block/mysterious_portal_frame_z"}
+    ]
   }
 }

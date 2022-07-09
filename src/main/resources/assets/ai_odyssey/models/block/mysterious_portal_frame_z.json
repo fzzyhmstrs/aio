@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "ai_odyssey:block/mysterious_portal_frame_c"
+    "all": "ai_odyssey:block/mysterious_portal_frame_z"
   }
 }

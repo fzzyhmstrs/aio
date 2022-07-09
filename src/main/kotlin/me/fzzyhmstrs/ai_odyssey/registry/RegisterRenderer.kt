@@ -15,7 +15,7 @@ object RegisterRenderer {
     fun registerAll(){
 
         EntityRendererRegistry.register(
-            me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity.ENFEEBLING_BOLT_ENTITY
+            RegisterEntity.ENFEEBLING_BOLT_ENTITY
         ){context: EntityRendererFactory.Context ->
             MissileEntityRenderer(
                 context,
@@ -28,7 +28,7 @@ object RegisterRenderer {
         }
 
 
-        BlockEntityRendererRegistry.register(me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity.CRYSTALLINE_ITEM_LOCK_BLOCK_ENTITY
+        BlockEntityRendererRegistry.register(RegisterEntity.CRYSTALLINE_ITEM_LOCK_BLOCK_ENTITY
         ){context: BlockEntityRendererFactory.Context ->
            CrystallineItemLockBlockEntityRenderer(
                 context
