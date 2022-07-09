@@ -1,13 +1,14 @@
 package me.fzzyhmstrs.ai_odyssey.block
 
-import me.fzzyhmstrs.ai_odyssey.entity.CrystallineSwitchBlockEntity
 import me.fzzyhmstrs.ai_odyssey.configurator.SwitchDoor
+import me.fzzyhmstrs.ai_odyssey.entity.CrystallineSwitchBlockEntity
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterItem
 import me.fzzyhmstrs.ai_odyssey.util.FacilityChimes
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.block.BlockWithEntity
+import net.minecraft.block.ShapeContext
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
@@ -22,6 +23,8 @@ import net.minecraft.util.Hand
 import net.minecraft.util.StringIdentifiable
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.shape.VoxelShape
+import net.minecraft.world.BlockView
 import net.minecraft.world.World
 import java.util.function.ToIntFunction
 
@@ -37,6 +40,16 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
 
     override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
         builder.add(LIT, SWITCH_COLOR)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun getOutlineShape(
+        state: BlockState?,
+        world: BlockView?,
+        pos: BlockPos?,
+        context: ShapeContext?
+    ): VoxelShape {
+        return VOXEL_SHAPE
     }
 
     @Suppress("DEPRECATION")
@@ -90,6 +103,8 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
 
         val LIT: BooleanProperty = Properties.LIT
         val SWITCH_COLOR: EnumProperty<SwitchColor> = EnumProperty.of("switch_color",SwitchColor::class.java)
+
+        private val VOXEL_SHAPE = createCuboidShape(4.0, 0.0, 4.0, 12.0, 14.0, 12.0)
 
         val STATE_TO_LUMINANCE: ToIntFunction<BlockState> = ToIntFunction { state:BlockState -> if(state.get(LIT) != false){15} else {8} }
 
