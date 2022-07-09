@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
-      "model": "ai_odyssey:block/aberration_spawn"
-    }
+    "": [
+		{"model": "ai_odyssey:block/aberration_spawn"},
+		{"model": "ai_odyssey:block/aberration_spawn", "y": 90},
+		{"model": "ai_odyssey:block/aberration_spawn", "y": 180},
+		{"model": "ai_odyssey:block/aberration_spawn", "y": 270}
+    ]
   }
 }

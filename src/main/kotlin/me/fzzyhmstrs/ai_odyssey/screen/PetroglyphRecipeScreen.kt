@@ -12,7 +12,7 @@ import net.minecraft.util.Identifier
 class PetroglyphRecipeScreen(handler: PetroglyphRecipeScreenHandler, playerInventory: PlayerInventory, title: Text):
     HandledScreen<PetroglyphRecipeScreenHandler>(handler, playerInventory, title) {
 
-    private val texture = Identifier(AIO.MOD_ID,"textures/gui/recipe_screen_gui.png")
+    private val texture = Identifier(AIO.MOD_ID,"textures/gui/petroglyph_recipe_gui.png")
     private val player = playerInventory.player
     private val xOffset = (width - backgroundWidth)/2
     private val yOffset = (height - backgroundHeight)/2

@@ -1,0 +1,6 @@
+{
+  "parent": "ai_odyssey:block/petroglyph_recipe_base",
+  "textures": {
+    "recipe": "ai_odyssey:block/petroglyph_diamond"
+  }
+}

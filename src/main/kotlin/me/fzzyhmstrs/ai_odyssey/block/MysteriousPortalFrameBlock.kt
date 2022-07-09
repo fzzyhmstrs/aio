@@ -1,5 +1,6 @@
 package me.fzzyhmstrs.ai_odyssey.block
 
+import me.fzzyhmstrs.ai_odyssey.config.AioConfig
 import me.fzzyhmstrs.ai_odyssey.configurator.SwitchDoor
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterBlock
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
@@ -19,6 +20,7 @@ import net.minecraft.util.ActionResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 import net.minecraft.world.World
+import net.minecraft.world.WorldAccess
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -31,6 +33,26 @@ class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoo
 
     override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
         builder.add(LIT)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun getStateForNeighborUpdate(
+        state: BlockState,
+        direction: Direction,
+        neighborState: BlockState,
+        world: WorldAccess,
+        pos: BlockPos,
+        neighborPos: BlockPos
+    ): BlockState {
+        return if (AioConfig.facility.debugMode) {
+            if (neighborState.emitsRedstonePower()) {
+                state.with(LIT, true)
+            } else {
+                state.with(LIT, false)
+            }
+        } else {
+            super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos)
+        }
     }
 
     override fun interactWithConfigurator(

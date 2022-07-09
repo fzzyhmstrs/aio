@@ -33,6 +33,16 @@ class PetroglyphRecipeBlock(settings: Settings): Block(settings), ConfiguratorIn
 
             DIAMOND(0,0),
             EMERALD(1,0),
+            AMETHYST_SHARD(2,0),
+            AMETRINE(3,0),
+            BERYL_COPPER(4,0),
+            GARNET(0,1),
+            IMBUED_LAPIS(1,1),
+            SHEARS(2,1),
+            PICKAXE(3,1),
+            STEEL_INGOT(4,1),
+            DEEPSLATE(0,2),
+            NETHERITE_SCRAP(1,2),
             NONE(-1,-1);
 
             override fun asString(): String {
@@ -43,15 +53,6 @@ class PetroglyphRecipeBlock(settings: Settings): Block(settings), ConfiguratorIn
                 return this.x + 10 * this.y
             }
         }
-
-        /*private fun recipesToIndexes(): Map<Int,Ingredient>{
-            val map: MutableMap<Int, Ingredient> = mutableMapOf()
-            Ingredient.values().forEach {
-                val index = it.coordinatesToIndex()
-                map[index] = it
-            }
-            return map
-        }*/
     }
 
     override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {

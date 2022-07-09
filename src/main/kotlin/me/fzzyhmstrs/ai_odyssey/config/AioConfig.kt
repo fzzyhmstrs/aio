@@ -37,6 +37,7 @@ object AioConfig: SyncedConfigHelper.SyncedConfig {
     class Facility{
         var showBlood: Boolean = true
         var enableBossSkip: Boolean = false
+        var debugMode: Boolean = false
     }
 
     override fun readFromServer(buf: PacketByteBuf) {

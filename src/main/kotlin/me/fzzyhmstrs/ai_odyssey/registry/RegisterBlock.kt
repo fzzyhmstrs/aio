@@ -43,7 +43,7 @@ object RegisterBlock {
     val QUARTZITE_SAND = SandBlock(0xEDEBDE,FabricBlockSettings.of(Material.AGGREGATE, MapColor.WHITE).strength(0.5f).sounds(BlockSoundGroup.SAND))
 
     //portal facility blocks
-    val ABERRATION_SPAWN = AberrationSpawnBlock(FabricBlockSettings.of(Material.AMETHYST).strength(1.5f).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool())
+    val ABERRATION_SPAWN = AberrationSpawnBlock(FabricBlockSettings.of(Material.AMETHYST).strength(1.5f).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().luminance(12))
     val CRYSTALLINE_LANTERN = CrystallineLanternBlock(FabricBlockSettings.of(Material.GLASS, MapColor.OFF_WHITE).strength(0.3f).sounds(BlockSoundGroup.GLASS).luminance { state: BlockState ->
         CrystallineLanternBlock.STATE_TO_LUMINANCE.applyAsInt(state)
     })
