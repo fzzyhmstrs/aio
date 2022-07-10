@@ -18,18 +18,18 @@ class CrystallineLanternBlock(settings: Settings): Block(settings) {
         private val LANTERN_LIT = EnumProperty.of("lantern_lit", LanternLit::class.java)
         val STATE_TO_LUMINANCE: ToIntFunction<BlockState> = ToIntFunction {state:BlockState -> state.get(LANTERN_LIT).luminance() }
 
-        enum class LanternLit: StringIdentifiable{
-            LIT {
+        enum class LanternLit(private val str: String): StringIdentifiable{
+            LIT("lit") {
                 override fun luminance(): Int {
                     return 15
                 }
             },
-            EMERGENCY {
+            EMERGENCY("emergency") {
                 override fun luminance(): Int {
                     return 10
                 }
             },
-            OFF {
+            OFF("off") {
                 override fun luminance(): Int {
                     return 0
                 }
@@ -38,7 +38,7 @@ class CrystallineLanternBlock(settings: Settings): Block(settings) {
             abstract fun luminance():Int
 
             override fun asString(): String {
-                return this.name
+                return this.str
             }
         }
     }

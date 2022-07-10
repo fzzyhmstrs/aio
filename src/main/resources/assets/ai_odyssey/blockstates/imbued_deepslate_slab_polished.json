@@ -1,13 +1,13 @@
 {
   "variants": {
     "type=bottom": {
-      "model": "minecraft:block/imbued_deepslate_slab_polished"
+      "model": "ai_odyssey:block/imbued_deepslate_slab_polished"
     },
     "type=double": {
-      "model": "minecraft:block/imbued_deepslate_polished"
+      "model": "ai_odyssey:block/imbued_deepslate_polished"
     },
     "type=top": {
-      "model": "minecraft:block/imbued_deepslate_slab_polished_top"
+      "model": "ai_odyssey:block/imbued_deepslate_slab_polished_top"
     }
   }
 }

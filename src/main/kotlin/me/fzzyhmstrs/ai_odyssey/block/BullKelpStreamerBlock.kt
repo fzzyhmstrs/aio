@@ -20,9 +20,6 @@ import net.minecraft.world.WorldView
 
 class BullKelpStreamerBlock(settings: Settings): Block(settings), FluidFillable {
 
-    private val age = Properties.AGE_2
-    private val growthDirection = Direction.SOUTH
-
     private fun getBulb(): Block{
         return RegisterBlock.BULL_KELP
     }
@@ -102,5 +99,10 @@ class BullKelpStreamerBlock(settings: Settings): Block(settings), FluidFillable 
                 break //break the replacement loop if it might delete a streamer from a downstream bull kelp
             }
         }
+    }
+
+    companion object{
+        private val age = Properties.AGE_2
+        private val growthDirection = Direction.SOUTH
     }
 }

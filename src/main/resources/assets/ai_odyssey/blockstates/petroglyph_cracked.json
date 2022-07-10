@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,half=bottom": {
+      "model": "ai_odyssey:block/petroglyph_cracked_bottom",
+      "y": 90
+    },
+    "facing=north,half=bottom": {
+      "model": "ai_odyssey:block/petroglyph_cracked_bottom"
+    },
+    "facing=south,half=bottom": {
+      "model": "ai_odyssey:block/petroglyph_cracked_bottom",
+      "y": 180
+    },
+    "facing=west,half=bottom": {
+      "model": "ai_odyssey:block/petroglyph_cracked_bottom",
+      "y": 270
+    },
+	"facing=east,half=top": {
+      "model": "ai_odyssey:block/petroglyph_cracked_top",
+      "y": 90
+    },
+    "facing=north,half=top": {
+      "model": "ai_odyssey:block/petroglyph_cracked_top"
+    },
+    "facing=south,half=top": {
+      "model": "ai_odyssey:block/petroglyph_cracked_top",
+      "y": 180
+    },
+    "facing=west,half=top": {
+      "model": "ai_odyssey:block/petroglyph_cracked_top",
+      "y": 270
+    }
+  }
+}

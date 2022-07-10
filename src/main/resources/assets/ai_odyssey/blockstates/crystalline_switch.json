@@ -1,97 +1,97 @@
 {
   "multipart": [
 	{
-      "when": {"switch_color": "BLUE", "lit": "true"}, 
+      "when": {"switch_color": "blue", "lit": "true"}, 
       "apply": {
         "model": "ai_odyssey:block/crystalline_switch_blue_outer"
       }
     },
 	{
-      "when": {"switch_color": "BLUE", "lit": "true"}, 
+      "when": {"switch_color": "blue", "lit": "true"}, 
       "apply": {
         "model": "ai_odyssey:block/crystalline_switch_blue_inner"
       }
     },
 	{
-      "when": {"switch_color": "BLUE", "lit": "false"}, 
+      "when": {"switch_color": "blue", "lit": "false"}, 
       "apply": {
         "model": "ai_odyssey:block/crystalline_switch_blue_outer_dark"
       }
     },
 	{
-      "when": {"switch_color": "BLUE", "lit": "false"}, 
+      "when": {"switch_color": "blue", "lit": "false"}, 
       "apply": {
         "model": "ai_odyssey:block/crystalline_switch_blue_inner_dark"
       }
     },
 	{
-      "when": {"switch_color": "RED", "lit": "true"}, 
+      "when": {"switch_color": "red", "lit": "true"}, 
       "apply": {
         "model": "ai_odyssey:block/crystalline_switch_red_outer"
       }
     },
 	{
-      "when": {"switch_color": "RED", "lit": "true"}, 
+      "when": {"switch_color": "red", "lit": "true"}, 
       "apply": {
         "model": "ai_odyssey:block/crystalline_switch_red_inner"
       }
     },
 	{
-      "when": {"switch_color": "RED", "lit": "false"}, 
+      "when": {"switch_color": "red", "lit": "false"}, 
       "apply": {
         "model": "ai_odyssey:block/crystalline_switch_red_outer_dark"
       }
     },
 	{
-      "when": {"switch_color": "RED", "lit": "false"}, 
+      "when": {"switch_color": "red", "lit": "false"}, 
       "apply": {
         "model": "ai_odyssey:block/crystalline_switch_red_inner_dark"
       }
     },
 	{
-      "when": {"switch_color": "GREEN", "lit": "true"}, 
+      "when": {"switch_color": "green", "lit": "true"}, 
       "apply": {
         "model": "ai_odyssey:block/crystalline_switch_green_outer"
       }
     },
 	{
-      "when": {"switch_color": "GREEN", "lit": "true"}, 
+      "when": {"switch_color": "green", "lit": "true"}, 
       "apply": {
         "model": "ai_odyssey:block/crystalline_switch_green_inner"
       }
     },
 	{
-      "when": {"switch_color": "GREEN", "lit": "false"}, 
+      "when": {"switch_color": "green", "lit": "false"}, 
       "apply": {
         "model": "ai_odyssey:block/crystalline_switch_green_outer_dark"
       }
     },
 	{
-      "when": {"switch_color": "GREEN", "lit": "false"}, 
+      "when": {"switch_color": "green", "lit": "false"}, 
       "apply": {
         "model": "ai_odyssey:block/crystalline_switch_green_inner_dark"
       }
     },
 	{
-      "when": {"switch_color": "YELLOW", "lit": "true"}, 
+      "when": {"switch_color": "yellow", "lit": "true"}, 
       "apply": {
         "model": "ai_odyssey:block/crystalline_switch_yellow_outer"
       }
     },
 	{
-      "when": {"switch_color": "YELLOW", "lit": "true"}, 
+      "when": {"switch_color": "yellow", "lit": "true"}, 
       "apply": {
         "model": "ai_odyssey:block/crystalline_switch_yellow_inner"
       }
     },
 	{
-      "when": {"switch_color": "YELLOW", "lit": "false"}, 
+      "when": {"switch_color": "yellow", "lit": "false"}, 
       "apply": {
         "model": "ai_odyssey:block/crystalline_switch_yellow_outer_dark"
       }
     },
 	{
-      "when": {"switch_color": "YELLOW", "lit": "false"}, 
+      "when": {"switch_color": "yellow", "lit": "false"}, 
       "apply": {
         "model": "ai_odyssey:block/crystalline_switch_yellow_inner_dark"
       }

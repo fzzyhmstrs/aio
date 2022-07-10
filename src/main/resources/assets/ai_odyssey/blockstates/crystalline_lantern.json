@@ -1,12 +1,12 @@
 {
   "variants": {
-    "lantern_lit=LIT": {
+    "lantern_lit=lit": {
       "model": "ai_odyssey:block/crystalline_lantern_lit"
     },
-    "lantern_lit=EMERGENCY": {
+    "lantern_lit=emergency": {
       "model": "ai_odyssey:block/crystalline_lantern_emergency"
     },
-    "lantern_lit=OFF": {
+    "lantern_lit=off": {
       "model": "ai_odyssey:block/crystalline_lantern_off"
     }
   }

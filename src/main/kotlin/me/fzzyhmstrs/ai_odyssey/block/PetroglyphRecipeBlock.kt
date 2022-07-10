@@ -29,24 +29,24 @@ class PetroglyphRecipeBlock(settings: Settings): Block(settings), ConfiguratorIn
         val recipeMap: Map<Int, Ingredient> by lazy { enumToIndexes(Ingredient.values()) }
 
 
-        enum class Ingredient(val x: Int, val y: Int): StringIdentifiable, IndexedEnum{
+        enum class Ingredient(private val str: String, val x: Int, val y: Int): StringIdentifiable, IndexedEnum{
 
-            DIAMOND(0,0),
-            EMERALD(1,0),
-            AMETHYST_SHARD(2,0),
-            AMETRINE(3,0),
-            BERYL_COPPER(4,0),
-            GARNET(0,1),
-            IMBUED_LAPIS(1,1),
-            SHEARS(2,1),
-            PICKAXE(3,1),
-            STEEL_INGOT(4,1),
-            DEEPSLATE(0,2),
-            NETHERITE_SCRAP(1,2),
-            NONE(-1,-1);
+            DIAMOND("diamond",0,0),
+            EMERALD("emerald",1,0),
+            AMETHYST_SHARD("amethyst_shard",2,0),
+            AMETRINE("ametrine",3,0),
+            BERYL_COPPER("beryl_copper",4,0),
+            GARNET("garnet",0,1),
+            IMBUED_LAPIS("imbued_lapis",1,1),
+            SHEARS("shears",2,1),
+            PICKAXE("pickaxe",3,1),
+            STEEL_INGOT("steel_ingot",4,1),
+            DEEPSLATE("deepslate",0,2),
+            NETHERITE_SCRAP("netherite_scrap",1,2),
+            NONE("none",-1,-1);
 
             override fun asString(): String {
-                return this.name
+                return this.str
             }
 
             override fun coordinatesToIndex(): Int{

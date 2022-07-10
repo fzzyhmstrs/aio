@@ -3,79 +3,79 @@
     "splatter_visible=false": {
       "model": "ai_odyssey:block/imbued_deepslate_tiles"
     },
-    "splatter_visible=true,splatter=ARROW_1": {
+    "splatter_visible=true,splatter=arrow_1": {
       "model": "ai_odyssey:block/imbued_splatter_arrow_1"
     },
-	"splatter_visible=true,splatter=ARROW_2": {
+	"splatter_visible=true,splatter=arrow_2": {
       "model": "ai_odyssey:block/imbued_splatter_arrow_2"
     },
-	"splatter_visible=true,splatter=ARROW_3": {
+	"splatter_visible=true,splatter=arrow_3": {
       "model": "ai_odyssey:block/imbued_splatter_arrow_3"
     },
-	"splatter_visible=true,splatter=ARROW_4": {
+	"splatter_visible=true,splatter=arrow_4": {
       "model": "ai_odyssey:block/imbued_splatter_arrow_4"
     },
-	"splatter_visible=true,splatter=BLOOD_1": {
+	"splatter_visible=true,splatter=blood_1": {
       "model": "ai_odyssey:block/imbued_splatter_blood_1"
     },
-	"splatter_visible=true,splatter=BLOOD_2": {
+	"splatter_visible=true,splatter=blood_2": {
       "model": "ai_odyssey:block/imbued_splatter_blood_2"
     },
-	"splatter_visible=true,splatter=BLOOD_3": {
+	"splatter_visible=true,splatter=blood_3": {
       "model": "ai_odyssey:block/imbued_splatter_blood_3"
     },
-	"splatter_visible=true,splatter=BLOOD_4": {
+	"splatter_visible=true,splatter=blood_4": {
       "model": "ai_odyssey:block/imbued_splatter_blood_4"
     },
-	"splatter_visible=true,splatter=BLOOD_5": {
+	"splatter_visible=true,splatter=blood_5": {
       "model": "ai_odyssey:block/imbued_splatter_blood_5"
     },
-	"splatter_visible=true,splatter=EYE_1": {
+	"splatter_visible=true,splatter=eye_1": {
       "model": "ai_odyssey:block/imbued_splatter_eye_1"
     },
-	"splatter_visible=true,splatter=EYE_2": {
+	"splatter_visible=true,splatter=eye_2": {
       "model": "ai_odyssey:block/imbued_splatter_eye_2"
     },
-	"splatter_visible=true,splatter=HAND_PRINT_1": {
+	"splatter_visible=true,splatter=hand_print_1": {
       "model": "ai_odyssey:block/imbued_splatter_hand_print_1"
     },
-	"splatter_visible=true,splatter=HAND_PRINT_2": {
+	"splatter_visible=true,splatter=hand_print_2": {
       "model": "ai_odyssey:block/imbued_splatter_hand_print_2"
     },
-	"splatter_visible=true,splatter=HAND_SMEAR_1": {
+	"splatter_visible=true,splatter=hand_smear_1": {
       "model": "ai_odyssey:block/imbued_splatter_hand_smear_1"
     },
-	"splatter_visible=true,splatter=HAND_SMEAR_2": {
+	"splatter_visible=true,splatter=hand_smear_2": {
       "model": "ai_odyssey:block/imbued_splatter_hand_smear_2"
     },
-	"splatter_visible=true,splatter=HAND_SMEAR_3": {
+	"splatter_visible=true,splatter=hand_smear_3": {
       "model": "ai_odyssey:block/imbued_splatter_hand_smear_3"
     },
-	"splatter_visible=true,splatter=HAND_SMEAR_4": {
+	"splatter_visible=true,splatter=hand_smear_4": {
       "model": "ai_odyssey:block/imbued_splatter_hand_smear_4"
     },
-	"splatter_visible=true,splatter=PICTOGRAPH_1": {
+	"splatter_visible=true,splatter=pictograph_1": {
       "model": "ai_odyssey:block/imbued_splatter_pictograph_1"
     },
-	"splatter_visible=true,splatter=PICTOGRAPH_2": {
+	"splatter_visible=true,splatter=pictograph_2": {
       "model": "ai_odyssey:block/imbued_splatter_pictograph_2"
     },
-	"splatter_visible=true,splatter=PICTOGRAPH_3": {
+	"splatter_visible=true,splatter=pictograph_3": {
       "model": "ai_odyssey:block/imbued_splatter_pictograph_3"
     },
-	"splatter_visible=true,splatter=PICTOGRAPH_4": {
+	"splatter_visible=true,splatter=pictograph_4": {
       "model": "ai_odyssey:block/imbued_splatter_pictograph_4"
     },
-	"splatter_visible=true,splatter=TALLY_1": {
+	"splatter_visible=true,splatter=tally_1": {
       "model": "ai_odyssey:block/imbued_splatter_tally_1"
     },
-	"splatter_visible=true,splatter=TALLY_2": {
+	"splatter_visible=true,splatter=tally_2": {
       "model": "ai_odyssey:block/imbued_splatter_tally_2"
     },
-	"splatter_visible=true,splatter=TALLY_3": {
+	"splatter_visible=true,splatter=tally_3": {
       "model": "ai_odyssey:block/imbued_splatter_tally_3"
     },
-	"splatter_visible=true,splatter=X_1": {
+	"splatter_visible=true,splatter=x_1": {
       "model": "ai_odyssey:block/imbued_splatter_x_1"
     }
   }

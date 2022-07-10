@@ -1,0 +1,188 @@
+{
+  "variants": {
+    "facing=east,ingredient=diamond": {
+      "model": "ai_odyssey:block/petroglyph_recipe_diamond",
+      "y": 90
+    },
+    "facing=north,ingredient=diamond": {
+      "model": "ai_odyssey:block/petroglyph_recipe_diamond"
+    },
+    "facing=south,ingredient=diamond": {
+      "model": "ai_odyssey:block/petroglyph_recipe_diamond",
+      "y": 180
+    },
+    "facing=west,ingredient=diamond": {
+      "model": "ai_odyssey:block/petroglyph_recipe_diamond",
+      "y": 270
+    },
+    "facing=east,ingredient=emerald": {
+      "model": "ai_odyssey:block/petroglyph_recipe_emerald",
+      "y": 90
+    },
+    "facing=north,ingredient=emerald": {
+      "model": "ai_odyssey:block/petroglyph_recipe_emerald"
+    },
+    "facing=south,ingredient=emerald": {
+      "model": "ai_odyssey:block/petroglyph_recipe_emerald",
+      "y": 180
+    },
+    "facing=west,ingredient=emerald": {
+      "model": "ai_odyssey:block/petroglyph_recipe_emerald",
+      "y": 270
+    },
+    "facing=east,ingredient=amethyst_shard": {
+      "model": "ai_odyssey:block/petroglyph_recipe_amethyst_shard",
+      "y": 90
+    },
+    "facing=north,ingredient=amethyst_shard": {
+      "model": "ai_odyssey:block/petroglyph_recipe_amethyst_shard"
+    },
+    "facing=south,ingredient=amethyst_shard": {
+      "model": "ai_odyssey:block/petroglyph_recipe_amethyst_shard",
+      "y": 180
+    },
+    "facing=west,ingredient=amethyst_shard": {
+      "model": "ai_odyssey:block/petroglyph_recipe_amethyst_shard",
+      "y": 270
+    },
+    "facing=east,ingredient=ametrine": {
+      "model": "ai_odyssey:block/petroglyph_recipe_ametrine",
+      "y": 90
+    },
+    "facing=north,ingredient=ametrine": {
+      "model": "ai_odyssey:block/petroglyph_recipe_ametrine"
+    },
+    "facing=south,ingredient=ametrine": {
+      "model": "ai_odyssey:block/petroglyph_recipe_ametrine",
+      "y": 180
+    },
+    "facing=west,ingredient=ametrine": {
+      "model": "ai_odyssey:block/petroglyph_recipe_ametrine",
+      "y": 270
+    },
+    "facing=east,ingredient=beryl_copper": {
+      "model": "ai_odyssey:block/petroglyph_recipe_beryl_copper",
+      "y": 90
+    },
+    "facing=north,ingredient=beryl_copper": {
+      "model": "ai_odyssey:block/petroglyph_recipe_beryl_copper"
+    },
+    "facing=south,ingredient=beryl_copper": {
+      "model": "ai_odyssey:block/petroglyph_recipe_beryl_copper",
+      "y": 180
+    },
+    "facing=west,ingredient=beryl_copper": {
+      "model": "ai_odyssey:block/petroglyph_recipe_beryl_copper",
+      "y": 270
+    },
+    "facing=east,ingredient=garnet": {
+      "model": "ai_odyssey:block/petroglyph_recipe_garnet",
+      "y": 90
+    },
+    "facing=north,ingredient=garnet": {
+      "model": "ai_odyssey:block/petroglyph_recipe_garnet"
+    },
+    "facing=south,ingredient=garnet": {
+      "model": "ai_odyssey:block/petroglyph_recipe_garnet",
+      "y": 180
+    },
+    "facing=west,ingredient=garnet": {
+      "model": "ai_odyssey:block/petroglyph_recipe_garnet",
+      "y": 270
+    },
+    "facing=east,ingredient=imbued_lapis": {
+      "model": "ai_odyssey:block/petroglyph_recipe_imbued_lapis",
+      "y": 90
+    },
+    "facing=north,ingredient=imbued_lapis": {
+      "model": "ai_odyssey:block/petroglyph_recipe_imbued_lapis"
+    },
+    "facing=south,ingredient=imbued_lapis": {
+      "model": "ai_odyssey:block/petroglyph_recipe_imbued_lapis",
+      "y": 180
+    },
+    "facing=west,ingredient=imbued_lapis": {
+      "model": "ai_odyssey:block/petroglyph_recipe_imbued_lapis",
+      "y": 270
+    },
+    "facing=east,ingredient=shears": {
+      "model": "ai_odyssey:block/petroglyph_recipe_shears",
+      "y": 90
+    },
+    "facing=north,ingredient=shears": {
+      "model": "ai_odyssey:block/petroglyph_recipe_shears"
+    },
+    "facing=south,ingredient=shears": {
+      "model": "ai_odyssey:block/petroglyph_recipe_shears",
+      "y": 180
+    },
+    "facing=west,ingredient=shears": {
+      "model": "ai_odyssey:block/petroglyph_recipe_shears",
+      "y": 270
+    },
+    "facing=east,ingredient=pickaxe": {
+      "model": "ai_odyssey:block/petroglyph_recipe_pickaxe",
+      "y": 90
+    },
+    "facing=north,ingredient=pickaxe": {
+      "model": "ai_odyssey:block/petroglyph_recipe_pickaxe"
+    },
+    "facing=south,ingredient=pickaxe": {
+      "model": "ai_odyssey:block/petroglyph_recipe_pickaxe",
+      "y": 180
+    },
+    "facing=west,ingredient=pickaxe": {
+      "model": "ai_odyssey:block/petroglyph_recipe_pickaxe",
+      "y": 270
+    },
+    "facing=east,ingredient=steel_ingot": {
+      "model": "ai_odyssey:block/petroglyph_recipe_steel_ingot",
+      "y": 90
+    },
+    "facing=north,ingredient=steel_ingot": {
+      "model": "ai_odyssey:block/petroglyph_recipe_steel_ingot"
+    },
+    "facing=south,ingredient=steel_ingot": {
+      "model": "ai_odyssey:block/petroglyph_recipe_steel_ingot",
+      "y": 180
+    },
+    "facing=west,ingredient=steel_ingot": {
+      "model": "ai_odyssey:block/petroglyph_recipe_steel_ingot",
+      "y": 270
+    },
+    "facing=east,ingredient=deepslate": {
+      "model": "ai_odyssey:block/petroglyph_recipe_deepslate",
+      "y": 90
+    },
+    "facing=north,ingredient=deepslate": {
+      "model": "ai_odyssey:block/petroglyph_recipe_deepslate"
+    },
+    "facing=south,ingredient=deepslate": {
+      "model": "ai_odyssey:block/petroglyph_recipe_deepslate",
+      "y": 180
+    },
+    "facing=west,ingredient=deepslate": {
+      "model": "ai_odyssey:block/petroglyph_recipe_deepslate",
+      "y": 270
+    },
+    "facing=east,ingredient=netherite_scrap": {
+      "model": "ai_odyssey:block/petroglyph_recipe_netherite_scrap",
+      "y": 90
+    },
+    "facing=north,ingredient=netherite_scrap": {
+      "model": "ai_odyssey:block/petroglyph_recipe_netherite_scrap"
+    },
+    "facing=south,ingredient=netherite_scrap": {
+      "model": "ai_odyssey:block/petroglyph_recipe_netherite_scrap",
+      "y": 180
+    },
+    "facing=west,ingredient=netherite_scrap": {
+      "model": "ai_odyssey:block/petroglyph_recipe_netherite_scrap",
+      "y": 270
+    },
+    "ingredient=none": {
+      "model": "ai_odyssey:block/petroglyph",
+      "y": 270
+    }
+  }
+}

@@ -28,7 +28,7 @@ object AIO_Client: ClientModInitializer{
         RegisterRenderer.registerAll()
         RegisterScreen.registerAll()
         RegisterItemModel.registerAll()
-
+        RegisterParticle.registerParticleFactories()
     }
 
 }

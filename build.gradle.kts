@@ -39,9 +39,9 @@ dependencies {
     val fabricKotlinVersion: String by project
     modImplementation("net.fabricmc:fabric-language-kotlin:$fabricKotlinVersion")
 
-    modImplementation(":amethyst_imbuement-1.18.2-19-ac_lib")
+    modImplementation(":amethyst_imbuement-1.18.2-20")
 
-    modImplementation(":amethyst_core-1.0.0+1.18.2")
+    modImplementation(":amethyst_core-0.1.1+1.18.2")
 
     modImplementation("dev.emi:trinkets:3.3.0"){
         exclude("net.fabricmc.fabric-api")

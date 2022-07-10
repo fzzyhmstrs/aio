@@ -4,6 +4,7 @@ import net.minecraft.block.*
 import net.minecraft.item.ItemPlacementContext
 import net.minecraft.state.StateManager
 import net.minecraft.state.property.DirectionProperty
+import net.minecraft.state.property.Properties
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 import net.minecraft.util.shape.VoxelShape
@@ -13,7 +14,7 @@ import net.minecraft.world.BlockView
 abstract class AbstractLockBlock(settings: Settings): BlockWithEntity(settings) {
 
     companion object {
-        val FACING: DirectionProperty = HorizontalFacingBlock.FACING
+        val FACING: DirectionProperty = Properties.HORIZONTAL_FACING
     }
 
     override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {

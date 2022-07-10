@@ -73,7 +73,7 @@ object RegisterItem {
     val SCEPTER_OF_SUMMONING = CustomScepterItem(ScepterLvl2ToolMaterial,FabricItemSettings().group(ItemGroup.COMBAT).rarity(Rarity.RARE))
         .withAugments(listOf(RegisterEnchantment.SUMMON_BOAT, RegisterEnchantment.SUMMON_ZOMBIE))
         .withModifiers(listOf(RegisterModifier.SUMMONERS_ASPECT,RegisterModifier.WITTY))
-        .also{ regItem["scepter_of_Summoning"] = it}
+        .also{ regItem["scepter_of_summoning"] = it}
     val SCEPTER_OF_DEPTHS = CustomScepterItem(ScepterLvl2ToolMaterial,FabricItemSettings().group(ItemGroup.COMBAT).rarity(Rarity.RARE))
         .withAugments(listOf(RegisterEnchantment.CREATE_WATER, RegisterEnchantment.CREATE_SPONGE, RegisterEnchantmentAIO.SEARING_BLAST))
         .withModifiers(listOf(RegisterModifier.OCEANIC))
@@ -162,7 +162,7 @@ object RegisterItem {
     val STRANGE_MAP = StrangeMapItem(FabricItemSettings().group(ItemGroup.MISC)).also{ regItem["strange_map"] = it}
     val STRANGE_SCRAP = CustomFlavorItem(FabricItemSettings().group(ItemGroup.MISC)).withFlavorDefaultPath(Identifier(AIO.MOD_ID,"strange_scrap")) .also{ regItem["strange_scrap"] = it}
     val GLISTERING_FACILITY_KEY = CustomFlavorItem(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.RARE)).withFlavorDefaultPath(Identifier(AIO.MOD_ID,"glistering_facility_key")).also{ regItem["glistering_facility_key"] = it}
-    val POLISHED_FACILITY_KEY = CustomFlavorItem(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.RARE)).withFlavorDefaultPath(Identifier(AIO.MOD_ID,"polished_facility_key")).also{ regItem["gleaming_facility_key"] = it}
+    val POLISHED_FACILITY_KEY = CustomFlavorItem(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.RARE)).withFlavorDefaultPath(Identifier(AIO.MOD_ID,"polished_facility_key")).also{ regItem["polished_facility_key"] = it}
 
     fun registerAll() {
         for (k in regItem.keys){

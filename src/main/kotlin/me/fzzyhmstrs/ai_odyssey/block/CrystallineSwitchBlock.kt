@@ -130,9 +130,9 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
             return doorList
         }
 
-        enum class SwitchColor: StringIdentifiable {
+        enum class SwitchColor(private val str: String): StringIdentifiable {
 
-            BLUE {
+            BLUE("blue") {
                 //general door, gate, etc. use
                 override fun onUse(
                     state: BlockState,
@@ -153,7 +153,7 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
                     return true
                 }
             },
-            RED {
+            RED("red") {
                 // locked down?
                 override fun onUse(
                     state: BlockState,
@@ -167,7 +167,7 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
                     return false
                 }
             },
-            GREEN {
+            GREEN("green") {
                 // portal use
                 override fun onUse(
                     state: BlockState,
@@ -188,7 +188,7 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
                     return true
                 }
             },
-            YELLOW {
+            YELLOW("yellow") {
                 //teleporter use
                 override fun onUse(
                     state: BlockState,
@@ -220,7 +220,7 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
                 entity: CrystallineSwitchBlockEntity): Boolean
 
             override fun asString(): String {
-                return this.name
+                return this.str
             }
         }
     }

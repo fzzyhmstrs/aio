@@ -34,37 +34,37 @@ class ImbuedDeepslateMessageBlock(settings: Settings): Block(settings), Configur
         private val MESSAGE_VISIBLE = BooleanProperty.of("message_visible")
         val messageMap: Map<Int, Message> by lazy { enumToIndexes(Message.values()) }
 
-        enum class Message(val x: Int, val y: Int): StringIdentifiable, IndexedEnum{
+        enum class Message(private val str: String, val x: Int, val y: Int): StringIdentifiable, IndexedEnum{
 
-            GET_OUT_1(1,1),
-            GET_OUT_2(2,1),
-            GET_OUT_3(3,1),
-            RUN_1(4,1),
-            RUN_2(5,1),
-            WATCHES_1(1,2),
-            WATCHES_2(2,2),
-            WATCHES_3(3,2),
-            CRYSTALS_1(1,4),
-            CRYSTALS_2(2,4),
-            CRYSTALS_3(3,4),
-            CRYSTALS_4(4,4),
-            DEVOURS_1(1,3),
-            DEVOURS_2(2,3),
-            DEVOURS_3(3,3),
-            HUNT_YOU_1(5,4),
-            HUNT_YOU_2(1,5),
-            HUNT_YOU_3(2,5),
-            HUNT_YOU_4(3,5),
-            HUNT_YOU_5(4,5),
-            HUNT_YOU_6(5,5),
-            LEAVE_1(4,2),
-            LEAVE_2(5,2),
-            ESCAPE_1(4,3),
-            ESCAPE_2(5,3),
-            NONE(0,0);
+            GET_OUT_1("get_out_1",1,1),
+            GET_OUT_2("get_out_2",2,1),
+            GET_OUT_3("get_out_3",3,1),
+            RUN_1("run_1",4,1),
+            RUN_2("run_2",5,1),
+            WATCHES_1("watches_1",1,2),
+            WATCHES_2("watches_2",2,2),
+            WATCHES_3("watches_3",3,2),
+            CRYSTALS_1("crystals_1",1,4),
+            CRYSTALS_2("crystals_2",2,4),
+            CRYSTALS_3("crystals_3",3,4),
+            CRYSTALS_4("crystals_4",4,4),
+            DEVOURS_1("devours_1",1,3),
+            DEVOURS_2("devours_2",2,3),
+            DEVOURS_3("devours_3",3,3),
+            HUNT_YOU_1("hunt_you_1",5,4),
+            HUNT_YOU_2("hunt_you_2",1,5),
+            HUNT_YOU_3("hunt_you_3",2,5),
+            HUNT_YOU_4("hunt_you_4",3,5),
+            HUNT_YOU_5("hunt_you_5",4,5),
+            HUNT_YOU_6("hunt_you_6",5,5),
+            LEAVE_1("leave_1",4,2),
+            LEAVE_2("leave_2",5,2),
+            ESCAPE_1("escape_1",4,3),
+            ESCAPE_2("escape_2",5,3),
+            NONE("none",0,0);
 
             override fun asString(): String {
-                return this.name
+                return this.str
             }
 
             override fun coordinatesToIndex(): Int{
@@ -72,15 +72,6 @@ class ImbuedDeepslateMessageBlock(settings: Settings): Block(settings), Configur
             }
 
         }
-
-        /*private fun messagesToIndexes(): Map<Int, Message>{
-            val map: MutableMap<Int, Message> = mutableMapOf()
-            Message.values().forEach {
-                val index = it.coordinatesToIndex()
-                map[index] = it
-            }
-            return map
-        }*/
     }
 
     override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {

@@ -34,36 +34,36 @@ class ImbuedDeepslateSplatterBlock(settings: Settings): Block(settings), Configu
         private val SPLATTER_VISIBLE = BooleanProperty.of("splatter_visible")
         val splatterMap: Map<Int,Splatter> by lazy { enumToIndexes(Splatter.values()) }
 
-        enum class Splatter(val x: Int, val y: Int): StringIdentifiable, IndexedEnum{
-            EYE_1(0,0),
-            EYE_2(1,0),
-            TALLY_1(2,0),
-            TALLY_2(3,0),
-            TALLY_3(4,0),
-            HAND_PRINT_1(0,1),
-            HAND_PRINT_2(0,2),
-            HAND_SMEAR_1(1,1),
-            HAND_SMEAR_2(1,2),
-            HAND_SMEAR_3(2,1),
-            HAND_SMEAR_4(2,2),
-            BLOOD_1(0,3),
-            BLOOD_2(1,3),
-            BLOOD_3(2,3),
-            BLOOD_4(0,4),
-            BLOOD_5(1,4),
-            PICTOGRAPH_1(3,1),
-            PICTOGRAPH_2(4,1),
-            PICTOGRAPH_3(3,2),
-            PICTOGRAPH_4(4,2),
-            ARROW_1(3,3),
-            ARROW_2(4,3),
-            ARROW_3(3,4),
-            ARROW_4(4,4),
-            X_1(2,4),
-            NONE(-1,-1);
+        enum class Splatter(private val str: String,val x: Int, val y: Int): StringIdentifiable, IndexedEnum{
+            EYE_1("eye_1",0,0),
+            EYE_2("eye_2",1,0),
+            TALLY_1("tally_1",2,0),
+            TALLY_2("tally_2",3,0),
+            TALLY_3("tally_3",4,0),
+            HAND_PRINT_1("hand_print_1",0,1),
+            HAND_PRINT_2("hand_print_2",0,2),
+            HAND_SMEAR_1("hand_smear_1",1,1),
+            HAND_SMEAR_2("hand_smear_2",1,2),
+            HAND_SMEAR_3("hand_smear_3",2,1),
+            HAND_SMEAR_4("hand_smear_4",2,2),
+            BLOOD_1("blood_1",0,3),
+            BLOOD_2("blood_2",1,3),
+            BLOOD_3("blood_3",2,3),
+            BLOOD_4("blood_4",0,4),
+            BLOOD_5("blood_5",1,4),
+            PICTOGRAPH_1("pictograph_1",3,1),
+            PICTOGRAPH_2("pictograph_2",4,1),
+            PICTOGRAPH_3("pictograph_3",3,2),
+            PICTOGRAPH_4("pictograph_4",4,2),
+            ARROW_1("arrow_1",3,3),
+            ARROW_2("arrow_2",4,3),
+            ARROW_3("arrow_3",3,4),
+            ARROW_4("arrow_4",4,4),
+            X_1("x_1",2,4),
+            NONE("none",-1,-1);
 
             override fun asString(): String {
-                return this.name
+                return this.str
             }
 
             override fun coordinatesToIndex(): Int{
