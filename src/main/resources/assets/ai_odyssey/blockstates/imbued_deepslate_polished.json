@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "ai_odyssey:block/imbued_polished_deepslate"
+      "model": "ai_odyssey:block/imbued_deepslate_polished"
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/template_wall_side",
   "textures": {
-    "wall": "ai_odyssey:block/imbued_polished_deepslate"
+    "wall": "ai_odyssey:block/imbued_deepslate_polished"
   }
 }
