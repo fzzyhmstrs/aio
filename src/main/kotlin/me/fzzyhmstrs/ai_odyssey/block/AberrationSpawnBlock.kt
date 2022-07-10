@@ -4,13 +4,26 @@ import me.fzzyhmstrs.ai_odyssey.entity.AberrationSpawnBlockEntity
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
 import net.minecraft.block.BlockState
 import net.minecraft.block.BlockWithEntity
+import net.minecraft.block.ShapeContext
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.shape.VoxelShape
+import net.minecraft.world.BlockView
 import net.minecraft.world.World
 
 class AberrationSpawnBlock(settings: Settings): BlockWithEntity(settings) {
+
+    @Deprecated("Deprecated in Java")
+    override fun getOutlineShape(
+        state: BlockState?,
+        world: BlockView?,
+        pos: BlockPos?,
+        context: ShapeContext?
+    ): VoxelShape {
+        return VOXEL_SHAPE
+    }
 
     override fun createBlockEntity(pos: BlockPos, state: BlockState): BlockEntity {
         return AberrationSpawnBlockEntity(pos, state)
@@ -31,6 +44,10 @@ class AberrationSpawnBlock(settings: Settings): BlockWithEntity(settings) {
                 blockEntity
             )
         } else null
+    }
+
+    companion object{
+        private val VOXEL_SHAPE = createCuboidShape(5.0, 0.0, 5.0, 10.0, 12.0, 10.0)
     }
 
 }

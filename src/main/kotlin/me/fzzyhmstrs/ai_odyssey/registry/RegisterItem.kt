@@ -161,6 +161,8 @@ object RegisterItem {
         AC.MOD_ID,"resplendent_rarity")) .also{ regItem["resplendent_rarity"] = it}
     val STRANGE_MAP = StrangeMapItem(FabricItemSettings().group(ItemGroup.MISC)).also{ regItem["strange_map"] = it}
     val STRANGE_SCRAP = CustomFlavorItem(FabricItemSettings().group(ItemGroup.MISC)).withFlavorDefaultPath(Identifier(AIO.MOD_ID,"strange_scrap")) .also{ regItem["strange_scrap"] = it}
+    val GLISTERING_FACILITY_KEY = CustomFlavorItem(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.RARE)).withFlavorDefaultPath(Identifier(AIO.MOD_ID,"glistering_facility_key")).also{ regItem["glistering_facility_key"] = it}
+    val POLISHED_FACILITY_KEY = CustomFlavorItem(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.RARE)).withFlavorDefaultPath(Identifier(AIO.MOD_ID,"polished_facility_key")).also{ regItem["gleaming_facility_key"] = it}
 
     fun registerAll() {
         for (k in regItem.keys){
