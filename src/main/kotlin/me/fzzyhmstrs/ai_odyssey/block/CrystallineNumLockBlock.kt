@@ -32,6 +32,7 @@ class CrystallineNumLockBlock(settings: Settings): AbstractLockBlock(settings), 
     }
 
     override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
+        super.appendProperties(builder)
         builder.add(LOCK_NUM)
     }
 

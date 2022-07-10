@@ -59,6 +59,7 @@ class CrystallineItemLockBlock(settings: Settings): AbstractLockBlock(settings),
     }
 
     override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
+        super.appendProperties(builder)
         builder.add(HAS_ITEM)
     }
 
