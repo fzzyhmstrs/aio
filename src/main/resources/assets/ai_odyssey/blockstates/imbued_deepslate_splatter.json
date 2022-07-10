@@ -77,6 +77,9 @@
     },
 	"splatter_visible=true,splatter=x_1": {
       "model": "ai_odyssey:block/imbued_splatter_x_1"
+    },
+	"message_visible=true,message=none": {
+      "model": "ai_odyssey:block/imbued_deepslate_tiles"
     }
   }
 }

@@ -77,6 +77,9 @@
     },
 	"message_visible=true,message=watches_3": {
       "model": "ai_odyssey:block/imbued_message_watches_3"
+    },
+	"message_visible=true,message=none": {
+      "model": "ai_odyssey:block/imbued_deepslate_tiles"
     }
   }
 }
