@@ -18,7 +18,7 @@ import java.util.*
 class BullKelpBlock(settings: Settings): AbstractPlantStemBlock(settings, Direction.UP, VoxelShapes.fullCube(),true,0.10) {
 
     override fun getPlant(): Block {
-        return RegisterBlock.SEA_BAMBOO_PLANT
+        return RegisterBlock.BULL_KELP_PLANT
     }
 
     private fun getStreamer(): BullKelpStreamerBlock{
