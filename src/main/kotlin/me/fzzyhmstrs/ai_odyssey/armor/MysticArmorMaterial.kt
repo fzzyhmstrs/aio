@@ -15,9 +15,9 @@ class MysticArmorMaterial: ArmorMaterial {
     override fun getName(): String = "aio_mystic"
     override fun getEquipSound(): SoundEvent = SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE
     override fun getRepairIngredient(): Ingredient = Ingredient.ofItems(RegisterItem.MYSTIC_QUINTESSENCE)
-    override fun getEnchantability(): Int = 25
+    override fun getEnchantability(): Int = 30
     override fun getProtectionAmount(slot: EquipmentSlot): Int = PROTECTION_VALUES[slot.entitySlotId]
-    override fun getDurability(slot: EquipmentSlot): Int = BASE_DURABILITY[slot.entitySlotId] * 62
+    override fun getDurability(slot: EquipmentSlot): Int = BASE_DURABILITY[slot.entitySlotId] * 67
     override fun getKnockbackResistance(): Float = 0.15F
-    override fun getToughness(): Float = 4.0F
+    override fun getToughness(): Float = 4.2F
 }
