@@ -13,9 +13,9 @@ object RegisterArmor {
 
     val MYSTIC_ARMOR_MATERIAL = MysticArmorMaterial()
     val MYSTIC_HELMET = ArmorItem(MYSTIC_ARMOR_MATERIAL,EquipmentSlot.HEAD, Item.Settings().group(ItemGroup.COMBAT))
-    val MYSTIC_CHESTPLATE = ArmorItem(MYSTIC_ARMOR_MATERIAL,EquipmentSlot.HEAD, Item.Settings().group(ItemGroup.COMBAT))
-    val MYSTIC_LEGGINGS = ArmorItem(MYSTIC_ARMOR_MATERIAL,EquipmentSlot.HEAD, Item.Settings().group(ItemGroup.COMBAT))
-    val MYSTIC_BOOTS = ArmorItem(MYSTIC_ARMOR_MATERIAL,EquipmentSlot.HEAD, Item.Settings().group(ItemGroup.COMBAT))
+    val MYSTIC_CHESTPLATE = ArmorItem(MYSTIC_ARMOR_MATERIAL,EquipmentSlot.CHEST, Item.Settings().group(ItemGroup.COMBAT))
+    val MYSTIC_LEGGINGS = ArmorItem(MYSTIC_ARMOR_MATERIAL,EquipmentSlot.LEGS, Item.Settings().group(ItemGroup.COMBAT))
+    val MYSTIC_BOOTS = ArmorItem(MYSTIC_ARMOR_MATERIAL,EquipmentSlot.FEET, Item.Settings().group(ItemGroup.COMBAT))
 
     fun registerAll(){
         Registry.register(Registry.ITEM, Identifier(AIO.MOD_ID,"mystic_helmet"), MYSTIC_HELMET)

@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "ai_odyssey:item/strange_map"
+    "layer0": "ai_odyssey:item/strange_scrap"
   }
 }
