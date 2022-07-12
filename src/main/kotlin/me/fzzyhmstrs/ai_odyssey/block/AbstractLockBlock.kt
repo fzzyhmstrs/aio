@@ -16,6 +16,11 @@ abstract class AbstractLockBlock(settings: Settings): BlockWithEntity(settings) 
     companion object {
         val FACING: DirectionProperty = Properties.HORIZONTAL_FACING
     }
+    
+    @Deprecated("Deprecated in Java")
+    override fun getRenderType(state: BlockState): BlockRenderType {
+        return BlockRenderType.MODEL
+    }
 
     override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {
         return super.getPlacementState(ctx)?.with(FACING,ctx.playerFacing.opposite)
