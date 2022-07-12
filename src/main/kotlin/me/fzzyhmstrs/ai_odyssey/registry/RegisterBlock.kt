@@ -22,6 +22,10 @@ object RegisterBlock {
         BlockSoundGroup.WET_GRASS))
     val BULL_KELP_STREAMER = BullKelpStreamerBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().ticksRandomly().breakInstantly().sounds(
         BlockSoundGroup.WET_GRASS).dropsNothing())
+    val MIDNIGHT_KELP = MidnightBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).ticksRandomly().breakInstantly().sounds(
+        BlockSoundGroup.WET_GRASS).luminance(11))
+    val MIDNIGHT_KELP_PLANT = MidnightKelpPlantBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).ticksRandomly().breakInstantly().sounds(
+        BlockSoundGroup.WET_GRASS).luminance(11))
     val SEA_APPLE_BUSH = SeaAppleBushBlock(FabricBlockSettings.of(Material.REPLACEABLE_UNDERWATER_PLANT, MapColor.LICHEN_GREEN).ticksRandomly().noCollision().sounds(BlockSoundGroup.SWEET_BERRY_BUSH))
     val SEA_BAMBOO = SeaBambooBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().ticksRandomly().breakInstantly().sounds(
         BlockSoundGroup.WET_GRASS))
@@ -123,6 +127,8 @@ object RegisterBlock {
         registerBlock("imbued_deepslate_slab_polished", IMBUED_DEEPSLATE_SLAB_POLISHED, ItemGroup.BUILDING_BLOCKS)
         registerBlock("imbued_deepslate_slab_bricks", IMBUED_DEEPSLATE_SLAB_BRICK, ItemGroup.BUILDING_BLOCKS)
         registerBlock("imbued_deepslate_slab_tiles", IMBUED_DEEPSLATE_SLAB_TILE, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("midnight_kelp", MIDNIGHT_KELP, ItemGroup.DECORATIONS)
+        registerBlockWithOtherItem("midnight_kelp_plant", MIDNIGHT_KELP_PLANT)
         registerBlock("mysterious_portal_frame", MYSTERIOUS_PORTAL_FRAME, ItemGroup.BUILDING_BLOCKS)
         registerBlock("petroglyph", PETROGLYPH, ItemGroup.DECORATIONS)
         registerBlock("petroglyph_cracked", PETROGLYPH_CRACKED, ItemGroup.DECORATIONS)
