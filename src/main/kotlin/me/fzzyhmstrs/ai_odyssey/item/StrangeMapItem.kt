@@ -18,7 +18,15 @@ import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
 
-class StrangeMapItem(settings: Settings): EmptyMapItem(settings) {
+class StrangeMapItem(settings: Settings): EmptyMapItem(settings), Flavorful<StrangeMapItem> {
+    
+    override var flavor: String = ""
+    override var glint: Boolean = false
+    override var flavorDesc: String = ""
+    
+    override fun getFlavorItem(): StrangeMapItem {
+        return this
+    }
 
     override fun appendTooltip(
         stack: ItemStack,
@@ -27,7 +35,7 @@ class StrangeMapItem(settings: Settings): EmptyMapItem(settings) {
         context: TooltipContext
     ) {
         super.appendTooltip(stack, world, tooltip, context)
-        tooltip.add(TranslatableText("item.ai_odyssey.strange_map.tooltip1").formatted(Formatting.WHITE, Formatting.ITALIC))
+        addFlavorText(tooltip, context)
     }
 
     override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
