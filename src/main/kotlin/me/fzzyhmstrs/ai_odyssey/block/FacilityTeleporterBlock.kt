@@ -21,6 +21,11 @@ class FacilityTeleporterBlock(settings: Settings): BlockWithEntity(settings), Sw
     override fun createBlockEntity(pos: BlockPos, state: BlockState): BlockEntity {
         return FacilityTeleporterBlockEntity(pos, state)
     }
+    
+    @Deprecated("Deprecated in Java")
+    override fun getRenderType(state: BlockState): BlockRenderType {
+        return BlockRenderType.MODEL
+    }
 
     override fun interactWithConfigurator(
         world: World,
