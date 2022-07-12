@@ -33,6 +33,11 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
     override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {
         return super.getPlacementState(ctx)?.with(LIT, true)?.with(SWITCH_COLOR, SwitchColor.BLUE)
     }
+    
+    @Deprecated("Deprecated in Java")
+    override fun getRenderType(state: BlockState): BlockRenderType {
+        return BlockRenderType.MODEL
+    }
 
     override fun createBlockEntity(pos: BlockPos, state: BlockState): BlockEntity {
         return CrystallineSwitchBlockEntity(pos, state)
