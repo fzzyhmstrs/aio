@@ -20,6 +20,6 @@ class CrystallineSwitchPedestal(settings: Settings): Block(settings) {
     }
 
     companion object{
-        private val VOXEL_SHAPE = createCuboidShape(5.0, 0.0, 5.0, 10.0, 16.0, 10.0)
+        private val VOXEL_SHAPE = createCuboidShape(5.0, 0.0, 5.0, 11.0, 16.0, 11.0)
     }
 }
