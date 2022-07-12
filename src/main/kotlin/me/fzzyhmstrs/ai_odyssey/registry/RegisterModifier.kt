@@ -24,14 +24,14 @@ object RegisterModifier {
     val INSIGHTFUL = AugmentModifier(Identifier(AIO.MOD_ID,"insightful")).withConsumer(ModifierConsumers.INSIGHTFUL_CONSUMER).also { regMod.add(it) }
     val DANGEROUS = AugmentModifier(Identifier(AIO.MOD_ID,"dangerous")).withDamage(0.0F,0.0F,15.0F).also { regMod.add(it) }
     val ECHOING = AugmentModifier(Identifier(AIO.MOD_ID,"echoing"), cooldownModifier = 10.0).withConsumer(ModifierConsumers.ECHOING_CONSUMER).also { regMod.add(it) }
-    val GREATER_REACH = AugmentModifier(Identifier(AI.MOD_ID,"greater_reach")).withRange(rangePercent = 18.0).also { regMod.add(it) }
-    val REACH = AugmentModifier(Identifier(AI.MOD_ID,"reach")).withDescendant(GREATER_REACH).withRange(rangePercent = 12.0).also { regMod.add(it) }
-    val LESSER_REACH = AugmentModifier(Identifier(AI.MOD_ID,"lesser_reach")).withDescendant(REACH).withRange(rangePercent = 6.0).also { regMod.add(it) }
-    val GREATER_ENDURING = AugmentModifier(Identifier(AI.MOD_ID,"greater_enduring")).withDuration(durationPercent = 20).also { regMod.add(it) }
-    val ENDURING = AugmentModifier(Identifier(AI.MOD_ID,"enduring")).withDescendant(GREATER_ENDURING).withDuration(durationPercent = 15).also { regMod.add(it) }
-    val LESSER_ENDURING = AugmentModifier(Identifier(AI.MOD_ID,"lesser_enduring")).withDescendant(ENDURING).withDuration(durationPercent = 10).also { regMod.add(it) }
-    val MASTERFUL = AugmentModifier(Identifier(AI.MOD_ID,"masterful"), levelModifier = 2).also { regMod.add(it) }
-    val SKILLFUL = AugmentModifier(Identifier(AI.MOD_ID,"skillful"), levelModifier = 1).withDescendant(MASTERFUL).also { regMod.add(it) }
+    val GREATER_REACH = AugmentModifier(Identifier(AIO.MOD_ID,"greater_reach")).withRange(rangePercent = 18.0).also { regMod.add(it) }
+    val REACH = AugmentModifier(Identifier(AIO.MOD_ID,"reach")).withDescendant(GREATER_REACH).withRange(rangePercent = 12.0).also { regMod.add(it) }
+    val LESSER_REACH = AugmentModifier(Identifier(AIO.MOD_ID,"lesser_reach")).withDescendant(REACH).withRange(rangePercent = 6.0).also { regMod.add(it) }
+    val GREATER_ENDURING = AugmentModifier(Identifier(AIO.MOD_ID,"greater_enduring")).withDuration(durationPercent = 20).also { regMod.add(it) }
+    val ENDURING = AugmentModifier(Identifier(AIO.MOD_ID,"enduring")).withDescendant(GREATER_ENDURING).withDuration(durationPercent = 15).also { regMod.add(it) }
+    val LESSER_ENDURING = AugmentModifier(Identifier(AIO.MOD_ID,"lesser_enduring")).withDescendant(ENDURING).withDuration(durationPercent = 10).also { regMod.add(it) }
+    val MASTERFUL = AugmentModifier(Identifier(AIO.MOD_ID,"masterful"), levelModifier = 2).also { regMod.add(it) }
+    val SKILLFUL = AugmentModifier(Identifier(AIO.MOD_ID,"skillful"), levelModifier = 1).withDescendant(MASTERFUL).also { regMod.add(it) }
     val BLADE_ASPECT = AugmentModifier(Identifier(AIO.MOD_ID,"blade_aspect"), cooldownModifier = -5.0).withDamage(0.5F).withRange(0.25,0.25).withSpellToAffect(ModifierPredicates.BLADE_PREDICATE) .also { regMod.add(it) }
     val FIRE_ASPECT = AugmentModifier(Identifier(AIO.MOD_ID,"fire_aspect"), cooldownModifier = -5.0).withAmplifier(1).withDuration(32).withSpellToAffect(ModifierPredicates.FIRE_PREDICATE).also { regMod.add(it) }
     val LIGHTNING_ASPECT = AugmentModifier(Identifier(AIO.MOD_ID,"lightning_aspect"), cooldownModifier = -5.0).withRange(0.0,0.0,25.0).withAmplifier(1).withSpellToAffect(ModifierPredicates.LIGHTNING_PREDICATE).also { regMod.add(it) }
