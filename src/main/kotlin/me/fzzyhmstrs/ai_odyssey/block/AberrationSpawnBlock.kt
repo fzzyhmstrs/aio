@@ -24,6 +24,11 @@ class AberrationSpawnBlock(settings: Settings): BlockWithEntity(settings) {
     ): VoxelShape {
         return VOXEL_SHAPE
     }
+    
+    @Deprecated("Deprecated in Java")
+    override fun getRenderType(state: BlockState): BlockRenderType {
+        return BlockRenderType.MODEL
+    }
 
     override fun createBlockEntity(pos: BlockPos, state: BlockState): BlockEntity {
         return AberrationSpawnBlockEntity(pos, state)
