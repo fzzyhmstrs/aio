@@ -1,6 +1,7 @@
 {   "parent": "block/block",
 	"ambientocclusion": false,
     "textures": {
+		"particle": "ai_odyssey:block/bull_kelp",
         "bull_kelp": "ai_odyssey:block/bull_kelp"
     },
     "elements": [

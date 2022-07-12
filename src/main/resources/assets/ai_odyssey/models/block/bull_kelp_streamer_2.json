@@ -1,6 +1,7 @@
 {
     "parent": "minecraft:block/block",
     "textures": {
+		"particle": "ai_odyssey:block/bull_kelp",
         "streamer_0": "ai_odyssey:block/bull_kelp_streamer_2_0",
 		"streamer_1": "ai_odyssey:block/bull_kelp_streamer_2_1",
 		"streamer_2": "ai_odyssey:block/bull_kelp_streamer_2_2"

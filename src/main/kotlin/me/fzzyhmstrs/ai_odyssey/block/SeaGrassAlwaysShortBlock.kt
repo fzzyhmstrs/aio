@@ -36,6 +36,10 @@ open class SeaGrassAlwaysShortBlock(settings: Settings): PlantBlock(settings), F
         } else null
     }
 
+    override fun getOffsetType(): OffsetType {
+        return OffsetType.XZ
+    }
+
     @Suppress("DEPRECATION")
     @Deprecated("Deprecated in Java")
     override fun getStateForNeighborUpdate(

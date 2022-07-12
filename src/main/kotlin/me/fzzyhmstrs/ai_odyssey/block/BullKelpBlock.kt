@@ -5,17 +5,22 @@ import net.minecraft.block.AbstractPlantStemBlock
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.block.Blocks
+import net.minecraft.entity.LivingEntity
+import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.fluid.FluidState
 import net.minecraft.fluid.Fluids
 import net.minecraft.item.ItemPlacementContext
+import net.minecraft.item.ItemStack
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.tag.FluidTags
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 import net.minecraft.util.shape.VoxelShapes
+import net.minecraft.world.World
+import net.minecraft.world.WorldAccess
 import java.util.*
 
-class BullKelpBlock(settings: Settings): AbstractPlantStemBlock(settings, Direction.UP, VoxelShapes.fullCube(),true,0.10) {
+class BullKelpBlock(settings: Settings, private val growthChance: Double = 0.10): AbstractPlantStemBlock(settings, Direction.UP, VoxelShapes.fullCube(),true,growthChance) {
 
     override fun getPlant(): Block {
         return RegisterBlock.BULL_KELP_PLANT
@@ -39,6 +44,40 @@ class BullKelpBlock(settings: Settings): AbstractPlantStemBlock(settings, Direct
             ++k
         }
 
+    }
+
+    override fun onPlaced(
+        world: World,
+        pos: BlockPos,
+        state: BlockState,
+        placer: LivingEntity?,
+        itemStack: ItemStack
+    ) {
+        if (world is ServerWorld) {
+            getStreamer().placeStreamer(world, pos)
+        }
+    }
+
+    override fun onBreak(world: World, pos: BlockPos, state: BlockState, player: PlayerEntity) {
+        super.onBreak(world, pos, state, player)
+        if (!world.isClient) {
+            val pos1 = pos.offset(growthDirection.opposite)
+            getStreamer().placeStreamer(world, pos1)
+        }
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun randomTick(state: BlockState, world: ServerWorld, pos: BlockPos, random: Random) {
+        if (state.get(AGE) < 25 &&
+            random.nextDouble() < growthChance &&
+            chooseStemState(world.getBlockState(pos.offset(growthDirection))))
+        {
+            world.setBlockState(pos.offset(growthDirection), age(state, world.random))
+            println("bloop")
+            val pos1 = pos.offset(growthDirection)
+            getStreamer().placeStreamer(world, pos1)
+            getStreamer().removeStreamer(world, pos)
+        }
     }
 
     override fun getGrowthLength(random: Random): Int {

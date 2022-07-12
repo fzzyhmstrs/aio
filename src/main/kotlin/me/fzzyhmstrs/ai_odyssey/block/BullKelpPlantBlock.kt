@@ -2,12 +2,14 @@ package me.fzzyhmstrs.ai_odyssey.block
 
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterBlock
 import net.minecraft.block.*
+import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.fluid.Fluid
 import net.minecraft.fluid.FluidState
 import net.minecraft.fluid.Fluids
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 import net.minecraft.world.BlockView
+import net.minecraft.world.World
 import net.minecraft.world.WorldAccess
 
 class BullKelpPlantBlock(settings: Settings):
@@ -20,6 +22,18 @@ class BullKelpPlantBlock(settings: Settings):
 
     override fun getPlant(): Block {
         return this
+    }
+
+    private fun getStreamer(): BullKelpStreamerBlock{
+        return RegisterBlock.BULL_KELP_STREAMER
+    }
+
+    override fun onBreak(world: World, pos: BlockPos, state: BlockState, player: PlayerEntity) {
+        super.onBreak(world, pos, state, player)
+        if (!world.isClient) {
+            val pos1 = pos.offset(growthDirection.opposite)
+            getStreamer().placeStreamer(world, pos1)
+        }
     }
 
     @Deprecated("Deprecated in Java", ReplaceWith("Fluids.WATER.getStill(false)", "net.minecraft.fluid.Fluids"))

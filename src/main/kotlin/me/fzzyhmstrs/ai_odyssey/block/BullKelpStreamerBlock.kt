@@ -14,8 +14,10 @@ import net.minecraft.state.property.Properties
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 import net.minecraft.world.BlockView
+import net.minecraft.world.World
 import net.minecraft.world.WorldAccess
 import net.minecraft.world.WorldView
+import java.util.*
 
 
 class BullKelpStreamerBlock(settings: Settings): Block(settings), FluidFillable {
@@ -77,7 +79,8 @@ class BullKelpStreamerBlock(settings: Settings): Block(settings), FluidFillable 
         return state.isOf(Blocks.WATER)
     }
 
-    fun placeStreamer(world: ServerWorld, blockPos: BlockPos){
+    fun placeStreamer(world: World, blockPos: BlockPos){
+        if (world.isClient) return
         var newBlockPos = blockPos
         for (i in 0..2){
             newBlockPos = newBlockPos.offset(growthDirection)
@@ -89,17 +92,26 @@ class BullKelpStreamerBlock(settings: Settings): Block(settings), FluidFillable 
         }
     }
 
-    fun removeStreamer(world: ServerWorld, blockPos: BlockPos){
+    fun removeStreamer(world: World, blockPos: BlockPos){
+        if (world.isClient) return
         var newBlockPos = blockPos
         for (i in 0..2){
             newBlockPos = newBlockPos.offset(growthDirection)
             if (world.getBlockState(newBlockPos).isOf(this)){
-                world.setBlockState(newBlockPos,Blocks.WATER.defaultState)
-            } else if (world.getBlockState(newBlockPos).isOf(RegisterBlock.BULL_KELP)){
+                world.removeBlock(newBlockPos,false)
+            } else if (world.getBlockState(newBlockPos).isOf(RegisterBlock.BULL_KELP) || world.getBlockState(newBlockPos).isOf(RegisterBlock.BULL_KELP_PLANT)){
                 break //break the replacement loop if it might delete a streamer from a downstream bull kelp
             }
         }
     }
+
+    @Deprecated("Deprecated in Java")
+    override fun scheduledTick(state: BlockState, world: ServerWorld, pos: BlockPos, random: Random) {
+        if (!state.canPlaceAt(world, pos)) {
+            world.removeBlock(pos, false)
+        }
+    }
+
 
     companion object{
         private val age = Properties.AGE_2

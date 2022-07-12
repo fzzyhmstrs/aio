@@ -2,6 +2,7 @@
     "parent": "minecraft:block/block",
 	"ambientocclusion": false,
     "textures": {
+	   "particle": "ai_odyssey:block/bull_kelp",
 	   "bulb_0": "ai_odyssey:block/bull_kelp_bulb_0",
 	   "bulb_1": "ai_odyssey:block/bull_kelp_bulb_1",
 	   "bottom": "ai_odyssey:block/bull_kelp_bulb_bottom",
