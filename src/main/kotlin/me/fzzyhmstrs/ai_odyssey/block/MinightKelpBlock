@@ -7,7 +7,7 @@ import net.minecraft.block.KelpBlock
 class MidnightKelpBlock(settings: Settings): KelpBlock(settings) {
 
     override fun getPlant(): Block {
-        return RegisterBlock.MIDNIGHT_KELP
+        return RegisterBlock.MIDNIGHT_KELP_PLANT
     }
     
     @Deprecated("Deprecated in Java")
