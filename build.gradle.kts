@@ -41,7 +41,7 @@ dependencies {
 
     modImplementation(":amethyst_imbuement-1.18.2-20")
 
-    modImplementation(":amethyst_core-0.1.1+1.18.2")
+    modImplementation(":amethyst_core-0.1.2+1.18.2")
 
     modImplementation("dev.emi:trinkets:3.3.0"){
         exclude("net.fabricmc.fabric-api")

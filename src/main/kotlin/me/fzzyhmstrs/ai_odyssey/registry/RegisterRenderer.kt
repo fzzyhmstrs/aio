@@ -38,6 +38,8 @@ object RegisterRenderer {
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.BULL_KELP, RenderLayer.getCutout())
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.BULL_KELP_PLANT, RenderLayer.getCutout())
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.BULL_KELP_STREAMER, RenderLayer.getCutout())
+        BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.MIDNIGHT_KELP, RenderLayer.getCutout())
+        BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.MIDNIGHT_KELP_PLANT, RenderLayer.getCutout())
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.SEA_APPLE_BUSH, RenderLayer.getCutout())
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.SEA_BAMBOO, RenderLayer.getCutout())
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.SEA_BAMBOO_PLANT, RenderLayer.getCutout())

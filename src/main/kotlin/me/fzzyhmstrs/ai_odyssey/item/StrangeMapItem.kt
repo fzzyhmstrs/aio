@@ -1,6 +1,7 @@
 package me.fzzyhmstrs.ai_odyssey.item
 
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterTag
+import me.fzzyhmstrs.amethyst_core.item_util.interfaces.Flavorful
 import net.minecraft.client.item.TooltipContext
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.EmptyMapItem
@@ -12,8 +13,6 @@ import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundEvents
 import net.minecraft.stat.Stats
 import net.minecraft.text.Text
-import net.minecraft.text.TranslatableText
-import net.minecraft.util.Formatting
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World

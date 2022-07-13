@@ -4,11 +4,15 @@ import me.fzzyhmstrs.ai_odyssey.registry.RegisterBlock
 import net.minecraft.block.AbstractPlantStemBlock
 import net.minecraft.block.BlockState
 import net.minecraft.block.KelpPlantBlock
+import net.minecraft.block.ShapeContext
 import net.minecraft.entity.Entity
 import net.minecraft.entity.LivingEntity
+import net.minecraft.entity.ai.pathing.NavigationType
 import net.minecraft.entity.damage.DamageSource
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
+import net.minecraft.util.shape.VoxelShape
+import net.minecraft.world.BlockView
 import net.minecraft.world.World
 import kotlin.math.abs
 
@@ -16,6 +20,16 @@ class MidnightKelpPlantBlock(settings: Settings): KelpPlantBlock(settings) {
 
     override fun getStem(): AbstractPlantStemBlock {
         return RegisterBlock.MIDNIGHT_KELP
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun getOutlineShape(
+        state: BlockState?,
+        world: BlockView?,
+        pos: BlockPos?,
+        context: ShapeContext?
+    ): VoxelShape {
+        return VOXEL_SHAPE
     }
     
     @Deprecated("Deprecated in Java")
@@ -31,5 +45,19 @@ class MidnightKelpPlantBlock(settings: Settings): KelpPlantBlock(settings) {
                 entity.damage(DamageSource.SWEET_BERRY_BUSH, 1.0f)
             }
         }
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun canPathfindThrough(
+        state: BlockState,
+        world: BlockView,
+        pos: BlockPos,
+        type: NavigationType
+    ): Boolean {
+        return true
+    }
+
+    companion object{
+        private val VOXEL_SHAPE = createCuboidShape(5.0, 0.0, 5.0, 11.0, 16.0, 11.0)
     }
 }
