@@ -121,7 +121,7 @@ class ResonateAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): Slash
     }
 
     override fun particleType(): DefaultParticleType {
-        return ParticleTypes.NOTE
+        return ParticleTypes.ELECTRIC_SPARK
     }
 
     override fun particleSpeed(): Double {
