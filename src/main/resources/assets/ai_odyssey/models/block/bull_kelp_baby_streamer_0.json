@@ -1,0 +1,26 @@
+{
+    "parent": "minecraft:block/block",
+    "textures": {
+		"particle": "ai_odyssey:block/bull_kelp",
+        "streamer_0": "ai_odyssey:block/bull_kelp_baby_streamer_0_0",
+		"streamer_1": "ai_odyssey:block/bull_kelp_baby_streamer_0_1"
+    },
+    "elements": [
+		{
+            "from": [ 6, 0, 0 ],
+            "to": [ 6, 16, 16 ],
+            "faces": {
+                "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#streamer_0" },
+                "east":  { "uv": [ 16, 0, 0, 16 ], "texture": "#streamer_0" }
+            }
+        },
+		{
+            "from": [ 10, 0, 0 ],
+            "to": [ 10, 16, 16 ],
+            "faces": {
+                "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#streamer_1" },
+                "east":  { "uv": [ 16, 0, 0, 16 ], "texture": "#streamer_1" }
+            }
+        }
+    ]
+}

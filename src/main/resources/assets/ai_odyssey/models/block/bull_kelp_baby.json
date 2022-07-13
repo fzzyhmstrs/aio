@@ -1,0 +1,55 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:block/block",
+	"ambientocclusion": false,
+	"textures": {
+		"1": "bull_kelp_baby_bulb_0",
+		"2": "bull_kelp_baby_bulb_1",
+		"3": "bull_kelp_baby_bulb_bottom",
+		"4": "bull_kelp_baby_bulb_top",
+		"5": "bull_kelp_baby_streamer_root_0",
+		"6": "bull_kelp_baby_streamer_root_1",
+		"7": "bull_kelp",
+		"particle": "bull_kelp"
+	},
+	"elements": [
+		{
+			"from": [5, 3, 5],
+			"to": [11, 9, 11],
+			"faces": {
+				"north": {"uv": [0, 0, 6, 6], "texture": "#1"},
+				"east": {"uv": [6, 0, 0, 6], "texture": "#2"},
+				"south": {"uv": [0, 0, 6, 6], "texture": "#2"},
+				"west": {"uv": [6, 0, 0, 6], "texture": "#1"},
+				"up": {"uv": [0, 0, 6, 6], "texture": "#4"},
+				"down": {"uv": [0, 0, 6, 6], "texture": "#3"}
+			}
+		},
+		{
+			"from": [6, 0, 6],
+			"to": [10, 3, 10],
+			"faces": {
+				"north": {"uv": [0, 14, 4, 16], "texture": "#7"},
+				"east": {"uv": [4, 14, 8, 16], "texture": "#7"},
+				"south": {"uv": [4, 14, 8, 16], "texture": "#7"},
+				"west": {"uv": [0, 14, 4, 16], "texture": "#7"}
+			}
+		},
+		{
+			"from": [6, 0, 0],
+			"to": [6, 16, 16],
+			"faces": {
+				"east": {"uv": [16, 0, 0, 16], "texture": "#5"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#5"}
+			}
+		},
+		{
+			"from": [10, 0, 0],
+			"to": [10, 16, 16],
+			"faces": {
+				"east": {"uv": [16, 0, 0, 16], "texture": "#6"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#6"}
+			}
+		}
+	]
+}
