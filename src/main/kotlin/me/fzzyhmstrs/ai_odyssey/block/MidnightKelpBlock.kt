@@ -9,6 +9,7 @@ import net.minecraft.entity.Entity
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.ai.pathing.NavigationType
 import net.minecraft.entity.damage.DamageSource
+import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 import net.minecraft.util.shape.VoxelShape
@@ -37,12 +38,18 @@ class MidnightKelpBlock(settings: Settings): KelpBlock(settings) {
         if (entity !is LivingEntity) {
             return
         }
-        entity.slowMovement(state, Vec3d(0.8, 0.8, 0.8))
+        entity.slowMovement(state, Vec3d(0.5, 0.85, 0.85))
         if (!(world.isClient || entity.lastRenderX == entity.getX() && entity.lastRenderZ == entity.getZ())) {
             val d = abs(entity.getX() - entity.lastRenderX)
             val e = abs(entity.getZ() - entity.lastRenderZ)
             if (d >= 0.003 || e >= 0.003) {
                 entity.damage(DamageSource.SWEET_BERRY_BUSH, 1.0f)
+                if (entity.isDead){
+                    println("I died!: $entity")
+                    if (world is ServerWorld) {
+                        this.grow(world, world.random, pos, state)
+                    }
+                }
             }
         }
     }
@@ -58,7 +65,7 @@ class MidnightKelpBlock(settings: Settings): KelpBlock(settings) {
     }
 
     companion object{
-        private val VOXEL_SHAPE = createCuboidShape(5.0, 0.0, 5.0, 11.0, 18.0, 11.0)
+        private val VOXEL_SHAPE = createCuboidShape(5.0, 0.0, 5.0, 11.0, 8.0, 11.0)
     }
 
 }

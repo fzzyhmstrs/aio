@@ -9,6 +9,7 @@ import net.minecraft.entity.Entity
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.ai.pathing.NavigationType
 import net.minecraft.entity.damage.DamageSource
+import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 import net.minecraft.util.shape.VoxelShape
@@ -43,6 +44,12 @@ class MidnightKelpPlantBlock(settings: Settings): KelpPlantBlock(settings) {
             val e = abs(entity.getZ() - entity.lastRenderZ)
             if (d >= 0.003 || e >= 0.003) {
                 entity.damage(DamageSource.SWEET_BERRY_BUSH, 1.0f)
+                if (entity.isDead){
+                    println("I died!: $entity")
+                    if (world is ServerWorld) {
+                        this.grow(world, world.random, pos, state)
+                    }
+                }
             }
         }
     }

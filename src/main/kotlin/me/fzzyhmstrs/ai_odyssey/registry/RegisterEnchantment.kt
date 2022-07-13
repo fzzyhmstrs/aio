@@ -1,5 +1,6 @@
 package me.fzzyhmstrs.ai_odyssey.registry
 
+import me.fzzyhmstrs.ai_odyssey.AIO
 import me.fzzyhmstrs.ai_odyssey.enchantment.ImbuedTouchEnchantment
 import me.fzzyhmstrs.ai_odyssey.scepter.*
 import me.fzzyhmstrs.amethyst_core.scepter_util.augments.AugmentHelper
@@ -38,7 +39,7 @@ object RegisterEnchantment {
 
         for (k in regEnchant.keys){
             val enchant = regEnchant[k]
-            Registry.register(Registry.ENCHANTMENT, Identifier(AI.MOD_ID, k), enchant)
+            Registry.register(Registry.ENCHANTMENT, Identifier(AIO.MOD_ID, k), enchant)
             if (enchant is ScepterAugment){
                 AugmentHelper.registerAugmentStat(enchant)
             }

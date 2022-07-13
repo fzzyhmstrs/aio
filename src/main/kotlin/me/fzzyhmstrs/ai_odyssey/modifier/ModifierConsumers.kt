@@ -112,7 +112,7 @@ object ModifierConsumers {
     private fun bloodPactConsumer(list: List<LivingEntity>){
         list.forEach {
             if (it.isPlayer){
-                it.damage(DamageSource.GENERIC,0.6666666F)
+                it.damage(DamageSource.GENERIC,1.0F)
             }
         }
     }

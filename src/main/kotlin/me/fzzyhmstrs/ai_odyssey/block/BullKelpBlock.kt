@@ -73,7 +73,6 @@ class BullKelpBlock(settings: Settings, private val growthChance: Double = 0.10)
             chooseStemState(world.getBlockState(pos.offset(growthDirection))))
         {
             world.setBlockState(pos.offset(growthDirection), age(state, world.random))
-            println("bloop")
             val pos1 = pos.offset(growthDirection)
             getStreamer().placeStreamer(world, pos1)
             getStreamer().removeStreamer(world, pos)
