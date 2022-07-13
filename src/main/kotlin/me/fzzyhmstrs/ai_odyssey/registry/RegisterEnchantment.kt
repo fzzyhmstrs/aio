@@ -1,7 +1,8 @@
 package me.fzzyhmstrs.ai_odyssey.registry
 
 import me.fzzyhmstrs.ai_odyssey.AIO
-import me.fzzyhmstrs.ai_odyssey.enchantment.ImbuedTouchEnchantment
+import me.fzzyhmstrs.ai_odyssey.augment.ImbuedTouchAugment
+import me.fzzyhmstrs.ai_odyssey.augment.PressureResistanceAugment
 import me.fzzyhmstrs.ai_odyssey.scepter.*
 import me.fzzyhmstrs.amethyst_core.scepter_util.augments.AugmentHelper
 import me.fzzyhmstrs.amethyst_core.scepter_util.augments.ScepterAugment
@@ -17,7 +18,8 @@ object RegisterEnchantment {
     private var regEnchant: MutableMap<String, Enchantment> = mutableMapOf()
 
     //augments
-    val IMBUED_TOUCH = ImbuedTouchEnchantment(Enchantment.Rarity.VERY_RARE,1,EquipmentSlot.MAINHAND,EquipmentSlot.OFFHAND).also{regEnchant["imbued_touch"] = it}
+    val IMBUED_TOUCH = ImbuedTouchAugment(Enchantment.Rarity.VERY_RARE,1,EquipmentSlot.MAINHAND,EquipmentSlot.OFFHAND).also{regEnchant["imbued_touch"] = it}
+    val PRESSURE_RESISTANCE = PressureResistanceAugment(Enchantment.Rarity.VERY_RARE,5, *AI.slots).also{regEnchant["pressure_resistance"] = it}
 
     //scepter spells
     val BARRIER = FullHealAugment(2,3, EquipmentSlot.MAINHAND).also{regEnchant["barrier"] = it}

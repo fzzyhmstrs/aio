@@ -154,15 +154,29 @@ object RegisterItem {
 
 
     //trinkets and baubles
-    val BOOK_OF_LEGEND = BookOfLegendItem(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.EPIC)).withFlavorDefaultPath(Identifier(AIO.MOD_ID,"book_of_legend")).withGlint() .also{ regItem["book_of_legend"] = it}
-    val DIVINE_CORONET = DivineCoronetItem(FabricItemSettings().group(ItemGroup.MISC).maxCount(1).rarity(Rarity.EPIC)).withFlavorDefaultPath(Identifier(AIO.MOD_ID,"divine_coronet")) .also{ regItem["divine_coronet"] = it}
+    val AMULET_OF_DEPTHS = AmuletOfDepthsItem(FabricItemSettings().group(ItemGroup.MISC).maxCount(1).rarity(Rarity.RARE))
+        .withFlavorDefaultPath(Identifier(AIO.MOD_ID,"amulet_of_depths"))
+        .withFlavorDescDefaultPath(Identifier(AIO.MOD_ID,"divine_coronet")).also{ regItem["amulet_of_depths"] = it}
+    val BOOK_OF_LEGEND = BookOfLegendItem(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.EPIC))
+        .withFlavorDefaultPath(Identifier(AIO.MOD_ID,"book_of_legend")).withGlint() .also{ regItem["book_of_legend"] = it}
+    val DIVINE_CORONET = DivineCoronetItem(FabricItemSettings().group(ItemGroup.MISC).maxCount(1).rarity(Rarity.EPIC))
+        .withFlavorDefaultPath(Identifier(AIO.MOD_ID,"divine_coronet"))
+        .withFlavorDescDefaultPath(Identifier(AIO.MOD_ID,"divine_coronet")) .also{ regItem["divine_coronet"] = it}
     val FACILITY_CONFIGURATOR = FacilityConfigurationStick(FabricItemSettings().group(ItemGroup.MISC)).also{ regItem["facility_configurator"] = it}
-    val RESPLENDENT_RARITY = CustomFlavorItem(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.EPIC)).withGlint().withFlavorDefaultPath(Identifier(
-        AIO.MOD_ID,"resplendent_rarity")) .also{ regItem["resplendent_rarity"] = it}
-    val STRANGE_MAP = StrangeMapItem(FabricItemSettings().group(ItemGroup.MISC)).also{ regItem["strange_map"] = it}
-    val STRANGE_SCRAP = CustomFlavorItem(FabricItemSettings().group(ItemGroup.MISC)).withFlavorDefaultPath(Identifier(AIO.MOD_ID,"strange_scrap")) .also{ regItem["strange_scrap"] = it}
-    val GLISTERING_FACILITY_KEY = CustomFlavorItem(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.RARE)).withFlavorDefaultPath(Identifier(AIO.MOD_ID,"glistering_facility_key")).also{ regItem["glistering_facility_key"] = it}
-    val POLISHED_FACILITY_KEY = CustomFlavorItem(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.RARE)).withFlavorDefaultPath(Identifier(AIO.MOD_ID,"polished_facility_key")).also{ regItem["polished_facility_key"] = it}
+    val RESPLENDENT_RARITY = CustomFlavorItem(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.EPIC)).withGlint()
+        .withFlavorDefaultPath(Identifier(AIO.MOD_ID,"resplendent_rarity")) .also{ regItem["resplendent_rarity"] = it}
+    val STRANGE_MAP = StrangeMapItem(FabricItemSettings().group(ItemGroup.MISC))
+        .withFlavorDefaultPath(Identifier(AIO.MOD_ID,"strange_map"))
+        .withFlavorDescDefaultPath(Identifier(AIO.MOD_ID,"strange_map")) .also{ regItem["strange_map"] = it}
+    val STRANGE_SCRAP = CustomFlavorItem(FabricItemSettings().group(ItemGroup.MISC))
+        .withFlavorDefaultPath(Identifier(AIO.MOD_ID,"strange_scrap"))
+        .withFlavorDescDefaultPath(Identifier(AIO.MOD_ID,"strange_scrap")) .also{ regItem["strange_scrap"] = it}
+    val GLISTERING_FACILITY_KEY = CustomFlavorItem(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.RARE))
+        .withFlavorDefaultPath(Identifier(AIO.MOD_ID,"glistering_facility_key"))
+        .withFlavorDescDefaultPath(Identifier(AIO.MOD_ID,"glistering_facility_key")) .also{ regItem["glistering_facility_key"] = it}
+    val POLISHED_FACILITY_KEY = CustomFlavorItem(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.RARE))
+        .withFlavorDefaultPath(Identifier(AIO.MOD_ID,"polished_facility_key"))
+        .withFlavorDescDefaultPath(Identifier(AIO.MOD_ID,"polished_facility_key")) .also{ regItem["polished_facility_key"] = it}
 
     fun registerAll() {
         for (k in regItem.keys){
