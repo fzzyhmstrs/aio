@@ -5,10 +5,7 @@ import me.fzzyhmstrs.ai_odyssey.entity.CrystallineSwitchBlockEntity
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterItem
 import me.fzzyhmstrs.ai_odyssey.util.FacilityChimes
-import net.minecraft.block.Block
-import net.minecraft.block.BlockState
-import net.minecraft.block.BlockWithEntity
-import net.minecraft.block.ShapeContext
+import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType

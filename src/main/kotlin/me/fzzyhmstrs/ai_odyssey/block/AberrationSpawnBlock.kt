@@ -2,6 +2,7 @@ package me.fzzyhmstrs.ai_odyssey.block
 
 import me.fzzyhmstrs.ai_odyssey.entity.AberrationSpawnBlockEntity
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
+import net.minecraft.block.BlockRenderType
 import net.minecraft.block.BlockState
 import net.minecraft.block.BlockWithEntity
 import net.minecraft.block.ShapeContext

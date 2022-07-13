@@ -22,9 +22,9 @@ object RegisterBlock {
         BlockSoundGroup.WET_GRASS))
     val BULL_KELP_STREAMER = BullKelpStreamerBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().ticksRandomly().breakInstantly().sounds(
         BlockSoundGroup.WET_GRASS).dropsNothing())
-    val MIDNIGHT_KELP = MidnightBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).ticksRandomly().breakInstantly().sounds(
+    val MIDNIGHT_KELP = MidnightKelpBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).ticksRandomly().strength(0.12f).sounds(
         BlockSoundGroup.WET_GRASS).luminance(11))
-    val MIDNIGHT_KELP_PLANT = MidnightKelpPlantBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).ticksRandomly().breakInstantly().sounds(
+    val MIDNIGHT_KELP_PLANT = MidnightKelpPlantBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).ticksRandomly().strength(0.12f).sounds(
         BlockSoundGroup.WET_GRASS).luminance(11))
     val SEA_APPLE_BUSH = SeaAppleBushBlock(FabricBlockSettings.of(Material.REPLACEABLE_UNDERWATER_PLANT, MapColor.LICHEN_GREEN).ticksRandomly().noCollision().sounds(BlockSoundGroup.SWEET_BERRY_BUSH))
     val SEA_BAMBOO = SeaBambooBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().ticksRandomly().breakInstantly().sounds(

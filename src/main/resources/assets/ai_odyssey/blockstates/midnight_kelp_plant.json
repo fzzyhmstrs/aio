@@ -1,7 +1,9 @@
 {
   "variants": {
-    "": {
-      "model": "ai_odyssey:block/midnight_kelp_plant"
-    }
+    "": [
+		{"model": "ai_odyssey:block/midnight_kelp_plant_1"},
+		{"model": "ai_odyssey:block/midnight_kelp_plant_2"},
+		{"model": "ai_odyssey:block/midnight_kelp_plant_3"}
+    ]
   }
 }
