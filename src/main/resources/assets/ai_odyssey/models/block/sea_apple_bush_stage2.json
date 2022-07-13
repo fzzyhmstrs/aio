@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "amethyst_imbuement:block/experience_bush_stage2"
+    "cross": "amethyst_imbuement:block/sea_apple_bush_stage2"
   }
 }
