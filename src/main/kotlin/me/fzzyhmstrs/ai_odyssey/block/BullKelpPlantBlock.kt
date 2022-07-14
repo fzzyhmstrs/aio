@@ -1,5 +1,6 @@
 package me.fzzyhmstrs.ai_odyssey.block
 
+import me.fzzyhmstrs.ai_odyssey.block.BullKelpBlock.Companion.BABY
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterBlock
 import net.minecraft.block.*
 import net.minecraft.entity.player.PlayerEntity
@@ -34,6 +35,22 @@ class BullKelpPlantBlock(settings: Settings):
             val pos1 = pos.offset(growthDirection.opposite)
             getStreamer().placeStreamer(world, pos1)
         }
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun getStateForNeighborUpdate(
+        state: BlockState,
+        direction: Direction,
+        neighborState: BlockState,
+        world: WorldAccess,
+        pos: BlockPos,
+        neighborPos: BlockPos
+    ): BlockState {
+        val tempState = super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos)
+        if (tempState.isOf(stem)){
+            return tempState.with(BABY, true)
+        }
+        return tempState
     }
 
     @Deprecated("Deprecated in Java", ReplaceWith("Fluids.WATER.getStill(false)", "net.minecraft.fluid.Fluids"))

@@ -43,11 +43,13 @@ class MidnightKelpPlantBlock(settings: Settings): KelpPlantBlock(settings) {
             val d = abs(entity.getX() - entity.lastRenderX)
             val e = abs(entity.getZ() - entity.lastRenderZ)
             if (d >= 0.003 || e >= 0.003) {
-                entity.damage(DamageSource.SWEET_BERRY_BUSH, 1.0f)
-                if (entity.isDead){
-                    println("I died!: $entity")
-                    if (world is ServerWorld) {
-                        this.grow(world, world.random, pos, state)
+                if (!entity.isDead) {
+                    entity.damage(DamageSource.SWEET_BERRY_BUSH, 1.0f)
+                    if (entity.isDead) {
+                        println("I died!: $entity")
+                        if (world is ServerWorld) {
+                            this.grow(world, world.random, pos, state)
+                        }
                     }
                 }
             }

@@ -1,9 +1,8 @@
 package me.fzzyhmstrs.ai_odyssey.block
 
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterItem
-import net.minecraft.block.BlockState
-import net.minecraft.block.FluidFillable
-import net.minecraft.block.SweetBerryBushBlock
+import me.fzzyhmstrs.ai_odyssey.registry.RegisterTag
+import net.minecraft.block.*
 import net.minecraft.entity.Entity
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
@@ -21,10 +20,12 @@ import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Direction
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
 import net.minecraft.world.WorldAccess
+import net.minecraft.world.WorldView
 import java.util.*
 
 class SeaAppleBushBlock(settings: Settings): SweetBerryBushBlock(settings), FluidFillable {
@@ -43,7 +44,7 @@ class SeaAppleBushBlock(settings: Settings): SweetBerryBushBlock(settings), Flui
         if (entity !is LivingEntity) {
             return
         }
-        entity.slowMovement(state, Vec3d(0.8, 0.8, 0.8))
+        entity.slowMovement(state, Vec3d(0.92, 0.92, 0.92))
     }
 
     override fun getPickStack(world: BlockView, pos: BlockPos, state: BlockState): ItemStack {
@@ -102,8 +103,14 @@ class SeaAppleBushBlock(settings: Settings): SweetBerryBushBlock(settings), Flui
         return false
     }
 
-    @Deprecated("Deprecated in Java")
+    @Deprecated("Deprecated in Java", ReplaceWith("Fluids.WATER.getStill(false)", "net.minecraft.fluid.Fluids"))
     override fun getFluidState(state: BlockState?): FluidState? {
         return Fluids.WATER.getStill(false)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun canPlaceAt(state: BlockState, world: WorldView, pos: BlockPos): Boolean {
+        val downState = world.getBlockState(pos.down())
+        return  downState.isSideSolidFullSquare(world, pos,Direction.UP) && (downState.material.equals(Material.AGGREGATE) || downState.material.equals(Material.SOIL)) && downState.material.blocksMovement()
     }
 }

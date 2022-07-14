@@ -38,12 +38,13 @@ class MidnightKelpBlock(settings: Settings): KelpBlock(settings) {
         if (entity !is LivingEntity) {
             return
         }
-        entity.slowMovement(state, Vec3d(0.5, 0.85, 0.85))
-        if (!(world.isClient || entity.lastRenderX == entity.getX() && entity.lastRenderZ == entity.getZ())) {
+        entity.slowMovement(state, Vec3d(0.85, 0.85, 0.85))
+        if (!(world.isClient || entity.lastRenderX == entity.getX() && entity.lastRenderY == entity.getY() && entity.lastRenderZ == entity.getZ())) {
             val d = abs(entity.getX() - entity.lastRenderX)
-            val e = abs(entity.getZ() - entity.lastRenderZ)
-            if (d >= 0.003 || e >= 0.003) {
-                entity.damage(DamageSource.SWEET_BERRY_BUSH, 1.0f)
+            val e = abs(entity.getY() - entity.lastRenderY)
+            val f = abs(entity.getZ() - entity.lastRenderZ)
+            if (d >= 0.003 || e >= 0.003 || f >= 0.003) {
+                entity.damage(DamageSource.SWEET_BERRY_BUSH, 0.75f)
                 if (entity.isDead){
                     println("I died!: $entity")
                     if (world is ServerWorld) {

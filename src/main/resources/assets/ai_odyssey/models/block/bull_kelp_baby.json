@@ -3,14 +3,14 @@
 	"parent": "minecraft:block/block",
 	"ambientocclusion": false,
 	"textures": {
-		"1": "bull_kelp_baby_bulb_0",
-		"2": "bull_kelp_baby_bulb_1",
-		"3": "bull_kelp_baby_bulb_bottom",
-		"4": "bull_kelp_baby_bulb_top",
-		"5": "bull_kelp_baby_streamer_root_0",
-		"6": "bull_kelp_baby_streamer_root_1",
-		"7": "bull_kelp",
-		"particle": "bull_kelp"
+		"1": "ai_odyssey:block/bull_kelp_baby_bulb_0",
+		"2": "ai_odyssey:block/bull_kelp_baby_bulb_1",
+		"3": "ai_odyssey:block/bull_kelp_baby_bulb_bottom",
+		"4": "ai_odyssey:block/bull_kelp_baby_bulb_top",
+		"5": "ai_odyssey:block/bull_kelp_baby_streamer_root_0",
+		"6": "ai_odyssey:block/bull_kelp_baby_streamer_root_1",
+		"7": "ai_odyssey:block/bull_kelp",
+		"particle": "ai_odyssey:block/bull_kelp"
 	},
 	"elements": [
 		{

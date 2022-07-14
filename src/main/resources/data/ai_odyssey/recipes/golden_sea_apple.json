@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+	"GGG",
+	"GAG",
+	"GGG"
+  ],
+  "key": {
+	"A": {
+	  "item": "ai_odyssey:sea_apple"
+	},
+	"G": {
+	  "item": "minecraft:gold_ingot"
+	}
+  },
+  "result": {
+	"item": "ai_odyssey:golden_sea_apple"
+  }
+}
+

@@ -1,13 +1,22 @@
 {
   "variants": {
-    "age=0": {
+    "age=0,bull_kelp_baby=false": {
       "model": "ai_odyssey:block/bull_kelp_streamer_0"
     },
-	"age=1": {
+	"age=1,bull_kelp_baby=false": {
       "model": "ai_odyssey:block/bull_kelp_streamer_1"
     },
-	"age=2": {
+	"age=2,bull_kelp_baby=false": {
       "model": "ai_odyssey:block/bull_kelp_streamer_2"
+    },
+	"age=0,bull_kelp_baby=true": {
+      "model": "ai_odyssey:block/bull_kelp_baby_streamer_0"
+    },
+	"age=1,bull_kelp_baby=true": {
+      "model": "ai_odyssey:block/bull_kelp_baby_streamer_0"
+    },
+	"age=2,bull_kelp_baby=true": {
+      "model": "ai_odyssey:block/bull_kelp_baby_streamer_0"
     }
   }
 }

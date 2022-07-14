@@ -17,7 +17,7 @@
             "to": [ 12, 16, 16 ],
             "rotation": { "angle": -22.5, "axis": "x", "origin": [ 8, 8, 8 ] },
             "faces": {
-                "up":    { "uv": [ 0, 8, 16, 10 ], "texture": "#num" }
+                "up":    { "uv": [8, 10, 0, 0], "texture": "#num" }
             }
         }
     ]

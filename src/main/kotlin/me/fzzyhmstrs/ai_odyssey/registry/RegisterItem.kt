@@ -16,6 +16,8 @@ import me.fzzyhmstrs.amethyst_imbuement.tool.ScepterLvl1ToolMaterial
 import me.fzzyhmstrs.amethyst_imbuement.tool.ScepterLvl2ToolMaterial
 import me.fzzyhmstrs.amethyst_imbuement.tool.ScepterLvl3ToolMaterial
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
+import net.minecraft.entity.effect.StatusEffectInstance
+import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.item.AliasedBlockItem
 import net.minecraft.item.FoodComponent
 import net.minecraft.item.Item
@@ -148,7 +150,10 @@ object RegisterItem {
     //food and other practical items
     private val seaAppleFood = FoodComponent.Builder().hunger(5).saturationModifier(0.4f).build()
     val SEA_APPLE = AliasedBlockItem(RegisterBlock.SEA_APPLE_BUSH,FabricItemSettings().group(ItemGroup.FOOD).food(seaAppleFood)).also{ regItem["sea_apple"] = it}
-    private val bullKelpFood = FoodComponent.Builder().hunger(2).saturationModifier(0.2f).build()
+    private val goldenSeaAppleFood = FoodComponent.Builder().hunger(5).saturationModifier(1.2f).alwaysEdible().statusEffect(
+        StatusEffectInstance(StatusEffects.CONDUIT_POWER, 120, 0), 1.0f).build()
+    val GOLDEN_SEA_APPLE = Item(FabricItemSettings().group(ItemGroup.FOOD).food(goldenSeaAppleFood)).also{ regItem["golden_sea_apple"] = it}
+    private val bullKelpFood = FoodComponent.Builder().hunger(2).saturationModifier(0.2f).alwaysEdible().build()
     val BULL_KELP = BullKelpBlockItem(RegisterBlock.BULL_KELP, FabricItemSettings().group(ItemGroup.DECORATIONS).food(bullKelpFood)).also{ regItem["bull_kelp"] = it}
 
 

@@ -1,5 +1,6 @@
 package me.fzzyhmstrs.ai_odyssey.block
 
+import me.fzzyhmstrs.ai_odyssey.block.BullKelpBlock.Companion.BABY
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterBlock
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
@@ -10,6 +11,7 @@ import net.minecraft.fluid.FluidState
 import net.minecraft.fluid.Fluids
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.state.StateManager
+import net.minecraft.state.property.BooleanProperty
 import net.minecraft.state.property.Properties
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
@@ -27,7 +29,7 @@ class BullKelpStreamerBlock(settings: Settings): Block(settings), FluidFillable 
     }
 
     override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
-        builder.add(age)
+        builder.add(age, BABY)
     }
 
     @Deprecated("Deprecated in Java")
@@ -76,18 +78,25 @@ class BullKelpStreamerBlock(settings: Settings): Block(settings), FluidFillable 
     }
 
     private fun canPlaceIn(state: BlockState): Boolean{
-        return state.isOf(Blocks.WATER)
+        return state.isOf(Blocks.WATER) || state.isOf(this)
     }
 
-    fun placeStreamer(world: World, blockPos: BlockPos){
+    fun placeStreamer(world: World, blockPos: BlockPos, baby: Boolean = false){
         if (world.isClient) return
         var newBlockPos = blockPos
-        for (i in 0..2){
+        if (!baby) {
+            for (i in 0..2) {
+                newBlockPos = newBlockPos.offset(growthDirection)
+                if (canPlaceIn(world.getBlockState(newBlockPos))) {
+                    world.setBlockState(newBlockPos, RegisterBlock.BULL_KELP_STREAMER.defaultState.with(age, i).with(BABY, false))
+                } else {
+                    break
+                }
+            }
+        } else {
             newBlockPos = newBlockPos.offset(growthDirection)
-            if (canPlaceIn(world.getBlockState(newBlockPos))){
-                world.setBlockState(newBlockPos,RegisterBlock.BULL_KELP_STREAMER.defaultState.with(age,i))
-            } else {
-                break
+            if (canPlaceIn(world.getBlockState(newBlockPos))) {
+                world.setBlockState(newBlockPos, RegisterBlock.BULL_KELP_STREAMER.defaultState.with(age, 0).with(BABY,true))
             }
         }
     }

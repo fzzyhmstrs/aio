@@ -12,9 +12,12 @@ import net.minecraft.fluid.Fluids
 import net.minecraft.item.ItemPlacementContext
 import net.minecraft.item.ItemStack
 import net.minecraft.server.world.ServerWorld
+import net.minecraft.state.StateManager
+import net.minecraft.state.property.BooleanProperty
 import net.minecraft.tag.FluidTags
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
+import net.minecraft.util.math.Vec3d
 import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.World
 import net.minecraft.world.WorldAccess
@@ -30,15 +33,25 @@ class BullKelpBlock(settings: Settings, private val growthChance: Double = 0.10)
         return RegisterBlock.BULL_KELP_STREAMER
     }
 
+    override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
+        super.appendProperties(builder)
+        builder.add(BABY)
+    }
+
     override fun grow(world: ServerWorld, random: Random, pos: BlockPos, state: BlockState) {
         var blockPos = pos.offset(growthDirection)
         var i = (state.get(AGE) + 1).coerceAtMost(25)
         val j = getGrowthLength(random)
         var k = 0
         while (k < j && chooseStemState(world.getBlockState(blockPos))) {
-            world.setBlockState(blockPos, state.with(AGE, i) as BlockState)
-            getStreamer().placeStreamer(world, blockPos)
+            if (isBaby(state)){
+                blockPos = blockPos.offset(growthDirection.opposite)
+                world.setBlockState(blockPos, state.with(AGE, (i-1).coerceAtLeast(0)).with(BABY,false) as BlockState)
+            } else {
+                world.setBlockState(blockPos, state.with(AGE, i) as BlockState)
+            }
             getStreamer().removeStreamer(world, pos)
+            getStreamer().placeStreamer(world, blockPos, false)
             blockPos = blockPos.offset(growthDirection)
             i = (i + 1).coerceAtMost(25)
             ++k
@@ -54,7 +67,7 @@ class BullKelpBlock(settings: Settings, private val growthChance: Double = 0.10)
         itemStack: ItemStack
     ) {
         if (world is ServerWorld) {
-            getStreamer().placeStreamer(world, pos)
+            getStreamer().placeStreamer(world, pos,isBaby(state))
         }
     }
 
@@ -62,7 +75,7 @@ class BullKelpBlock(settings: Settings, private val growthChance: Double = 0.10)
         super.onBreak(world, pos, state, player)
         if (!world.isClient) {
             val pos1 = pos.offset(growthDirection.opposite)
-            getStreamer().placeStreamer(world, pos1)
+            getStreamer().placeStreamer(world, pos1, true)
         }
     }
 
@@ -72,9 +85,14 @@ class BullKelpBlock(settings: Settings, private val growthChance: Double = 0.10)
             random.nextDouble() < growthChance &&
             chooseStemState(world.getBlockState(pos.offset(growthDirection))))
         {
-            world.setBlockState(pos.offset(growthDirection), age(state, world.random))
-            val pos1 = pos.offset(growthDirection)
-            getStreamer().placeStreamer(world, pos1)
+            val pos1: BlockPos = if (isBaby(state)){
+                world.setBlockState(pos, state.with(BABY,false))
+                pos
+            } else {
+                world.setBlockState(pos.offset(growthDirection), age(state, world.random))
+                pos.offset(growthDirection)
+            }
+            getStreamer().placeStreamer(world, pos1, false)
             getStreamer().removeStreamer(world, pos)
         }
     }
@@ -90,7 +108,9 @@ class BullKelpBlock(settings: Settings, private val growthChance: Double = 0.10)
     override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {
         val fluidState = ctx.world.getFluidState(ctx.blockPos)
         return if (fluidState.isIn(FluidTags.WATER) && fluidState.level == 8) {
-            super.getPlacementState(ctx)
+            val downState = ctx.world.getBlockState(ctx.blockPos)
+            val baby = !downState.isOf(this)
+            super.getPlacementState(ctx)?.with(BABY,baby)
         } else null
     }
 
@@ -101,6 +121,14 @@ class BullKelpBlock(settings: Settings, private val growthChance: Double = 0.10)
     @Deprecated("Deprecated in Java", ReplaceWith("Fluids.WATER.getStill(false)", "net.minecraft.fluid.Fluids"))
     override fun getFluidState(state: BlockState?): FluidState? {
         return Fluids.WATER.getStill(false)
+    }
+
+    private fun isBaby(state: BlockState): Boolean{
+        return state.get(BABY)
+    }
+
+    companion object{
+        internal val BABY = BooleanProperty.of("bull_kelp_baby")
     }
 
 }

@@ -1,7 +1,10 @@
 {
-  "variants": {
-    "": {
-      "model": "ai_odyssey:block/bull_kelp"
-    }
-  }
+  "multipart": [
+	{   "when": { "bull_kelp_baby": "true" },
+		"apply": { "model": "ai_odyssey:block/bull_kelp_baby"}
+	},
+	{   "when": { "bull_kelp_baby": "false" },
+		"apply": { "model": "ai_odyssey:block/bull_kelp"}
+	}
+  ]
 }
