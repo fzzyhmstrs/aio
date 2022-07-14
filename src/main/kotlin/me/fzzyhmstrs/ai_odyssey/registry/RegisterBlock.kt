@@ -7,6 +7,7 @@ import me.fzzyhmstrs.ai_odyssey.block.*
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.minecraft.block.*
+import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.item.BlockItem
 import net.minecraft.item.ItemGroup
 import net.minecraft.sound.BlockSoundGroup
@@ -35,6 +36,9 @@ object RegisterBlock {
         BlockSoundGroup.WET_GRASS))
     val TURTLE_GRASS = SeaGrassAlwaysShortBlock(FabricBlockSettings.of(Material.REPLACEABLE_UNDERWATER_PLANT).noCollision().breakInstantly().sounds(
         BlockSoundGroup.WET_GRASS))
+
+    //user-created or artificial type blocks
+    val ENTANGLED_CHEST = EntangledChestBlock(FabricBlockSettings.of(Material.STONE, MapColor.GRAY).strength(2.5f).sounds(BlockSoundGroup.WOOD)) { BlockEntityType.CHEST }
 
     //basic world environment blocks
     val CALCITE_SEDIMENT = SandBlock(0xE2D7C5,FabricBlockSettings.of(Material.AGGREGATE, MapColor.WHITE).strength(0.5f).sounds(BlockSoundGroup.SAND))

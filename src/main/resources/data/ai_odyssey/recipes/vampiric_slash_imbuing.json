@@ -1,0 +1,31 @@
+{
+  "type": "amethyst_imbuement:imbuing",
+  "imbueA": {
+	"item": "ai_odyssey:bloodstone"
+  },
+  "imbueB": {
+	"item": "minecraft:amethyst_shard"
+  },
+  "imbueC": {
+	"item": "minecraft:amethyst_shard"
+  },
+  "imbueD": {
+	"item": "minecraft:amethyst_shard"
+  },
+  "craftB": {
+	"item": "amethyst_imbuement:book_of_lore"
+  },
+  "craftD": {
+	"item": "ai_odyssey:midnight_kelp"
+  },
+  "craftF": {
+	"item": "ai_odyssey:midnight_kelp"
+  },
+  "craftH": {
+	"item": "ai_odyssey:midnight_kelp"
+  },
+  "title": "Vampiric Slash",
+  "cost": 11,
+  "augment": "ai_odyssey:vampiric_slash"
+}
+

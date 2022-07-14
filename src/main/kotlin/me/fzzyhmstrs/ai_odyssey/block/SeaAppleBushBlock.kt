@@ -104,7 +104,7 @@ class SeaAppleBushBlock(settings: Settings): SweetBerryBushBlock(settings), Flui
     }
 
     @Deprecated("Deprecated in Java", ReplaceWith("Fluids.WATER.getStill(false)", "net.minecraft.fluid.Fluids"))
-    override fun getFluidState(state: BlockState?): FluidState? {
+    override fun getFluidState(state: BlockState): FluidState {
         return Fluids.WATER.getStill(false)
     }
 

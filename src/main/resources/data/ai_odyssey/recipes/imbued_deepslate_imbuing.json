@@ -1,0 +1,47 @@
+{
+  "type": "amethyst_imbuement:imbuing",
+  "imbueA": {
+	"item": "amethyst_imbuement:garnet"
+  },
+  "imbueB": {
+	"item": "amethyst_imbuement:garnet"
+  },
+  "imbueC": {
+	"item": "amethyst_imbuement:garnet"
+  },
+  "imbueD": {
+	"item": "amethyst_imbuement:garnet"
+  },
+  "craftA": {
+	"item": "amethyst_imbuement:steel_ingot"
+  },
+  "craftB": {
+	"item": "minecraft:deepslate"
+  },
+  "craftC": {
+	"item": "amethyst_imbuement:steel_ingot"
+  },
+  "craftD": {
+	"item": "minecraft:deepslate"
+  },
+  "craftE": {
+	"item": "minecraft:netherite_scrap"
+  },
+  "craftF": {
+	"item": "minecraft:deepslate"
+  },
+  "craftG": {
+	"item": "amethyst_imbuement:steel_ingot"
+  },
+  "craftH": {
+	"item": "minecraft:deepslate"
+  },
+  "craftI": {
+	"item": "amethyst_imbuement:steel_ingot"
+  },
+  "title": "Imbued Deepslate",
+  "cost": 19,
+  "resultA": "ai_odyssey:imbued_deepslate",
+  "countA": 4
+}
+

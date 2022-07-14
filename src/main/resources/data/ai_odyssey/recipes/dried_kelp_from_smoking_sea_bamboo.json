@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "ai_odyssey:sea_bamboo"
+  },
+  "result": "minecraft:dried_kelp",
+  "experience": 0.1,
+  "cookingtime": 100
+}

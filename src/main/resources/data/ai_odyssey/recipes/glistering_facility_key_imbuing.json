@@ -1,0 +1,47 @@
+{
+  "type": "amethyst_imbuement:imbuing",
+  "imbueA": {
+	"item": "minecraft:blaze_powder"
+  },
+  "imbueB": {
+	"item": "minecraft:blaze_powder"
+  },
+  "imbueC": {
+	"item": "minecraft:blaze_powder"
+  },
+  "imbueD": {
+	"item": "minecraft:blaze_powder"
+  },
+  "craftA": {
+	"item": "minecraft:diamond"
+  },
+  "craftB": {
+	"item": "minecraft:emerald"
+  },
+  "craftC": {
+	"item": "minecraft:diamond"
+  },
+  "craftD": {
+	"item": "minecraft:emerald"
+  },
+  "craftE": {
+	"item": "amethyst_imbuement:beryl_copper_ingot"
+  },
+  "craftF": {
+	"item": "minecraft:emerald"
+  },
+  "craftG": {
+	"item": "minecraft:diamond"
+  },
+  "craftH": {
+	"item": "minecraft:emerald"
+  },
+  "craftI": {
+	"item": "minecraft:diamond"
+  },
+  "title": "Glistering Facility Key",
+  "cost": 13,
+  "resultA": "ai_odyssey:glistering_facility_key",
+  "countA": 1
+}
+

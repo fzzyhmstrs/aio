@@ -33,9 +33,11 @@ object RegisterItem {
     private val regItem: MutableMap<String, Item> = mutableMapOf()
 
     //materials and crafting items
-    val ALEXANDRITE = Item(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.UNCOMMON)).also{ regItem["alexandrite"] = it}
+    val ALEXANDRITE = Item(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.RARE)).also{ regItem["alexandrite"] = it}
     val BLOODSTONE = Item(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.UNCOMMON)).also{ regItem["bloodstone"] = it}
-    val SERPENTINE = Item(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.UNCOMMON)).also{ regItem["serpentine"] = it}
+    val LARIMAR = Item(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.UNCOMMON)).also{ regItem["larimar"] = it}
+    val SERPENTINE = Item(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.RARE)).also{ regItem["serpentine"] = it}
+    val IMBUED_REMNANTS = Item(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.COMMON)).also{ regItem["imbued_remnants"] = it}
     val MYSTIC_FRAGMENT = CustomFlavorItem(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.EPIC)).withFlavorDefaultPath(
         Identifier(AIO.MOD_ID,"mystic_fragment")).withGlint().also{ regItem["mystic_fragment"] = it}
     val MYSTIC_QUINTESSENCE = CustomFlavorItem(FabricItemSettings().group(ItemGroup.MISC).rarity(Rarity.EPIC)).withFlavorDefaultPath(
@@ -145,6 +147,7 @@ object RegisterItem {
 
 
     //flora and fauna
+    val DEEPCRAWLER_SHELL = Item(FabricItemSettings().group(ItemGroup.MISC)).also{ regItem["deepcrawler_shell"] = it}
 
 
     //food and other practical items

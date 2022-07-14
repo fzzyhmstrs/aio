@@ -1,0 +1,47 @@
+{
+  "type": "amethyst_imbuement:imbuing",
+  "imbueA": {
+	"item": "ai_odyssey:alexandrite"
+  },
+  "imbueB": {
+	"item": "ai_odyssey:alexandrite"
+  },
+  "imbueC": {
+	"item": "ai_odyssey:alexandrite"
+  },
+  "imbueD": {
+	"item": "ai_odyssey:alexandrite"
+  },
+  "craftA": {
+	"item": "minecraft:netherite_ingot"
+  },
+  "craftB": {
+	"item": "ai_odyssey:mystic_fragment"
+  },
+  "craftC": {
+	"item": "minecraft:netherite_ingot"
+  },
+  "craftD": {
+	"item": "ai_odyssey:mystic_fragment"
+  },
+  "craftE": {
+	"item": "minecraft:nether_star"
+  },
+  "craftF": {
+	"item": "ai_odyssey:mystic_fragment"
+  },
+  "craftG": {
+	"item": "minecraft:netherite_ingot"
+  },
+  "craftH": {
+	"item": "ai_odyssey:mystic_fragment"
+  },
+  "craftI": {
+	"item": "minecraft:netherite_ingot"
+  },
+  "title": "Mystic Quintessence",
+  "cost": 39,
+  "resultA": "ai_odyssey:mystic_quintessence",
+  "countA": 1
+}
+

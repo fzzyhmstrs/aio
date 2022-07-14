@@ -91,6 +91,19 @@ object RegisterEntity {
         }.dimensions(EntityDimensions.fixed(0.5f, 0.5f)).build()
     )
 
+    val VAMPIRIC_BOLT_ENTITY: EntityType<VampiricBoltEntity> = Registry.register(
+        Registry.ENTITY_TYPE,
+        Identifier(AIO.MOD_ID, "enfeebling_bolt_entity"),
+        FabricEntityTypeBuilder.create(
+            SpawnGroup.MISC
+        ) { entityType: EntityType<VampiricBoltEntity>, world: World ->
+            VampiricBoltEntity(
+                entityType,
+                world
+            )
+        }.dimensions(EntityDimensions.fixed(0.5f, 0.5f)).build()
+    )
+
     fun registerAll(){
 
     }

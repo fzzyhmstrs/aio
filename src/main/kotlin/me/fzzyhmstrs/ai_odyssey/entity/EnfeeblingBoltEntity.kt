@@ -2,9 +2,15 @@ package me.fzzyhmstrs.ai_odyssey.entity
 
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
 import me.fzzyhmstrs.amethyst_core.entity_util.MissileEntity
+import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentConsumer
 import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentEffect
+import me.fzzyhmstrs.amethyst_core.trinket_util.EffectQueue
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.LivingEntity
+import net.minecraft.entity.damage.DamageSource
+import net.minecraft.entity.effect.StatusEffects
+import net.minecraft.entity.projectile.SmallFireballEntity
+import net.minecraft.util.hit.EntityHitResult
 import net.minecraft.world.World
 
 class EnfeeblingBoltEntity(entityType: EntityType<out EnfeeblingBoltEntity?>, world: World): MissileEntity(entityType, world) {
@@ -27,6 +33,36 @@ class EnfeeblingBoltEntity(entityType: EntityType<out EnfeeblingBoltEntity?>, wo
     override fun passEffects(ae: AugmentEffect, level: Int) {
         super.passEffects(ae, level)
         ae.addDuration(ae.amplifier(level))
+    }
+
+    override fun onEntityHit(entityHitResult: EntityHitResult) {
+        if (world.isClient) {
+            return
+        }
+        val entity = owner
+        if (entity is LivingEntity) {
+            val entity2 = entityHitResult.entity
+            if (!entity2.isFireImmune) {
+                val i = entity2.fireTicks
+                entity2.setOnFireFor(entityEffects.amplifier(0))
+                val bl = entity2.damage(
+                    DamageSource.thrownProjectile(this,owner),
+                    entityEffects.damage(0)
+                )
+                if (!bl) {
+                    entity2.fireTicks = i
+                } else {
+                    entityEffects.accept(entity, AugmentConsumer.Type.BENEFICIAL)
+                    applyDamageEffects(entity as LivingEntity?, entity2)
+                    if (entity2 is LivingEntity) {
+                        EffectQueue.addStatusToQueue(entity2,StatusEffects.WEAKNESS,40,0)
+                        EffectQueue.addStatusToQueue(entity2,StatusEffects.SLOWNESS,40,0)
+                        entityEffects.accept(entity2, AugmentConsumer.Type.HARMFUL)
+                    }
+                }
+            }
+        }
+        discard()
     }
 
 }

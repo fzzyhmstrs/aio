@@ -1,0 +1,43 @@
+{
+  "type": "amethyst_imbuement:imbuing",
+  "imbueA": {
+	"item": "amethyst_imbuement:ametrine"
+  },
+  "imbueB": {
+	"item": "amethyst_imbuement:imbued_lapis"
+  },
+  "imbueC": {
+	"item": "amethyst_imbuement:imbued_lapis"
+  },
+  "imbueD": {
+	"item": "amethyst_imbuement:imbued_lapis"
+  },
+  "craftA": {
+	"item": "amethyst_imbuement:beryl_copper_ingot"
+  },
+  "craftB": {
+	"item": "minecraft:shears"
+  },
+  "craftC": {
+	"item": "amethyst_imbuement:beryl_copper_ingot"
+  },
+  "craftD": {
+	"item": "minecraft:shears"
+  },
+  "craftF": {
+	"item": "minecraft:shears"
+  },
+  "craftG": {
+	"item": "amethyst_imbuement:beryl_copper_ingot"
+  },
+  "craftH": {
+	"item": "minecraft:shears"
+  },
+  "craftI": {
+	"item": "amethyst_imbuement:beryl_copper_ingot"
+  },
+  "title": "Imbued Touch",
+  "cost": 15,
+  "augment": "ai_odyssey:imbued_touch"
+}
+
