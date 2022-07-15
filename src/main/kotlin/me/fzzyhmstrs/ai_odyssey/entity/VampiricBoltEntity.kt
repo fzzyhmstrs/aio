@@ -28,5 +28,31 @@ class VampiricBoltEntity(entityType: EntityType<out VampiricBoltEntity?>, world:
         super.passEffects(ae, level)
         ae.addDuration(ae.amplifier(level))
     }
+    
+    override fun onEntityHit(entityHitResult: EntityHitResult) {
+        if (world.isClient) {
+            return
+        }
+        val entity = owner
+        if (entity is LivingEntity) {
+            val entity2 = entityHitResult.entity
+            if (!entity2.isFireImmune) {
+               
+                val bl = entity2.damage(
+                    DamageSource.thrownProjectile(this,owner),
+                    entityEffects.damage(0)
+                )
+                if (bl) {
+                    entityEffects.accept(entity, AugmentConsumer.Type.BENEFICIAL)
+                    entity.heal(2.0f)
+                    applyDamageEffects(entity as LivingEntity?, entity2)
+                    if (entity2 is LivingEntity) {
+                        entityEffects.accept(entity2, AugmentConsumer.Type.HARMFUL)
+                    }
+                }
+            }
+        }
+        discard()
+    }
 
 }
