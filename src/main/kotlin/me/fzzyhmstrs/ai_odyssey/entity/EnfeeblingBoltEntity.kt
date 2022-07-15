@@ -28,7 +28,7 @@ class EnfeeblingBoltEntity(entityType: EntityType<out EnfeeblingBoltEntity?>, wo
         this.setRotation(owner.yaw, owner.pitch)
     }
 
-    override var entityEffects: AugmentEffect = AugmentEffect().withDamage(6.0F).withDuration(12)
+    override var entityEffects: AugmentEffect = AugmentEffect().withDamage(6.0F).withDuration(15)
 
     override fun passEffects(ae: AugmentEffect, level: Int) {
         super.passEffects(ae, level)
@@ -42,23 +42,17 @@ class EnfeeblingBoltEntity(entityType: EntityType<out EnfeeblingBoltEntity?>, wo
         val entity = owner
         if (entity is LivingEntity) {
             val entity2 = entityHitResult.entity
-            if (!entity2.isFireImmune) {
-                val i = entity2.fireTicks
-                entity2.setOnFireFor(entityEffects.amplifier(0))
-                val bl = entity2.damage(
-                    DamageSource.thrownProjectile(this,owner),
-                    entityEffects.damage(0)
-                )
-                if (!bl) {
-                    entity2.fireTicks = i
-                } else {
-                    entityEffects.accept(entity, AugmentConsumer.Type.BENEFICIAL)
-                    applyDamageEffects(entity as LivingEntity?, entity2)
-                    if (entity2 is LivingEntity) {
-                        EffectQueue.addStatusToQueue(entity2,StatusEffects.WEAKNESS,40,0)
-                        EffectQueue.addStatusToQueue(entity2,StatusEffects.SLOWNESS,40,0)
-                        entityEffects.accept(entity2, AugmentConsumer.Type.HARMFUL)
-                    }
+            val bl = entity2.damage(
+                DamageSource.thrownProjectile(this,owner),
+                entityEffects.damage(0)
+            )
+            if (bl) {
+                entityEffects.accept(entity, AugmentConsumer.Type.BENEFICIAL)
+                applyDamageEffects(entity as LivingEntity?, entity2)
+                if (entity2 is LivingEntity) {
+                    EffectQueue.addStatusToQueue(entity2,StatusEffects.WEAKNESS,entityEffects.duration(0),entityEffects.amplifier(0))
+                    EffectQueue.addStatusToQueue(entity2,StatusEffects.SLOWNESS,entityEffects.duration(0),entityEffects.amplifier(0))
+                    entityEffects.accept(entity2, AugmentConsumer.Type.HARMFUL)
                 }
             }
         }
