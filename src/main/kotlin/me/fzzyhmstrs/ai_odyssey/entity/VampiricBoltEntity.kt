@@ -22,7 +22,7 @@ class VampiricBoltEntity(entityType: EntityType<out VampiricBoltEntity?>, world:
         this.setRotation(owner.yaw, owner.pitch)
     }
 
-    override var entityEffects: AugmentEffect = AugmentEffect().withDamage(3.0F)
+    override var entityEffects: AugmentEffect = AugmentEffect().withDamage(3.0F).withAmplifier(2)
 
     override fun passEffects(ae: AugmentEffect, level: Int) {
         super.passEffects(ae, level)
@@ -42,7 +42,7 @@ class VampiricBoltEntity(entityType: EntityType<out VampiricBoltEntity?>, world:
             )
             if (bl) {
                 entityEffects.accept(entity, AugmentConsumer.Type.BENEFICIAL)
-                entity.heal(2.0f)
+                entity.heal(entityEffects.amplifier(0).toFloat())
                 applyDamageEffects(entity as LivingEntity?, entity2)
                 if (entity2 is LivingEntity) {
                     entityEffects.accept(entity2, AugmentConsumer.Type.HARMFUL)
