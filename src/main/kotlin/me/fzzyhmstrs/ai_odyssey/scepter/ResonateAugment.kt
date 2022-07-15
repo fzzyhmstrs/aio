@@ -97,22 +97,6 @@ class ResonateAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): Slash
         return bl
     }
 
-    /*private fun noteBlast(user: LivingEntity, target: Entity){
-        val userPos = user.eyePos.add(0.0,-0.3,0.0)
-        val direction = userPos.subtract(target.pos).normalize()
-        println(direction)
-        val perpendicularToPosX = 1.0
-        val perpendicularToPosZ = (direction.x/direction.z) * -1
-        val perpendicularVector = Vec3d(perpendicularToPosX,0.0,perpendicularToPosZ).normalize()
-        for (i in 1..10){
-            val rnd1 = user.world.random.nextDouble() - 0.5
-            val rnd2 = user.world.random.nextDouble() - 0.5
-            val particlePos = userPos.add(perpendicularVector.multiply(rnd1)).add(0.0, rnd2,0.0)
-            val particleVelocity = direction.multiply(particleSpeed).add(user.velocity)
-            addParticles(user.world,particleType(),particlePos,particleVelocity)
-        }
-    }*/
-
     override fun clientTask(world: World, user: LivingEntity, hand: Hand, level: Int) {
     }
 
@@ -189,9 +173,9 @@ class ResonateAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): Slash
 
         internal fun writeBuf(user: LivingEntity, target: Entity): PacketByteBuf{
             val buf = PacketByteBufs.create()
-            val userPos = user.eyePos.add(0.0,-0.4,0.0)
+            val userPos = user.eyePos.add(0.0,-0.3,0.0)
             val userVel = user.velocity
-            val targetPos = target.pos .add(0.0,target.height / 2.0,0.0)
+            val targetPos = target.pos .add(0.0,target.height / 1.5,0.0)
             buf.writeDouble(userPos.x)
             buf.writeDouble(userPos.y)
             buf.writeDouble(userPos.z)

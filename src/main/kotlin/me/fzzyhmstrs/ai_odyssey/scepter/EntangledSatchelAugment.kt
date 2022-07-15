@@ -9,15 +9,17 @@ import me.fzzyhmstrs.amethyst_core.scepter_util.augments.MiscAugment
 import me.fzzyhmstrs.amethyst_core.scepter_util.augments.TravelerAugment
 import net.minecraft.block.Blocks
 import net.minecraft.block.ChestBlock
-import net.minecraft.block.EnderChestBlock
 import net.minecraft.block.entity.ChestBlockEntity
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EquipmentSlot
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.entity.player.PlayerInventory
-import net.minecraft.inventory.EnderChestInventory
+import net.minecraft.inventory.SimpleInventory
+import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
+import net.minecraft.nbt.NbtCompound
+import net.minecraft.nbt.NbtList
 import net.minecraft.screen.GenericContainerScreenHandler
 import net.minecraft.screen.SimpleNamedScreenHandlerFactory
 import net.minecraft.sound.SoundCategory
@@ -43,26 +45,7 @@ class EntangledSatchelAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot
         effect: AugmentEffect
     ): Boolean {
         if (user !is PlayerEntity) return false
-        if (hit != null){
-            if (hit.type == HitResult.Type.BLOCK){
-                val state = world.getBlockState((hit as BlockHitResult).blockPos)
-                if (state.isOf(Blocks.CHEST)){
-                    val chestEntity = world.getBlockEntity(hit.blockPos)
-                    if (chestEntity != null && chestEntity is ChestBlockEntity){
-                        if (chestEntity.isEmpty){
-                            val facing = state.get(ChestBlock.FACING)
-                            world.removeBlock(hit.blockPos, false)
-                            world.setBlockState(hit.blockPos,RegisterBlock.ENTANGLED_CHEST.defaultState.with(ChestBlock.FACING,facing))
-                            world.playSound(user,hit.blockPos,SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT,SoundCategory.BLOCKS,1.0F, 1.0F)
-                        } else {
-                            return false
-                        }
-                    }
-                }
-            }
-        }
-        val uuid = user.uuid
-        val entangledInventory = getOrCreateEntangledInventory(uuid)
+        val entangledInventory = getOrCreateEntangledInventory(user)
         val optInt = user.openHandledScreen(SimpleNamedScreenHandlerFactory({ syncId: Int, inventory: PlayerInventory, _: PlayerEntity ->
             GenericContainerScreenHandler.createGeneric9x3(
                 syncId,
@@ -89,10 +72,60 @@ class EntangledSatchelAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot
 
         private val CONTAINER_NAME: Text = TranslatableText("container.entangled_satchel")
 
-        private val inventories: MutableMap<UUID,EnderChestInventory> = mutableMapOf()
+        private val inventories: MutableMap<UUID,EntangledChestInventory> = mutableMapOf()
 
-        fun getOrCreateEntangledInventory(uuid: UUID): EnderChestInventory{
-            return inventories.getOrPut(uuid) { EnderChestInventory() }
+        fun getOrCreateEntangledInventory(player: PlayerEntity): EntangledChestInventory{
+            return inventories.getOrPut(player.uuid) { EntangledChestInventory(player) }
+        }
+
+        fun checkUserIsEntangled(player: PlayerEntity): Boolean{
+            return inventories.containsKey(player.uuid)
+        }
+
+
+
+        class EntangledChestInventory(private val owner: PlayerEntity): SimpleInventory(27) {
+
+            override fun readNbtList(nbtList: NbtList) {
+                for (i in 0 until size()){
+                    setStack(i, ItemStack.EMPTY)
+                }
+                for (i in 0 until nbtList.size) {
+                    val nbtCompound = nbtList.getCompound(i)
+                    val j: Int = (nbtCompound.getByte("Slot").toInt())
+                    if (j < 0 || j >= size()) {
+                        continue
+                    }
+                    setStack(j, ItemStack.fromNbt(nbtCompound))
+                }
+            }
+
+            override fun toNbtList(): NbtList {
+                val nbtList = NbtList()
+                for (i in 0 until size()) {
+                    val itemStack = getStack(i)
+                    if (itemStack.isEmpty) continue
+                    val nbtCompound = NbtCompound()
+                    nbtCompound.putByte("Slot", i.toByte())
+                    itemStack.writeNbt(nbtCompound)
+                    nbtList.add(nbtCompound)
+                }
+                return nbtList
+            }
+
+            override fun canPlayerUse(player: PlayerEntity): Boolean {
+                return player == owner
+            }
+
+            override fun onOpen(player: PlayerEntity) {
+                player.world.playSound(null,player.blockPos, SoundEvents.BLOCK_ENDER_CHEST_OPEN,SoundCategory.PLAYERS, 0.6F,1.0F)
+                super.onOpen(player)
+            }
+
+            override fun onClose(player: PlayerEntity) {
+                player.world.playSound(null,player.blockPos, SoundEvents.BLOCK_ENDER_CHEST_CLOSE,SoundCategory.PLAYERS, 0.6F,1.0F)
+                super.onClose(player)
+            }
         }
 
     }

@@ -38,7 +38,6 @@ object RegisterBlock {
         BlockSoundGroup.WET_GRASS))
 
     //user-created or artificial type blocks
-    val ENTANGLED_CHEST = EntangledChestBlock(FabricBlockSettings.of(Material.STONE, MapColor.GRAY).strength(2.5f).sounds(BlockSoundGroup.WOOD)) { BlockEntityType.CHEST }
 
     //basic world environment blocks
     val CALCITE_SEDIMENT = SandBlock(0xE2D7C5,FabricBlockSettings.of(Material.AGGREGATE, MapColor.WHITE).strength(0.5f).sounds(BlockSoundGroup.SAND))

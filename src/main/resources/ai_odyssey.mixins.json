@@ -3,7 +3,8 @@
   "package": "me.fzzyhmstrs.ai_odyssey.mixins",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "LivingEntityMixin"
+    "LivingEntityMixin",
+    "PlayerEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

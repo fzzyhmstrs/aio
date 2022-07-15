@@ -93,7 +93,7 @@ object RegisterEntity {
 
     val VAMPIRIC_BOLT_ENTITY: EntityType<VampiricBoltEntity> = Registry.register(
         Registry.ENTITY_TYPE,
-        Identifier(AIO.MOD_ID, "enfeebling_bolt_entity"),
+        Identifier(AIO.MOD_ID, "vampiric_bolt_entity"),
         FabricEntityTypeBuilder.create(
             SpawnGroup.MISC
         ) { entityType: EntityType<VampiricBoltEntity>, world: World ->
