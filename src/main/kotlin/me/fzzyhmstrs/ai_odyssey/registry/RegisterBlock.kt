@@ -7,12 +7,16 @@ import me.fzzyhmstrs.ai_odyssey.block.*
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.minecraft.block.*
-import net.minecraft.block.entity.BlockEntityType
+import net.minecraft.entity.EntityType
 import net.minecraft.item.BlockItem
 import net.minecraft.item.ItemGroup
+import net.minecraft.item.TallBlockItem
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.util.Identifier
+import net.minecraft.util.SignType
+import net.minecraft.util.math.BlockPos
 import net.minecraft.util.registry.Registry
+import net.minecraft.world.BlockView
 
 object RegisterBlock {
 
@@ -23,6 +27,8 @@ object RegisterBlock {
         BlockSoundGroup.WET_GRASS))
     val BULL_KELP_STREAMER = BullKelpStreamerBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().breakInstantly().sounds(
         BlockSoundGroup.WET_GRASS).dropsNothing())
+    val GHOSTLY_BLISTER_PLANT = SeaGrassAlwaysShortBlock(FabricBlockSettings.of(Material.REPLACEABLE_UNDERWATER_PLANT).noCollision().breakInstantly().sounds(
+        BlockSoundGroup.WET_GRASS))
     val MIDNIGHT_KELP = MidnightKelpBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).ticksRandomly().noCollision().strength(0.12f).sounds(
         BlockSoundGroup.WET_GRASS).luminance(11))
     val MIDNIGHT_KELP_PLANT = MidnightKelpPlantBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).ticksRandomly().noCollision().strength(0.12f).sounds(
@@ -36,10 +42,57 @@ object RegisterBlock {
         BlockSoundGroup.WET_GRASS))
     val SEA_BAMBOO_PLANT = SeaBambooPlantBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().ticksRandomly().breakInstantly().sounds(
         BlockSoundGroup.WET_GRASS))
+    val SKELETAL_KELP = SkeletalKelpBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().ticksRandomly().breakInstantly().sounds(
+        BlockSoundGroup.WET_GRASS))
+    val SKELETAL_KELP_PLANT = SkeletalKelpPlantBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().ticksRandomly().breakInstantly().sounds(
+        BlockSoundGroup.WET_GRASS))
     val WIRE_WEED = SeaGrassAlwaysShortBlock(FabricBlockSettings.of(Material.REPLACEABLE_UNDERWATER_PLANT).noCollision().breakInstantly().sounds(
         BlockSoundGroup.WET_GRASS))
     val TURTLE_GRASS = SeaGrassAlwaysShortBlock(FabricBlockSettings.of(Material.REPLACEABLE_UNDERWATER_PLANT).noCollision().breakInstantly().sounds(
         BlockSoundGroup.WET_GRASS))
+
+    //gargantuan kelp
+    val GARGANTUAN_KELP = GargantuanKelpBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).ticksRandomly().strength(2.0f, 3.0f).sounds(
+        BlockSoundGroup.WOOD))
+    val GARGANTUAN_KELP_PLANT = GargantuanKelpPlantBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).ticksRandomly().strength(2.0f, 3.0f).sounds(
+        BlockSoundGroup.WOOD))
+    val GARGANTUAN_KELP_STREAMER = GargantuanKelpStreamerBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().breakInstantly().sounds(
+        BlockSoundGroup.WET_GRASS).dropsNothing())
+    val GARGANTUAN_KELP_BUTTON = WoodenButtonBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD))
+    val GARGANTUAN_KELP_DOOR = DoorBlock(FabricBlockSettings.of(Material.WOOD, MapColor.LICHEN_GREEN).strength(3.0f).sounds(BlockSoundGroup.WOOD).nonOpaque())
+    val GARGANTUAN_KELP_PLANKS = Block(FabricBlockSettings.of(Material.WOOD, MapColor.LICHEN_GREEN).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD))
+    val GARGANTUAN_KELP_FENCE = FenceBlock(FabricBlockSettings.copyOf(GARGANTUAN_KELP_PLANKS))
+    val GARGANTUAN_KELP_FENCE_GATE = FenceGateBlock(FabricBlockSettings.copyOf(GARGANTUAN_KELP_PLANKS))
+    val GARGANTUAN_KELP_HOLDFAST = PillarBlock(FabricBlockSettings.copyOf(GARGANTUAN_KELP_PLANKS))
+    val GARGANTUAN_KELP_HOLDFAST_STRIPPED = PillarBlock(FabricBlockSettings.copyOf(GARGANTUAN_KELP_PLANKS))
+    val GARGANTUAN_KELP_STEM = PillarBlock(FabricBlockSettings.copyOf(GARGANTUAN_KELP_PLANKS))
+    val GARGANTUAN_KELP_STEM_STRIPPED = PillarBlock(FabricBlockSettings.copyOf(GARGANTUAN_KELP_PLANKS))
+    val GARGANTUAN_KELP_SIGN = SignBlock(FabricBlockSettings.of(Material.WOOD, MapColor.LICHEN_GREEN).noCollision().strength(1.0f).sounds(BlockSoundGroup.WOOD), SignType.OAK)
+    val GARGANTUAN_KELP_PRESSURE_PLATE = PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,FabricBlockSettings.of(Material.WOOD, MapColor.LICHEN_GREEN).noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD))
+    val GARGANTUAN_KELP_SLAB = SlabBlock(FabricBlockSettings.copyOf(GARGANTUAN_KELP_PLANKS))
+    val GARGANTUAN_KELP_STAIRS = StairsBlock(GARGANTUAN_KELP_PLANKS.defaultState,FabricBlockSettings.copyOf(GARGANTUAN_KELP_PLANKS))
+    val GARGANTUAN_KELP_TRAPDOOR = TrapdoorBlock(FabricBlockSettings.of(Material.WOOD, MapColor.LICHEN_GREEN).strength(3.0f).sounds(BlockSoundGroup.WOOD).nonOpaque().allowsSpawning { _: BlockState, _: BlockView, _: BlockPos, _: EntityType<*> -> never() })
+
+    val GARGANTUAN_SKELETAL_KELP = GargantuanKelpBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).ticksRandomly().strength(2.0f, 3.0f).sounds(
+        BlockSoundGroup.WOOD))
+    val GARGANTUAN_SKELETAL_KELP_PLANT = GargantuanKelpPlantBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).ticksRandomly().strength(2.0f, 3.0f).sounds(
+        BlockSoundGroup.WOOD))
+    val GARGANTUAN_SKELETAL_KELP_STREAMER = GargantuanKelpStreamerBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().breakInstantly().sounds(
+        BlockSoundGroup.WET_GRASS).dropsNothing())
+    val GARGANTUAN_SKELETAL_KELP_BUTTON = WoodenButtonBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD))
+    val GARGANTUAN_SKELETAL_KELP_DOOR = DoorBlock(FabricBlockSettings.of(Material.WOOD, MapColor.LICHEN_GREEN).strength(3.0f).sounds(BlockSoundGroup.WOOD).nonOpaque())
+    val GARGANTUAN_SKELETAL_KELP_PLANKS = Block(FabricBlockSettings.of(Material.WOOD, MapColor.LICHEN_GREEN).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD))
+    val GARGANTUAN_SKELETAL_KELP_FENCE = FenceBlock(FabricBlockSettings.copyOf(GARGANTUAN_SKELETAL_KELP_PLANKS))
+    val GARGANTUAN_SKELETAL_KELP_FENCE_GATE = FenceGateBlock(FabricBlockSettings.copyOf(GARGANTUAN_SKELETAL_KELP_PLANKS))
+    val GARGANTUAN_SKELETAL_KELP_HOLDFAST = PillarBlock(FabricBlockSettings.copyOf(GARGANTUAN_SKELETAL_KELP_PLANKS))
+    val GARGANTUAN_SKELETAL_KELP_HOLDFAST_STRIPPED = PillarBlock(FabricBlockSettings.copyOf(GARGANTUAN_SKELETAL_KELP_PLANKS))
+    val GARGANTUAN_SKELETAL_KELP_STEM = PillarBlock(FabricBlockSettings.copyOf(GARGANTUAN_SKELETAL_KELP_PLANKS))
+    val GARGANTUAN_SKELETAL_KELP_STEM_STRIPPED = PillarBlock(FabricBlockSettings.copyOf(GARGANTUAN_SKELETAL_KELP_PLANKS))
+    val GARGANTUAN_SKELETAL_KELP_SIGN = SignBlock(FabricBlockSettings.of(Material.WOOD, MapColor.LICHEN_GREEN).noCollision().strength(1.0f).sounds(BlockSoundGroup.WOOD), SignType.OAK)
+    val GARGANTUAN_SKELETAL_KELP_PRESSURE_PLATE = PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,FabricBlockSettings.of(Material.WOOD, MapColor.LICHEN_GREEN).noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD))
+    val GARGANTUAN_SKELETAL_KELP_SLAB = SlabBlock(FabricBlockSettings.copyOf(GARGANTUAN_SKELETAL_KELP_PLANKS))
+    val GARGANTUAN_SKELETAL_KELP_STAIRS = StairsBlock(GARGANTUAN_SKELETAL_KELP_PLANKS.defaultState,FabricBlockSettings.copyOf(GARGANTUAN_SKELETAL_KELP_PLANKS))
+    val GARGANTUAN_SKELETAL_KELP_TRAPDOOR = TrapdoorBlock(FabricBlockSettings.of(Material.WOOD, MapColor.LICHEN_GREEN).strength(3.0f).sounds(BlockSoundGroup.WOOD).nonOpaque().allowsSpawning { _: BlockState, _: BlockView, _: BlockPos, _: EntityType<*> -> never() })
 
     //user-created or artificial type blocks
 
@@ -110,6 +163,41 @@ object RegisterBlock {
         registerBlock("crystalline_switch_pedestal", CRYSTALLINE_SWITCH_PEDESTAL, ItemGroup.MISC)
         registerBlock("facility_teleporter", FACILITY_TELEPORTER, ItemGroup.MISC)
         registerBlock("gabbro", GABBRO, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("gargantuan_kelp", GARGANTUAN_KELP, ItemGroup.BUILDING_BLOCKS)
+        registerBlockWithOtherItem("gargantuan_kelp_plant", GARGANTUAN_KELP_PLANT)
+        registerBlockWithOtherItem("gargantuan_kelp_streamer", GARGANTUAN_KELP_STREAMER)
+        registerBlock("gargantuan_kelp_planks", GARGANTUAN_KELP_PLANKS, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("gargantuan_kelp_slab", GARGANTUAN_KELP_SLAB, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("gargantuan_kelp_stairs", GARGANTUAN_KELP_STAIRS, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("gargantuan_kelp_fence", GARGANTUAN_KELP_FENCE, ItemGroup.DECORATIONS)
+        registerBlock("gargantuan_kelp_fence_gate", GARGANTUAN_KELP_FENCE_GATE, ItemGroup.DECORATIONS)
+        registerBlock("gargantuan_kelp_holdfast", GARGANTUAN_KELP_HOLDFAST, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("stripped_gargantuan_kelp_holdfast", GARGANTUAN_KELP_HOLDFAST_STRIPPED, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("gargantuan_kelp_stem", GARGANTUAN_KELP_STEM, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("stripped_gargantuan_kelp_stem", GARGANTUAN_KELP_STEM_STRIPPED, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("gargantuan_kelp_sign", GARGANTUAN_KELP_SIGN, ItemGroup.DECORATIONS)
+        registerBlock("gargantuan_kelp_button", GARGANTUAN_KELP_BUTTON, ItemGroup.REDSTONE)
+        registerTallBlock("gargantuan_kelp_door", GARGANTUAN_KELP_DOOR, ItemGroup.REDSTONE)
+        registerBlock("gargantuan_kelp_pressure_plate", GARGANTUAN_KELP_PRESSURE_PLATE, ItemGroup.REDSTONE)
+        registerBlock("gargantuan_kelp_trapdoor", GARGANTUAN_KELP_TRAPDOOR, ItemGroup.REDSTONE)
+        registerBlock("gargantuan_skeletal_kelp", GARGANTUAN_SKELETAL_KELP, ItemGroup.BUILDING_BLOCKS)
+        registerBlockWithOtherItem("gargantuan_skeletal_kelp_plant", GARGANTUAN_SKELETAL_KELP_PLANT)
+        registerBlockWithOtherItem("gargantuan_skeletal_kelp_streamer", GARGANTUAN_SKELETAL_KELP_STREAMER)
+        registerBlock("gargantuan_skeletal_kelp_planks", GARGANTUAN_SKELETAL_KELP_PLANKS, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("gargantuan_skeletal_kelp_slab", GARGANTUAN_SKELETAL_KELP_SLAB, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("gargantuan_skeletal_kelp_stairs", GARGANTUAN_SKELETAL_KELP_STAIRS, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("gargantuan_skeletal_kelp_fence", GARGANTUAN_SKELETAL_KELP_FENCE, ItemGroup.DECORATIONS)
+        registerBlock("gargantuan_skeletal_kelp_fence_gate", GARGANTUAN_SKELETAL_KELP_FENCE_GATE, ItemGroup.DECORATIONS)
+        registerBlock("gargantuan_skeletal_kelp_holdfast", GARGANTUAN_SKELETAL_KELP_HOLDFAST, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("stripped_gargantuan_skeletal_kelp_holdfast", GARGANTUAN_SKELETAL_KELP_HOLDFAST_STRIPPED, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("gargantuan_skeletal_kelp_stem", GARGANTUAN_SKELETAL_KELP_STEM, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("stripped_gargantuan_skeletal_kelp_stem", GARGANTUAN_SKELETAL_KELP_STEM_STRIPPED, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("gargantuan_skeletal_kelp_sign", GARGANTUAN_SKELETAL_KELP_SIGN, ItemGroup.DECORATIONS)
+        registerBlock("gargantuan_skeletal_kelp_button", GARGANTUAN_SKELETAL_KELP_BUTTON, ItemGroup.REDSTONE)
+        registerTallBlock("gargantuan_skeletal_kelp_door", GARGANTUAN_SKELETAL_KELP_DOOR, ItemGroup.REDSTONE)
+        registerBlock("gargantuan_skeletal_kelp_pressure_plate", GARGANTUAN_SKELETAL_KELP_PRESSURE_PLATE, ItemGroup.REDSTONE)
+        registerBlock("gargantuan_skeletal_kelp_trapdoor", GARGANTUAN_SKELETAL_KELP_TRAPDOOR, ItemGroup.REDSTONE)
+        registerBlock("ghostly_blister_plant", GHOSTLY_BLISTER_PLANT, ItemGroup.DECORATIONS)
         registerBlock("hard_light_barrier", HARD_LIGHT_BARRIER, ItemGroup.BUILDING_BLOCKS)
         registerBlock("hard_light_barrier_frame", HARD_LIGHT_BARRIER_FRAME, ItemGroup.BUILDING_BLOCKS)
         registerBlock("imbued_deepslate_message", IMBUED_DEEPSLATE_MESSAGE, ItemGroup.BUILDING_BLOCKS)
@@ -145,9 +233,13 @@ object RegisterBlock {
         registerBlock("prismatic_prismarine", PRISMATIC_PRISMARINE, ItemGroup.DECORATIONS)
         registerBlock("prismatic_quartz", PRISMATIC_QUARTZ, ItemGroup.DECORATIONS)
         registerBlock("quartzite_sand", QUARTZITE_SAND, ItemGroup.BUILDING_BLOCKS)
+        registerBlock("sargassum", SARGASSUM, ItemGroup.DECORATIONS)
+        registerBlockWithOtherItem("sargassum_streamer", SARGASSUM_STREAMER)
         registerBlockWithOtherItem("sea_apple_bush", SEA_APPLE_BUSH)
         registerBlock("sea_bamboo", SEA_BAMBOO, ItemGroup.DECORATIONS)
         registerBlockWithOtherItem("sea_bamboo_plant", SEA_BAMBOO_PLANT)
+        registerBlock("skeletal_kelp", SKELETAL_KELP, ItemGroup.DECORATIONS)
+        registerBlockWithOtherItem("skeletal_kelp_plant", SKELETAL_KELP_PLANT)
         registerBlock("turtle_grass", TURTLE_GRASS, ItemGroup.DECORATIONS)
         registerBlock("wire_weed", WIRE_WEED, ItemGroup.DECORATIONS)
     }
@@ -159,7 +251,18 @@ object RegisterBlock {
                 FabricItemSettings().group(itemGroup))
         )
     }
+    private fun registerTallBlock(path: String, block: Block, itemGroup: ItemGroup){
+        Registry.register(Registry.BLOCK, Identifier(AIO.MOD_ID, path), block)
+        Registry.register(
+            Registry.ITEM, Identifier(AIO.MOD_ID,path), TallBlockItem(block,
+                FabricItemSettings().group(itemGroup))
+        )
+    }
     private fun registerBlockWithOtherItem(path: String, block: Block){
         Registry.register(Registry.BLOCK, Identifier(AIO.MOD_ID, path), block)
+    }
+
+    private fun never(): Boolean {
+        return false
     }
 }

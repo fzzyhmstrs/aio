@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button_inventory",
+  "textures": {
+    "texture": "ai_odyssey:block/gargantuan_kelp_planks"
+  }
+}

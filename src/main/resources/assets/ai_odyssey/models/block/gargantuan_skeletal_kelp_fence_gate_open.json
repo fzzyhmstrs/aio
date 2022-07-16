@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_fence_gate_open",
+  "textures": {
+    "texture": "ai_odyssey:block/gargantuan_skeletal_kelp_planks"
+  }
+}

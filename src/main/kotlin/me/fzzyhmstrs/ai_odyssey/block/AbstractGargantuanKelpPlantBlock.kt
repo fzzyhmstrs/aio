@@ -23,7 +23,7 @@ abstract class AbstractGargantuanKelpPlantBlock(settings: Settings):
     }
 
     override fun canFillWithFluid(world: BlockView?, pos: BlockPos?, state: BlockState?, fluid: Fluid?): Boolean {
-        TODO("Not yet implemented")
+        return false
     }
 
     override fun tryFillWithFluid(
@@ -32,6 +32,6 @@ abstract class AbstractGargantuanKelpPlantBlock(settings: Settings):
         state: BlockState?,
         fluidState: FluidState?
     ): Boolean {
-        TODO("Not yet implemented")
+        return false
     }
 }

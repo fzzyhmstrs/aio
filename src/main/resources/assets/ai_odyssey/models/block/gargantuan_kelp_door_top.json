@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top",
+  "textures": {
+    "top": "ai_odyssey:block/gargantuan_kelp_door_top",
+    "bottom": "ai_odyssey:block/gargantuan_kelp_door_bottom"
+  }
+}

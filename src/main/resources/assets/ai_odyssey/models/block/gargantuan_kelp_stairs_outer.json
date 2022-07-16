@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "ai_odyssey:block/gargantuan_kelp_planks",
+    "top": "ai_odyssey:block/gargantuan_kelp_planks",
+    "side": "ai_odyssey:block/gargantuan_kelp_planks"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_post",
+  "textures": {
+    "texture": "ai_odyssey:block/gargantuan_skeletal_kelp_planks"
+  }
+}

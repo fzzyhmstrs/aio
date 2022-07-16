@@ -26,6 +26,8 @@ abstract class AbstractGargantuanKelpBlock(settings: Settings, private val growt
 
     abstract fun getStreamer(): AbstractGargantuanKelpStreamerBlock
 
+    abstract fun getWood(): PillarBlock
+
     override fun appendProperties(builder: StateManager.Builder<Block?, BlockState?>) {
         builder.add(AbstractPlantStemBlock.AGE)
     }
@@ -42,16 +44,18 @@ abstract class AbstractGargantuanKelpBlock(settings: Settings, private val growt
             chooseStemState(world.getBlockState(blockPos)))
         {
             world.setBlockState(blockPos, age(state, world.random))
+            getStreamer().placeStreamer(world, pos)
         }
     }
 
-    override fun grow(world: ServerWorld, random: Random?, pos: BlockPos, state: BlockState) {
+    override fun grow(world: ServerWorld, random: Random, pos: BlockPos, state: BlockState) {
         var blockPos = pos.offset(growthDirection)
         var i = (state.get(AGE) + 1).coerceAtMost(150)
         val j = getGrowthLength(random)
         var k = 0
         while (k < j && chooseStemState(world.getBlockState(blockPos))) {
             world.setBlockState(blockPos, state.with(AGE, i) as BlockState)
+            getStreamer().placeStreamer(world, blockPos.offset(growthDirection.opposite))
             blockPos = blockPos.offset(growthDirection)
             i = (i + 1).coerceAtMost(150)
             ++k
@@ -62,12 +66,12 @@ abstract class AbstractGargantuanKelpBlock(settings: Settings, private val growt
         return state.with(AGE,150)
     }
 
-    override fun hasMaxAge(state: BlockState?): Boolean {
+    override fun hasMaxAge(state: BlockState): Boolean {
         return true
     }
 
-    override fun getGrowthLength(random: Random?): Int {
-        return 3
+    override fun getGrowthLength(random: Random): Int {
+        return random.nextInt(3) + 1
     }
 
     override fun chooseStemState(state: BlockState): Boolean {
@@ -78,7 +82,9 @@ abstract class AbstractGargantuanKelpBlock(settings: Settings, private val growt
         val fluidState = ctx.world.getFluidState(ctx.blockPos)
         return if (fluidState.isIn(FluidTags.WATER) && fluidState.level == 8) {
             super.getPlacementState(ctx)
-        } else null
+        } else {
+            return getWood().defaultState.with(PillarBlock.AXIS, ctx.side.axis) as BlockState
+        }
     }
 
     @Deprecated("Deprecated in Java")
