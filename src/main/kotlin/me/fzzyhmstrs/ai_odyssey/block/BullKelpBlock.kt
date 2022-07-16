@@ -1,12 +1,10 @@
 package me.fzzyhmstrs.ai_odyssey.block
 
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterBlock
-import net.minecraft.block.AbstractPlantStemBlock
-import net.minecraft.block.Block
-import net.minecraft.block.BlockState
-import net.minecraft.block.Blocks
+import net.minecraft.block.*
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.fluid.Fluid
 import net.minecraft.fluid.FluidState
 import net.minecraft.fluid.Fluids
 import net.minecraft.item.ItemPlacementContext
@@ -17,13 +15,23 @@ import net.minecraft.state.property.BooleanProperty
 import net.minecraft.tag.FluidTags
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
-import net.minecraft.util.math.Vec3d
 import net.minecraft.util.shape.VoxelShapes
+import net.minecraft.world.BlockView
 import net.minecraft.world.World
 import net.minecraft.world.WorldAccess
 import java.util.*
 
-class BullKelpBlock(settings: Settings, private val growthChance: Double = 0.10): AbstractPlantStemBlock(settings, Direction.UP, VoxelShapes.fullCube(),true,growthChance) {
+class BullKelpBlock(settings: Settings, private val growthChance: Double = 0.10):
+    AbstractPlantStemBlock(settings, Direction.UP, VoxelShapes.fullCube(),true,growthChance),
+    FluidFillable {
+
+    companion object{
+        internal val BABY = BooleanProperty.of("bull_kelp_baby")
+    }
+
+    private fun isBaby(state: BlockState): Boolean{
+        return state.get(BABY)
+    }
 
     override fun getPlant(): Block {
         return RegisterBlock.BULL_KELP_PLANT
@@ -123,12 +131,17 @@ class BullKelpBlock(settings: Settings, private val growthChance: Double = 0.10)
         return Fluids.WATER.getStill(false)
     }
 
-    private fun isBaby(state: BlockState): Boolean{
-        return state.get(BABY)
+    override fun canFillWithFluid(world: BlockView, pos: BlockPos, state: BlockState, fluid: Fluid): Boolean {
+        return false
     }
 
-    companion object{
-        internal val BABY = BooleanProperty.of("bull_kelp_baby")
+    override fun tryFillWithFluid(
+        world: WorldAccess,
+        pos: BlockPos,
+        state: BlockState,
+        fluidState: FluidState
+    ): Boolean {
+        return false
     }
 
 }

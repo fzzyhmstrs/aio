@@ -21,13 +21,17 @@ object RegisterBlock {
         BlockSoundGroup.WET_GRASS))
     val BULL_KELP_PLANT = BullKelpPlantBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().ticksRandomly().breakInstantly().sounds(
         BlockSoundGroup.WET_GRASS))
-    val BULL_KELP_STREAMER = BullKelpStreamerBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().ticksRandomly().breakInstantly().sounds(
+    val BULL_KELP_STREAMER = BullKelpStreamerBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().breakInstantly().sounds(
         BlockSoundGroup.WET_GRASS).dropsNothing())
     val MIDNIGHT_KELP = MidnightKelpBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).ticksRandomly().noCollision().strength(0.12f).sounds(
         BlockSoundGroup.WET_GRASS).luminance(11))
     val MIDNIGHT_KELP_PLANT = MidnightKelpPlantBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).ticksRandomly().noCollision().strength(0.12f).sounds(
         BlockSoundGroup.WET_GRASS).luminance(11))
-    val SEA_APPLE_BUSH = SeaAppleBushBlock(FabricBlockSettings.of(Material.REPLACEABLE_UNDERWATER_PLANT, MapColor.LICHEN_GREEN).ticksRandomly().noCollision().sounds(BlockSoundGroup.SWEET_BERRY_BUSH))
+    val SARGASSUM = SargassumBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).strength(0.1f).sounds(
+        BlockSoundGroup.WET_GRASS))
+    val SARGASSUM_STREAMER = SargassumStreamerBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().breakInstantly().sounds(
+        BlockSoundGroup.WET_GRASS).dropsNothing())
+    val SEA_APPLE_BUSH = SeaAppleBushBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT, MapColor.LICHEN_GREEN).ticksRandomly().noCollision().sounds(BlockSoundGroup.SWEET_BERRY_BUSH))
     val SEA_BAMBOO = SeaBambooBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().ticksRandomly().breakInstantly().sounds(
         BlockSoundGroup.WET_GRASS))
     val SEA_BAMBOO_PLANT = SeaBambooPlantBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().ticksRandomly().breakInstantly().sounds(

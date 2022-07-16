@@ -24,6 +24,11 @@ import java.util.*
 
 class BullKelpStreamerBlock(settings: Settings): Block(settings), FluidFillable {
 
+    companion object{
+        private val age = Properties.AGE_2
+        private val growthDirection = Direction.SOUTH
+    }
+
     private fun getBulb(): Block{
         return RegisterBlock.BULL_KELP
     }
@@ -119,11 +124,5 @@ class BullKelpStreamerBlock(settings: Settings): Block(settings), FluidFillable 
         if (!state.canPlaceAt(world, pos)) {
             world.removeBlock(pos, false)
         }
-    }
-
-
-    companion object{
-        private val age = Properties.AGE_2
-        private val growthDirection = Direction.SOUTH
     }
 }
