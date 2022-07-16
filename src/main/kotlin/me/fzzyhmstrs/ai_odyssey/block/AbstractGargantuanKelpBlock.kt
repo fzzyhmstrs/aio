@@ -47,13 +47,13 @@ abstract class AbstractGargantuanKelpBlock(settings: Settings, private val growt
 
     override fun grow(world: ServerWorld, random: Random?, pos: BlockPos, state: BlockState) {
         var blockPos = pos.offset(growthDirection)
-        var i = Math.min(state.get(AGE) + 1, 150)
+        var i = (state.get(AGE) + 1).coerceAtMost(150)
         val j = getGrowthLength(random)
         var k = 0
         while (k < j && chooseStemState(world.getBlockState(blockPos))) {
             world.setBlockState(blockPos, state.with(AGE, i) as BlockState)
             blockPos = blockPos.offset(growthDirection)
-            i = Math.min(i + 1, 150)
+            i = (i + 1).coerceAtMost(150)
             ++k
         }
     }
