@@ -1,0 +1,106 @@
+{
+  "variants": {
+    "facing=east,age=1,length=0": [
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length0_0",
+		"y": 90},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length0_1",
+		"y": 90},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length0_2",
+		"y": 90}
+    ],
+    "facing=north,age=1,length=0": [
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length0_0"},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length0_1"},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length0_2"}
+    ],
+    "facing=south,age=1,length=0": [
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length0_0",
+		"y": 180},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length0_1",
+		"y": 180},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length0_2",
+		"y": 180}
+    ],
+    "facing=west,age=1,length=0": [
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length0_0",
+		"y": 270},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length0_1",
+		"y": 270},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length0_2",
+		"y": 270}
+    ],
+	"facing=east,age=0,length=1": [
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age0_length1_0",
+		"y": 90},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age0_length1_1",
+		"y": 90},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age0_length1_2",
+		"y": 90}
+    ],
+    "facing=north,age=0,length=1": [
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age0_length1_0"},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age0_length1_1"},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age0_length1_2"}
+    ],
+    "facing=south,age=0,length=1": [
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age0_length1_0",
+		"y": 180},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age0_length1_1",
+		"y": 180},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age0_length1_2",
+		"y": 180}
+    ],
+    "facing=west,age=0,length=1": [
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age0_length1_0",
+		"y": 270},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age0_length1_1",
+		"y": 270},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age0_length1_2",
+		"y": 270}
+    ],
+	"facing=east,age=1,length=1": [
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length1_0",
+		"y": 90},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length1_1",
+		"y": 90},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length1_2",
+		"y": 90}
+    ],
+    "facing=north,age=1,length=1": [
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length1_0"},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length1_1"},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length1_2"}
+    ],
+    "facing=south,age=1,length=1": [
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length1_0",
+		"y": 180},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length1_1",
+		"y": 180},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length1_2",
+		"y": 180}
+    ],
+    "facing=west,age=1,length=1": [
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length1_0",
+		"y": 270},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length1_1",
+		"y": 270},
+		{"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length1_2",
+		"y": 270}
+    ],
+	"facing=east,age=0,length=0": {
+		"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length0_0",
+		"y": 90
+    },
+    "facing=north,age=0,length=0": {
+		"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length0_0"
+    },
+    "facing=south,age=0,length=0": {
+		"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length0_0",
+		"y": 180
+    },
+    "facing=west,age=0,length=0": {
+		"model": "ai_odyssey:block/gargantuan_kelp_streamer_age1_length0_0",
+		"y": 270
+    }
+  }
+}

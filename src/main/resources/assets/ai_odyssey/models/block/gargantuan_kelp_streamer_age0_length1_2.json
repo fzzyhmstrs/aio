@@ -1,0 +1,10 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "ai_odyssey:block/gargantuan_streamer",
+	"textures": {
+		"0": "ai_odyssey:block/gargantuan_kelp_streamer_age0_length1_2",
+		"1": "ai_odyssey:block/gargantuan_kelp_streamer_age0_length1_0",
+		"2": "ai_odyssey:block/gargantuan_kelp_streamer_age0_length1_1",
+		"particle": "ai_odyssey:block/gargantuan_kelp_streamer_age0_length1_0"
+	}
+}
