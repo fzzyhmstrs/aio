@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "ai_odyssey:block/gargantuan_kelp_slab"
+    },
+    "type=double": {
+      "model": "ai_odyssey:block/gargantuan_kelp_planks"
+    },
+    "type=top": {
+      "model": "ai_odyssey:block/gargantuan_kelp_slab_top"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "ai_odyssey:block/gargantuan_skeletal_kelp_hyphae",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "ai_odyssey:block/gargantuan_skeletal_kelp_hyphae"
+    },
+    "axis=z": {
+      "model": "ai_odyssey:block/gargantuan_skeletal_kelp_hyphae",
+      "x": 90
+    }
+  }
+}

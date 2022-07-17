@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "ai_odyssey:block/gargantuan_kelp_stem",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "ai_odyssey:block/gargantuan_kelp_stem"
+    },
+    "axis=z": {
+      "model": "ai_odyssey:block/gargantuan_kelp_stem",
+      "x": 90
+    }
+  }
+}

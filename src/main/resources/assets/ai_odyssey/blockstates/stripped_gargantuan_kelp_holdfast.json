@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "ai_odyssey:block/stripped_gargantuan_kelp_holdfast",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "ai_odyssey:block/stripped_gargantuan_kelp_holdfast"
+    },
+    "axis=z": {
+      "model": "ai_odyssey:block/stripped_gargantuan_kelp_holdfast",
+      "x": 90
+    }
+  }
+}
