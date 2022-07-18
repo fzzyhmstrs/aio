@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:crimson_trapdoor"
+          "name": "ai_odyssey:gargantuan_kelp_trapdoor"
         }
       ],
       "conditions": [
