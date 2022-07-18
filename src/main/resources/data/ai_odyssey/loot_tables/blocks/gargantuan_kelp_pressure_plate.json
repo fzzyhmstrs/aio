@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:crimson_pressure_plate"
+          "name": "ai_odyssey:gargantuan_kelp_pressure_plate"
         }
       ],
       "conditions": [
