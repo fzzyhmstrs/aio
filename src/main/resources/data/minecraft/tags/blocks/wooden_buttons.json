@@ -1,13 +1,7 @@
 {
   "replace": false,
   "values": [
-    "minecraft:oak_button",
-    "minecraft:spruce_button",
-    "minecraft:birch_button",
-    "minecraft:jungle_button",
-    "minecraft:acacia_button",
-    "minecraft:dark_oak_button",
-    "minecraft:crimson_button",
-    "minecraft:warped_button"
+    "ai_odyssey:gargantuan_kelp_button",
+    "ai_odyssey:gargantuan_skeletal_kelp_button"
   ]
 }
