@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:crimson_fence"
+          "name": "ai_odyssey:gargantuan_kelp_fence"
         }
       ],
       "conditions": [
