@@ -1,7 +1,9 @@
 {
   "replace": false,
   "values": [
-    "amethyst_imbuement:polished_amethyst_stairs",
-    "amethyst_imbuement:cut_beryl_copper_stairs"
+    "ai_odyssey:imbued_deepslate_stairs_cobbled",
+	  "ai_odyssey:imbued_deepslate_stairs_bricks",
+	  "ai_odyssey:imbued_deepslate_stairs_tiles",
+	  "ai_odyssey:imbued_deepslate_stairs_polished"
   ]
 }
