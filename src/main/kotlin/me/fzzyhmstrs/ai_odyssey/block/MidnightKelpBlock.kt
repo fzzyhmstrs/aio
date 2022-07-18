@@ -47,7 +47,6 @@ class MidnightKelpBlock(settings: Settings): KelpBlock(settings) {
                 if (!entity.isDead) {
                     entity.damage(DamageSource.SWEET_BERRY_BUSH, 0.75f)
                     if (entity.isDead) {
-                        println("I died!: $entity")
                         if (world is ServerWorld) {
                             this.grow(world, world.random, pos, state)
                         }

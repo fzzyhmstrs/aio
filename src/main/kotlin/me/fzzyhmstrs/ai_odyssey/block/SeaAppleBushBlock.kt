@@ -48,7 +48,7 @@ class SeaAppleBushBlock(settings: Settings): SweetBerryBushBlock(settings), Flui
     }
 
     override fun getPickStack(world: BlockView, pos: BlockPos, state: BlockState): ItemStack {
-        return ItemStack(Items.APPLE)
+        return ItemStack(RegisterItem.SEA_APPLE)
     }
 
     @Deprecated("Deprecated in Java")
