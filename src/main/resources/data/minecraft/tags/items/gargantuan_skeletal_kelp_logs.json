@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "minecraft:oak_log",
-    "minecraft:oak_wood",
-    "minecraft:stripped_oak_log",
-    "minecraft:stripped_oak_wood"
+    "ai_odyssey:gargantuan_skeletal_kelp_stem",
+    "ai_odyssey:gargantuan_skeletal_kelp_holdfast",
+    "ai_odyssey:stripped_gargantuan_skeletal_kelp_stem",
+    "ai_odyssey:stripped_gargantuan_skeletal_kelp_holdfast"
   ]
 }
