@@ -10,13 +10,13 @@
           "conditions": [
             {
               "condition": "minecraft:block_state_property",
-              "block": "minecraft:crimson_door",
+              "block": "ai_odyssey:gargantuan_kelp_door",
               "properties": {
                 "half": "lower"
               }
             }
           ],
-          "name": "minecraft:crimson_door"
+          "name": "ai_odyssey:gargantuan_kelp_door"
         }
       ],
       "conditions": [
