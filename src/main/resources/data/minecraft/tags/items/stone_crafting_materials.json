@@ -1,8 +1,6 @@
 {
   "replace": false,
   "values": [
-    "minecraft:cobblestone",
-    "minecraft:blackstone",
-    "minecraft:cobbled_deepslate"
+    "ai_odyssey:cobbled_gabbro"
   ]
 }
