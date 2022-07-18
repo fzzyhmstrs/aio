@@ -1,12 +1,12 @@
 {
   "replace": false,
   "values": [
-    "amethyst_imbuement:polished_amethyst_block",
-	"amethyst_imbuement:polished_amethyst_stairs",
-	"amethyst_imbuement:polished_amethyst_pillar",
-	"amethyst_imbuement:polished_amethyst_slab",
-	"amethyst_imbuement:polished_amethyst_bricks",
-	"amethyst_imbuement:chiseled_polished_amethyst_block",
-	"amethyst_imbuement:crystalline_core"
+    "ai_odyssey:prismatic_amethyst",
+    "ai_odyssey:prismatic_gabbro",
+		"ai_odyssey:prismatic_prismarine",
+		"ai_odyssey:prismatic_quartz",
+		"ai_odyssey:facility_teleporter",
+		"ai_odyssey:aberration_spawn",
+		"ai_odyssey:crystalline_switch"
   ]
 }
