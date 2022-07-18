@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:crimson_stairs"
+          "name": "ai_odyssey:gargantuan_kelp_stairs"
         }
       ],
       "conditions": [
