@@ -50,6 +50,20 @@ object RegisterBlock {
         BlockSoundGroup.WET_GRASS))
     val TURTLE_GRASS = SeaGrassAlwaysShortBlock(FabricBlockSettings.of(Material.REPLACEABLE_UNDERWATER_PLANT).noCollision().breakInstantly().sounds(
         BlockSoundGroup.WET_GRASS))
+    
+    //sea anemones
+    val ANEMONE_GEM = SeaAnemoneBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().strength(0.1f).sounds(
+        BlockSoundGroup.WET_GRASS))
+    val ANEMONE_STRAWBERRY = SeaAnemoneBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().strength(0.1f).sounds(
+        BlockSoundGroup.WET_GRASS))
+    val ANEMONE_BLOOD = SeaAnemoneBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().strength(0.1f).sounds(
+        BlockSoundGroup.WET_GRASS))
+    val ANEMONE_TUBE = SeaAnemoneBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().strength(0.1f).sounds(
+        BlockSoundGroup.WET_GRASS))
+    val ANEMONE_PINK_TIPPED = SeaAnemoneBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().strength(0.1f).sounds(
+        BlockSoundGroup.WET_GRASS))
+    val ANEMONE_ROCK_FLOWER = SeaAnemoneBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().strength(0.1f).sounds(
+        BlockSoundGroup.WET_GRASS))
 
     //gargantuan kelp
     val GARGANTUAN_KELP = GargantuanKelpBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).ticksRandomly().strength(2.0f, 3.0f).sounds(
@@ -151,6 +165,12 @@ object RegisterBlock {
 
     fun registerAll(){
         registerBlock("aberration_spawn", ABERRATION_SPAWN, ItemGroup.MISC)
+        registerBlock("anemone_gem", ANEMONE_GEM, ItemGroup.DECORATIONS)
+        registerBlock("anemone_strawberry", ANEMONE_STRAWBERRY, ItemGroup.DECORATIONS)
+        registerBlock("anemone_blood", ANEMONE_BLOOD, ItemGroup.DECORATIONS)
+        registerBlock("anemone_tube", ANEMONE_TUBE, ItemGroup.DECORATIONS)
+        registerBlock("anemone_pink_tipped", ANEMONE_PINK_TIPPED, ItemGroup.DECORATIONS)
+        registerBlock("anemone_rock_flower", ANEMONE_ROCK_FLOWER, ItemGroup.DECORATIONS)
         registerBlockWithOtherItem("bull_kelp", BULL_KELP)
         registerBlockWithOtherItem("bull_kelp_plant", BULL_KELP_PLANT)
         registerBlockWithOtherItem("bull_kelp_streamer", BULL_KELP_STREAMER)
