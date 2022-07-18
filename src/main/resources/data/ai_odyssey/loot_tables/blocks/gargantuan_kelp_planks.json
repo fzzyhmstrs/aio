@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:crimson_planks"
+          "name": "ai_odyssey:gargantuan_kelp_planks"
         }
       ],
       "conditions": [
