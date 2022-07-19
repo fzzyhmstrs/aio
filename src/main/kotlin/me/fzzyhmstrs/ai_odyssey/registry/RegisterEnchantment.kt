@@ -18,6 +18,9 @@ object RegisterEnchantment {
 
     private var regEnchant: MutableMap<String, Enchantment> = mutableMapOf()
 
+    //vanilla enchants
+    val HYDROPHOBIC = DamageEnchantment(Enchantment.Rarity.UNCOMMON, 4, EquipmentSlot.MAINHAND).also{regEnchant["hydrophobic"] = it}
+    
     //augments
     val ENRAGED = EnragedAugment(Enchantment.Rarity.VERY_RARE,1,EquipmentSlot.MAINHAND).also{regEnchant["enraged"] = it}
     val IMBUED_TOUCH = ImbuedTouchAugment(Enchantment.Rarity.VERY_RARE,1,EquipmentSlot.MAINHAND,EquipmentSlot.OFFHAND).also{regEnchant["imbued_touch"] = it}
