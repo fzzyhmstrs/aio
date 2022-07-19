@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
 	"  B",
-	" S ",
+	" ST",
 	"S  "
   ],
   "key": {
@@ -11,6 +11,9 @@
 	},
 	"B": {
 	  "item": "minecraft:bone"
+	},
+	"T": {
+	  "item": "minecraft:string"
 	}
   },
   "result": {
