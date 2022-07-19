@@ -1,4 +1,4 @@
-package me.fzzyhmstrs.amethyst_imbuement.model
+package me.fzzyhmstrs.ai_odyssey.model
 
 import me.fzzyhmstrs.ai_odyssey.AIO
 import me.fzzyhmstrs.ai_odyssey.entity.LambentTridentEntity
