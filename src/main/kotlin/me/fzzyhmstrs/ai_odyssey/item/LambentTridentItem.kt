@@ -26,12 +26,12 @@ import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 
-class GlisteringTridentItem(settings: Settings) : TridentItem(settings), Flavorful<GlisteringTridentItem> {
+class LambentTridentItem(settings: Settings) : TridentItem(settings), Flavorful<LambentTridentItem> {
  private var attributeModifiers: Multimap<EntityAttribute, EntityAttributeModifier>
     override var flavor: String = ""
     override var glint: Boolean = false
     override var flavorDesc: String = ""
-    override fun getFlavorItem(): GlisteringTridentItem {
+    override fun getFlavorItem(): LambentTridentItem {
         return this
     }
     init {
