@@ -90,6 +90,19 @@ object RegisterEntity {
             )
         }.dimensions(EntityDimensions.fixed(0.5f, 0.5f)).build()
     )
+    
+    val LAMBENT_TRIDENT_ENTITY: EntityType<LambentTridentEntity> = Registry.register(
+        Registry.ENTITY_TYPE,
+        Identifier(AIO.MOD_ID, "lambent_trident"),
+        FabricEntityTypeBuilder.create(
+            SpawnGroup.MISC
+        ) { entityType: EntityType<LambentTridentEntity>, world: World ->
+            LambentTridentEntity(
+                entityType,
+                world
+            )
+        }.dimensions(EntityDimensions.fixed(0.5f, 0.5f)).trackRangeChunks(4).trackedUpdateRate(20).build()
+    )
 
     val VAMPIRIC_BOLT_ENTITY: EntityType<VampiricBoltEntity> = Registry.register(
         Registry.ENTITY_TYPE,
