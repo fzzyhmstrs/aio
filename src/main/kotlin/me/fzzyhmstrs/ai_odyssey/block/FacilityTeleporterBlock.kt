@@ -1,8 +1,8 @@
 package me.fzzyhmstrs.ai_odyssey.block
 
 import me.fzzyhmstrs.ai_odyssey.configurator.ConfiguratorPaired
-import me.fzzyhmstrs.ai_odyssey.entity.FacilityTeleporterBlockEntity
 import me.fzzyhmstrs.ai_odyssey.configurator.SwitchDoor
+import me.fzzyhmstrs.ai_odyssey.entity.FacilityTeleporterBlockEntity
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
 import me.fzzyhmstrs.ai_odyssey.util.FacilityChimes
 import net.minecraft.block.BlockRenderType

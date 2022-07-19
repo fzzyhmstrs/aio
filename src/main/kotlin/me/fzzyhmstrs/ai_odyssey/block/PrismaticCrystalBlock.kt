@@ -37,8 +37,7 @@ class PrismaticCrystalBlock(settings: Settings): Block(settings), Waterloggable 
     ): VoxelShape {
         val full = state.get(FULL)
         if (full) return VoxelShapes.fullCube()
-        val facing = state.get(FACING)
-        return when(facing){
+        return when(state.get(FACING)){
             Direction.UP->{UP_SHAPE}
             Direction.DOWN->{DOWN_SHAPE}
             Direction.NORTH->{NORTH_SHAPE}

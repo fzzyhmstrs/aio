@@ -1,7 +1,7 @@
 package me.fzzyhmstrs.ai_odyssey.block
 
-import me.fzzyhmstrs.ai_odyssey.entity.CrystallineNumLockBlockEntity
 import me.fzzyhmstrs.ai_odyssey.configurator.SwitchLock
+import me.fzzyhmstrs.ai_odyssey.entity.CrystallineNumLockBlockEntity
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterItem
 import me.fzzyhmstrs.ai_odyssey.util.FacilityChimes

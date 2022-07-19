@@ -1,10 +1,11 @@
 package me.fzzyhmstrs.ai_odyssey.block
 
-import me.fzzyhmstrs.ai_odyssey.entity.CrystallineItemLockBlockEntity
 import me.fzzyhmstrs.ai_odyssey.configurator.SwitchLock
+import me.fzzyhmstrs.ai_odyssey.entity.CrystallineItemLockBlockEntity
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
 import me.fzzyhmstrs.ai_odyssey.util.FacilityChimes
-import net.minecraft.block.*
+import net.minecraft.block.Block
+import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemPlacementContext

@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.effect.StatusEffects
+import net.minecraft.entity.passive.TropicalFishEntity
 import net.minecraft.fluid.Fluid
 import net.minecraft.fluid.FluidState
 import net.minecraft.fluid.Fluids
@@ -15,6 +16,7 @@ import net.minecraft.state.property.Properties
 import net.minecraft.tag.FluidTags
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
+import net.minecraft.util.shape.VoxelShape
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
 import net.minecraft.world.WorldAccess
@@ -26,11 +28,22 @@ class SeaAnemoneBlock(settings: Settings): Block(settings), FluidFillable {
     companion object{
 
         private val FACING = Properties.FACING
+        private val VOXEL_SHAPE = createCuboidShape(2.0, 0.0, 2.0, 14.0, 12.0, 14.0)
     }
 
     override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
         super.appendProperties(builder)
         builder.add(FACING)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun getOutlineShape(
+        state: BlockState?,
+        world: BlockView?,
+        pos: BlockPos?,
+        context: ShapeContext?
+    ): VoxelShape {
+        return VOXEL_SHAPE
     }
 
     override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {
@@ -57,10 +70,12 @@ class SeaAnemoneBlock(settings: Settings): Block(settings), FluidFillable {
             val f = abs(entity.getZ() - entity.lastRenderZ)
             if (d >= 0.003 || e >= 0.003 || f >= 0.003) {
                 if (!entity.isDead) {
-                    entity.damage(DamageSource.SWEET_BERRY_BUSH, 0.5f)
-                    val rnd = world.random.nextFloat()
-                    if (rnd < 0.1F){
-                        EffectQueue.addStatusToQueue(entity,StatusEffects.POISON,100,0)
+                    if (!(entity is TropicalFishEntity && (entity.variant == 65536 || entity.variant == 917504))) {
+                        entity.damage(DamageSource.GENERIC, 0.5f)
+                        val rnd = world.random.nextFloat()
+                        if (rnd < 0.1F){
+                            EffectQueue.addStatusToQueue(entity,StatusEffects.POISON,100,0)
+                        }
                     }
                 }
             }

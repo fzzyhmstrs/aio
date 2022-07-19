@@ -1,7 +1,6 @@
 package me.fzzyhmstrs.ai_odyssey.block
 
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEnchantment
-import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.block.WallBlock
 import net.minecraft.enchantment.EnchantmentHelper

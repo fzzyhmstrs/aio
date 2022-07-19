@@ -64,6 +64,14 @@ object RegisterBlock {
         BlockSoundGroup.WET_GRASS))
     val ANEMONE_ROCK_FLOWER = SeaAnemoneBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().strength(0.1f).sounds(
         BlockSoundGroup.WET_GRASS))
+    val GIANT_ANEMONE_GEM = GiantSeaAnemoneBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().strength(0.1f).sounds(
+        BlockSoundGroup.WET_GRASS))
+    val GIANT_ANEMONE_GEM_STEM = GiantSeaAnemoneStemBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).strength(0.15f).sounds(
+        BlockSoundGroup.WET_GRASS))
+    val GIANT_ANEMONE_BLOOD = GiantSeaAnemoneBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().strength(0.1f).sounds(
+        BlockSoundGroup.WET_GRASS))
+    val GIANT_ANEMONE_BLOOD_STEM = GiantSeaAnemoneStemBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).strength(0.15f).sounds(
+        BlockSoundGroup.WET_GRASS))
 
     //gargantuan kelp
     val GARGANTUAN_KELP = GargantuanKelpBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).ticksRandomly().strength(2.0f, 3.0f).sounds(
@@ -218,6 +226,10 @@ object RegisterBlock {
         registerBlock("gargantuan_skeletal_kelp_pressure_plate", GARGANTUAN_SKELETAL_KELP_PRESSURE_PLATE, ItemGroup.REDSTONE)
         registerBlock("gargantuan_skeletal_kelp_trapdoor", GARGANTUAN_SKELETAL_KELP_TRAPDOOR, ItemGroup.REDSTONE)
         registerBlock("ghostly_blister_plant", GHOSTLY_BLISTER_PLANT, ItemGroup.DECORATIONS)
+        registerBlock("giant_anemone_gem", GIANT_ANEMONE_GEM, ItemGroup.DECORATIONS)
+        registerBlock("giant_anemone_gem_stem", GIANT_ANEMONE_GEM_STEM, ItemGroup.DECORATIONS)
+        registerBlock("giant_anemone_blood", GIANT_ANEMONE_BLOOD, ItemGroup.DECORATIONS)
+        registerBlock("giant_anemone_blood_stem", GIANT_ANEMONE_BLOOD_STEM, ItemGroup.DECORATIONS)
         registerBlock("hard_light_barrier", HARD_LIGHT_BARRIER, ItemGroup.BUILDING_BLOCKS)
         registerBlock("hard_light_barrier_frame", HARD_LIGHT_BARRIER_FRAME, ItemGroup.BUILDING_BLOCKS)
         registerBlock("imbued_deepslate_message", IMBUED_DEEPSLATE_MESSAGE, ItemGroup.BUILDING_BLOCKS)

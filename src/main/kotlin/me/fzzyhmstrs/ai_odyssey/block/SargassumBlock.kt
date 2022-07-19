@@ -1,7 +1,10 @@
 package me.fzzyhmstrs.ai_odyssey.block
 
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterBlock
-import net.minecraft.block.*
+import net.minecraft.block.Block
+import net.minecraft.block.BlockState
+import net.minecraft.block.Blocks
+import net.minecraft.block.FluidFillable
 import net.minecraft.fluid.Fluid
 import net.minecraft.fluid.FluidState
 import net.minecraft.fluid.Fluids
