@@ -44,6 +44,7 @@ object RegisterItem {
         Identifier(AIO.MOD_ID, "mystic_quintessence")).withGlint() .also{ regItem["mystic_quintessence"] = it}
 
     //tools and weapons
+    val LAMBENT_TRIDENT = LambentTridentItem(Item.Settings().maxDamage(1450).group(ItemGroup.COMBAT).rarity(Rarity.EPIC)).withFlavorDefaultPath(Identifier(AIO.MOD_ID,"lambent_trident")).also{ regItem["lambent_trident"] = it}
     val RESPLENDENT_SCEPTER = ScepterItem(ScepterLvl4ToolMaterial, FabricItemSettings().group(ItemGroup.COMBAT).rarity(Rarity.EPIC)).withModifiers(
         listOf(RegisterModifier.RESPLENDENT)).also{ regItem["resplendent_scepter"] = it}
     val FURIOUS_SCEPTER = CustomScepterItem(ScepterLvl1ToolMaterial,FabricItemSettings().group(ItemGroup.COMBAT).rarity(Rarity.UNCOMMON))
