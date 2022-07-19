@@ -1,5 +1,6 @@
 package me.fzzyhmstrs.ai_odyssey.registry
 
+import me.fzzyhmstrs.ai_odyssey.AIO
 import me.fzzyhmstrs.ai_odyssey.model.CrystallineItemLockBlockEntityRenderer
 import me.fzzyhmstrs.amethyst_core.entity_util.MissileEntityRenderer
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
@@ -10,7 +11,7 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactory
 import net.minecraft.client.render.entity.EntityRendererFactory
 
 object RegisterRenderer {
-
+    val LAMBENT_TRIDENT: EntityModelLayer = EntityModelLayer(Identifier(AIO.MOD_ID,"lambent_trident"),"lambent_trident_model")
 
     fun registerAll(){
 
@@ -26,6 +27,14 @@ object RegisterRenderer {
                 1.5F
             )
         }
+        
+        EntityRendererRegistry.register(
+            RegisterEntity.LAMBENT_TRIDENT_ENTITY
+        ){context: EntityRendererFactory.Context ->
+            LambentTridentEntityRenderer(
+                context
+            )
+        }
 
 
         BlockEntityRendererRegistry.register(RegisterEntity.CRYSTALLINE_ITEM_LOCK_BLOCK_ENTITY
@@ -34,6 +43,13 @@ object RegisterRenderer {
                 context
             )
         }
+        
+        EntityModelLayerRegistry.registerModelLayer(LAMBENT_TRIDENT,LambentTridentEntityModel::getTexturedModelData)
+        
+        FabricModelPredicateProviderRegistry.register(
+            RegisterItem.LAMBENT_TRIDENT, Identifier("throwing")
+        ) { stack: ItemStack, _: ClientWorld?, entity: LivingEntity?, _: Int -> if (entity != null && entity.isUsingItem && entity.activeItem == stack) 1.0f else 0.0f }
+
 
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.BULL_KELP, RenderLayer.getCutout())
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.BULL_KELP_PLANT, RenderLayer.getCutout())
