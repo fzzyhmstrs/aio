@@ -2,13 +2,23 @@ package me.fzzyhmstrs.ai_odyssey.registry
 
 import me.fzzyhmstrs.ai_odyssey.AIO
 import me.fzzyhmstrs.ai_odyssey.model.CrystallineItemLockBlockEntityRenderer
+import me.fzzyhmstrs.ai_odyssey.model.HarpoonEntityRenderer
+import me.fzzyhmstrs.ai_odyssey.model.LambentTridentEntityModel
+import me.fzzyhmstrs.ai_odyssey.model.LambentTridentEntityRenderer
 import me.fzzyhmstrs.amethyst_core.entity_util.MissileEntityRenderer
+import net.fabricmc.fabric.api.`object`.builder.v1.client.model.FabricModelPredicateProviderRegistry
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry
 import net.minecraft.client.render.RenderLayer
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory
 import net.minecraft.client.render.entity.EntityRendererFactory
+import net.minecraft.client.render.entity.model.EntityModelLayer
+import net.minecraft.client.world.ClientWorld
+import net.minecraft.entity.LivingEntity
+import net.minecraft.item.ItemStack
+import net.minecraft.util.Identifier
 
 object RegisterRenderer {
     val LAMBENT_TRIDENT: EntityModelLayer = EntityModelLayer(Identifier(AIO.MOD_ID,"lambent_trident"),"lambent_trident_model")
@@ -36,6 +46,14 @@ object RegisterRenderer {
             )
         }
 
+        EntityRendererRegistry.register(
+            RegisterEntity.HAPROON_ENTITY
+        ){context: EntityRendererFactory.Context ->
+            HarpoonEntityRenderer(
+                context
+            )
+        }
+
 
         BlockEntityRendererRegistry.register(RegisterEntity.CRYSTALLINE_ITEM_LOCK_BLOCK_ENTITY
         ){context: BlockEntityRendererFactory.Context ->
@@ -44,7 +62,7 @@ object RegisterRenderer {
             )
         }
         
-        EntityModelLayerRegistry.registerModelLayer(LAMBENT_TRIDENT,LambentTridentEntityModel::getTexturedModelData)
+        EntityModelLayerRegistry.registerModelLayer(LAMBENT_TRIDENT, LambentTridentEntityModel::getTexturedModelData)
         
         FabricModelPredicateProviderRegistry.register(
             RegisterItem.LAMBENT_TRIDENT, Identifier("throwing")

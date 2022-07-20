@@ -56,7 +56,7 @@ class LambentTridentEntityRenderer(context: EntityRendererFactory.Context) : Ent
         super.render(glisteringTridentEntity, f, g, matrixStack, vertexConsumerProvider, i)
     }
 
-    override fun getTexture(entity: GlisteringTridentEntity): Identifier {
+    override fun getTexture(entity: LambentTridentEntity): Identifier {
         return TEXTURE
     }
 }

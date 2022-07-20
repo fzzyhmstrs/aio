@@ -78,6 +78,19 @@ object RegisterEntity {
         }, RegisterBlock.MYSTERIOUS_PORTAL_FRAME).build(null))
 
 
+    val HAPROON_ENTITY: EntityType<HarpoonEntity> = Registry.register(
+        Registry.ENTITY_TYPE,
+        Identifier(AIO.MOD_ID, "harpoon_entity"),
+        FabricEntityTypeBuilder.create(
+            SpawnGroup.MISC
+        ) { entityType: EntityType<HarpoonEntity>, world: World ->
+            HarpoonEntity(
+                entityType,
+                world
+            )
+        }.dimensions(EntityDimensions.fixed(0.5f, 0.5f)).build()
+    )
+
     val ENFEEBLING_BOLT_ENTITY: EntityType<EnfeeblingBoltEntity> = Registry.register(
         Registry.ENTITY_TYPE,
         Identifier(AIO.MOD_ID, "enfeebling_bolt_entity"),

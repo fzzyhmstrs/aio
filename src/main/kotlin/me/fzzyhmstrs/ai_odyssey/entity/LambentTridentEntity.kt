@@ -105,7 +105,7 @@ class LambentTridentEntity : PersistentProjectileEntity {
         val blockPos: BlockPos?
         var livingEntity: Entity? = null
         val entity = entityHitResult.entity
-        var f = 11.0f //base thrown trident damage, setting to 11 vs. vanilla 8
+        var f = 14.0f //base thrown trident damage, setting to 14 vs. vanilla 8 and glistering 11
         if (entity is LivingEntity) {
             livingEntity = entity
             f += EnchantmentHelper.getAttackDamage(tridentStack, livingEntity.group)

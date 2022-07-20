@@ -45,6 +45,8 @@ object RegisterItem {
 
     //tools and weapons
     val LAMBENT_TRIDENT = LambentTridentItem(Item.Settings().maxDamage(1450).group(ItemGroup.COMBAT).rarity(Rarity.EPIC)).withFlavorDefaultPath(Identifier(AIO.MOD_ID,"lambent_trident")).also{ regItem["lambent_trident"] = it}
+    val HARPOON_LAUNCHER = HarpoonLauncherItem(Item.Settings().maxDamage(325).group(ItemGroup.COMBAT).rarity(Rarity.COMMON)).also{ regItem["harpoon_launcher"] = it}
+    val HARPOON = HarpoonItem(Item.Settings().group(ItemGroup.COMBAT)).also{ regItem["harpoon"] = it}
     val RESPLENDENT_SCEPTER = ScepterItem(ScepterLvl4ToolMaterial, FabricItemSettings().group(ItemGroup.COMBAT).rarity(Rarity.EPIC)).withModifiers(
         listOf(RegisterModifier.RESPLENDENT)).also{ regItem["resplendent_scepter"] = it}
     val FURIOUS_SCEPTER = CustomScepterItem(ScepterLvl1ToolMaterial,FabricItemSettings().group(ItemGroup.COMBAT).rarity(Rarity.UNCOMMON))
