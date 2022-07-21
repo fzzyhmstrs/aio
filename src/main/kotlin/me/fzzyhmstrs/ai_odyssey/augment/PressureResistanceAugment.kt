@@ -1,5 +1,6 @@
 package me.fzzyhmstrs.ai_odyssey.augment
 
+import me.fzzyhmstrs.ai_odyssey.registry.RegisterStatus
 import me.fzzyhmstrs.amethyst_core.trinket_util.EffectQueue
 import me.fzzyhmstrs.amethyst_core.trinket_util.base_augments.AbstractEquipmentAugment
 import net.minecraft.enchantment.EnchantmentTarget
@@ -30,6 +31,6 @@ class PressureResistanceAugment(weight: Rarity, mxLvl: Int = 1, vararg slot: Equ
     }
 
     override fun equipmentEffect(user: LivingEntity, level: Int, stack: ItemStack) {
-        EffectQueue.addStatusToQueue(user, StatusEffects.JUMP_BOOST,260,level - 1)
+        EffectQueue.addStatusToQueue(user, RegisterStatus.PRESSURE_RESISTANCE,260,level - 1)
     }
 }

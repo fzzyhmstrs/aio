@@ -6,11 +6,11 @@ import me.fzzyhmstrs.ai_odyssey.model.HarpoonEntityRenderer
 import me.fzzyhmstrs.ai_odyssey.model.LambentTridentEntityModel
 import me.fzzyhmstrs.ai_odyssey.model.LambentTridentEntityRenderer
 import me.fzzyhmstrs.amethyst_core.entity_util.MissileEntityRenderer
-import net.fabricmc.fabric.api.`object`.builder.v1.client.model.FabricModelPredicateProviderRegistry
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry
+import net.minecraft.client.item.ModelPredicateProviderRegistry
 import net.minecraft.client.render.RenderLayer
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory
 import net.minecraft.client.render.entity.EntityRendererFactory
@@ -64,7 +64,7 @@ object RegisterRenderer {
         
         EntityModelLayerRegistry.registerModelLayer(LAMBENT_TRIDENT, LambentTridentEntityModel::getTexturedModelData)
         
-        FabricModelPredicateProviderRegistry.register(
+        ModelPredicateProviderRegistry.register(
             RegisterItem.LAMBENT_TRIDENT, Identifier("throwing")
         ) { stack: ItemStack, _: ClientWorld?, entity: LivingEntity?, _: Int -> if (entity != null && entity.isUsingItem && entity.activeItem == stack) 1.0f else 0.0f }
 

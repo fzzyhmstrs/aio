@@ -8,6 +8,7 @@ import me.fzzyhmstrs.ai_odyssey.scepter.*
 import me.fzzyhmstrs.amethyst_core.scepter_util.augments.AugmentHelper
 import me.fzzyhmstrs.amethyst_core.scepter_util.augments.ScepterAugment
 import me.fzzyhmstrs.amethyst_imbuement.AI
+import net.minecraft.enchantment.DamageEnchantment
 import net.minecraft.enchantment.Enchantment
 import net.minecraft.entity.EquipmentSlot
 import net.minecraft.item.Items
@@ -28,6 +29,8 @@ object RegisterEnchantment {
 
     //scepter spells
     val BARRIER = BarrierAugment(2,3, EquipmentSlot.MAINHAND).also{regEnchant["barrier"] = it}
+    val BLESSING_OF_THE_DEEP = BlessingOfTheDeepAugment(3,3, EquipmentSlot.MAINHAND).also{regEnchant["blessing_of_the_deep"] = it}
+    val CORNUCOPIA = CornucopiaAugment(3,3, EquipmentSlot.MAINHAND).also{regEnchant["cornucopia"] = it}
     val CORRUPTED_SLASH = CorruptedSlashAugment(2,2, EquipmentSlot.MAINHAND).also{regEnchant["corrupted_slash"] = it}
     val CREATE_TNT = CreateTNTAugment(2,1,Items.TNT,EquipmentSlot.MAINHAND).also{regEnchant["create_tnt"] = it}
     val DETERMINATION = DeterminationAugment(1,3, EquipmentSlot.MAINHAND).also{regEnchant["determination"] = it}

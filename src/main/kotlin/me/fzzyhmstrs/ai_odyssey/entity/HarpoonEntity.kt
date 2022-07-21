@@ -23,6 +23,10 @@ class HarpoonEntity: PersistentProjectileEntity {
     constructor(world: World, x: Double, y: Double, z: Double): super(RegisterEntity.HAPROON_ENTITY,x, y, z, world)
     constructor(world: World, owner: LivingEntity): super(RegisterEntity.HAPROON_ENTITY,owner, world)
 
+    init {
+        damage = 7.5
+    }
+
     override fun asItemStack(): ItemStack {
         return ItemStack(RegisterItem.HARPOON)
     }
@@ -65,7 +69,7 @@ class HarpoonEntity: PersistentProjectileEntity {
         if (this.isOnFire && !bl) {
             entity.setOnFireFor(5)
         }
-        if (entity.damage(damageSource, 5.0F)) {
+        if (entity.damage(damageSource, damage.toFloat())) {
             if (bl) {
                 return
             }
