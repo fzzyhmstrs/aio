@@ -2,6 +2,7 @@ package me.fzzyhmstrs.ai_odyssey.block
 
 import me.fzzyhmstrs.ai_odyssey.config.AioConfig
 import me.fzzyhmstrs.ai_odyssey.configurator.SwitchDoor
+import me.fzzyhmstrs.ai_odyssey.entity.RotatableFacilityBlockEntity
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterBlock
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
 import me.fzzyhmstrs.ai_odyssey.util.FacilityChimes
@@ -12,6 +13,7 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemPlacementContext
 import net.minecraft.item.ItemStack
 import net.minecraft.state.StateManager
+import net.minecraft.state.property.DirectionProperty
 import net.minecraft.state.property.Properties
 import net.minecraft.text.LiteralText
 import net.minecraft.text.Text
@@ -28,11 +30,11 @@ import kotlin.math.min
 class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoor {
 
     override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {
-        return super.getPlacementState(ctx)?.with(LIT,false)
+        return super.getPlacementState(ctx)?.with(LIT,false)?.with(RotatableFacilityBlockEntity.ROTATION,Direction.SOUTH)
     }
 
     override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
-        builder.add(LIT)
+        builder.add(LIT, RotatableFacilityBlockEntity.ROTATION)
     }
 
     @Deprecated("Deprecated in Java")

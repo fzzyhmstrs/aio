@@ -2,6 +2,7 @@ package me.fzzyhmstrs.ai_odyssey.block
 
 import me.fzzyhmstrs.ai_odyssey.configurator.SwitchDoor
 import me.fzzyhmstrs.ai_odyssey.entity.CrystallineSwitchBlockEntity
+import me.fzzyhmstrs.ai_odyssey.entity.RotatableFacilityBlockEntity
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterItem
 import me.fzzyhmstrs.ai_odyssey.util.FacilityChimes
@@ -13,6 +14,7 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemPlacementContext
 import net.minecraft.state.StateManager
 import net.minecraft.state.property.BooleanProperty
+import net.minecraft.state.property.DirectionProperty
 import net.minecraft.state.property.EnumProperty
 import net.minecraft.state.property.Properties
 import net.minecraft.util.ActionResult
@@ -20,6 +22,7 @@ import net.minecraft.util.Hand
 import net.minecraft.util.StringIdentifiable
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Direction
 import net.minecraft.util.shape.VoxelShape
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
@@ -28,7 +31,7 @@ import java.util.function.ToIntFunction
 class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
 
     override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {
-        return super.getPlacementState(ctx)?.with(LIT, true)?.with(SWITCH_COLOR, SwitchColor.BLUE)
+        return super.getPlacementState(ctx)?.with(LIT, true)?.with(SWITCH_COLOR, SwitchColor.BLUE)?.with(RotatableFacilityBlockEntity.ROTATION,Direction.SOUTH)
     }
     
     @Deprecated("Deprecated in Java")
@@ -41,7 +44,7 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
     }
 
     override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
-        builder.add(LIT, SWITCH_COLOR)
+        builder.add(LIT, SWITCH_COLOR, RotatableFacilityBlockEntity.ROTATION)
     }
 
     @Deprecated("Deprecated in Java")
@@ -103,6 +106,7 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
 
     companion object{
 
+        val FACING: DirectionProperty = Properties.HORIZONTAL_FACING
         val LIT: BooleanProperty = Properties.LIT
         val SWITCH_COLOR: EnumProperty<SwitchColor> = EnumProperty.of("switch_color",SwitchColor::class.java)
 

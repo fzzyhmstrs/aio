@@ -9,7 +9,7 @@ import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtList
 import net.minecraft.util.math.BlockPos
 
-class MysteriousPortalFrameBlockEntity(pos: BlockPos, state: BlockState):BlockEntity(RegisterEntity.MYSTERIOUS_PORTAL_FRAME_BLOCK_ENTITY,pos, state) {
+class MysteriousPortalFrameBlockEntity(pos: BlockPos, state: BlockState):RotatableFacilityBlockEntity(RegisterEntity.MYSTERIOUS_PORTAL_FRAME_BLOCK_ENTITY,pos, state) {
 
     private var portalKey: Boolean = false
     private var frameList: List<BlockPos> = listOf()
@@ -29,24 +29,8 @@ class MysteriousPortalFrameBlockEntity(pos: BlockPos, state: BlockState):BlockEn
     override fun writeNbt(nbt: NbtCompound) {
         super.writeNbt(nbt)
         Nbt.writeBoolNbt(NbtKeys.PORTAL_KEY.str(),portalKey,nbt)
-        if (frameList.isNotEmpty()){
-            val nbtList = NbtList()
-            frameList.forEach {
-                val newNbtPos = NbtCompound()
-                Nbt.writeBlockPos(NbtKeys.FRAME_POS.str(),it,newNbtPos)
-                nbtList.add(newNbtPos)
-            }
-            nbt.put(NbtKeys.FRAME_LIST.str(), nbtList)
-        }
-        if (portalList.isNotEmpty()){
-            val nbtList = NbtList()
-            portalList.forEach {
-                val newNbtPos = NbtCompound()
-                Nbt.writeBlockPos(NbtKeys.PORTAL_POS.str(),it,newNbtPos)
-                nbtList.add(newNbtPos)
-            }
-            nbt.put(NbtKeys.PORTAL_LIST.str(), nbtList)
-        }
+        writeListAsOffset(nbt,NbtKeys.FRAME_POS.str(),NbtKeys.FRAME_LIST.str(),frameList,this.pos)
+        writeListAsOffset(nbt,NbtKeys.PORTAL_POS.str(),NbtKeys.FRAME_LIST.str(),portalList,this.pos)
     }
 
     override fun readNbt(nbt: NbtCompound) {
@@ -54,28 +38,12 @@ class MysteriousPortalFrameBlockEntity(pos: BlockPos, state: BlockState):BlockEn
         if (nbt.contains(NbtKeys.PORTAL_KEY.str())){
             portalKey = Nbt.readBoolNbt(NbtKeys.PORTAL_KEY.str(),nbt)
         }
-        if (nbt.contains(NbtKeys.FRAME_LIST.str())){
-            val tempFrameList: MutableList<BlockPos> = mutableListOf()
-            val nbtList = Nbt.readNbtList(nbt, NbtKeys.FRAME_LIST.str())
-            nbtList.forEach {
-                val nbtEl = it as NbtCompound
-                if (nbtEl.contains(NbtKeys.FRAME_POS.str())){
-                    tempFrameList.add(Nbt.readBlockPos(NbtKeys.FRAME_POS.str(),nbtEl))
-                }
-            }
-            frameList = tempFrameList
-        }
-        if (nbt.contains(NbtKeys.PORTAL_LIST.str())){
-            val tempPortalList: MutableList<BlockPos> = mutableListOf()
-            val nbtList = Nbt.readNbtList(nbt, NbtKeys.PORTAL_LIST.str())
-            nbtList.forEach {
-                val nbtEl = it as NbtCompound
-                if (nbtEl.contains(NbtKeys.PORTAL_POS.str())){
-                    tempPortalList.add(Nbt.readBlockPos(NbtKeys.PORTAL_POS.str(),nbtEl))
-                }
-            }
-            portalList = tempPortalList
-        }
+        val tempFrameList: MutableList<BlockPos> = mutableListOf()
+        readListFromOffset(nbt,NbtKeys.FRAME_POS.str(),NbtKeys.FRAME_LIST.str(),tempFrameList,this.pos)
+        frameList = tempFrameList
+        val tempPortalList: MutableList<BlockPos> = mutableListOf()
+        readListFromOffset(nbt,NbtKeys.PORTAL_POS.str(),NbtKeys.PORTAL_LIST.str(),tempPortalList,this.pos)
+        portalList = tempPortalList
     }
 
 }

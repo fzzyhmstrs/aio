@@ -27,7 +27,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
 
-class ImbuedDeepslateSplatterBlock(settings: Settings): Block(settings), ConfiguratorInteractive {
+class ImbuedDeepslateSplatterBlock(settings: Settings, fallbackHardness: Float): ImbuedBlock(settings, fallbackHardness), ConfiguratorInteractive {
 
     companion object{
         val SPLATTER = EnumProperty.of("splatter",Splatter::class.java)
@@ -70,15 +70,6 @@ class ImbuedDeepslateSplatterBlock(settings: Settings): Block(settings), Configu
                 return this.x + 10 * this.y
             }
         }
-
-        /*private fun splattersToIndexes(): Map<Int,Splatter>{
-            val map: MutableMap<Int, Splatter> = mutableMapOf()
-            Splatter.values().forEach {
-                val index = it.coordinatesToIndex()
-                map[index] = it
-            }
-            return map
-        }*/
     }
 
 
@@ -105,27 +96,6 @@ class ImbuedDeepslateSplatterBlock(settings: Settings): Block(settings), Configu
             world.setBlockState(pos, state.cycle(SPLATTER))
         }
         return super.onUse(state, world, pos, player, hand, hit)
-    }
-
-    @Deprecated("Deprecated in Java")
-    override fun calcBlockBreakingDelta(
-        state: BlockState,
-        player: PlayerEntity,
-        world: BlockView,
-        pos: BlockPos
-    ): Float {
-        val f = state.getHardness(world, pos)
-        if (f == -1.0f) {
-            val level = EnchantmentHelper.getLevel(RegisterEnchantment.IMBUED_TOUCH,player.mainHandStack)
-            return if (level > 0){
-                val i = if (player.canHarvest(state)) 30 else 100
-                player.getBlockBreakingSpeed(state) / f / i.toFloat()
-            } else {
-                0.0f
-            }
-        }
-        val i = if (player.canHarvest(state)) 30 else 100
-        return player.getBlockBreakingSpeed(state) / f / i.toFloat()
     }
 
     override fun interactWithConfigurator(

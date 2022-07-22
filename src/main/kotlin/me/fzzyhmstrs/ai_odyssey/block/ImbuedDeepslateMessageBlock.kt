@@ -27,7 +27,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
 
-class ImbuedDeepslateMessageBlock(settings: Settings): Block(settings), ConfiguratorInteractive {
+class ImbuedDeepslateMessageBlock(settings: Settings, fallbackHardness: Float): ImbuedBlock(settings, fallbackHardness), ConfiguratorInteractive {
 
     companion object{
         val MESSAGE: EnumProperty<Message> = EnumProperty.of("message",Message::class.java)
@@ -95,27 +95,6 @@ class ImbuedDeepslateMessageBlock(settings: Settings): Block(settings), Configur
             world.setBlockState(pos, state.cycle(MESSAGE))
         }
         return super.onUse(state, world, pos, player, hand, hit)
-    }
-
-    @Deprecated("Deprecated in Java")
-    override fun calcBlockBreakingDelta(
-        state: BlockState,
-        player: PlayerEntity,
-        world: BlockView,
-        pos: BlockPos
-    ): Float {
-        val f = state.getHardness(world, pos)
-        if (f == -1.0f) {
-            val level = EnchantmentHelper.getLevel(RegisterEnchantment.IMBUED_TOUCH,player.mainHandStack)
-            return if (level > 0){
-                val i = if (player.canHarvest(state)) 30 else 100
-                player.getBlockBreakingSpeed(state) / f / i.toFloat()
-            } else {
-                0.0f
-            }
-        }
-        val i = if (player.canHarvest(state)) 30 else 100
-        return player.getBlockBreakingSpeed(state) / f / i.toFloat()
     }
 
     override fun interactWithConfigurator(

@@ -45,22 +45,28 @@ class FacilityConfigurationStick(settings: Settings): Item(settings), Configurat
             }
         } else if (block is SwitchDoor){
             return if (parentSwitch is CrystallineSwitchBlockEntity) {
-                val bl = parentSwitch.addDoor(pos)
-                if (bl){
-                    player?.sendMessage(TranslatableText("message.configurator.door_fail", parentSwitch.pos.toShortString() ,pos.toShortString()), false)
+                val actionResult = block.interactWithConfigurator(world, player, stack, pos, state)
+                if (actionResult == ActionResult.SUCCESS){
+                    val bl = parentSwitch.addDoor(pos)
+                    if (!bl){
+                        player?.sendMessage(TranslatableText("message.configurator.door_fail", parentSwitch.pos.toShortString() ,pos.toShortString()), false)
+                    }
                 }
-                block.interactWithConfigurator(world, player, stack, pos, state)
+                actionResult
             } else {
                 player?.sendMessage(TranslatableText("message.configurator.parent_fail", id.toString()), false)
                 ActionResult.FAIL
             }
         } else if (block is SwitchLock){
             return if (parentSwitch is CrystallineSwitchBlockEntity) {
-                val bl = parentSwitch.addLock(pos)
-                if (bl){
-                    player?.sendMessage(TranslatableText("message.configurator.lock_fail", parentSwitch.pos.toShortString(), pos.toShortString()), false)
+                val actionResult = block.interactWithConfigurator(world, player,stack, pos, state)
+                if (actionResult == ActionResult.SUCCESS){
+                    val bl = parentSwitch.addLock(pos)
+                    if (!bl){
+                        player?.sendMessage(TranslatableText("message.configurator.lock_fail", parentSwitch.pos.toShortString(), pos.toShortString()), false)
+                    }
                 }
-                block.interactWithConfigurator(world, player,stack, pos, state)
+                actionResult
             } else {
                 player?.sendMessage(TranslatableText("message.configurator.parent_fail", id.toString()), false)
                 ActionResult.FAIL

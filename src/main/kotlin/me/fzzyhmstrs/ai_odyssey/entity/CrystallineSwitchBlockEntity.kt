@@ -1,6 +1,7 @@
 package me.fzzyhmstrs.ai_odyssey.entity
 
 import me.fzzyhmstrs.ai_odyssey.block.CrystallineSwitchBlock
+import me.fzzyhmstrs.ai_odyssey.configurator.SwitchDoor
 import me.fzzyhmstrs.ai_odyssey.configurator.SwitchLock
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
 import me.fzzyhmstrs.amethyst_core.nbt_util.Nbt
@@ -16,7 +17,7 @@ import net.minecraft.sound.SoundEvents
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
-class CrystallineSwitchBlockEntity(pos: BlockPos, state: BlockState):BlockEntity(RegisterEntity.CRYSTALLINE_SWITCH_BLOCK_ENTITY,pos, state) {
+class CrystallineSwitchBlockEntity(pos: BlockPos, state: BlockState): RotatableFacilityBlockEntity(RegisterEntity.CRYSTALLINE_SWITCH_BLOCK_ENTITY,pos, state) {
 
     private val locks: MutableList<BlockPos> = mutableListOf()
     private val doors: MutableList<BlockPos> = mutableListOf()
@@ -56,46 +57,16 @@ class CrystallineSwitchBlockEntity(pos: BlockPos, state: BlockState):BlockEntity
 
     override fun writeNbt(nbt: NbtCompound) {
         super.writeNbt(nbt)
-        if (locks.isNotEmpty()){
-            val nbtList = NbtList()
-            locks.forEach {
-                val nbtEl = NbtCompound()
-                Nbt.writeBlockPos(NbtKeys.LOCK_POS.str(),it,nbtEl)
-                nbtList.add(nbtEl)
-            }
-            nbt.put(NbtKeys.LOCKS.str(),nbtList)
-        }
-        if (doors.isNotEmpty()){
-            val nbtList = NbtList()
-            doors.forEach {
-                val nbtEl = NbtCompound()
-                Nbt.writeBlockPos(NbtKeys.DOOR_POS.str(),it,nbtEl)
-                nbtList.add(nbtEl)
-            }
-            nbt.put(NbtKeys.DOORS.str(),nbtList)
-        }
+        val thisPos = this.pos
+        writeListAsOffset(nbt,NbtKeys.LOCK_POS.str(), NbtKeys.LOCKS.str(), locks,thisPos)
+        writeListAsOffset(nbt,NbtKeys.DOOR_POS.str(), NbtKeys.DOORS.str(), doors,thisPos)
     }
 
     override fun readNbt(nbt: NbtCompound) {
         super.readNbt(nbt)
-        if (nbt.contains(NbtKeys.LOCKS.str())){
-            val nbtList = Nbt.readNbtList(nbt,NbtKeys.LOCKS.str())
-            for (el in nbtList){
-                val compound = el as NbtCompound
-                if (compound.contains(NbtKeys.LOCK_POS.str())){
-                    locks.add(Nbt.readBlockPos(NbtKeys.LOCK_POS.str(),compound))
-                }
-            }
-        }
-        if (nbt.contains(NbtKeys.DOORS.str())){
-            val nbtList = Nbt.readNbtList(nbt,NbtKeys.DOORS.str())
-            for (el in nbtList){
-                val compound = el as NbtCompound
-                if (compound.contains(NbtKeys.DOOR_POS.str())){
-                    doors.add(Nbt.readBlockPos(NbtKeys.DOOR_POS.str(),compound))
-                }
-            }
-        }
+        val thisPos = this.pos
+        readListFromOffset(nbt,NbtKeys.LOCK_POS.str(),NbtKeys.LOCKS.str(),locks,thisPos)
+        readListFromOffset(nbt,NbtKeys.DOOR_POS.str(),NbtKeys.DOORS.str(),doors, thisPos)
 
     }
 

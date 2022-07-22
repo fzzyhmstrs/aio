@@ -2,6 +2,7 @@ package me.fzzyhmstrs.ai_odyssey.registry
 
 import me.fzzyhmstrs.ai_odyssey.AIO
 import me.fzzyhmstrs.ai_odyssey.augment.EnragedAugment
+import me.fzzyhmstrs.ai_odyssey.augment.FuryOfTheConduitAugment
 import me.fzzyhmstrs.ai_odyssey.augment.ImbuedTouchAugment
 import me.fzzyhmstrs.ai_odyssey.augment.PressureResistanceAugment
 import me.fzzyhmstrs.ai_odyssey.scepter.*
@@ -24,6 +25,7 @@ object RegisterEnchantment {
     
     //augments
     val ENRAGED = EnragedAugment(Enchantment.Rarity.VERY_RARE,1,EquipmentSlot.MAINHAND).also{regEnchant["enraged"] = it}
+    val FURY_OF_THE_CONDUIT = FuryOfTheConduitAugment(Enchantment.Rarity.VERY_RARE,1,EquipmentSlot.MAINHAND).also{regEnchant["fury_of_the_conduit"] = it}
     val IMBUED_TOUCH = ImbuedTouchAugment(Enchantment.Rarity.VERY_RARE,1,EquipmentSlot.MAINHAND,EquipmentSlot.OFFHAND).also{regEnchant["imbued_touch"] = it}
     val PRESSURE_RESISTANCE = PressureResistanceAugment(Enchantment.Rarity.VERY_RARE,5, *AI.slots).also{regEnchant["pressure_resistance"] = it}
 

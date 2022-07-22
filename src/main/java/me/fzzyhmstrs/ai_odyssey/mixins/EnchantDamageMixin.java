@@ -29,6 +29,9 @@ public abstract class EnchantDamageMixin {
     @Inject(method = "getMinPower", at = @At(value = "HEAD"), cancellable = true)
     private void getMinPower(int level, CallbackInfoReturnable<Integer> cir) {
         if(this.typeIndex == AQUATIC_INDEX){
+            int i = 0; //adding a modifier to max the maximum levels a bit harder to show up in the imbuing table
+            if (level == 6) i = 8; // may tweak to 6/12
+            if (level >= 7) i = 16;
             cir.setReturnValue(5 + ((level - 1) * 8) + i);
         }
     }

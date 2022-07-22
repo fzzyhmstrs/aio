@@ -8,7 +8,9 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.BlockView
 
-class ImbuedDeepslateBlock(settings: Settings): Block(settings) {
+open class ImbuedBlock(settings: Settings, val fallbackHardness: Float): Block(settings) {
+
+
 
     @Deprecated("Deprecated in Java")
     override fun calcBlockBreakingDelta(
@@ -19,16 +21,15 @@ class ImbuedDeepslateBlock(settings: Settings): Block(settings) {
     ): Float {
         val f = state.getHardness(world, pos)
         if (f == -1.0f) {
-            val level = EnchantmentHelper.getLevel(RegisterEnchantment.IMBUED_TOUCH,player.mainHandStack)
-            return if (level > 0){
-                val i = if (player.canHarvest(state)) 30 else 100
-                player.getBlockBreakingSpeed(state) / f / i.toFloat()
-            } else {
-                0.0f
-            }
+            return 0.0f
         }
+        val level = EnchantmentHelper.getLevel(RegisterEnchantment.IMBUED_TOUCH,player.mainHandStack)
         val i = if (player.canHarvest(state)) 30 else 100
-        return player.getBlockBreakingSpeed(state) / f / i.toFloat()
+        return if (level > 0){
+            player.getBlockBreakingSpeed(state) / fallbackHardness / i.toFloat()
+        } else {
+            player.getBlockBreakingSpeed(state) / f / i.toFloat()
+        }
     }
 
 

@@ -1,9 +1,14 @@
 {
-  "variants": {
-    "lit=false": {
-      "model": "ai_odyssey:block/mysterious_portal_frame"
-    },
-	"lit=true": [
+  "multipart": [
+	{
+		"when": {"lit": "true"},
+		"apply": {
+			"model": "ai_odyssey:block/mysterious_portal_frame"
+		}
+	},
+	{
+		"when": {"lit": "false"},
+		"apply": [
 		{"model": "ai_odyssey:block/mysterious_portal_frame_a"},
 		{"model": "ai_odyssey:block/mysterious_portal_frame_b"},
 		{"model": "ai_odyssey:block/mysterious_portal_frame_c"},
@@ -30,6 +35,7 @@
 		{"model": "ai_odyssey:block/mysterious_portal_frame_x"},
 		{"model": "ai_odyssey:block/mysterious_portal_frame_y"},
 		{"model": "ai_odyssey:block/mysterious_portal_frame_z"}
-    ]
-  }
+		]
+	}
+  ]
 }
