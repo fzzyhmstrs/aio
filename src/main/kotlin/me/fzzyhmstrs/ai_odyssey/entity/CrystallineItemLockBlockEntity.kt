@@ -16,9 +16,12 @@ class CrystallineItemLockBlockEntity(pos: BlockPos, state: BlockState): BlockEnt
     private var keyItem: Item? = null
     private var heldItem: Item? = null
     var heldItemStack: ItemStack = ItemStack.EMPTY
+    var hasKeyItem = false
+    var hasHeldItem = false
 
     fun setKeyItem(item: Item){
         keyItem = item
+        hasKeyItem = true
         markDirty()
     }
 
@@ -39,6 +42,8 @@ class CrystallineItemLockBlockEntity(pos: BlockPos, state: BlockState): BlockEnt
 
     override fun writeNbt(nbt: NbtCompound) {
         super.writeNbt(nbt)
+        Nbt.writeBoolNbt("has_key_item", hasKeyItem, nbt)
+        Nbt.writeBoolNbt("has_held_item", hasHeldItem, nbt)
         if (keyItem != null) {
             Nbt.writeIntNbt(NbtKeys.KEY_ITEM.str(),Registry.ITEM.getRawId(keyItem),nbt)
         }
@@ -49,6 +54,8 @@ class CrystallineItemLockBlockEntity(pos: BlockPos, state: BlockState): BlockEnt
 
     override fun readNbt(nbt: NbtCompound) {
         super.readNbt(nbt)
+        hasKeyItem = Nbt.readBoolNbt("has_key_item",nbt)
+        hasHeldItem = Nbt.readBoolNbt("has_held_item",nbt)
         if (nbt.contains(NbtKeys.KEY_ITEM.str())){
             keyItem = Registry.ITEM.get(Nbt.readIntNbt(NbtKeys.KEY_ITEM.str(),nbt))
         }

@@ -55,15 +55,27 @@ class CrystallineItemLockBlockEntityRenderer(val ctx: BlockEntityRendererFactory
             }
         }
         val lightAbove = WorldRenderer.getLightmapCoordinates(crystallineItemLockBlockEntity.world, crystallineItemLockBlockEntity.pos.up())
-        MinecraftClient.getInstance().itemRenderer.renderItem(
-            crystallineItemLockBlockEntity.heldItemStack,
-            ModelTransformation.Mode.FIXED,
-            lightAbove,
-            j,
-            matrixStack,
-            vertexConsumerProvider,
-            crystallineItemLockBlockEntity.pos.asLong().toInt()
-        )
+        if (crystallineItemLockBlockEntity.hasHeldItem) {
+            MinecraftClient.getInstance().itemRenderer.renderItem(
+                crystallineItemLockBlockEntity.heldItemStack,
+                ModelTransformation.Mode.FIXED,
+                lightAbove,
+                j,
+                matrixStack,
+                vertexConsumerProvider,
+                crystallineItemLockBlockEntity.pos.asLong().toInt()
+            )
+        } else if (crystallineItemLockBlockEntity.hasKeyItem){
+            MinecraftClient.getInstance().itemRenderer.renderItem(
+                crystallineItemLockBlockEntity.heldItemStack,
+                ModelTransformation.Mode.FIXED,
+                0,
+                j,
+                matrixStack,
+                vertexConsumerProvider,
+                crystallineItemLockBlockEntity.pos.asLong().toInt()
+            )
+        }
         matrixStack.pop()
 
     }
