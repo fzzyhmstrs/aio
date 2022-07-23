@@ -1,6 +1,11 @@
 {
   "replace": false,
   "values": [
-    "amethyst_imbuement:steel_block"
+    "ai_odyssey:crystalline_lantern",
+	  "ai_odyssey:crystalline_switch",
+	  "ai_odyssey:crystalline_switch_pedestal",
+	  "ai_odyssey:crystalline_item_lock",
+	  "ai_odyssey:crystalline_num_lock",
+	  "ai_odyssey:facility_teleporter"
   ]
 }

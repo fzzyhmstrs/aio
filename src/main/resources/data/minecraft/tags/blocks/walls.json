@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "ai_odyssey:imbued_deepslate_wall_cobbled",
+	  "ai_odyssey:imbued_deepslate_wall_bricks",
+	  "ai_odyssey:imbued_deepslate_wall_tiles",
+	  "ai_odyssey:imbued_deepslate_wall_polished"
+  ]
+}

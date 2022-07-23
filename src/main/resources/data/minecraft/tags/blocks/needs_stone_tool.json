@@ -1,9 +1,31 @@
 {
   "replace": false,
   "values": [
-    "amethyst_imbuement:beryl_copper_block",
-	"amethyst_imbuement:cut_beryl_copper_block",
-	"amethyst_imbuement:cut_beryl_copper_slab",
-	"amethyst_imbuement:cut_beryl_copper_stairs"
+	  "ai_odyssey:imbued_deepslate",
+	  "ai_odyssey:imbued_deepslate_message",
+	  "ai_odyssey:imbued_deepslate_splatter",
+	  "ai_odyssey:imbued_deepslate_cobbled",
+	  "ai_odyssey:imbued_deepslate_polished",
+	  "ai_odyssey:imbued_deepslate_bricks",
+	  "ai_odyssey:imbued_deepslate_bricks_cracked",
+	  "ai_odyssey:imbued_deepslate_chiseled",
+	  "ai_odyssey:imbued_deepslate_tiles",
+	  "ai_odyssey:imbued_deepslate_tiles_cracked",
+	  "ai_odyssey:imbued_deepslate_wall_cobbled",
+	  "ai_odyssey:imbued_deepslate_wall_bricks",
+	  "ai_odyssey:imbued_deepslate_wall_tiles",
+	  "ai_odyssey:imbued_deepslate_wall_polished",
+	  "ai_odyssey:imbued_deepslate_stairs_cobbled",
+	  "ai_odyssey:imbued_deepslate_stairs_bricks",
+	  "ai_odyssey:imbued_deepslate_stairs_tiles",
+	  "ai_odyssey:imbued_deepslate_stairs_polished",
+	  "ai_odyssey:imbued_deepslate_slab_cobbled",
+	  "ai_odyssey:imbued_deepslate_slab_bricks",
+	  "ai_odyssey:imbued_deepslate_slab_tiles",
+	  "ai_odyssey:imbued_deepslate_slab_polished",
+	  "ai_odyssey:imbued_glass",
+      "ai_odyssey:petroglyph",
+	  "ai_odyssey:petroglyph_cracked",
+	  "ai_odyssey:petroglyph_recipe"
   ]
 }

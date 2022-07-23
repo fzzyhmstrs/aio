@@ -1,13 +1,13 @@
 {
   "multipart": [
 	{
-		"when": {"lit": "true"},
+		"when": {"lit": "false"},
 		"apply": {
 			"model": "ai_odyssey:block/mysterious_portal_frame"
 		}
 	},
 	{
-		"when": {"lit": "false"},
+		"when": {"lit": "true"},
 		"apply": [
 		{"model": "ai_odyssey:block/mysterious_portal_frame_a"},
 		{"model": "ai_odyssey:block/mysterious_portal_frame_b"},

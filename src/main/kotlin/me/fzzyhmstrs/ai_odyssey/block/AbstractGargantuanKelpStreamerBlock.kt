@@ -9,6 +9,7 @@ import net.minecraft.fluid.FluidState
 import net.minecraft.fluid.Fluids
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.state.StateManager
+import net.minecraft.state.property.IntProperty
 import net.minecraft.state.property.Properties
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
@@ -22,7 +23,7 @@ abstract class AbstractGargantuanKelpStreamerBlock(settings: Settings): Block(se
     companion object{
         protected val FACING = Properties.HORIZONTAL_FACING
         protected val AGE = Properties.AGE_1
-        protected val LENGTH = Properties.AGE_1
+        protected val LENGTH = IntProperty.of("length",0,1)
     }
 
     abstract fun getStreamer(): AbstractGargantuanKelpStreamerBlock

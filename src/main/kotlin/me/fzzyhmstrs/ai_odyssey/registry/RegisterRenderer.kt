@@ -78,11 +78,22 @@ object RegisterRenderer {
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.SEA_APPLE_BUSH, RenderLayer.getCutout())
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.SEA_BAMBOO, RenderLayer.getCutout())
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.SEA_BAMBOO_PLANT, RenderLayer.getCutout())
+        BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.SKELETAL_KELP, RenderLayer.getCutout())
+        BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.SKELETAL_KELP_PLANT, RenderLayer.getCutout())
+        BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.GARGANTUAN_KELP, RenderLayer.getCutout())
+        BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.GARGANTUAN_KELP_DOOR, RenderLayer.getCutout())
+        BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.GARGANTUAN_KELP_STREAMER, RenderLayer.getCutout())
+        BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.GARGANTUAN_KELP_TRAPDOOR, RenderLayer.getCutout())
+        BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.GARGANTUAN_SKELETAL_KELP, RenderLayer.getCutout())
+        BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.GARGANTUAN_SKELETAL_KELP_DOOR, RenderLayer.getCutout())
+        BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.GARGANTUAN_SKELETAL_KELP_STREAMER, RenderLayer.getCutout())
+        BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.GARGANTUAN_SKELETAL_KELP_TRAPDOOR, RenderLayer.getCutout())
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.TURTLE_GRASS, RenderLayer.getCutout())
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.WIRE_WEED, RenderLayer.getCutout())
 
         
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.HARD_LIGHT_BARRIER, RenderLayer.getTranslucent())
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.CRYSTALLINE_SWITCH, RenderLayer.getTranslucent())
+        BlockRenderLayerMap.INSTANCE.putBlock(RegisterBlock.IMBUED_GLASS, RenderLayer.getTranslucent())
     }
 }

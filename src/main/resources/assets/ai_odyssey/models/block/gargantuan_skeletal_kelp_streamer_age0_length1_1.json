@@ -1,6 +1,6 @@
 {
 	"credit": "Made with Blockbench",
-	"parent": "ai_odyssey:block/gargantuan_skeletal_streamer",
+	"parent": "ai_odyssey:block/gargantuan_streamer",
 	"textures": {
 		"0": "ai_odyssey:block/gargantuan_skeletal_kelp_streamer_age0_length1_1",
 		"1": "ai_odyssey:block/gargantuan_skeletal_kelp_streamer_age0_length1_2",

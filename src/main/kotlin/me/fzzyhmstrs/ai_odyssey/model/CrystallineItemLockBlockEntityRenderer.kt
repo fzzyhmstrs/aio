@@ -29,6 +29,7 @@ class CrystallineItemLockBlockEntityRenderer(val ctx: BlockEntityRendererFactory
         i: Int,
         j: Int
     ) {
+        if (!(crystallineItemLockBlockEntity.hasHeldItem || crystallineItemLockBlockEntity.hasKeyItem)) return
         matrixStack.push()
         matrixStack.scale(0.5F,0.5F,0.5F)
         matrixStack.translate(1.0, 1.9, 1.0)

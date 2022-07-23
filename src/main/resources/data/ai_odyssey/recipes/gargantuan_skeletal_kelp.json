@@ -10,7 +10,7 @@
 	  "item": "minecraft:bone_meal"
 	},
 	"G": {
-	  "item": "minecraft:skeletal_kelp"
+	  "item": "ai_odyssey:skeletal_kelp"
 	}
   },
   "result": {

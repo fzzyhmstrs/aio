@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"parent": "ai_odyssey:block/gargantuan_streamer",
 	"textures": {
-		"0": "ai_odyssey:block/gargantuan_skeletal_kelp_streamer_age0_length0_0",
-		"1": "ai_odyssey:block/gargantuan_skeletal_kelp_streamer_age0_length0_1",
-		"2": "ai_odyssey:block/gargantuan_skeletal_kelp_streamer_age0_length0_2",
-		"particle": "ai_odyssey:block/gargantuan_skeletal_kelp_streamer_age0_length0_0"
+		"0": "ai_odyssey:block/gargantuan_skeletal_kelp_streamer_age1_length0_0",
+		"1": "ai_odyssey:block/gargantuan_skeletal_kelp_streamer_age1_length0_1",
+		"2": "ai_odyssey:block/gargantuan_skeletal_kelp_streamer_age1_length0_2",
+		"particle": "ai_odyssey:block/gargantuan_skeletal_kelp_streamer_age1_length0_0"
 	}
 }

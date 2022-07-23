@@ -1,0 +1,8 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "ai_odyssey:block/template_gargantuan_kelp",
+	"textures": {
+		"stem": "ai_odyssey:block/gargantuan_skeletal_kelp_stem",
+		"kelp": "ai_odyssey:block/skeletal_kelp"
+	}
+}

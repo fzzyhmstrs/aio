@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "ai_odyssey:stripped_skeletal_gargantuan_kelp_stem"
+          "name": "ai_odyssey:stripped_gargantuan_skeletal_kelp_stem"
         }
       ],
       "conditions": [

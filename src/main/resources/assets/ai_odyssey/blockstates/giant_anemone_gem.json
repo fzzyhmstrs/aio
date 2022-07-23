@@ -1,0 +1,10 @@
+{
+  "multipart": [
+  {"apply": [
+		{"model": "ai_odyssey:block/gabbro_1"},
+		{"model": "ai_odyssey:block/gabbro_2"},
+		{"model": "ai_odyssey:block/gabbro_3"},
+		{"model": "ai_odyssey:block/gabbro_4"}
+  ]}
+  ]
+}

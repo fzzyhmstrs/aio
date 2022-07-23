@@ -9,7 +9,6 @@ import me.fzzyhmstrs.amethyst_core.coding_util.SyncedConfigHelper
 import me.fzzyhmstrs.amethyst_core.coding_util.SyncedConfigHelper.gson
 import me.fzzyhmstrs.amethyst_core.coding_util.SyncedConfigHelper.readOrCreate
 import me.fzzyhmstrs.amethyst_core.registry.SyncedConfigRegistry
-import me.fzzyhmstrs.amethyst_imbuement.config.AiConfig
 import net.minecraft.network.PacketByteBuf
 
 object AioConfig: SyncedConfigHelper.SyncedConfig {

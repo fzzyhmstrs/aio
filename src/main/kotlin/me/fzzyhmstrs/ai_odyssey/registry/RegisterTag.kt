@@ -1,7 +1,6 @@
 package me.fzzyhmstrs.ai_odyssey.registry
 
 import me.fzzyhmstrs.ai_odyssey.AIO
-import me.fzzyhmstrs.amethyst_imbuement.AI
 import net.minecraft.block.Block
 import net.minecraft.item.Item
 import net.minecraft.tag.TagKey

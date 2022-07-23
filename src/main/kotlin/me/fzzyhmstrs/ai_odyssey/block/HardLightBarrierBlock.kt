@@ -14,6 +14,7 @@ import net.minecraft.state.StateManager
 import net.minecraft.state.property.Properties
 import net.minecraft.util.ActionResult
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Direction
 import net.minecraft.util.shape.VoxelShape
 import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.BlockView
@@ -36,6 +37,28 @@ class HardLightBarrierBlock(settings: Settings): Block(settings), SwitchDoor {
 
     override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
         builder.add(LOCKED)
+    }
+
+    @Deprecated("Deprecated in Java", ReplaceWith("VoxelShapes.empty()", "net.minecraft.util.shape.VoxelShapes"))
+    override fun getCameraCollisionShape(
+        state: BlockState?,
+        world: BlockView?,
+        pos: BlockPos?,
+        context: ShapeContext?
+    ): VoxelShape? {
+        return VoxelShapes.empty()
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun isSideInvisible(state: BlockState?, stateFrom: BlockState, direction: Direction?): Boolean {
+        return if (stateFrom.isOf(this)) {
+            true
+        } else super.isSideInvisible(state, stateFrom, direction)
+    }
+
+    @Deprecated("Deprecated in Java", ReplaceWith("1.0f"))
+    override fun getAmbientOcclusionLightLevel(state: BlockState?, world: BlockView?, pos: BlockPos?): Float {
+        return 1.0f
     }
 
     override fun isTranslucent(state: BlockState?, world: BlockView?, pos: BlockPos?): Boolean {

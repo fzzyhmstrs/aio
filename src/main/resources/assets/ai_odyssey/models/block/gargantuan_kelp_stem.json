@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "ai_odyssey:block/gargantuan_kelp_stem_top",
+    "side": "ai_odyssey:block/gargantuan_kelp_stem"
+  }
+}
