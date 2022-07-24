@@ -50,20 +50,7 @@ class CrystallineNumLockBlock(settings: Settings): AbstractLockBlock(settings), 
         hand: Hand,
         hit: BlockHitResult
     ): ActionResult {
-        if (world.isClient) super.onUse(state, world, pos, player, hand, hit)
-        val stack = player.getStackInHand(hand)
-        if (stack.isOf(RegisterItem.FACILITY_CONFIGURATOR)){
-            val chkEntity = world.getBlockEntity(pos)
-            if (chkEntity != null){
-                if (chkEntity is CrystallineNumLockBlockEntity){
-                    val num = state.get(LOCK_NUM)
-                    chkEntity.setKeyNumber(num)
-                    player.sendMessage(TranslatableText("message.configurator.num_lock").append(LiteralText(num.toString())), false)
-                    FacilityChimes.CONFIG_SUCCESS.playSound(world, pos)
-                    return ActionResult.SUCCESS
-                }
-            }
-        }
+        if (world.isClient) return ActionResult.FAIL
         if (world.setBlockState(pos,state.cycle(LOCK_NUM))){
                 FacilityChimes.NUM_CLICK.playSound(world, pos)
             return ActionResult.SUCCESS
@@ -85,6 +72,10 @@ class CrystallineNumLockBlock(settings: Settings): AbstractLockBlock(settings), 
             val offHandStack = user.offHandStack
             if (!offHandStack.isEmpty) {
                 val offHandCount = offHandStack.count
+                if (offHandCount > 10) {
+                    user.sendMessage(TranslatableText("message.num_lock.num_count_fail"), false)
+                    ActionResult.FAIL
+                }
                 val keyNumber = entity.setKeyNumber(offHandCount - 1)
                 user.sendMessage(TranslatableText("message.num_lock.num_set", keyNumber.toString()), false)
                 ActionResult.SUCCESS

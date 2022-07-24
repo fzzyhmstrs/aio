@@ -32,7 +32,7 @@ class CrystallineItemLockBlockEntityRenderer(val ctx: BlockEntityRendererFactory
         if (!(crystallineItemLockBlockEntity.hasHeldItem || crystallineItemLockBlockEntity.hasKeyItem)) return
         matrixStack.push()
         matrixStack.scale(0.5F,0.5F,0.5F)
-        matrixStack.translate(1.0, 1.9, 1.0)
+        matrixStack.translate(1.0, 2.9, 1.0)
         when (crystallineItemLockBlockEntity.cachedState.get(AbstractLockBlock.FACING)){
             Direction.NORTH->{
                 matrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(67.5F))
@@ -68,9 +68,9 @@ class CrystallineItemLockBlockEntityRenderer(val ctx: BlockEntityRendererFactory
             )
         } else if (crystallineItemLockBlockEntity.hasKeyItem){
             MinecraftClient.getInstance().itemRenderer.renderItem(
-                crystallineItemLockBlockEntity.heldItemStack,
+                crystallineItemLockBlockEntity.keyItemStack,
                 ModelTransformation.Mode.FIXED,
-                0,
+                1,
                 j,
                 matrixStack,
                 vertexConsumerProvider,

@@ -104,7 +104,7 @@ class HardLightBarrierBlock(settings: Settings): Block(settings), SwitchDoor {
         pos: BlockPos,
         state: BlockState
     ): ActionResult {
-        TODO("Not yet implemented")
+        return ActionResult.SUCCESS
     }
 
     override fun openDoor(world: World, user: LivingEntity, pos: BlockPos, state: BlockState) {

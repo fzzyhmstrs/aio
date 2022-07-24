@@ -74,6 +74,7 @@ class CrystallineSwitchBlockEntity(pos: BlockPos, state: BlockState): RotatableF
         fun tick(world: World, pos: BlockPos, state: BlockState, blockEntity: CrystallineSwitchBlockEntity) {
             if (EventRegistry.ticker_20.isNotReady()) return
             if (blockEntity.locks.isNotEmpty()){
+                println(blockEntity.locks)
                 var bl = true
                 blockEntity.locks.forEach {
                     val lockEntity = world.getBlockEntity(it)

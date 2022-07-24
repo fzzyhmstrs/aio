@@ -9,7 +9,7 @@ import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtList
 import net.minecraft.util.math.BlockPos
 
-class MysteriousPortalFrameBlockEntity(pos: BlockPos, state: BlockState):RotatableFacilityBlockEntity(RegisterEntity.MYSTERIOUS_PORTAL_FRAME_BLOCK_ENTITY,pos, state) {
+class MysteriousPortalFrameBlockEntity(pos: BlockPos, state: BlockState): RotatableFacilityBlockEntity(RegisterEntity.MYSTERIOUS_PORTAL_FRAME_BLOCK_ENTITY,pos, state) {
 
     private var portalKey: Boolean = false
     private var frameList: List<BlockPos> = listOf()

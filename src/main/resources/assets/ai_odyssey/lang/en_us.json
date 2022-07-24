@@ -254,6 +254,10 @@
 	"scepter.modifiers.ai_odyssey:healers_grace": "Healers Grace",
 	"scepter.modifiers.ai_odyssey:traveler": "Traveler",
 	"container.entangled_satchel": "Entangled Satchel",
+	"message.switch.blue": "Set to door mode.",
+	"message.switch.green": "Set to portal mode.",
+	"message.switch.yellow": "Set to teleporter mode.",
+	"message.switch.red": "Set to lockdown mode.",
 	"message.configurator.num_lock": "Number key set as ",
 	"message.configurator.entity_fail": "Couldn't find block entity at %1$s ...",
 	"message.configurator.door_fail": "Parent switch at %1$s already has a door at %2$s ...",
@@ -267,6 +271,9 @@
 	"message.teleporter.linked": "Teleporter at %1$s linked to teleporter at %2$s",
 	"message.item_lock.item_set": "Key item set to %1$s",
 	"message.item_lock.item_fail": "Need a key item in your off-hand.",
+	"message.num_lock.num_set": "Number key set as ",
+	"message.num_lock.num_fail": "Need a stack of items with qty 1-10 in your off-hand.",
+	"message.num_lock.num_count_fail": "Offhand stack has greater than 10 items.",
 	"message.portal_frame.frame_fail": "Couldn't find portal frame expected at %1$s ...",
 	"message.portal_frame.key_set": "Portal frame at %1$s set as the key frame block.",
 	"message.portal_frame.key_set_fail": "Portal frame at %1$s is already a portal key frame.",
@@ -278,5 +285,4 @@
 	"message.portal_frame.layer_fail": "Frame validation failed between layers %1$s and %2$s.",
 	"message.portal_frame.base_fail": "Base of portal needs to be continuous!",
 	"message.portal_frame.no_axis": "Couldn't determine the axis the portal is on from selected position %1$s"
-	
 }

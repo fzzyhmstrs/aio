@@ -17,6 +17,8 @@ import net.minecraft.state.property.BooleanProperty
 import net.minecraft.state.property.DirectionProperty
 import net.minecraft.state.property.EnumProperty
 import net.minecraft.state.property.Properties
+import net.minecraft.text.Text
+import net.minecraft.text.TranslatableText
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
 import net.minecraft.util.StringIdentifiable
@@ -67,13 +69,14 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
         hand: Hand,
         hit: BlockHitResult
     ): ActionResult {
-        if (world.isClient) return super.onUse(state, world, pos, player, hand, hit)
+        if (world.isClient) return ActionResult.FAIL
+        if (hand == Hand.OFF_HAND) return ActionResult.FAIL
         val stack = player.getStackInHand(hand)
         if (stack.isOf(RegisterItem.FACILITY_CONFIGURATOR)){
             return super.onUse(state, world, pos, player, hand, hit)
         }
         val switchEntity = RegisterEntity.getBlockEntity(world, pos, RegisterEntity.CRYSTALLINE_SWITCH_BLOCK_ENTITY)
-            ?: return super.onUse(state, world, pos, player, hand, hit)
+            ?: return ActionResult.FAIL
         if (switchEntity.isUnlocked()) {
             val colorState = state.get(SWITCH_COLOR)
             if (colorState.onUse(state, world, pos, player, hand, hit, switchEntity)) {
@@ -123,13 +126,13 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
             }
         }
 
-        fun getDoorEntities(world: World,list: List<BlockPos>): List<SwitchDoor>{
-            val doorList: MutableList<SwitchDoor> = mutableListOf()
+        fun getDoors(world: World,list: List<BlockPos>): Map<BlockPos, SwitchDoor>{
+            val doorList: MutableMap<BlockPos, SwitchDoor> = mutableMapOf()
             list.forEach {
-                val chk = world.getBlockEntity(it)
+                val chk = world.getBlockState(it).block
                 if (chk != null) {
                     if (chk is SwitchDoor) {
-                        doorList.add(chk)
+                        doorList[it] = chk
                     }
                 }
             }
@@ -149,14 +152,18 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
                     hit: BlockHitResult,
                     entity: CrystallineSwitchBlockEntity
                 ): Boolean {
-                    val doors = getDoorEntities(world, entity.getDoors())
+                    val doors = getDoors(world, entity.getDoors())
                     if (doors.isEmpty()) return false
                     doors.forEach {
-                        if (it.doorType() == SwitchDoor.DoorType.DOOR){
-                            it.openDoor(world, player, pos, state)
+                        if (it.value.doorType() == SwitchDoor.DoorType.DOOR){
+                            it.value.openDoor(world, player, it.key, world.getBlockState(it.key))
                         }
                     }
                     return true
+                }
+
+                override fun colorMessage(): Text {
+                    return TranslatableText("message.switch.blue")
                 }
             },
             RED("red") {
@@ -172,6 +179,10 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
                 ): Boolean {
                     return false
                 }
+
+                override fun colorMessage(): Text {
+                    return TranslatableText("message.switch.red")
+                }
             },
             GREEN("green") {
                 // portal use
@@ -184,14 +195,18 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
                     hit: BlockHitResult,
                     entity: CrystallineSwitchBlockEntity
                 ): Boolean {
-                    val doors = getDoorEntities(world, entity.getDoors())
+                    val doors = getDoors(world, entity.getDoors())
                     if (doors.isEmpty()) return false
                     doors.forEach {
-                        if (it.doorType() == SwitchDoor.DoorType.PORTAL){
-                            it.openDoor(world, player, pos, state)
+                        if (it.value.doorType() == SwitchDoor.DoorType.PORTAL){
+                            it.value.openDoor(world, player, it.key, state)
                         }
                     }
                     return true
+                }
+
+                override fun colorMessage(): Text {
+                    return TranslatableText("message.switch.green")
                 }
             },
             YELLOW("yellow") {
@@ -205,14 +220,18 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
                     hit: BlockHitResult,
                     entity: CrystallineSwitchBlockEntity
                 ): Boolean {
-                    val doors = getDoorEntities(world, entity.getDoors())
+                    val doors = getDoors(world, entity.getDoors())
                     if (doors.isEmpty()) return false
                     doors.forEach {
-                        if (it.doorType() == SwitchDoor.DoorType.TELEPORTER){
-                            it.openDoor(world, player, pos, state)
+                        if (it.value.doorType() == SwitchDoor.DoorType.TELEPORTER){
+                            it.value.openDoor(world, player, it.key, state)
                         }
                     }
                     return true
+                }
+
+                override fun colorMessage(): Text {
+                    return TranslatableText("message.switch.yellow")
                 }
             };
 
@@ -224,6 +243,8 @@ class CrystallineSwitchBlock(settings: Settings): BlockWithEntity(settings) {
                 hand: Hand,
                 hit: BlockHitResult,
                 entity: CrystallineSwitchBlockEntity): Boolean
+
+            abstract fun colorMessage(): Text
 
             override fun asString(): String {
                 return this.str

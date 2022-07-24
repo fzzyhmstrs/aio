@@ -2,6 +2,7 @@ package me.fzzyhmstrs.ai_odyssey.block
 
 import me.fzzyhmstrs.ai_odyssey.configurator.SwitchLock
 import me.fzzyhmstrs.ai_odyssey.entity.CrystallineItemLockBlockEntity
+import me.fzzyhmstrs.ai_odyssey.item.FacilityConfigurationStick
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
 import me.fzzyhmstrs.ai_odyssey.util.FacilityChimes
 import net.minecraft.block.Block
@@ -39,12 +40,13 @@ class CrystallineItemLockBlock(settings: Settings): AbstractLockBlock(settings),
         hand: Hand,
         hit: BlockHitResult
     ): ActionResult {
-        if (world.isClient) return super.onUse(state, world, pos, player, hand, hit)
+        if (world.isClient) return ActionResult.FAIL
         val chkEntity = world.getBlockEntity(pos)
         if (chkEntity != null){
             if (chkEntity is CrystallineItemLockBlockEntity){
                 val stack = player.getStackInHand(hand)
                 val item = stack.item
+                if (item is FacilityConfigurationStick) return ActionResult.PASS
                 if (chkEntity.trySetHeldItem(item)){
                     FacilityChimes.HIGH_SUCCESS.playSound(world, pos)
                     return ActionResult.SUCCESS

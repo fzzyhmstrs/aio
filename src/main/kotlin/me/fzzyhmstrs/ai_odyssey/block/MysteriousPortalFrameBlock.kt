@@ -2,12 +2,16 @@ package me.fzzyhmstrs.ai_odyssey.block
 
 import me.fzzyhmstrs.ai_odyssey.config.AioConfig
 import me.fzzyhmstrs.ai_odyssey.configurator.SwitchDoor
+import me.fzzyhmstrs.ai_odyssey.entity.MysteriousPortalFrameBlockEntity
 import me.fzzyhmstrs.ai_odyssey.entity.RotatableFacilityBlockEntity
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterBlock
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
 import me.fzzyhmstrs.ai_odyssey.util.FacilityChimes
 import net.minecraft.block.Block
+import net.minecraft.block.BlockRenderType
 import net.minecraft.block.BlockState
+import net.minecraft.block.BlockWithEntity
+import net.minecraft.block.entity.BlockEntity
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemPlacementContext
@@ -27,7 +31,7 @@ import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
 
-class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoor {
+class MysteriousPortalFrameBlock(settings: Settings): BlockWithEntity(settings), SwitchDoor {
 
     override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {
         return super.getPlacementState(ctx)?.with(LIT,false)?.with(RotatableFacilityBlockEntity.ROTATION,Direction.SOUTH)
@@ -35,6 +39,15 @@ class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoo
 
     override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
         builder.add(LIT, RotatableFacilityBlockEntity.ROTATION)
+    }
+
+    override fun createBlockEntity(pos: BlockPos, state: BlockState): BlockEntity {
+        return MysteriousPortalFrameBlockEntity(pos, state)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun getRenderType(state: BlockState): BlockRenderType {
+        return BlockRenderType.MODEL
     }
 
     @Deprecated("Deprecated in Java")
@@ -75,6 +88,7 @@ class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoo
             return ActionResult.FAIL
         }
         val layerMapResult = composePortalFrame(world, pos)
+        println(layerMapResult.layerMap)
         if (!layerMapResult.failed) {
             val layerMap = layerMapResult.layerMap
             val frameList = layersToList(layerMap)
@@ -112,7 +126,7 @@ class MysteriousPortalFrameBlock(settings: Settings): Block(settings), SwitchDoo
     }
 
     override fun openDoor(world: World, user: LivingEntity, pos: BlockPos, state: BlockState) {
-        TODO("Not yet implemented")
+        return
     }
 
     override fun doorType(): SwitchDoor.DoorType {

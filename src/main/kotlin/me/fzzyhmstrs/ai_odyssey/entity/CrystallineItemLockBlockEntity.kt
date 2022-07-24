@@ -15,6 +15,7 @@ class CrystallineItemLockBlockEntity(pos: BlockPos, state: BlockState): BlockEnt
 
     private var keyItem: Item? = null
     private var heldItem: Item? = null
+    var keyItemStack: ItemStack = ItemStack.EMPTY
     var heldItemStack: ItemStack = ItemStack.EMPTY
     var hasKeyItem = false
     var hasHeldItem = false
@@ -22,12 +23,14 @@ class CrystallineItemLockBlockEntity(pos: BlockPos, state: BlockState): BlockEnt
     fun setKeyItem(item: Item){
         keyItem = item
         hasKeyItem = true
+        keyItemStack = ItemStack(item)
         markDirty()
     }
 
     fun trySetHeldItem(item: Item): Boolean{
         return if (keyItem != null && item == keyItem){
             heldItem = item
+            hasHeldItem = true
             heldItemStack = ItemStack(item)
             markDirty()
             true
@@ -37,6 +40,8 @@ class CrystallineItemLockBlockEntity(pos: BlockPos, state: BlockState): BlockEnt
     }
 
     fun isUnlocked(): Boolean {
+        println(heldItem)
+        println(keyItem)
         return heldItem == keyItem
     }
 
@@ -58,6 +63,7 @@ class CrystallineItemLockBlockEntity(pos: BlockPos, state: BlockState): BlockEnt
         hasHeldItem = Nbt.readBoolNbt("has_held_item",nbt)
         if (nbt.contains(NbtKeys.KEY_ITEM.str())){
             keyItem = Registry.ITEM.get(Nbt.readIntNbt(NbtKeys.KEY_ITEM.str(),nbt))
+            keyItemStack = ItemStack(keyItem)
         }
         if (nbt.contains(NbtKeys.HELD_ITEM.str())){
             heldItem = Registry.ITEM.get(Nbt.readIntNbt(NbtKeys.HELD_ITEM.str(),nbt))
