@@ -1,6 +1,7 @@
 package me.fzzyhmstrs.ai_odyssey
 
 import me.fzzyhmstrs.ai_odyssey.config.AioConfig
+import me.fzzyhmstrs.ai_odyssey.entity.LambentTridentEntity
 import me.fzzyhmstrs.ai_odyssey.registry.*
 import me.fzzyhmstrs.ai_odyssey.scepter.ResonateAugment
 import net.fabricmc.api.ClientModInitializer
@@ -30,6 +31,7 @@ object AIO_Client: ClientModInitializer{
         RegisterScreen.registerAll()
         RegisterItemModel.registerAll()
         RegisterParticle.registerParticleFactories()
+        LambentTridentEntity.registerClient()
         ResonateAugment.registerClient()
     }
 

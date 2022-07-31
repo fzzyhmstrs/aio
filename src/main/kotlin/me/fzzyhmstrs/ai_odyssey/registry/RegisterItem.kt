@@ -18,10 +18,8 @@ import me.fzzyhmstrs.amethyst_imbuement.tool.ScepterLvl3ToolMaterial
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.effect.StatusEffects
-import net.minecraft.item.AliasedBlockItem
-import net.minecraft.item.FoodComponent
-import net.minecraft.item.Item
-import net.minecraft.item.ItemGroup
+import net.minecraft.entity.vehicle.BoatEntity
+import net.minecraft.item.*
 import net.minecraft.util.Identifier
 import net.minecraft.util.Rarity
 import net.minecraft.util.registry.Registry
@@ -161,6 +159,8 @@ object RegisterItem {
     val GOLDEN_SEA_APPLE = Item(FabricItemSettings().group(ItemGroup.FOOD).food(goldenSeaAppleFood)).also{ regItem["golden_sea_apple"] = it}
     private val bullKelpFood = FoodComponent.Builder().hunger(2).saturationModifier(0.2f).alwaysEdible().snack().build()
     val BULL_KELP = BullKelpBlockItem(RegisterBlock.BULL_KELP, FabricItemSettings().group(ItemGroup.DECORATIONS).food(bullKelpFood)).also{ regItem["bull_kelp"] = it}
+    val GARGANTUAN_KELP_BOAT = BoatItem(BoatEntity.Type.OAK,FabricItemSettings().maxCount(1).group(ItemGroup.TRANSPORTATION)).also{ regItem["gargantuan_kelp_boat"] = it}
+    val GARGANTUAN_SKELETAL_KELP_BOAT = BoatItem(BoatEntity.Type.OAK,FabricItemSettings().maxCount(1).group(ItemGroup.TRANSPORTATION)).also{ regItem["gargantuan_skeletal_kelp_boat"] = it}
 
 
 
