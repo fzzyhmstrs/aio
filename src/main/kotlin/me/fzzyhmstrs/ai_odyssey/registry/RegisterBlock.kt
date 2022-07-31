@@ -95,11 +95,11 @@ object RegisterBlock {
     val GARGANTUAN_KELP_STAIRS = StairsBlock(GARGANTUAN_KELP_PLANKS.defaultState,FabricBlockSettings.copyOf(GARGANTUAN_KELP_PLANKS))
     val GARGANTUAN_KELP_TRAPDOOR = TrapdoorBlock(FabricBlockSettings.of(Material.WOOD, MapColor.LICHEN_GREEN).strength(3.0f).sounds(BlockSoundGroup.WOOD).nonOpaque().allowsSpawning { _: BlockState, _: BlockView, _: BlockPos, _: EntityType<*> -> never() })
 
-    val GARGANTUAN_SKELETAL_KELP = GargantuanKelpBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).ticksRandomly().strength(2.0f, 3.0f).sounds(
+    val GARGANTUAN_SKELETAL_KELP = GargantuanSkeletalKelpBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).ticksRandomly().strength(2.0f, 3.0f).sounds(
         BlockSoundGroup.WOOD))
-    val GARGANTUAN_SKELETAL_KELP_PLANT = GargantuanKelpPlantBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).ticksRandomly().strength(2.0f, 3.0f).sounds(
+    val GARGANTUAN_SKELETAL_KELP_PLANT = GargantuanSkeletalKelpPlantBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).strength(2.0f, 3.0f).sounds(
         BlockSoundGroup.WOOD))
-    val GARGANTUAN_SKELETAL_KELP_STREAMER = GargantuanKelpStreamerBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().breakInstantly().sounds(
+    val GARGANTUAN_SKELETAL_KELP_STREAMER = GargantuanSkeletalKelpStreamerBlock(FabricBlockSettings.of(Material.UNDERWATER_PLANT).noCollision().breakInstantly().sounds(
         BlockSoundGroup.WET_GRASS).dropsNothing())
     val GARGANTUAN_SKELETAL_KELP_BUTTON = WoodenButtonBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD))
     val GARGANTUAN_SKELETAL_KELP_DOOR = DoorBlock(FabricBlockSettings.of(Material.WOOD, MapColor.LICHEN_GREEN).strength(3.0f).sounds(BlockSoundGroup.WOOD).nonOpaque())
@@ -144,7 +144,9 @@ object RegisterBlock {
         .allowsSpawning { _: BlockState, _: BlockView, _: BlockPos, _: EntityType<*> -> never() }
         .blockVision { _, _, _ ->  never()}
         .suffocates { _, _, _ -> never() }
-        .solidBlock { _, _, _ -> never() })
+        .solidBlock { _, _, _ -> never() }
+        .luminance { state: BlockState ->
+            HardLightBarrierBlock.STATE_TO_LUMINANCE.applyAsInt(state)})
     val HARD_LIGHT_BARRIER_FRAME = Block(FabricBlockSettings.of(Material.STONE).strength(-1.0F,3600000.0f).dropsNothing())
     val MYSTERIOUS_PORTAL_FRAME = MysteriousPortalFrameBlock(FabricBlockSettings.of(Material.STONE).strength(-1.0F,3600000.0f).dropsNothing())
     val PETROGLYPH = Block(FabricBlockSettings.of(Material.STONE, MapColor.OFF_WHITE).requiresTool().strength(50.0f, 1200.0f))

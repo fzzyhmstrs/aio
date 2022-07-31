@@ -11,29 +11,71 @@ import net.minecraft.state.property.IntProperty
 import net.minecraft.tag.FluidTags
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
-import net.minecraft.util.shape.VoxelShapes
+import net.minecraft.util.shape.VoxelShape
 import net.minecraft.world.BlockView
+import net.minecraft.world.World
 import net.minecraft.world.WorldAccess
+import net.minecraft.world.WorldView
 import java.util.*
 
-abstract class AbstractGargantuanKelpBlock(settings: Settings, private val growthChance: Double = 0.06):
-    AbstractPlantStemBlock(settings, Direction.UP, VoxelShapes.fullCube(),true,growthChance),
-    FluidFillable {
+abstract class AbstractGargantuanKelpBlock(settings: Settings,
+                                           protected val growthDirection: Direction,
+                                           protected val outlineShape: VoxelShape,
+                                           private val growthChance: Double = 0.25,
+                                           private val tickWater: Boolean = true):
+    Block(settings),
+    FluidFillable, Fertilizable {
 
     companion object{
         private val AGE = IntProperty.of("age", 0, 150)
+    }
+
+    init{
+        defaultState = (stateManager.defaultState as BlockState).with(AGE, 0) as BlockState
     }
 
     abstract fun getStreamer(): AbstractGargantuanKelpStreamerBlock
 
     abstract fun getWood(): PillarBlock
 
-    override fun appendProperties(builder: StateManager.Builder<Block?, BlockState?>) {
-        builder.add(AbstractPlantStemBlock.AGE)
+    abstract fun getPlant(): AbstractGargantuanKelpPlantBlock
+
+    open fun getStem(): AbstractGargantuanKelpBlock{
+        return this
     }
 
-    override fun getRandomGrowthState(world: WorldAccess): BlockState {
+    @Deprecated("Deprecated in Java")
+    override fun getOutlineShape(
+        state: BlockState?,
+        world: BlockView?,
+        pos: BlockPos?,
+        context: ShapeContext?
+    ): VoxelShape? {
+        return this.outlineShape
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun canPlaceAt(state: BlockState?, world: WorldView, pos: BlockPos): Boolean {
+        val blockPos = pos.offset(growthDirection.opposite)
+        val blockState = world.getBlockState(blockPos)
+        return if (!canAttachTo(blockState)) {
+            false
+        } else blockState.isOf(getStem()) || blockState.isOf(getPlant()) || blockState.isSideSolidFullSquare(
+            world, blockPos,
+            growthDirection
+        )
+    }
+
+    override fun appendProperties(builder: StateManager.Builder<Block?, BlockState?>) {
+        builder.add(AGE)
+    }
+
+    fun getRandomGrowthState(world: WorldAccess): BlockState {
         return defaultState.with(AGE, world.random.nextInt(150)) as BlockState
+    }
+
+    override fun hasRandomTicks(state: BlockState): Boolean {
+        return state.get(AGE) < 150
     }
 
     @Deprecated("Deprecated in Java")
@@ -43,9 +85,13 @@ abstract class AbstractGargantuanKelpBlock(settings: Settings, private val growt
             random.nextDouble() < this.growthChance &&
             chooseStemState(world.getBlockState(blockPos)))
         {
-            world.setBlockState(blockPos, age(state, world.random))
+            world.setBlockState(blockPos, age(state))
             getStreamer().placeStreamer(world, pos)
         }
+    }
+
+    protected open fun age(state: BlockState): BlockState {
+        return state.cycle(AGE)
     }
 
     override fun grow(world: ServerWorld, random: Random, pos: BlockPos, state: BlockState) {
@@ -62,19 +108,11 @@ abstract class AbstractGargantuanKelpBlock(settings: Settings, private val growt
         }
     }
 
-    override fun withMaxAge(state: BlockState): BlockState {
-        return state.with(AGE,150)
-    }
-
-    override fun hasMaxAge(state: BlockState): Boolean {
-        return true
-    }
-
-    override fun getGrowthLength(random: Random): Int {
+    protected fun getGrowthLength(random: Random): Int {
         return random.nextInt(3) + 1
     }
 
-    override fun chooseStemState(state: BlockState): Boolean {
+    fun chooseStemState(state: BlockState): Boolean {
         return state.isOf(Blocks.WATER)
     }
 
@@ -99,13 +137,17 @@ abstract class AbstractGargantuanKelpBlock(settings: Settings, private val growt
         if (direction == growthDirection.opposite && !canAttachTo(neighborState)) {
             world.createAndScheduleBlockTick(pos, this, 1)
         }
-        if (direction == growthDirection && (neighborState.isOf(this) || neighborState.isOf(this.plant))) {
-            return copyState(state, this.plant.defaultState)
+        if (direction == growthDirection && (neighborState.isOf(this) || neighborState.isOf(getPlant()))) {
+            return copyState(state, getPlant().defaultState)
         }
         if (tickWater) {
             world.createAndScheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world))
         }
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos)
+    }
+
+    private fun copyState(from: BlockState?, to: BlockState?): BlockState? {
+        return to
     }
 
     @Deprecated("Deprecated in Java")
@@ -114,6 +156,14 @@ abstract class AbstractGargantuanKelpBlock(settings: Settings, private val growt
         if (!canAttachTo(world.getBlockState(newPos))) {
             world.breakBlock(pos, true)
         }
+    }
+
+    override fun isFertilizable(world: BlockView, pos: BlockPos, state: BlockState?, isClient: Boolean): Boolean {
+        return chooseStemState(world.getBlockState(pos.offset(growthDirection)))
+    }
+
+    override fun canGrow(world: World?, random: Random?, pos: BlockPos?, state: BlockState?): Boolean {
+        return true
     }
 
     @Deprecated("Deprecated in Java", ReplaceWith("Fluids.WATER.getStill(false)", "net.minecraft.fluid.Fluids"))
@@ -134,7 +184,7 @@ abstract class AbstractGargantuanKelpBlock(settings: Settings, private val growt
         return false
     }
 
-    override fun canAttachTo(state: BlockState): Boolean {
+    protected fun canAttachTo(state: BlockState): Boolean {
         return !state.isOf(Blocks.MAGMA_BLOCK)
     }
 

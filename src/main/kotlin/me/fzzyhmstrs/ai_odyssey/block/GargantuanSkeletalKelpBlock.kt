@@ -3,8 +3,10 @@ package me.fzzyhmstrs.ai_odyssey.block
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterBlock
 import net.minecraft.block.Block
 import net.minecraft.block.PillarBlock
+import net.minecraft.util.math.Direction
+import net.minecraft.util.shape.VoxelShapes
 
-class GargantuanSkeletalKelpBlock(settings: Settings): AbstractGargantuanKelpBlock(settings) {
+class GargantuanSkeletalKelpBlock(settings: Settings): AbstractGargantuanKelpBlock(settings, Direction.UP, VoxelShapes.fullCube()) {
 
     override fun getStreamer(): AbstractGargantuanKelpStreamerBlock {
         return RegisterBlock.GARGANTUAN_SKELETAL_KELP_STREAMER
@@ -14,7 +16,7 @@ class GargantuanSkeletalKelpBlock(settings: Settings): AbstractGargantuanKelpBlo
         return RegisterBlock.GARGANTUAN_SKELETAL_KELP_STEM
     }
 
-    override fun getPlant(): Block {
+    override fun getPlant(): AbstractGargantuanKelpPlantBlock {
         return RegisterBlock.GARGANTUAN_SKELETAL_KELP_PLANT
     }
 }
