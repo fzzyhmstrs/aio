@@ -4,6 +4,7 @@ import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterEnchantment.CONTAMINATE
 import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterEnchantment.DECAYED
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity.LAMBENT_TRIDENT_ENTITY
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterItem.LAMBENT_TRIDENT
+import me.fzzyhmstrs.amethyst_core.raycaster_util.RaycasterUtil
 import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityType
@@ -19,10 +20,12 @@ import net.minecraft.entity.projectile.PersistentProjectileEntity
 import net.minecraft.entity.projectile.TridentEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
+import net.minecraft.particle.ParticleTypes
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
+import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.hit.EntityHitResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
@@ -102,7 +105,6 @@ class LambentTridentEntity : PersistentProjectileEntity {
     }
 
     override fun onEntityHit(entityHitResult: EntityHitResult) {
-        val blockPos: BlockPos?
         var livingEntity: Entity? = null
         val entity = entityHitResult.entity
         var f = 14.0f //base thrown trident damage, setting to 14 vs. vanilla 8 and glistering 11
@@ -111,7 +113,7 @@ class LambentTridentEntity : PersistentProjectileEntity {
             f += EnchantmentHelper.getAttackDamage(tridentStack, livingEntity.group)
         }
         if (owner != null){
-            livingEntity = owner as Entity
+            livingEntity = owner
         }
         val damageSource = DamageSource.trident(this, if (owner == null) this else livingEntity)
         dealtDamage = true
@@ -135,10 +137,9 @@ class LambentTridentEntity : PersistentProjectileEntity {
         }
         velocity = velocity.multiply(-0.01, -0.1, -0.01)
         var volume = 1.0f
-        if (world is ServerWorld && world.isThundering && hasChanneling() && world.isSkyVisible(entity.blockPos)) {
-            blockPos = entity.blockPos
+        val blockPos = entity.blockPos
+        if (world is ServerWorld && world.isThundering && hasChanneling() && world.isSkyVisible(blockPos)) {
             val le = LightningEntity(EntityType.LIGHTNING_BOLT,world)
-            //val lightningEntity = EntityType.LIGHTNING_BOLT.create(world)
             le.refreshPositionAfterTeleport(Vec3d.ofBottomCenter(blockPos))
             le.channeler =
                 if (livingEntity is ServerPlayerEntity) livingEntity else null
@@ -146,7 +147,23 @@ class LambentTridentEntity : PersistentProjectileEntity {
             soundEvent = SoundEvents.ITEM_TRIDENT_THUNDER
             volume = 5.0f
         }
+        val entityList = RaycasterUtil.raycastEntityArea(3.0,entity)
+        entityList.forEach {
+            it.damage(DamageSource.magic(this, if (owner == null) this else livingEntity),4.0f)
+        }
+        spawnNovaParticles(world)
         playSound(soundEvent, volume, 1.0f)
+        playSound(SoundEvents.BLOCK_AMETHYST_CLUSTER_BREAK,2.0F,0.95f)
+    }
+
+    private fun spawnNovaParticles(world: World){
+        val random = world.random
+        for (i in 0..40){
+            val x = random.nextDouble(3.0) - 1.5
+            val y = random.nextDouble(3.0) - 1.5
+            val z = random.nextDouble(3.0) - 1.5
+            world.addParticle(ParticleTypes.ELECTRIC_SPARK,true, this.x, this.y, this.z, x, y, z)
+        }
     }
 
     private fun hasChanneling(): Boolean {
@@ -161,6 +178,11 @@ class LambentTridentEntity : PersistentProjectileEntity {
 
     override fun getHitSound(): SoundEvent {
         return SoundEvents.ITEM_TRIDENT_HIT_GROUND
+    }
+
+    override fun onBlockHit(blockHitResult: BlockHitResult) {
+        super.onBlockHit(blockHitResult)
+        playSound(SoundEvents.BLOCK_AMETHYST_CLUSTER_HIT,0.6F,1.0F)
     }
 
     override fun onPlayerCollision(player: PlayerEntity) {

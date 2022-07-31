@@ -3,6 +3,7 @@ package me.fzzyhmstrs.ai_odyssey.item
 import com.google.common.collect.ImmutableMultimap
 import com.google.common.collect.Multimap
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterItem
+import net.minecraft.block.BlockState
 import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.enchantment.Enchantments
 import net.minecraft.entity.EquipmentSlot
@@ -18,7 +19,10 @@ import net.minecraft.item.RangedWeaponItem
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
 import net.minecraft.stat.Stats
+import net.minecraft.util.Hand
+import net.minecraft.util.TypedActionResult
 import net.minecraft.util.UseAction
+import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import java.util.function.Predicate
 
@@ -51,6 +55,9 @@ class HarpoonLauncherItem(settings: Settings) : RangedWeaponItem(settings) {
         return 15
     }
 
+    override fun getMaxUseTime(stack: ItemStack?): Int {
+        return 72000
+    }
 
     override fun getEnchantability(): Int {
         return 1
@@ -78,14 +85,7 @@ class HarpoonLauncherItem(settings: Settings) : RangedWeaponItem(settings) {
             return
         }
         if (!world.isClient) {
-            var harpoonStack = ItemStack.EMPTY
-            for (slot in 0 until user.inventory.size()){
-                val testStack = user.inventory.getStack(slot)
-                if (projectiles.test(testStack)){
-                    harpoonStack = testStack
-                    break
-                }
-            }
+            val harpoonStack = checkHarpoonStack(user)
             if (harpoonStack.isEmpty) return
             stack.damage(1, user) { p: PlayerEntity ->
                 p.sendToolBreakStatus(
@@ -123,13 +123,67 @@ class HarpoonLauncherItem(settings: Settings) : RangedWeaponItem(settings) {
               SoundEvents.ITEM_TRIDENT_THROW,
               SoundCategory.PLAYERS,
               1.0f,
-              0.85f
+              0.9f
             )
             if (!user.abilities.creativeMode) {
-              user.inventory.removeOne(harpoonStack)
+                harpoonStack.decrement(1)
+                if (harpoonStack.isEmpty) {
+                    user.inventory.removeOne(harpoonStack)
+                }
             }
         }
         user.incrementStat(Stats.USED.getOrCreateStat(this))
+    }
+
+    override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
+        val harpoonStack = checkHarpoonStack(user)
+        val itemStack = user.getStackInHand(hand)
+        if (itemStack.damage >= itemStack.maxDamage - 1) {
+            return TypedActionResult.fail(itemStack)
+        }
+        if (harpoonStack.isEmpty){
+            return TypedActionResult.fail(itemStack)
+        }
+        user.setCurrentHand(hand)
+        return TypedActionResult.consume(itemStack)
+    }
+
+    private fun checkHarpoonStack(user: PlayerEntity): ItemStack{
+        var harpoonStack = ItemStack.EMPTY
+        for (slot in 0 until user.inventory.size()){
+            val testStack = user.inventory.getStack(slot)
+            if (projectiles.test(testStack)){
+                harpoonStack = testStack
+                break
+            }
+        }
+        return harpoonStack
+    }
+
+    override fun postHit(stack: ItemStack, target: LivingEntity?, attacker: LivingEntity): Boolean {
+        stack.damage(1, attacker) { e: LivingEntity ->
+            e.sendEquipmentBreakStatus(
+                EquipmentSlot.MAINHAND
+            )
+        }
+        return true
+    }
+
+    override fun postMine(
+        stack: ItemStack,
+        world: World?,
+        state: BlockState,
+        pos: BlockPos?,
+        miner: LivingEntity
+    ): Boolean {
+        if (state.getHardness(world, pos).toDouble() != 0.0) {
+            stack.damage(2, miner) { e: LivingEntity ->
+                e.sendEquipmentBreakStatus(
+                    EquipmentSlot.MAINHAND
+                )
+            }
+        }
+        return true
     }
 
 }

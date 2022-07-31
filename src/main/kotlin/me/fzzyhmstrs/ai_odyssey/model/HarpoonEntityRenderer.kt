@@ -14,7 +14,7 @@ import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3f
 
 class HarpoonEntityRenderer(context: EntityRendererFactory.Context): ProjectileEntityRenderer<HarpoonEntity>(context) {
-    private val TEXTURE = Identifier(AIO.MOD_ID,"textures/entity/projectiles/arrow.png")
+    private val TEXTURE = Identifier(AIO.MOD_ID,"textures/entity/harpoon.png")
 
     override fun getTexture(entity: HarpoonEntity?): Identifier {
         return TEXTURE

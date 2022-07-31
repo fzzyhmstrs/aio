@@ -54,7 +54,6 @@ class HarpoonEntity: PersistentProjectileEntity {
     override fun onEntityHit(entityHitResult: EntityHitResult) {
         val damageSource: DamageSource
         var entity2: Entity?
-        super.onEntityHit(entityHitResult)
         val entity = entityHitResult.entity
         if (owner.also { entity2 = it } == null) {
             damageSource = DamageSource.trident(this, this)

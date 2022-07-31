@@ -118,14 +118,8 @@ class LambentTridentItem(settings: Settings) : TridentItem(settings), Flavorful<
                     lambentTridentEntity.pickupType = PersistentProjectileEntity.PickupPermission.CREATIVE_ONLY
                 }
                 world.spawnEntity(lambentTridentEntity)
-                world.playSoundFromEntity(
-                    null,
-                    lambentTridentEntity,
-                    SoundEvents.ITEM_TRIDENT_THROW,
-                    SoundCategory.PLAYERS,
-                    1.0f,
-                    1.0f
-                )
+                world.playSoundFromEntity(null, lambentTridentEntity, SoundEvents.ITEM_TRIDENT_THROW, SoundCategory.PLAYERS, 1.0f, 1.0f)
+                world.playSoundFromEntity(null, lambentTridentEntity, SoundEvents.BLOCK_AMETHYST_BLOCK_CHIME, SoundCategory.PLAYERS, 1.5f, 0.7f)
                 if (!user.abilities.creativeMode) {
                     user.inventory.removeOne(stack)
                 }
