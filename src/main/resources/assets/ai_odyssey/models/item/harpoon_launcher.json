@@ -2,5 +2,13 @@
   "parent": "item/handheld",
   "textures": {
     "layer0": "ai_odyssey:item/harpoon_launcher"
-  }
+  },
+  "overrides": [
+        {
+            "predicate": {
+                "throwing": 1
+            },
+            "model": "ai_odyssey:item/harpoon_launcher_throwing"
+        }
+    ]
 }

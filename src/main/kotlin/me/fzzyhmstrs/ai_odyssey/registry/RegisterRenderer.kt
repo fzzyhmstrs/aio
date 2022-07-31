@@ -37,6 +37,19 @@ object RegisterRenderer {
                 1.5F
             )
         }
+
+        EntityRendererRegistry.register(
+            RegisterEntity.VAMPIRIC_BOLT_ENTITY
+        ){context: EntityRendererFactory.Context ->
+            MissileEntityRenderer(
+                context,
+                0.0f,
+                0.0f,
+                0.0f,
+                0.5F,
+                1.5F
+            )
+        }
         
         EntityRendererRegistry.register(
             RegisterEntity.LAMBENT_TRIDENT_ENTITY
@@ -66,6 +79,10 @@ object RegisterRenderer {
         
         ModelPredicateProviderRegistry.register(
             RegisterItem.LAMBENT_TRIDENT, Identifier("throwing")
+        ) { stack: ItemStack, _: ClientWorld?, entity: LivingEntity?, _: Int -> if (entity != null && entity.isUsingItem && entity.activeItem == stack) 1.0f else 0.0f }
+
+        ModelPredicateProviderRegistry.register(
+            RegisterItem.HARPOON_LAUNCHER, Identifier("throwing")
         ) { stack: ItemStack, _: ClientWorld?, entity: LivingEntity?, _: Int -> if (entity != null && entity.isUsingItem && entity.activeItem == stack) 1.0f else 0.0f }
 
 

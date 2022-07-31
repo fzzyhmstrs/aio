@@ -1,5 +1,6 @@
 package me.fzzyhmstrs.ai_odyssey.scepter
 
+import me.fzzyhmstrs.ai_odyssey.entity.VampiricBoltEntity
 import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentEffect
 import me.fzzyhmstrs.amethyst_core.scepter_util.LoreTier
 import me.fzzyhmstrs.amethyst_core.scepter_util.SpellType
@@ -22,7 +23,7 @@ class VampiricBoltAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): S
     override fun entityClass(world: World, user: LivingEntity, level: Int, effects: AugmentEffect): ProjectileEntity {
         val speed = 2.0F
         val div = 0.75F
-        return FlameboltEntity.createFlamebolt(world, user, speed, div, effects, level)
+        return VampiricBoltEntity.createVampiricBolt(world, user, speed, div, effects, level)
     }
 
     override fun soundEvent(): SoundEvent {

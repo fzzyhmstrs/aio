@@ -4,10 +4,14 @@ import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
 import me.fzzyhmstrs.amethyst_core.entity_util.MissileEntity
 import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentConsumer
 import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentEffect
+import me.fzzyhmstrs.amethyst_imbuement.entity.FlameboltEntity
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.damage.DamageSource
+import net.minecraft.particle.ParticleEffect
+import net.minecraft.particle.ParticleTypes
 import net.minecraft.util.hit.EntityHitResult
+import net.minecraft.util.math.MathHelper
 import net.minecraft.world.World
 
 class VampiricBoltEntity(entityType: EntityType<out VampiricBoltEntity?>, world: World): MissileEntity(entityType, world) {
@@ -53,6 +57,27 @@ class VampiricBoltEntity(entityType: EntityType<out VampiricBoltEntity?>, world:
             }
         }
         discard()
+    }
+
+    override fun getParticleType(): ParticleEffect {
+        return ParticleTypes.ASH
+    }
+
+    companion object{
+        fun createVampiricBolt(world: World, user: LivingEntity, speed: Float, div: Float, effects: AugmentEffect, level: Int): VampiricBoltEntity {
+            val fbe = VampiricBoltEntity(
+                world, user, speed, div,
+                user.x - (user.width + 0.5f) * 0.5 * MathHelper.sin(user.bodyYaw * (Math.PI.toFloat() / 180)) * MathHelper.cos(
+                    user.pitch * (Math.PI.toFloat() / 180)
+                ),
+                user.eyeY - 0.6 - 0.8 * MathHelper.sin(user.pitch * (Math.PI.toFloat() / 180)),
+                user.z + (user.width + 0.5f) * 0.5 * MathHelper.cos(user.bodyYaw * (Math.PI.toFloat() / 180)) * MathHelper.cos(
+                    user.pitch * (Math.PI.toFloat() / 180)
+                ),
+            )
+            fbe.passEffects(effects, level)
+            return fbe
+        }
     }
 
 }
