@@ -48,14 +48,10 @@ public abstract class EnchantDamageMixin {
         cir.setReturnValue(7);
     }
 
-    /*@Inject(method = "onTargetDamaged", at = @At(value = "HEAD"), cancellable = true)
-    public void onTargetDamaged(LivingEntity user, Entity target, int level, CallbackInfo ci){
-        if (target instanceof LivingEntity livingEntity) {
-            if (this.typeIndex == AQUATIC_INDEX && level > 0 && livingEntity.getGroup() == EntityGroup.ILLAGER) {
-                int i = 20 + user.getRandom().nextInt(10 * level);
-                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, i, 3));
-                ci.cancel();
-            }
+    @Inject(method = "getAttackDamage", at = @At(value = "HEAD"), cancellable = true)
+    private void getAttackDamage(int level, EntityGroup group, CallbackInfoReturnable<Float> cir){
+        if (typeIndex == 4 && group == EntityGroup.AQUATIC){
+            cir.setReturnValue(level * 2.5F);
         }
-    }*/
+    }
 }

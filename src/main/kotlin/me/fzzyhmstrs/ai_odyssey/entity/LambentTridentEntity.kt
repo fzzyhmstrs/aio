@@ -1,10 +1,14 @@
 package me.fzzyhmstrs.ai_odyssey.entity
 
+import me.fzzyhmstrs.ai_odyssey.AIO
 import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterEnchantment.CONTAMINATED
 import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterEnchantment.DECAYED
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity.LAMBENT_TRIDENT_ENTITY
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterItem.LAMBENT_TRIDENT
 import me.fzzyhmstrs.amethyst_core.raycaster_util.RaycasterUtil
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityType
@@ -25,8 +29,10 @@ import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
+import net.minecraft.util.Identifier
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.hit.EntityHitResult
+import net.minecraft.util.hit.HitResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
@@ -151,19 +157,20 @@ class LambentTridentEntity : PersistentProjectileEntity {
         entityList.forEach {
             it.damage(DamageSource.magic(this, if (owner == null) this else livingEntity),4.0f)
         }
-        spawnNovaParticles(world)
+        if (!world.isClient && owner is ServerPlayerEntity){
+            val spe = owner as ServerPlayerEntity
+            sendNovaPacket(spe,this.pos)
+        }
         playSound(soundEvent, volume, 1.0f)
         playSound(SoundEvents.BLOCK_AMETHYST_CLUSTER_BREAK,2.0F,0.95f)
     }
 
-    private fun spawnNovaParticles(world: World){
-        val random = world.random
-        for (i in 0..40){
-            val x = random.nextDouble(3.0) - 1.5
-            val y = random.nextDouble(3.0) - 1.5
-            val z = random.nextDouble(3.0) - 1.5
-            world.addParticle(ParticleTypes.ELECTRIC_SPARK,true, this.x, this.y, this.z, x, y, z)
-        }
+    private fun sendNovaPacket(playerEntity: ServerPlayerEntity,pos: Vec3d){
+        val buf = PacketByteBufs.create()
+        buf.writeDouble(pos.x)
+        buf.writeDouble(pos.y)
+        buf.writeDouble(pos.z)
+        ServerPlayNetworking.send(playerEntity, NOVA_PARTICLE_PACKET,buf)
     }
 
     private fun hasChanneling(): Boolean {
@@ -225,5 +232,31 @@ class LambentTridentEntity : PersistentProjectileEntity {
         private val LOYALTY = DataTracker.registerData(TridentEntity::class.java, TrackedDataHandlerRegistry.BYTE)
         private val ENCHANTED =
             DataTracker.registerData(TridentEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
+        private val NOVA_PARTICLE_PACKET = Identifier(AIO.MOD_ID,"nova_packet")
+
+
+        fun registerClient(){
+            ClientPlayNetworking.registerGlobalReceiver(NOVA_PARTICLE_PACKET) {client,_,buf,_
+                ->
+                val posX = buf.readDouble()
+                val posY = buf.readDouble()
+                val posZ = buf.readDouble()
+                val world = client.world
+                if (world != null){
+                    spawnNovaParticles(world,posX,posY,posZ)
+                }
+            }
+        }
+
+        private fun spawnNovaParticles(world: World, posX: Double, posY: Double, posZ: Double){
+            val random = world.random
+            println(world.isClient)
+            for (i in 0..30){
+                val x = random.nextDouble(3.0) - 1.5
+                val y = random.nextDouble(3.0) - 1.5
+                val z = random.nextDouble(3.0) - 1.5
+                world.addParticle(ParticleTypes.ELECTRIC_SPARK,true, posX, posY, posZ, x, y, z)
+            }
+        }
     }
 }
