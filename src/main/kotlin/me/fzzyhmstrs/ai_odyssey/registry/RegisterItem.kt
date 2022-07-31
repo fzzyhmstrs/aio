@@ -159,7 +159,7 @@ object RegisterItem {
     private val goldenSeaAppleFood = FoodComponent.Builder().hunger(5).saturationModifier(1.2f).alwaysEdible().statusEffect(
         StatusEffectInstance(StatusEffects.CONDUIT_POWER, 120, 0), 1.0f).build()
     val GOLDEN_SEA_APPLE = Item(FabricItemSettings().group(ItemGroup.FOOD).food(goldenSeaAppleFood)).also{ regItem["golden_sea_apple"] = it}
-    private val bullKelpFood = FoodComponent.Builder().hunger(2).saturationModifier(0.2f).alwaysEdible().build()
+    private val bullKelpFood = FoodComponent.Builder().hunger(2).saturationModifier(0.2f).alwaysEdible().snack().build()
     val BULL_KELP = BullKelpBlockItem(RegisterBlock.BULL_KELP, FabricItemSettings().group(ItemGroup.DECORATIONS).food(bullKelpFood)).also{ regItem["bull_kelp"] = it}
 
 

@@ -30,6 +30,20 @@ class HardLightBarrierBlock(settings: Settings): Block(settings), SwitchDoor {
             ) != false){15} else {8} }
     }
 
+    @Deprecated("Deprecated in Java")
+    override fun getOutlineShape(
+        state: BlockState,
+        world: BlockView,
+        pos: BlockPos,
+        context: ShapeContext
+    ): VoxelShape {
+        val locked = state.get(LOCKED)
+        return if (locked) {
+            super.getOutlineShape(state, world, pos, context)
+        } else {
+            VoxelShapes.empty()
+        }
+    }
 
     override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {
         return super.getPlacementState(ctx)?.with(LOCKED,true)
