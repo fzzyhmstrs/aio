@@ -2,7 +2,6 @@ package me.fzzyhmstrs.ai_odyssey.entity
 
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterEntity
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterItem
-import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityType
@@ -20,11 +19,18 @@ import net.minecraft.world.World
 
 class HarpoonEntity: PersistentProjectileEntity {
     constructor(entityType: EntityType<out HarpoonEntity?>, world: World) : super(entityType, world)
-    constructor(world: World, x: Double, y: Double, z: Double): super(RegisterEntity.HAPROON_ENTITY,x, y, z, world)
-    constructor(world: World, owner: LivingEntity): super(RegisterEntity.HAPROON_ENTITY,owner, world)
+    constructor(world: World, x: Double, y: Double, z: Double): super(RegisterEntity.HARPOON_ENTITY,x, y, z, world)
+    constructor(world: World, owner: LivingEntity): super(RegisterEntity.HARPOON_ENTITY,owner, world)
+
+    companion object{
+        val baseDamage = 5.0
+        val attackRate = 15
+        val powerPerLevel = 1.25
+        val powerFlatAmount = 1.0
+    }
 
     init {
-        damage = 7.5
+        damage = baseDamage
     }
 
     override fun asItemStack(): ItemStack {

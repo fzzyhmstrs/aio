@@ -78,7 +78,7 @@ object RegisterEntity {
         }, RegisterBlock.MYSTERIOUS_PORTAL_FRAME).build(null))
 
 
-    val HAPROON_ENTITY: EntityType<HarpoonEntity> = Registry.register(
+    val HARPOON_ENTITY: EntityType<HarpoonEntity> = Registry.register(
         Registry.ENTITY_TYPE,
         Identifier(AIO.MOD_ID, "harpoon_entity"),
         FabricEntityTypeBuilder.create(
@@ -101,7 +101,7 @@ object RegisterEntity {
                 entityType,
                 world
             )
-        }.dimensions(EntityDimensions.fixed(0.5f, 0.5f)).build()
+        }.dimensions(EntityDimensions.fixed(0.3125f, 0.3125f)).build()
     )
     
     val LAMBENT_TRIDENT_ENTITY: EntityType<LambentTridentEntity> = Registry.register(
@@ -127,7 +127,7 @@ object RegisterEntity {
                 entityType,
                 world
             )
-        }.dimensions(EntityDimensions.fixed(0.5f, 0.5f)).build()
+        }.dimensions(EntityDimensions.fixed(0.3125f, 0.3125f)).build()
     )
 
     fun registerAll(){

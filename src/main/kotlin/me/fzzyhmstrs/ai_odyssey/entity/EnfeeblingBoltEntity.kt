@@ -11,6 +11,7 @@ import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.entity.projectile.SmallFireballEntity
 import net.minecraft.util.hit.EntityHitResult
+import net.minecraft.util.math.MathHelper
 import net.minecraft.world.World
 
 class EnfeeblingBoltEntity(entityType: EntityType<out EnfeeblingBoltEntity?>, world: World): MissileEntity(entityType, world) {
@@ -57,6 +58,23 @@ class EnfeeblingBoltEntity(entityType: EntityType<out EnfeeblingBoltEntity?>, wo
             }
         }
         discard()
+    }
+
+    companion object{
+        fun createEnfeeblingBolt(world: World, user: LivingEntity, speed: Float, div: Float, effects: AugmentEffect, level: Int): EnfeeblingBoltEntity {
+            val fbe = EnfeeblingBoltEntity(
+                world, user, speed, div,
+                user.x - (user.width + 0.5f) * 0.5 * MathHelper.sin(user.bodyYaw * (Math.PI.toFloat() / 180)) * MathHelper.cos(
+                    user.pitch * (Math.PI.toFloat() / 180)
+                ),
+                user.eyeY - 0.6 - 0.8 * MathHelper.sin(user.pitch * (Math.PI.toFloat() / 180)),
+                user.z + (user.width + 0.5f) * 0.5 * MathHelper.cos(user.bodyYaw * (Math.PI.toFloat() / 180)) * MathHelper.cos(
+                    user.pitch * (Math.PI.toFloat() / 180)
+                ),
+            )
+            fbe.passEffects(effects, level)
+            return fbe
+        }
     }
 
 }

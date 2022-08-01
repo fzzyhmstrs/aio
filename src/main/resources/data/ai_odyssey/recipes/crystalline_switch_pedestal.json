@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+	"DDD",
+	"GDG",
+	"SSS"
+  ],
+  "key": {
+	"D": {
+	  "item": "minecraft:polished_diorite"
+	},
+	"G": {
+	  "item": "minecraft:gold_nugget"
+	},
+	"S": {
+	  "item": "minecraft:polished_deepslate"
+	}
+  },
+  "result": {
+	"item": "ai_odyssey:crystalline_switch_pedestal",
+	"count": 4
+  }
+}

@@ -23,7 +23,7 @@ class VampiricSlashAugment(tier: Int, maxLvl: Int, vararg slot: EquipmentSlot): 
     }
 
     override fun particleType(): DefaultParticleType {
-        return ParticleTypes.SOUL_FIRE_FLAME
+        return ParticleTypes.WAX_ON
     }
 
     override fun augmentStat(imbueLevel: Int): AugmentDatapoint {

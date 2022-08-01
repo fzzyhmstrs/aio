@@ -60,7 +60,7 @@ object RegisterRenderer {
         }
 
         EntityRendererRegistry.register(
-            RegisterEntity.HAPROON_ENTITY
+            RegisterEntity.HARPOON_ENTITY
         ){context: EntityRendererFactory.Context ->
             HarpoonEntityRenderer(
                 context

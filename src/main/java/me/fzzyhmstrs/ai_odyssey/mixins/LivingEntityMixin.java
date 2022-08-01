@@ -1,9 +1,6 @@
 package me.fzzyhmstrs.ai_odyssey.mixins;
 
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterStatus;
-import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterEnchantment;
-import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterItem;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -11,10 +8,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Hand;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -36,6 +30,7 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow public abstract boolean hasStatusEffect(StatusEffect effect);
 
     @Shadow public abstract boolean removeStatusEffect(StatusEffect type);
+
 
     @Inject(method = "tryUseTotem", at = @At(value = "HEAD"), cancellable = true)
     private void tryUseTotem(DamageSource source, CallbackInfoReturnable<Boolean> cir){

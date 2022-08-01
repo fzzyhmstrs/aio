@@ -153,24 +153,13 @@ class LambentTridentEntity : PersistentProjectileEntity {
             soundEvent = SoundEvents.ITEM_TRIDENT_THUNDER
             volume = 5.0f
         }
-        val entityList = RaycasterUtil.raycastEntityArea(3.0,entity)
-        entityList.forEach {
-            it.damage(DamageSource.magic(this, if (owner == null) this else livingEntity),4.0f)
-        }
+        novaDamage(entity,this, if (owner == null) this else livingEntity)
         if (!world.isClient && owner is ServerPlayerEntity){
             val spe = owner as ServerPlayerEntity
             sendNovaPacket(spe,this.pos)
         }
         playSound(soundEvent, volume, 1.0f)
         playSound(SoundEvents.BLOCK_AMETHYST_CLUSTER_BREAK,2.0F,0.95f)
-    }
-
-    private fun sendNovaPacket(playerEntity: ServerPlayerEntity,pos: Vec3d){
-        val buf = PacketByteBufs.create()
-        buf.writeDouble(pos.x)
-        buf.writeDouble(pos.y)
-        buf.writeDouble(pos.z)
-        ServerPlayNetworking.send(playerEntity, NOVA_PARTICLE_PACKET,buf)
     }
 
     private fun hasChanneling(): Boolean {
@@ -232,8 +221,15 @@ class LambentTridentEntity : PersistentProjectileEntity {
         private val LOYALTY = DataTracker.registerData(TridentEntity::class.java, TrackedDataHandlerRegistry.BYTE)
         private val ENCHANTED =
             DataTracker.registerData(TridentEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
-        private val NOVA_PARTICLE_PACKET = Identifier(AIO.MOD_ID,"nova_packet")
+        val NOVA_PARTICLE_PACKET = Identifier(AIO.MOD_ID,"nova_packet")
 
+        fun sendNovaPacket(playerEntity: ServerPlayerEntity,pos: Vec3d){
+            val buf = PacketByteBufs.create()
+            buf.writeDouble(pos.x)
+            buf.writeDouble(pos.y)
+            buf.writeDouble(pos.z)
+            ServerPlayNetworking.send(playerEntity, NOVA_PARTICLE_PACKET,buf)
+        }
 
         fun registerClient(){
             ClientPlayNetworking.registerGlobalReceiver(NOVA_PARTICLE_PACKET) {client,_,buf,_
@@ -248,7 +244,7 @@ class LambentTridentEntity : PersistentProjectileEntity {
             }
         }
 
-        private fun spawnNovaParticles(world: World, posX: Double, posY: Double, posZ: Double){
+        fun spawnNovaParticles(world: World, posX: Double, posY: Double, posZ: Double){
             val random = world.random
             println(world.isClient)
             for (i in 0..30){
@@ -256,6 +252,13 @@ class LambentTridentEntity : PersistentProjectileEntity {
                 val y = random.nextDouble(3.0) - 1.5
                 val z = random.nextDouble(3.0) - 1.5
                 world.addParticle(ParticleTypes.ELECTRIC_SPARK,true, posX, posY, posZ, x, y, z)
+            }
+        }
+
+        fun novaDamage(target: Entity, source: Entity, attacker: Entity?){
+            val entityList = RaycasterUtil.raycastEntityArea(3.0,target)
+            entityList.forEach {
+                it.damage(DamageSource.magic(source, attacker),4.0f)
             }
         }
     }

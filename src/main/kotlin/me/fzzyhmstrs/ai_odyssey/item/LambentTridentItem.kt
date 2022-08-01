@@ -17,6 +17,7 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.entity.projectile.PersistentProjectileEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.item.TridentItem
+import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
 import net.minecraft.stat.Stats
@@ -41,7 +42,7 @@ class LambentTridentItem(settings: Settings) : TridentItem(settings), Flavorful<
             EntityAttributeModifier(
                 ATTACK_DAMAGE_MODIFIER_ID,
                 "Tool modifier",
-                14.0,
+                15.0,
                 EntityAttributeModifier.Operation.ADDITION
             )
         )
@@ -55,6 +56,16 @@ class LambentTridentItem(settings: Settings) : TridentItem(settings), Flavorful<
             )
         )
         this.attributeModifiers = builder.build()
+    }
+
+    override fun postHit(stack: ItemStack, target: LivingEntity, attacker: LivingEntity): Boolean {
+        if (!attacker.world.isClient){
+            if (attacker is ServerPlayerEntity) {
+                LambentTridentEntity.sendNovaPacket(attacker,target.pos.add(0.0,target.height/2.0,0.0))
+            }
+            LambentTridentEntity.novaDamage(target, attacker, attacker)
+        }
+        return super.postHit(stack, target, attacker)
     }
 
     override fun appendTooltip(

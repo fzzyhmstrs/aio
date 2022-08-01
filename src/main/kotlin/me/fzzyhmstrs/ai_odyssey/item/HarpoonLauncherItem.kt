@@ -2,6 +2,7 @@ package me.fzzyhmstrs.ai_odyssey.item
 
 import com.google.common.collect.ImmutableMultimap
 import com.google.common.collect.Multimap
+import me.fzzyhmstrs.ai_odyssey.entity.HarpoonEntity
 import me.fzzyhmstrs.ai_odyssey.registry.RegisterItem
 import net.minecraft.block.BlockState
 import net.minecraft.enchantment.EnchantmentHelper
@@ -27,7 +28,7 @@ import net.minecraft.world.World
 import java.util.function.Predicate
 
 class HarpoonLauncherItem(settings: Settings) : RangedWeaponItem(settings) {
- private var attributeModifiers: Multimap<EntityAttribute, EntityAttributeModifier>
+    private var attributeModifiers: Multimap<EntityAttribute, EntityAttributeModifier>
     
     init {
         val builder = ImmutableMultimap.builder<EntityAttribute, EntityAttributeModifier>()
@@ -81,7 +82,7 @@ class HarpoonLauncherItem(settings: Settings) : RangedWeaponItem(settings) {
           return
         }
         val i = getMaxUseTime(stack) - remainingUseTicks
-        if (i < 10) {
+        if (i < HarpoonEntity.attackRate) {
             return
         }
         if (!world.isClient) {
@@ -103,7 +104,7 @@ class HarpoonLauncherItem(settings: Settings) : RangedWeaponItem(settings) {
             )
             val j = EnchantmentHelper.getLevel(Enchantments.POWER, stack)
             if (j > 0) {
-                harpoonEntity.damage = harpoonEntity.damage + j.toDouble() * 1.5 + 1.5
+                harpoonEntity.damage = harpoonEntity.damage + j.toDouble() * HarpoonEntity.powerPerLevel + HarpoonEntity.powerFlatAmount
             }
             val k = EnchantmentHelper.getLevel(Enchantments.PUNCH, stack)
             if (k > 0) {
